@@ -1,0 +1,1418 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping7",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Expression -> Target"
+      },
+      {
+        "link" : "Source -> Expression"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T12:37:39.308Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "AccountBranchNumber"
+            },
+            "name" : "AccountBranchNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountBranchMnemonic"
+            },
+            "name" : "AccountBranchMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountBranchName"
+            },
+            "name" : "AccountBranchName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BasicPartOfAccountNumber"
+            },
+            "name" : "BasicPartOfAccountNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountSuffix"
+            },
+            "name" : "AccountSuffix",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerBasicNumber"
+            },
+            "name" : "CustomerBasicNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountShortName"
+            },
+            "name" : "AccountShortName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeCode"
+            },
+            "name" : "AccountTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeName"
+            },
+            "name" : "AccountTypeName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AnalysisCode"
+            },
+            "name" : "AnalysisCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AnalysisName"
+            },
+            "name" : "AnalysisName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerTypeCode"
+            },
+            "name" : "CustomerTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerTypeName"
+            },
+            "name" : "CustomerTypeName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountOfficerCode"
+            },
+            "name" : "AccountOfficerCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountOfficerName"
+            },
+            "name" : "AccountOfficerName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SundryAnalysisCode"
+            },
+            "name" : "SundryAnalysisCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SundryAnalysisName"
+            },
+            "name" : "SundryAnalysisName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrentStatus"
+            },
+            "name" : "CurrentStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ResidenceCountryCode"
+            },
+            "name" : "ResidenceCountryCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ResidenceCountryName"
+            },
+            "name" : "ResidenceCountryName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyMnemonic"
+            },
+            "name" : "CurrencyMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyName"
+            },
+            "name" : "CurrencyName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ParentCountryCode"
+            },
+            "name" : "ParentCountryCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ParentCountryName"
+            },
+            "name" : "ParentCountryName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BusinessSegmentCode"
+            },
+            "name" : "BusinessSegmentCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BusinessSegmentName"
+            },
+            "name" : "BusinessSegmentName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountOpenedKey"
+            },
+            "name" : "DateAccountOpenedKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountClosedKey"
+            },
+            "name" : "DateAccountClosedKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ReferralCode"
+            },
+            "name" : "ReferralCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ReferralName"
+            },
+            "name" : "ReferralName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Internal"
+            },
+            "name" : "Internal",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Checksum"
+            },
+            "name" : "Checksum",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Inactive"
+            },
+            "name" : "Inactive",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DeceasedorLiquidated"
+            },
+            "name" : "DeceasedorLiquidated",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Blocked"
+            },
+            "name" : "Blocked",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dormant"
+            },
+            "name" : "Dormant",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountClosing"
+            },
+            "name" : "AccountClosing",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "JointAccount"
+            },
+            "name" : "JointAccount",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "VersionDateKey"
+            },
+            "name" : "VersionDateKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountDealTypeCategory"
+            },
+            "name" : "AccountDealTypeCategory",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DebitBalanceNotAllowed"
+            },
+            "name" : "DebitBalanceNotAllowed",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountClosed"
+            },
+            "name" : "DateAccountClosed",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountOpened"
+            },
+            "name" : "DateAccountOpened",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "DimDate.csv",
+            "label" : "DimDate.csv",
+            "objectName" : "DimDate.csv",
+            "path" : "DimDate.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "AccountBranchNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchNumber",
+                "nativeName" : "AccountBranchNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountBranchMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchMnemonic",
+                "nativeName" : "AccountBranchMnemonic",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountBranchName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchName",
+                "nativeName" : "AccountBranchName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "BasicPartOfAccountNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "BasicPartOfAccountNumber",
+                "nativeName" : "BasicPartOfAccountNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountSuffix",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountSuffix",
+                "nativeName" : "AccountSuffix",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerBasicNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerBasicNumber",
+                "nativeName" : "CustomerBasicNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountShortName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountShortName",
+                "nativeName" : "AccountShortName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeCode",
+                "nativeName" : "AccountTypeCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeName",
+                "nativeName" : "AccountTypeName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AnalysisCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AnalysisCode",
+                "nativeName" : "AnalysisCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AnalysisName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AnalysisName",
+                "nativeName" : "AnalysisName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerTypeCode",
+                "nativeName" : "CustomerTypeCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerTypeName",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerTypeName",
+                "nativeName" : "CustomerTypeName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountOfficerCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountOfficerCode",
+                "nativeName" : "AccountOfficerCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountOfficerName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountOfficerName",
+                "nativeName" : "AccountOfficerName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "SundryAnalysisCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "SundryAnalysisCode",
+                "nativeName" : "SundryAnalysisCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "SundryAnalysisName",
+                "fieldType" : "CONNECTOR",
+                "label" : "SundryAnalysisName",
+                "nativeName" : "SundryAnalysisName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrentStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrentStatus",
+                "nativeName" : "CurrentStatus",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ResidenceCountryCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ResidenceCountryCode",
+                "nativeName" : "ResidenceCountryCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ResidenceCountryName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ResidenceCountryName",
+                "nativeName" : "ResidenceCountryName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyMnemonic",
+                "nativeName" : "CurrencyMnemonic",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyName",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyName",
+                "nativeName" : "CurrencyName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ParentCountryCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ParentCountryCode",
+                "nativeName" : "ParentCountryCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ParentCountryName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ParentCountryName",
+                "nativeName" : "ParentCountryName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "BusinessSegmentCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "BusinessSegmentCode",
+                "nativeName" : "BusinessSegmentCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "BusinessSegmentName",
+                "fieldType" : "CONNECTOR",
+                "label" : "BusinessSegmentName",
+                "nativeName" : "BusinessSegmentName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountOpenedKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountOpenedKey",
+                "nativeName" : "DateAccountOpenedKey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountClosedKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountClosedKey",
+                "nativeName" : "DateAccountClosedKey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ReferralCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ReferralCode",
+                "nativeName" : "ReferralCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ReferralName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ReferralName",
+                "nativeName" : "ReferralName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Internal",
+                "fieldType" : "CONNECTOR",
+                "label" : "Internal",
+                "nativeName" : "Internal",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Checksum",
+                "fieldType" : "CONNECTOR",
+                "label" : "Checksum",
+                "nativeName" : "Checksum",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Inactive",
+                "fieldType" : "CONNECTOR",
+                "label" : "Inactive",
+                "nativeName" : "Inactive",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DeceasedorLiquidated",
+                "fieldType" : "CONNECTOR",
+                "label" : "DeceasedorLiquidated",
+                "nativeName" : "DeceasedorLiquidated",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Blocked",
+                "fieldType" : "CONNECTOR",
+                "label" : "Blocked",
+                "nativeName" : "Blocked",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Dormant",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dormant",
+                "nativeName" : "Dormant",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountClosing",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountClosing",
+                "nativeName" : "AccountClosing",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "JointAccount",
+                "fieldType" : "CONNECTOR",
+                "label" : "JointAccount",
+                "nativeName" : "JointAccount",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "VersionDateKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "VersionDateKey",
+                "nativeName" : "VersionDateKey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountDealTypeCategory",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountDealTypeCategory",
+                "nativeName" : "AccountDealTypeCategory",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DebitBalanceNotAllowed",
+                "fieldType" : "CONNECTOR",
+                "label" : "DebitBalanceNotAllowed",
+                "nativeName" : "DebitBalanceNotAllowed",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountClosed",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountClosed",
+                "nativeName" : "DateAccountClosed",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountOpened",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountOpened",
+                "nativeName" : "DateAccountOpened",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "DimDate.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T12:37:39.308Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "test.csv",
+            "label" : "test.csv",
+            "path" : "test.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T12:38:08.778Z",
+        "name" : "Expression",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Verbose Data"
+          },
+          {
+            "name" : "Optional",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "name" : "v_out",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10000,
+            "scale" : 0,
+            "expFieldType" : "VARIABLE",
+            "expression" : "'[\"{\\\"bool\\\":{\\\"filter\\\":[{\\\"terms\\\":{\\\"core.classType\\\":[\\\"com.infa.odin.models.relational.Table\\\",\\\"com.infa.odin.models.relational.View\\\"]}},{\\\"terms\\\":{\\\"core.resourceType\\\":[\\\"Databricks Notebooks\\\"]}},{\\\"terms\\\":{\\\"core.assetLifecycle\\\":[\\\"Published\\\"]}}]}}\"]'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "NewField",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10000,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SUBSTR(v_out,3,LENGTH(v_out)-4)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 02:46:23 PDT"
+}

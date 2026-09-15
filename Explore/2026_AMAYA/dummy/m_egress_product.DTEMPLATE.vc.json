@@ -1,0 +1,1108 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_egress_product",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Target",
+        "groupLink" : "root -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-23T13:38:19.549Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "responseXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "root",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "Product_Error",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "additional_information",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "additional_information_Error",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "ingredient_information",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "ingredient_information_Error",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "product_description",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "product_description_Error",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "xrefLinks",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/Product(id=product)",
+            "label" : "Home/Custom Assets/Business Entities/Product(id=product)",
+            "objectName" : "Product(id=product)",
+            "path" : "Home/Custom Assets/Business Entities/Product(id=product)",
+            "retainMetadata" : "false"
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false",
+            "requestXml" : "dummy"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "root",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "PK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "sourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:sourcePKey"
+                },
+                {
+                  "name" : "businessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:businessId"
+                },
+                {
+                  "name" : "sourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:sourceSystem"
+                },
+                {
+                  "name" : "creationDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:creationDate"
+                },
+                {
+                  "name" : "lastUpdateDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:lastUpdateDate"
+                },
+                {
+                  "name" : "state",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:state"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:createdBy"
+                },
+                {
+                  "name" : "updatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:updatedBy"
+                },
+                {
+                  "name" : "originalBusinessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:originalBusinessId"
+                },
+                {
+                  "name" : "mergedBusinessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:mergedBusinessId"
+                },
+                {
+                  "name" : "validationStatus",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:validationStatus"
+                },
+                {
+                  "name" : "validation",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:states/json:validation"
+                },
+                {
+                  "name" : "populationName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:populationName"
+                },
+                {
+                  "name" : "notReadyForMatch",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:notReadyForMatch"
+                },
+                {
+                  "name" : "matchMergeState",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:matchMergeState"
+                },
+                {
+                  "name" : "product_id",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_id"
+                },
+                {
+                  "name" : "product_name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_name"
+                },
+                {
+                  "name" : "brand",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:brand"
+                },
+                {
+                  "name" : "product_category",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_category"
+                },
+                {
+                  "name" : "status",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:status"
+                },
+                {
+                  "name" : "product_type",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_type"
+                },
+                {
+                  "name" : "product_image",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_image"
+                },
+                {
+                  "name" : "sourceLastUpdateDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:_cm/json:sourceLastUpdateDate"
+                }
+              ]
+            },
+            {
+              "groupName" : "Product_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:Product/json:Product_ErrorArray/json:Product_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:Product_ErrorArray/json:Product_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:Product_ErrorArray/json:Product_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:Product_ErrorArray/json:Product_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:Product_ErrorArray/json:Product_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:Product_ErrorArray/json:Product_Error/json:errorMessage"
+                }
+              ]
+            },
+            {
+              "groupName" : "additional_information",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information",
+              "xfields" : [
+                {
+                  "name" : "PK_additional_information",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "sourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:sourcePKey"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:parentId"
+                },
+                {
+                  "name" : "fieldGroup_State",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:fieldGroup_State"
+                },
+                {
+                  "name" : "directions_for_use",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:directions_for_use"
+                }
+              ]
+            },
+            {
+              "groupName" : "additional_information_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:additional_information_ErrorArray/json:additional_information_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_additional_information",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:additional_information_ErrorArray/json:additional_information_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:additional_information_ErrorArray/json:additional_information_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:additional_information_ErrorArray/json:additional_information_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:additional_information_ErrorArray/json:additional_information_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:additional_informationArray/json:additional_information/json:additional_information_ErrorArray/json:additional_information_Error/json:errorMessage"
+                }
+              ]
+            },
+            {
+              "groupName" : "ingredient_information",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information",
+              "xfields" : [
+                {
+                  "name" : "PK_ingredient_information",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "sourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:sourcePKey"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:parentId"
+                },
+                {
+                  "name" : "fieldGroup_State",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:fieldGroup_State"
+                },
+                {
+                  "name" : "ingredient_name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_name"
+                },
+                {
+                  "name" : "ingredient_type",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_type"
+                }
+              ]
+            },
+            {
+              "groupName" : "ingredient_information_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_information_ErrorArray/json:ingredient_information_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_ingredient_information",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_information_ErrorArray/json:ingredient_information_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_information_ErrorArray/json:ingredient_information_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_information_ErrorArray/json:ingredient_information_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_information_ErrorArray/json:ingredient_information_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:ingredient_informationArray/json:ingredient_information/json:ingredient_information_ErrorArray/json:ingredient_information_Error/json:errorMessage"
+                }
+              ]
+            },
+            {
+              "groupName" : "product_description",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description",
+              "xfields" : [
+                {
+                  "name" : "PK_product_description",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "sourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:sourcePKey"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:parentId"
+                },
+                {
+                  "name" : "fieldGroup_State",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:fieldGroup_State"
+                },
+                {
+                  "name" : "language",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:language"
+                },
+                {
+                  "name" : "short_desciption",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:short_desciption"
+                },
+                {
+                  "name" : "long_description",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:long_description"
+                }
+              ]
+            },
+            {
+              "groupName" : "product_description_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:product_description_ErrorArray/json:product_description_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_product_description",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:product_description_ErrorArray/json:product_description_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:product_description_ErrorArray/json:product_description_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:product_description_ErrorArray/json:product_description_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:product_description_ErrorArray/json:product_description_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:Product/json:product_descriptionArray/json:product_description/json:product_description_ErrorArray/json:product_description_Error/json:errorMessage"
+                }
+              ]
+            },
+            {
+              "groupName" : "xrefLinks",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:Product_id_product_/json:xrefLinksArray/json:xrefLinks",
+              "xfields" : [
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "sourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:xrefLinksArray/json:xrefLinks/json:sourcePKey"
+                },
+                {
+                  "name" : "businessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:xrefLinksArray/json:xrefLinks/json:businessId"
+                },
+                {
+                  "name" : "sourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:xrefLinksArray/json:xrefLinks/json:sourceSystem"
+                },
+                {
+                  "name" : "mid",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Product_id_product_/json:xrefLinksArray/json:xrefLinks/json:mid"
+                }
+              ]
+            }
+          ],
+          "packed" : {
+            "packedFields" : null
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-23T13:38:19.550Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@fUQ1KUqwZycgrADnxIy128",
+          "connectionName" : "Conn-BM-FlatFile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "egresstest.csv",
+            "label" : "egresstest.csv",
+            "path" : "egresstest.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 02:46:23 PDT"
+}

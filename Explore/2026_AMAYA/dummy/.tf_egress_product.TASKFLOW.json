@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "3EpTQE1HlDLdEFnhNwBjGE",
+    "name" : "tf_egress_product",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "aaaa-gt-145449-2026-02-23T13:46:26.006Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-15T09:46:25.517Z",
+  "objectRefs" : [ {
+    "id" : "8s0d0BER66HhjeyYP5tbyv",
+    "name" : "mt_egress_product",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z00000000006L"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/2026_AMAYA/dummy"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

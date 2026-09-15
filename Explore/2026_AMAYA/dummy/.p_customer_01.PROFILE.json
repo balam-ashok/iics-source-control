@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "3DPOkXr3W6wdnd5Q5eRcIA",
+    "name" : "p_customer_01",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "047e60e7-de64-4515-b681-f29a74f7ce57"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-15T09:46:25.523Z",
+  "objectRefs" : [ {
+    "id" : "0PTUCywWvhpksMrtLZzBOY",
+    "name" : "conn_flat_file_bm_asmo",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000003V"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "0Qww6hhBeUQdB5QWZZOX6I",
+    "name" : "c_Lowercase",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0Qww6hhBeUQdB5QWZZOX6I"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Converts the input text to lowercase.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Polestar_Demo/CDQ"
+  }, {
+    "id" : "3Ut4J6ihIOhbQjR5TnWPgH",
+    "name" : "rs_Spending_Score_ColumnLengthDeviati_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3Ut4J6ihIOhbQjR5TnWPgH"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Validity of Spending_Score based on Column Length Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/2026_AMAYA/dummy"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "3Ut4J6ihIOhbQjR5TnWPgH",
+    "name" : "rs_Spending_Score_ColumnLengthDeviati_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3Ut4J6ihIOhbQjR5TnWPgH"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Validity of Spending_Score based on Column Length Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-15T09:46:25.522Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
