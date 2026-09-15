@@ -1,24 +1,26 @@
 {
   "objectInfo" : {
-    "id" : "1JD3w9FKJiJktCdWhZykOo",
-    "name" : "CAI Assets",
-    "type" : "Folder",
+    "id" : "6aJmwiATJofgGqiEaTNlyM",
+    "name" : "Verifier_Address",
+    "type" : "VERIFIER",
     "metadata" : {
       "modelVersion" : {
-        "major" : 0,
+        "major" : 1,
         "minor" : 0
       },
-      "repoInfo" : null,
+      "repoInfo" : {
+        "repoHandle" : "6aJmwiATJofgGqiEaTNlyM"
+      },
       "contextAttributes" : [ ],
       "additionalInfo" : {
-        "description" : "",
+        "description" : null,
         "contentType" : "Binary",
-        "documentState" : "COMPLETE"
+        "documentState" : "VALID"
       }
     }
   },
   "dataFileExtension" : "json",
-  "updateTime" : "2026-09-15T10:52:36.130Z",
+  "updateTime" : "2026-09-15T10:43:50.217Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false

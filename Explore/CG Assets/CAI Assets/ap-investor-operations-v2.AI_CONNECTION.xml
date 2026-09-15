@@ -1,0 +1,49 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>nKfPNzUzeA8rJ4p-gt-396415-2026-06-17T06:10:10.214Z::conn.xml</types1:EntryId>
+      <types1:Name>ap-investor-operations-v2</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     GUID="3b9aOeg4GAGh4jrQo3ONMd"
+                     displayName="ap-investor-operations-v2"
+                     label="ap-investor-operations-v2"
+                     name="ap-investor-operations-v2">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false"
+                          name="baseApiUrl"
+                          value="https://usw3.dm-us.informaticacloud.com/saas"/>
+               <attribute encrypted="false"
+                          name="mdmApiUrl"
+                          value="https://usw3-mdm.dm-us.informaticacloud.com"/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/sc_investor_operations_v2/sc_investor_operations_v2_svcDef.xml"
+                               guid="52agsFUYCyBfCrmGzdQiwu"
+                               name="sc-investor-operations-v2"
+                               supportsConnectionTest="false"
+                               uuid="03c7d1ce-da46-45c0-be0c-e169f4fd031a">
+               <description/>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>3b9aOeg4GAGh4jrQo3ONMd</types1:GUID>
+      <types1:DisplayName>ap-investor-operations-v2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.829Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

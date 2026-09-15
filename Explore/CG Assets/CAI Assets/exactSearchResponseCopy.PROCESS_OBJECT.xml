@@ -1,0 +1,149 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>UeFRqXpIW7WHK80-gt-401402-2026-06-17T06:10:10.742Z::po.xml</types1:EntryId>
+      <types1:Name>exactSearchResponseCopy</types1:Name>
+      <types1:ParentFlowIds>FYPFJ7XhFtybdua-gt-396437-2026-06-17T06:10:12.508Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="exactSearchResponseCopy"
+                        isByCopy="true"
+                        name="exactSearchResponseCopy">
+            <description/>
+            <tags/>
+            <detail>
+               <field label=""
+                      name="personFirstName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personMiddleName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personLastName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personDob"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="partyTaxIdLast4"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="roles"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:rolesExt</option>
+                     <option name="guid">577oPcJTIG6cDNA5Nif525</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="partyType"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="addresses"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:addresses</option>
+                     <option name="guid">l1xxnekR6G9eiNFRPtsj8r</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="contactMechanisms"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:contactMechanismsExt</option>
+                     <option name="guid">4uNv6YrfGzLelzGh7QaYKn</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="materializations"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="persons"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:persons</option>
+                     <option name="guid">32grQmtZFYeiP69FtRmRkd</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="warning"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:warning</option>
+                     <option name="guid">9YpaWfCy5XClcIelodlPmo</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>02v36gxmw8Hc3HXx26NJcc</types1:GUID>
+      <types1:DisplayName>exactSearchResponseCopy</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:35.047Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

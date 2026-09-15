@@ -1,0 +1,947 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>FYPFJ7XhFtybdua-gt-396437-2026-06-17T06:10:12.508Z::pd.xml</types1:EntryId>
+      <types1:Name>person_search</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:13Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="66taOow3dIMc1O0zpo1UMK"
+                  displayName="Person Search"
+                  name="person_search"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="request" required="false" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:criteria</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9NpJSiLaMEMcbN18MUwMMs</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="criteria" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:exactSearchResponseCopy</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">02v36gxmw8Hc3HXx26NJcc</option>
+                  </options>
+               </field>
+               <field description="" name="temp_criteria" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:exactSearchResponseCopy</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">02v36gxmw8Hc3HXx26NJcc</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="headerPart" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="filterPart" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="requestDetail" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:criteria</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9NpJSiLaMEMcbN18MUwMMs</option>
+                  </options>
+               </field>
+               <field description="" name="IDS_SESSION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_criteria" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:exactSearchResponse</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4KRCQJL3HVLjjZQ4ttCk0r</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_req_as_resp" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="rd87f1d0d-0335-4f0f-81f1-dda2cdf3e60f">
+               <start id="zecaa4cbb-4542-4a04-b953-71120972c218">
+                  <link id="kf1dc1a39-d795-4233-aa20-8d6d45403270"
+                        targetId="a1lgH9XiUQFqnbrGHmMVOeiQ-Assignment8b58b894-5f25-40a2-9144-be196da26086"/>
+               </start>
+               <assignment id="a1lgH9XiUQFqnbrGHmMVOeiQ-Assignment8b58b894-5f25-40a2-9144-be196da26086">
+                  <title>Assignment to Build body</title>
+                  <operation source="formula" to="temp.filterPart">
+                     <expression language="XQuery">(: -------------------------------------------- :)
+(: Normalize scalar fields from request :)
+(: -------------------------------------------- :)
+let $firstName    := normalize-space(string($input.request.personFirstName))
+let $middleName   := normalize-space(string($input.request.personMiddleName))
+let $lastName     := normalize-space(string($input.request.personLastName))
+let $dob          := normalize-space(string($input.request.personDob))
+let $taxIdLast4   := normalize-space(string($input.request.partyTaxIdLast4))
+let $roleType     := normalize-space(string( $input.request/roles/roleType/code ))
+let $statusCode   := normalize-space(string( $input.request/roles/status/code ))
+
+(: -------------------------------------------- :)
+(: Build contact mechanism filters (ARRAY) :)
+(: -------------------------------------------- :)
+let $contactFilters :=
+  for $cm in $input.request.contactMechanisms
+  let $value := normalize-space(string($cm/contactMechanismValue))
+  let $code  := normalize-space(string($cm/contactMechanismType/code))
+  return
+    (
+      if ($value != "")
+      then concat(
+        '{"fieldName":"party_investor.contact_mechanisms.contactMechanismValue",',
+        '"comparator":"EQUALS","fieldValue":"', $value, '"}'
+      ) else (),
+
+      if ($code != "")
+      then concat(
+        '{"fieldName":"party_investor.contact_mechanisms.contactMechanismType.Code",',
+        '"comparator":"EQUALS","fieldValue":"', $code, '"}'
+      ) else ()
+    )
+
+(: -------------------------------------------- :)
+(: Build address filters (ARRAY aware) :)
+(: -------------------------------------------- :)
+let $addressFilters :=
+  for $addr in $input.request.addresses
+  let $city       := normalize-space(string($addr/city))
+  let $postalCode := normalize-space(string($addr/postalCode))
+  return
+    (
+      if ($city != "")
+      then concat(
+        '{"fieldName":"party_investor.addresses.city","comparator":"EQUALS","fieldValue":"',
+        $city, '"}'
+      ) else (),
+
+      if ($postalCode != "")
+      then concat(
+        '{"fieldName":"party_investor.addresses.postalCode","comparator":"EQUALS","fieldValue":"',
+        $postalCode, '"}'
+      ) else ()
+    )
+
+(: -------------------------------------------- :)
+(: Build base + conditional filters :)
+(: -------------------------------------------- :)
+let $filters :=
+(
+  (: Role Type :)
+  if ($roleType != "")
+  then concat(
+    '{"fieldName":"party_investor.roles.roleTypeId.Code","comparator":"EQUALS","fieldValue":"',
+    $roleType, '"}'
+  ) else (),
+
+  (: Status :)
+  if ($statusCode != "")
+  then concat(
+    '{"fieldName":"party_investor.roles.statusId.Code","comparator":"EQUALS","fieldValue":"',
+    $statusCode, '"}'
+  ) else (),
+
+  (: Person fields :)
+  if ($firstName != "")
+  then concat(
+    '{"fieldName":"party_investor.personFirstName","comparator":"EQUALS","fieldValue":"',
+    $firstName, '"}'
+  ) else (),
+
+  if ($middleName != "")
+  then concat(
+    '{"fieldName":"party_investor.personMiddleName","comparator":"EQUALS","fieldValue":"',
+    $middleName, '"}'
+  ) else (),
+
+  if ($lastName != "")
+  then concat(
+    '{"fieldName":"party_investor.personLastName","comparator":"EQUALS","fieldValue":"',
+    $lastName, '"}'
+  ) else (),
+
+  if ($dob != "")
+  then concat(
+    '{"fieldName":"party_investor.personBirthDate","comparator":"EQUALS","fieldValue":"',
+    $dob, '"}'
+  ) else (),
+
+  if ($taxIdLast4 != "")
+  then concat(
+    '{"fieldName":"party_investor.partyTaxIdLast4","comparator":"EQUALS","fieldValue":"',
+    $taxIdLast4, '"}'
+  ) else (),
+  
+concat(
+  '{"fieldName":"party_investor.partyType.Code","comparator":"EQUALS","fieldValue":"2102"}',''
+),
+
+
+  $contactFilters,
+  $addressFilters
+)
+
+(: -------------------------------------------- :)
+(: Join filters and build final JSON :)
+(: -------------------------------------------- :)
+let $filtersJson := string-join($filters, ",")
+
+return concat(
+  '{"entityType":"party_investor","search":"*",',
+  '"pageSize":25,"filters":{"filter":[',
+  $filtersJson,
+  ']}}'
+)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.IDS_SESSION_ID">
+                     <expression language="XQuery">request:getHeader('IDS-SESSION-ID')</expression>
+                  </operation>
+                  <link id="eda7516bc-3e9c-42d2-8314-64a8e4a12a06"
+                        targetId="a1lgH9XiUQFqnbrGHmMVOeiQ-Serviceb4327de0-4b6d-46d9-9492-8f35a9485f8d"/>
+               </assignment>
+               <assignment id="a1lgH9XiUQFqnbrGHmMVOeiQ-Assignmentc821df28-3c1a-4844-818a-97cdc3686de1">
+                  <title>Assignment to requestDetail, criteria</title>
+                  <operation source="formula" to="temp.requestDetail">
+                     <expression language="XQuery">let $req := $input.request
+
+let $roleCode   := data($req/roles/roleType/code)
+let $roleName   :=
+  if ($roleCode = '4160') then 'Individual Investor'
+  else ''
+
+let $statusCode := data($req/roles/status/code)
+let $statusName :=
+  if ($statusCode = '1801') then 'Active'
+  else if ($statusCode = '1802') then 'Inactive'
+  else if ($statusCode = '1803') then 'Pending Active'
+  else if ($statusCode = '1804') then 'Pending inactive'
+  else ''
+
+return
+&lt;criteria&gt;
+
+  &lt;!-- ========= MATERIALIZATIONS ========= --&gt;
+  {
+    if (
+      exists( $input.request[1]/personFirstName )
+      or exists($req/personLastName)
+      or exists($req/personDob)
+      or exists($req/partyTaxIdLast4)
+    )
+    then &lt;materializations&gt;CorePartyInfo&lt;/materializations&gt;
+    else ()
+  }
+
+  {
+    if (exists($req/roles))
+    then &lt;materializations&gt;Roles&lt;/materializations&gt;
+    else ()
+  }
+
+  {
+    if (exists($req/contactMechanisms))
+    then &lt;materializations&gt;ContactMechanisms&lt;/materializations&gt;
+    else ()
+  }
+
+  &lt;!-- ========= PARTY TYPE ========= --&gt;
+  &lt;partyType&gt;
+    &lt;code&gt;2102&lt;/code&gt;
+    &lt;name&gt;Person&lt;/name&gt;
+    &lt;effectiveReferenceId&gt;2102&lt;/effectiveReferenceId&gt;
+  &lt;/partyType&gt;
+
+  &lt;!-- ========= PERSON FIELDS ========= --&gt;
+  { if (exists($req/personFirstName))
+    then &lt;personFirstName&gt;{ data($req/personFirstName) }&lt;/personFirstName&gt;
+    else () }
+
+  { if (exists($req/personLastName))
+    then &lt;personLastName&gt;{ data($req/personLastName) }&lt;/personLastName&gt;
+    else () }
+
+  { if (exists($req/personDob))
+    then &lt;personDob&gt;{ data($req/personDob) }&lt;/personDob&gt;
+    else () }
+
+  { if (exists($req/partyTaxIdLast4))
+    then &lt;partyTaxIdLast4&gt;{ data($req/partyTaxIdLast4) }&lt;/partyTaxIdLast4&gt;
+    else () }
+
+  &lt;!-- ========= ROLES ========= --&gt;
+{
+  if ($roleCode != '' or $statusCode != '')
+  then
+    &lt;roles&gt;
+      &lt;role&gt;
+        {
+          if ($roleCode != '')
+          then
+            &lt;roleType&gt;
+              &lt;code&gt;{ $roleCode }&lt;/code&gt;
+              &lt;name&gt;{ $roleName }&lt;/name&gt;
+              &lt;effectiveReferenceId&gt;{ $roleCode }&lt;/effectiveReferenceId&gt;
+            &lt;/roleType&gt;
+          else ()
+        }
+        {
+          if ($statusCode != '')
+          then
+            &lt;status&gt;
+              &lt;code&gt;{ $statusCode }&lt;/code&gt;
+              &lt;name&gt;{ $statusName }&lt;/name&gt;
+              &lt;effectiveReferenceId&gt;{ $statusCode }&lt;/effectiveReferenceId&gt;
+            &lt;/status&gt;
+          else ()
+        }
+      &lt;/role&gt;
+    &lt;/roles&gt;
+  else ()
+}
+
+  &lt;!-- ===== CONTACT MECHANISMS ===== --&gt;
+  {
+    for $cm in $req/contactMechanisms
+    let $cmCode := data($cm/contactMechanismType/code)
+    let $cmName :=
+      if ($cmCode = '301') then 'Email Address'
+      else if ($cmCode = '303') then 'Phone Number'
+      else if ($cmCode = '306') then 'Mobile Phone Number'
+      else if ($cmCode = '311') then 'Landline'
+      else ''
+
+    return
+      &lt;contactMechanisms&gt;
+        &lt;contactMechanismValue&gt;{ data($cm/contactMechanismValue) }&lt;/contactMechanismValue&gt;
+        &lt;contactMechanismType&gt;
+          &lt;code&gt;{ $cmCode }&lt;/code&gt;
+          &lt;name&gt;{ $cmName }&lt;/name&gt;
+          &lt;effectiveReferenceId&gt;{ $cmCode }&lt;/effectiveReferenceId&gt;
+        &lt;/contactMechanismType&gt;
+      &lt;/contactMechanisms&gt;
+  }
+
+&lt;/criteria&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="output.criteria">
+                     <expression language="XQuery">let $criteria := $temp.requestDetail  (: your already-built criteria :)
+let $resp := $output.EntireResponse 
+
+return
+&lt;criteria&gt;
+
+  &lt;!-- ===================== --&gt;
+  &lt;!-- EXISTING CRITERIA CONTENT --&gt;
+  &lt;!-- ===================== --&gt;
+  {
+    $criteria/*
+  }
+  &lt;!-- ===================== --&gt;
+  &lt;!-- PERSONS (FROM ENTIRERESPONSE) --&gt;
+  &lt;!-- ===================== --&gt;
+  {
+    for $rec in $resp/searchResult/records
+    return
+      &lt;persons&gt;
+
+        &lt;personLastName&gt;
+          { data($rec/party_investor.personLastName) }
+        &lt;/personLastName&gt;
+
+        &lt;personFirstName&gt;
+          { data($rec/party_investor.personFirstName) }
+        &lt;/personFirstName&gt;
+
+        &lt;tinTypeId&gt;
+          { data($rec/party_investor.taxIdentificationType/Code) }
+        &lt;/tinTypeId&gt;
+
+        {
+          if (exists($rec/party_investor.personMiddleInitial)) then
+            &lt;personMiddleInitial&gt;
+              { data($rec/party_investor.personMiddleInitial) }
+            &lt;/personMiddleInitial&gt;
+          else ()
+        }
+
+        {
+          if (exists($rec/party_investor.personBirthDate)) then
+            &lt;personBirthDate&gt;
+              { data($rec/party_investor.personBirthDate) }
+            &lt;/personBirthDate&gt;
+          else ()
+        }
+
+        {
+          if (exists($rec/party_investor.personMiddleName)) then
+            &lt;personMiddleName&gt;
+              { data($rec/party_investor.personMiddleName) }
+            &lt;/personMiddleName&gt;
+          else ()
+        }
+
+        &lt;partyTaxIdLast4&gt;
+          { data($rec/party_investor.partyTaxIdLast4) }
+        &lt;/partyTaxIdLast4&gt;
+
+        &lt;effectiveReferenceId&gt;
+          { data($rec/_meta/id) }
+        &lt;/effectiveReferenceId&gt;
+
+        &lt;partyId&gt;
+          { data($rec/_meta/id) }
+        &lt;/partyId&gt;
+
+      &lt;/persons&gt;
+  }
+
+&lt;/criteria&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.t_criteria">
+                     <expression language="XQuery">let $criteria := $temp.requestDetail  (: your already-built criteria :)
+let $resp := $output.EntireResponse 
+
+return
+&lt;criteria&gt;
+
+  &lt;!-- ===================== --&gt;
+  &lt;!-- EXISTING CRITERIA CONTENT --&gt;
+  &lt;!-- ===================== --&gt;
+  {
+    $criteria/*
+  }
+  &lt;!-- ===================== --&gt;
+  &lt;!-- PERSONS (FROM ENTIRERESPONSE) --&gt;
+  &lt;!-- ===================== --&gt;
+  {
+    for $rec in $resp/searchResult/records
+    return
+      &lt;persons&gt;
+
+        &lt;personLastName&gt;
+          { data($rec/party_investor.personLastName) }
+        &lt;/personLastName&gt;
+
+        &lt;personFirstName&gt;
+          { data($rec/party_investor.personFirstName) }
+        &lt;/personFirstName&gt;
+
+        &lt;tinTypeId&gt;
+          { data($rec/party_investor.taxIdentificationType/Code) }
+        &lt;/tinTypeId&gt;
+
+        {
+          if (exists($rec/party_investor.personMiddleInitial)) then
+            &lt;personMiddleInitial&gt;
+              { data($rec/party_investor.personMiddleInitial) }
+            &lt;/personMiddleInitial&gt;
+          else ()
+        }
+
+        {
+          if (exists($rec/party_investor.personBirthDate)) then
+            &lt;personBirthDate&gt;
+              { data($rec/party_investor.personBirthDate) }
+            &lt;/personBirthDate&gt;
+          else ()
+        }
+
+        {
+          if (exists($rec/party_investor.personMiddleName)) then
+            &lt;personMiddleName&gt;
+              { data($rec/party_investor.personMiddleName) }
+            &lt;/personMiddleName&gt;
+          else ()
+        }
+
+        &lt;partyTaxIdLast4&gt;
+          { data($rec/party_investor.partyTaxIdLast4) }
+        &lt;/partyTaxIdLast4&gt;
+
+        &lt;effectiveReferenceId&gt;
+          { data($rec/_meta/id) }
+        &lt;/effectiveReferenceId&gt;
+
+        &lt;partyId&gt;
+          { data($rec/_meta/id) }
+        &lt;/partyId&gt;
+
+      &lt;/persons&gt;
+  }
+
+&lt;/criteria&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.temp_req_as_resp">
+                     <expression language="XQuery">let $req := $input.request
+let $roleCode := data($req/roles/roleType/code)
+let $roleName :=
+  if ($roleCode = '4160') then 'Individual Investor'
+  else ''
+
+let $statusCode := data($req/roles/status/code)
+let $statusName :=
+  if ($statusCode = '1801') then 'Active'
+  else if ($statusCode = '1802') then 'Inactive'
+  else if ($statusCode = '1803') then 'Pending Active'
+  else if ($statusCode = '1804') then 'Pending inactive'
+  else ''
+
+let $cm := $req/contactMechanisms[1]
+let $cmCode := data($cm/contactMechanismType/code)
+
+let $cmName :=
+  if ($cmCode = '301') then 'Email Address'
+  else if ($cmCode = '303') then 'Phone Number'
+  else if ($cmCode = '306') then 'Mobile Phone Number'
+  else if ($cmCode = '311') then 'Landline'
+  else ''
+
+return
+&lt;temp_criteria&gt;
+
+    { if (exists($req/personFirstName))
+      then &lt;personFirstName&gt;{ data($req/personFirstName) }&lt;/personFirstName&gt;
+      else () }
+
+    { if (exists($req/personMiddleName))
+      then &lt;personMiddleName&gt;{ data($req/personMiddleName) }&lt;/personMiddleName&gt;
+      else () }
+
+    { if (exists($req/personLastName))
+      then &lt;personLastName&gt;{ data($req/personLastName) }&lt;/personLastName&gt;
+      else () }
+
+    { if (exists($req/personDob))
+      then &lt;personDob&gt;{ data($req/personDob) }&lt;/personDob&gt;
+      else () }
+
+    { if (exists($req/partyTaxIdLast4))
+      then &lt;partyTaxIdLast4&gt;{ data($req/partyTaxIdLast4) }&lt;/partyTaxIdLast4&gt;
+      else () }
+
+    &lt;!-- ✅ ROLES --&gt;
+    {
+      if ($roleCode != '' or $statusCode != '')
+      then
+        &lt;roles&gt;
+          {
+            if ($roleCode != '')
+            then
+              &lt;roleType&gt;
+                &lt;name&gt;{ $roleName }&lt;/name&gt;
+                &lt;code&gt;{ $roleCode }&lt;/code&gt;
+              &lt;/roleType&gt;
+            else ()
+          }
+          {
+            if ($statusCode != '')
+            then
+              &lt;status&gt;
+                &lt;name&gt;{ $statusName }&lt;/name&gt;
+                &lt;code&gt;{ $statusCode }&lt;/code&gt;
+              &lt;/status&gt;
+            else ()
+          }
+        &lt;/roles&gt;
+      else ()
+    }
+
+    &lt;!-- ✅ PARTY TYPE --&gt;
+  &lt;partyType&gt;
+    &lt;code&gt;2102&lt;/code&gt;
+    &lt;name&gt;Person&lt;/name&gt;
+    &lt;effectiveReferenceId&gt;2102&lt;/effectiveReferenceId&gt;
+  &lt;/partyType&gt;
+
+    &lt;!-- ✅ CONTACT MECHANISMS --&gt;
+    {
+      if (exists($cm))
+      then
+        &lt;contactMechanisms&gt;
+          &lt;contactMechanismValue&gt;
+            { data($cm/contactMechanismValue) }
+          &lt;/contactMechanismValue&gt;
+
+          &lt;contactMechanismType&gt;
+            &lt;name&gt;{ $cmName }&lt;/name&gt;
+            &lt;code&gt;{ $cmCode }&lt;/code&gt;
+            &lt;effectiveReferenceId&gt;{ $cmCode }&lt;/effectiveReferenceId&gt;
+          &lt;/contactMechanismType&gt;
+        &lt;/contactMechanisms&gt;
+      else ()
+    }
+
+&lt;/temp_criteria&gt;</expression>
+                  </operation>
+                  <link id="r54bd27e6-9977-4db7-b326-59d5e54e301c"
+                        targetId="a1lgH9XiUQFqnbrGHmMVOeiQ-Assignment7503c4db-a3cb-4140-91ce-eaf258568559"/>
+               </assignment>
+               <assignment id="a1lgH9XiUQFqnbrGHmMVOeiQ-Assignment7503c4db-a3cb-4140-91ce-eaf258568559">
+                  <title>Assignment to criteria</title>
+                  <operation source="formula" to="output.criteria">
+                     <expression language="XQuery">let $req := $input.request
+let $resp := $output.EntireResponse 
+
+(: ✅ Correct hits path :)
+let $hits := number($resp/*:searchResult/*:hits)
+
+(: --- ROLE LOGIC --- :)
+let $roleCode := data($req/roles/roleType/code)
+let $roleName :=
+  if ($roleCode = '4160') then 'Individual Investor'
+  else ''
+
+let $statusCode := data($req/roles/status/code)
+let $statusName :=
+  if ($statusCode = '1801') then 'Active'
+  else if ($statusCode = '1802') then 'Inactive'
+  else if ($statusCode = '1803') then 'Pending Active'
+  else if ($statusCode = '1804') then 'Pending inactive'
+  else ''
+
+(: --- CONTACT LOGIC --- :)
+let $cm := $req/contactMechanisms[1]
+let $cmCode := data($cm/contactMechanismType/code)
+let $cmName :=
+  if ($cmCode = '301') then 'Email Address'
+  else if ($cmCode = '303') then 'Phone Number'
+  else if ($cmCode = '306') then 'Mobile Phone Number'
+  else if ($cmCode = '311') then 'Landline'
+  else ''
+
+(: --- ADDRESS LOGIC --- :)
+let $addr := $req/addresses[1]
+
+return
+&lt;exactSearchResponseCopy&gt;  
+
+  &lt;!-- ✅ BASIC INFO --&gt;
+  { if (normalize-space($req/personFirstName) != '') then &lt;personFirstName&gt;{data($req/personFirstName)}&lt;/personFirstName&gt; else () }
+  { if (normalize-space($req/personMiddleName) != '') then &lt;personMiddleName&gt;{data($req/personMiddleName)}&lt;/personMiddleName&gt; else () }
+  { if (normalize-space($req/personLastName) != '') then &lt;personLastName&gt;{data($req/personLastName)}&lt;/personLastName&gt; else () }
+  { if (normalize-space($req/personDob) != '') then &lt;personDob&gt;{data($req/personDob)}&lt;/personDob&gt; else () }
+  { if (normalize-space($req/partyTaxIdLast4) != '') then &lt;partyTaxIdLast4&gt;{data($req/partyTaxIdLast4)}&lt;/partyTaxIdLast4&gt; else () }
+
+  &lt;!-- ✅ ROLES --&gt;
+  {
+    if ($roleCode != '' or $statusCode != '')
+    then
+      &lt;roles&gt;
+        {
+          if ($roleCode != '')
+          then
+            &lt;roleType&gt;
+              &lt;name&gt;{ $roleName }&lt;/name&gt;
+              &lt;code&gt;{ $roleCode }&lt;/code&gt;
+              &lt;effectiveReferenceId&gt;{ $roleCode }&lt;/effectiveReferenceId&gt;
+            &lt;/roleType&gt;
+          else ()
+        }
+        {
+          if ($statusCode != '')
+          then
+            &lt;status&gt;
+              &lt;name&gt;{ $statusName }&lt;/name&gt;
+              &lt;code&gt;{ $statusCode }&lt;/code&gt;
+              &lt;effectiveReferenceId&gt;{ $statusCode }&lt;/effectiveReferenceId&gt;
+            &lt;/status&gt;
+          else ()
+        }
+      &lt;/roles&gt;
+    else ()
+  }
+
+  &lt;!-- ✅ PARTY TYPE --&gt;
+  &lt;partyType&gt;
+    &lt;code&gt;2102&lt;/code&gt;
+    &lt;name&gt;Person&lt;/name&gt;
+    &lt;effectiveReferenceId&gt;2102&lt;/effectiveReferenceId&gt;
+  &lt;/partyType&gt;
+
+  &lt;!-- ✅ ADDRESSES --&gt;
+  {
+    if ($addr)
+    then
+      &lt;addresses&gt;
+
+        { if (normalize-space($addr/streetLine1) != '')
+          then &lt;streetLine1&gt;{data($addr/streetLine1)}&lt;/streetLine1&gt;
+          else () }
+
+        { if (normalize-space($addr/streetLine2) != '')
+          then &lt;streetLine2&gt;{data($addr/streetLine2)}&lt;/streetLine2&gt;
+          else () }
+
+        { if (normalize-space($addr/city) != '')
+          then &lt;city&gt;{data($addr/city)}&lt;/city&gt;
+          else () }
+
+        { if (normalize-space($addr/state) != '')
+          then &lt;state&gt;{data($addr/state)}&lt;/state&gt;
+          else () }
+
+        { if (normalize-space($addr/postalCode) != '')
+          then &lt;postalCode&gt;{data($addr/postalCode)}&lt;/postalCode&gt;
+          else () }
+
+        {
+          if ($addr/country)
+          then
+            &lt;country&gt;
+              { if (normalize-space($addr/country/name) != '')
+                then &lt;name&gt;{data($addr/country/name)}&lt;/name&gt;
+                else () }
+
+              { if (normalize-space($addr/country/code) != '')
+                then &lt;code&gt;{data($addr/country/code)}&lt;/code&gt;
+                else () }
+            &lt;/country&gt;
+          else ()
+        }
+
+      &lt;/addresses&gt;
+    else ()
+  }
+
+  &lt;!-- ✅ CONTACT --&gt;
+  {
+    if ($cmCode != '')
+    then
+      &lt;contactMechanisms&gt;
+        { if (normalize-space($cm/contactMechanismValue) != '') then &lt;contactMechanismValue&gt;{data($cm/contactMechanismValue)}&lt;/contactMechanismValue&gt; else () }
+        &lt;contactMechanismType&gt;
+          &lt;name&gt;{ $cmName }&lt;/name&gt;
+          &lt;code&gt;{ $cmCode }&lt;/code&gt;
+          &lt;effectiveReferenceId&gt;{ $cmCode }&lt;/effectiveReferenceId&gt;
+        &lt;/contactMechanismType&gt;
+      &lt;/contactMechanisms&gt;
+    else ()
+  }
+
+  &lt;!-- ✅ MATERIALIZATIONS --&gt;
+  {
+    if ($req/personFirstName or $req/personLastName or $req/personDob or $req/partyTaxIdLast4)
+    then &lt;materializations&gt;CorePartyInfo&lt;/materializations&gt;
+    else ()
+  }
+
+  { if ($req/roles) then &lt;materializations&gt;Roles&lt;/materializations&gt; else () }
+  { if ($req/contactMechanisms) then &lt;materializations&gt;ContactMechanisms&lt;/materializations&gt; else () }
+  { if ($req/addresses) then &lt;materializations&gt;Addresses&lt;/materializations&gt; else () }
+
+  &lt;!-- ✅ PERSONS --&gt;
+  {
+    if ($hits &gt; 0)
+    then
+      for $rec in $resp/*:searchResult/*:records
+      return
+        &lt;persons&gt;
+
+          { if (normalize-space($rec/*:party_investor.personLastName) != '') then &lt;personLastName&gt;{data($rec/*:party_investor.personLastName)}&lt;/personLastName&gt; else () }
+
+          { if (normalize-space($rec/*:party_investor.personFirstName) != '') then &lt;personFirstName&gt;{data($rec/*:party_investor.personFirstName)}&lt;/personFirstName&gt; else () }
+
+          { if (normalize-space($rec/*:party_investor.taxIdentificationType/*:Code) != '') then &lt;tinTypeId&gt;{data($rec/*:party_investor.taxIdentificationType/*:Code)}&lt;/tinTypeId&gt; else () }
+
+          { if (normalize-space($rec/*:party_investor.personMiddleInitial) != '') then &lt;personMiddleInitial&gt;{data($rec/*:party_investor.personMiddleInitial)}&lt;/personMiddleInitial&gt; else () }
+
+          { if (normalize-space($rec/*:party_investor.personMiddleName) != '') then &lt;personMiddleName&gt;{data($rec/*:party_investor.personMiddleName)}&lt;/personMiddleName&gt; else () }
+
+          { if (normalize-space($rec/*:party_investor.partyTaxIdLast4) != '') then &lt;partyTaxIdLast4&gt;{data($rec/*:party_investor.partyTaxIdLast4)}&lt;/partyTaxIdLast4&gt; else () }
+
+          { if (normalize-space($rec/*:_meta/*:id) != '') then &lt;effectiveReferenceId&gt;{data($rec/*:_meta/*:id)}&lt;/effectiveReferenceId&gt; else () }
+
+          { if (normalize-space($rec/*:_meta/*:id) != '') then &lt;partyId&gt;{data($rec/*:_meta/*:id)}&lt;/partyId&gt; else () }
+
+        &lt;/persons&gt;
+    else ()
+  }
+
+  &lt;!-- ✅ WARNING --&gt;
+  {
+    if ($hits = 0)
+    then
+      &lt;warning&gt;
+        &lt;message&gt;No Data Found for specified criteria&lt;/message&gt;
+        &lt;code&gt;9001&lt;/code&gt;
+      &lt;/warning&gt;
+    else ()
+  }
+
+&lt;/exactSearchResponseCopy&gt;</expression>
+                  </operation>
+                  <link id="c42da30a1-9f33-42a0-8e36-ebc0bb7e5eb7"
+                        targetId="a1lgH9XiUQFqnbrGHmMVOeiQ-Waite13e3380-d285-4d4b-af4a-5eaa61d59837"/>
+               </assignment>
+               <eventContainer id="a1lgH9XiUQFqnbrGHmMVOeiQ-Serviceb4327de0-4b6d-46d9-9492-8f35a9485f8d">
+                  <service id="mca665e85-a7a9-48cb-81e4-4886b0213009">
+                     <title>Get Investor Details By Exact Search</title>
+                     <serviceName>ap-investor-operations-v2:Get Investor Details By Exact Search</serviceName>
+                     <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                     <serviceInput>
+                        <parameter name="sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                        <parameter name="requestBody" source="constant">{$temp.filterPart}</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="kc204e972-e776-4539-bb49-71884fa28936">
+                     <link id="l27bf7912-ff65-495b-9452-402ff41a4ca0"
+                           targetId="a1lgH9XiUQFqnbrGHmMVOeiQ-Serviceb4327de0-4b6d-46d9-9492-8f35a9485f8d"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="mba2a58e9-c559-40ba-baca-5a49c48f95ed">
+                     <container id="a1lgH9XiUQFqnbrGHmMVOeiQ-Decision838b9605-4516-4254-8eb7-ffed63badc8c"
+                                type="exclusive">
+                        <title>code</title>
+                        <flow id="y3558eead-3044-48a2-8e2b-e4d58037d00d">
+                           <end id="a1lgH9XiUQFqnbrGHmMVOeiQ-End5693b02c-4f75-48b7-9507-0791fc6c2f0b">
+                              <title>End 1</title>
+                              <httpStatus>404</httpStatus>
+                           </end>
+                        </flow>
+                        <flow id="ze941f93f-5971-4d1a-9e3e-170fd92759a6">
+                           <end id="a1lgH9XiUQFqnbrGHmMVOeiQ-Endac592194-a9c2-418a-baf8-8d9e924004f1">
+                              <title>End 2</title>
+                              <httpStatus>401</httpStatus>
+                           </end>
+                        </flow>
+                        <link id="ta7072a80-206f-4daf-97b5-fd77ec8d1bb9"
+                              targetId="y3558eead-3044-48a2-8e2b-e4d58037d00d"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                 <arg name="right">HTTP_404</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="c2bafb2bf-4d6c-48a5-a512-f04f7da7d759"
+                              targetId="ze941f93f-5971-4d1a-9e3e-170fd92759a6"
+                              type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="b82a3d73f-e8de-4169-a24e-868721237dc5"
+                        targetId="kc204e972-e776-4539-bb49-71884fa28936"
+                        type="containerLink"/>
+                  <link id="u885b9b62-f0fb-43e9-9bce-8b193b25dfb3"
+                        targetId="a1lgH9XiUQFqnbrGHmMVOeiQ-Assignmentc821df28-3c1a-4844-818a-97cdc3686de1"/>
+                  <events>
+                     <catch faultField="faultInfo"
+                            id="g625bbc63-707a-4967-96f4-71c8dfc06a5c"
+                            interrupting="true">
+                        <link id="efaf27dc7-8b2f-49c9-8617-13458e1ab000"
+                              targetId="mba2a58e9-c559-40ba-baca-5a49c48f95ed"
+                              type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <wait id="a1lgH9XiUQFqnbrGHmMVOeiQ-Waite13e3380-d285-4d4b-af4a-5eaa61d59837">
+                  <title>Wait 1</title>
+                  <duration source="formula">
+                     <function name="duration_expression">
+                        <arg name="value">0.001</arg>
+                        <arg name="scale">S</arg>
+                        <arg name="businessDays"/>
+                     </function>
+                  </duration>
+                  <link id="m7f82bdc0-ae36-4bc8-8256-5826df8fa8d6"
+                        targetId="a1lgH9XiUQFqnbrGHmMVOeiQ-end-j53b1d88e-e672-45e4-90c0-7ab8d268ee41"/>
+               </wait>
+               <end id="a1lgH9XiUQFqnbrGHmMVOeiQ-end-j53b1d88e-e672-45e4-90c0-7ab8d268ee41">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>cbe65b90-7156-4162-9dce-cc7132e4370e</ns1:Id>
+               <ns1:Name>hhhhh</ns1:Name>
+               <ns1:CreatedBy>balam_ashok</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-17T06:10:13Z</ns1:CreationDate>
+               <ns1:ModifiedBy>balam_ashok</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-17T06:10:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "request": {
+        "personLastName": "BROWN",
+        "personFirstName": "PAUL",
+        "partyTaxIdLast4": "3000",
+        "personDob": "2009-07-02",
+        "roles": [
+            {
+                "roleType": {
+                    "code": "4160"
+                },
+                "status": {
+                    "code": "1801"
+                }
+            }
+        ]
+    }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>66taOow3dIMc1O0zpo1UMK</types1:GUID>
+      <types1:DisplayName>Person Search</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:35.234Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

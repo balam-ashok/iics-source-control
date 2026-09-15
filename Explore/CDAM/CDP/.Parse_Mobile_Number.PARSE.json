@@ -1,24 +1,26 @@
 {
   "objectInfo" : {
-    "id" : "1JD3w9FKJiJktCdWhZykOo",
-    "name" : "CAI Assets",
-    "type" : "Folder",
+    "id" : "2LVmCPPY2WDk5wgqB3AT4E",
+    "name" : "Parse_Mobile_Number",
+    "type" : "PARSE",
     "metadata" : {
       "modelVersion" : {
-        "major" : 0,
+        "major" : 1,
         "minor" : 0
       },
-      "repoInfo" : null,
+      "repoInfo" : {
+        "repoHandle" : "2LVmCPPY2WDk5wgqB3AT4E"
+      },
       "contextAttributes" : [ ],
       "additionalInfo" : {
-        "description" : "",
+        "description" : null,
         "contentType" : "Binary",
-        "documentState" : "COMPLETE"
+        "documentState" : "VALID"
       }
     }
   },
   "dataFileExtension" : "json",
-  "updateTime" : "2026-09-15T10:52:36.130Z",
+  "updateTime" : "2026-09-15T10:43:50.220Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false

@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "3b9aOeg4GAGh4jrQo3ONMd",
+    "name" : "ap-investor-operations-v2",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "nKfPNzUzeA8rJ4p-gt-396415-2026-06-17T06:10:10.214Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-15T10:52:36.138Z",
+  "objectRefs" : [ {
+    "id" : "52agsFUYCyBfCrmGzdQiwu",
+    "name" : "sc-investor-operations-v2",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "dr7M75QKtBOAPbd-gt-401332-2026-06-17T06:10:09.053Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

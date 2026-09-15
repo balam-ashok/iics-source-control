@@ -1,7 +1,7 @@
 {
   "objectInfo" : {
-    "id" : "3yNVMvRse0UfgrS9k2x06k",
-    "name" : "country",
+    "id" : "akv38Qc9iUsdmJ8YjPKUsM",
+    "name" : "contactMechanismType",
     "type" : "PROCESS_OBJECT",
     "metadata" : {
       "modelVersion" : {
@@ -9,7 +9,7 @@
         "minor" : 0
       },
       "repoInfo" : {
-        "repoHandle" : "x6Ru5V1FyuRZXDy-gt-401291-2026-06-17T06:10:08.373Z::po.xml"
+        "repoHandle" : "A4oDdvrTdtqSLlB-gt-401300-2026-06-17T06:10:08.423Z::po.xml"
       },
       "contextAttributes" : null,
       "additionalInfo" : {
@@ -20,7 +20,7 @@
     }
   },
   "dataFileExtension" : "xml",
-  "updateTime" : "2026-09-15T10:52:36.124Z",
+  "updateTime" : "2026-09-15T10:52:36.130Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false

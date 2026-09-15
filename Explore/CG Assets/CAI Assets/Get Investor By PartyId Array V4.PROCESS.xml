@@ -1,0 +1,967 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>gfRZoSRnCKwKBqR-gt-401426-2026-06-17T06:10:11.104Z::pd.xml</types1:EntryId>
+      <types1:Name>Get_Investor_By_PartyId_Array_V4</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="0R5BRZeIf3zfXjNeTOJ8a1"
+                  displayName="Get Investor By PartyId Array V4"
+                  name="Get_Investor_By_PartyId_Array_V4"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="partyIds"
+                          required="false"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="partyCollection" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="entityName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">party_investor</option>
+                  </options>
+               </field>
+               <field description="" name="IDS_SESSION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_personDetails" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:PartyCollection</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">fJC74bEyaOpgaWGHAE6qIE</option>
+                  </options>
+               </field>
+               <field description="" name="t_first5Records" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="t_second5Records" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="t_partyIdSeggregation" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_details" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_first5RecordsResponse" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_second5RecordsResponse" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="test" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_third5Records" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="t_third5RecordsResponse" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_fourth5Records" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="t_fourth5RecordsResponse" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_error_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">200</option>
+                  </options>
+               </field>
+               <field description="" name="t_count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="pa783ee7c-d330-441e-9929-749d292b7b92">
+               <start id="eca1985b7-ac44-4bcf-bb03-0744f9c14628">
+                  <link id="i16c391ae-a98f-49fd-8b34-f61017dddba0"
+                        targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignmentebbb5675-ef08-406d-aed6-4678c9e09d4f"/>
+               </start>
+               <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignmentebbb5675-ef08-406d-aed6-4678c9e09d4f">
+                  <title>Assignment to t_count</title>
+                  <operation source="formula" to="temp.t_count">
+                     <expression language="XQuery">fn:count ( $input.partyIds )</expression>
+                  </operation>
+                  <link id="u96bed62b-7721-4733-9d64-f7c7305d8740"
+                        targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decisionf1ad38e1-5ed3-4876-9809-6dea4fd417ba"/>
+               </assignment>
+               <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment62f4c81a-f40e-4a9c-92bf-800eec80609c">
+                  <title>Assignment to partyCollection</title>
+                  <operation source="formula" to="output.partyCollection">
+                     <expression language="XQuery">if ($output.faultInfo[1]/reason='401 Authentication Error') then '401 Authentication Error' else
+
+list:append(
+  list:append(
+    list:append(
+      $temp.t_first5RecordsResponse,
+      $temp.t_second5RecordsResponse
+    ),
+    $temp.t_third5RecordsResponse
+  ),
+  $temp.t_fourth5RecordsResponse
+)</expression>
+                  </operation>
+                  <link id="fb0c65fc2-b726-4304-9af8-9dbfaaa8b9ee"
+                        targetId="a19LXPCdcRP4uf5u8MBRxOAo-end-ha3b1020e-5cc7-4bf1-a231-bd7c70a6c514"/>
+               </assignment>
+               <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decisionf1ad38e1-5ed3-4876-9809-6dea4fd417ba"
+                          type="exclusive">
+                  <title>t_count &gt;100</title>
+                  <flow id="nf08f1576-a247-4e78-9507-ed5f07aae781">
+                     <end id="a19LXPCdcRP4uf5u8MBRxOAo-Enda09a3959-802a-4667-b2b5-47b7d895ae13">
+                        <title>End 1</title>
+                        <httpStatus>400</httpStatus>
+                        <operation source="formula" to="header.Reason">
+                           <expression language="XQuery">'Too many records to process, Please provide within 100.'</expression>
+                        </operation>
+                     </end>
+                  </flow>
+                  <flow id="pe3a061aa-b5e2-4dc1-8551-9cee3b4997f3">
+                     <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment72cfc46a-b69a-42e8-945b-ddb96de59fc4">
+                        <title>Assignment to IDS_SESSION_ID, t_partyIdSeggregation, etc,</title>
+                        <operation source="formula" to="temp.IDS_SESSION_ID">
+                           <expression language="XQuery">request:getHeader('IDS-SESSION-ID')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_partyIdSeggregation">
+                           <expression language="XQuery">(: $records is your input sequence :)
+let $records := $input.partyIds
+
+(: How many records do we have? :)
+let $n := count($records)
+
+(: Base size and remainder for fair split across 4 parts :)
+let $base := floor($n div 4)
+let $rem  := $n mod 4
+
+(: Part sizes: distribute remainder to first, then second, then third :)
+let $firstCount  := $base + (if ($rem &gt;= 1) then 1 else 0)
+let $secondCount := $base + (if ($rem &gt;= 2) then 1 else 0)
+let $thirdCount  := $base + (if ($rem &gt;= 3) then 1 else 0)
+let $fourthCount := $n - $firstCount - $secondCount - $thirdCount
+
+(: Slice the sequence accordingly :)
+let $t_firstRecords  := subsequence($records, 1, $firstCount)
+let $t_secondRecords := subsequence($records, $firstCount + 1, $secondCount)
+let $t_thirdRecords  := subsequence($records, $firstCount + $secondCount + 1, $thirdCount)
+let $t_fourthRecords := subsequence($records, $firstCount + $secondCount + $thirdCount + 1, $fourthCount)
+
+return
+&lt;service-results&gt;
+  &lt;first&gt;
+    { for $x in $t_firstRecords  return &lt;record&gt;{$x}&lt;/record&gt; }
+  &lt;/first&gt;
+  &lt;second&gt;
+    { for $x in $t_secondRecords return &lt;record&gt;{$x}&lt;/record&gt; }
+  &lt;/second&gt;
+  &lt;third&gt;
+    { for $x in $t_thirdRecords  return &lt;record&gt;{$x}&lt;/record&gt; }
+  &lt;/third&gt;
+  &lt;fourth&gt;
+    { for $x in $t_fourthRecords return &lt;record&gt;{$x}&lt;/record&gt; }
+  &lt;/fourth&gt;
+&lt;/service-results&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_first5Records">
+                           <expression language="XQuery">count($temp.t_partyIdSeggregation/first/record)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_second5Records">
+                           <expression language="XQuery">count($temp.t_partyIdSeggregation/second/record)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_third5Records">
+                           <expression language="XQuery">count($temp.t_partyIdSeggregation/third/record)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_fourth5Records">
+                           <expression language="XQuery">count($temp.t_partyIdSeggregation/fourth/record)</expression>
+                        </operation>
+                        <link id="d3f885893-046e-4ebd-806a-6de173823110"
+                              targetId="a19LXPCdcRP4uf5u8MBRxOAo-ParallelPath0f275376-f800-457e-958f-c392b47c1bf5"/>
+                     </assignment>
+                     <container id="a19LXPCdcRP4uf5u8MBRxOAo-ParallelPath0f275376-f800-457e-958f-c392b47c1bf5"
+                                type="parallel">
+                        <title>Parallel Paths 1</title>
+                        <flow id="hd2376354-64fa-4f68-af89-63b24b693c84">
+                           <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decision1a2a1749-de50-4aef-b3d2-3321f1fee1fe"
+                                      type="exclusive">
+                              <title>t_first5Records</title>
+                              <flow id="d2644f247-3e05-4840-88b5-4a0847d1d511">
+                                 <link id="wd2eebb86-343e-4e9f-8641-3ac40f56d7f9"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision1a2a1749-de50-4aef-b3d2-3321f1fee1fe"
+                                       type="containerLink"/>
+                              </flow>
+                              <flow id="xad353edd-d480-4e3c-835e-51729f5efd1b">
+                                 <repeat id="a19LXPCdcRP4uf5u8MBRxOAo-Loop77604809-0c33-4eaa-b4ff-595e827911e9"
+                                         title="Loop 1"
+                                         type="Until">
+                                    <condition source="formula">
+                                       <expression language="XQuery">$temp.t_first5Records &lt;=0</expression>
+                                    </condition>
+                                    <flow id="x25dfe3e3-f706-46c7-8e5f-bd86cebcae26">
+                                       <eventContainer id="a19LXPCdcRP4uf5u8MBRxOAo-Service69f1da10-96da-4e90-aac6-145a716ada9f">
+                                          <service id="s70a384a0-7b0e-400d-86ea-a2cbb7a3cb6a">
+                                             <title>Get Investor Person Details</title>
+                                             <serviceName>ap-investor-operations-v2:Get Investor Person Details</serviceName>
+                                             <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                                             <serviceInput>
+                                                <parameter name="i_sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                                                <parameter name="entityName" source="field">temp.entityName</parameter>
+                                                <parameter name="businessId" source="formula">
+                                                   <expression language="XQuery">$temp.t_partyIdSeggregation/first/record[ $temp.t_first5Records ]</expression>
+                                                </parameter>
+                                             </serviceInput>
+                                          </service>
+                                          <flow id="q0341f914-4928-4cb8-85fb-51b1d1e49b99">
+                                             <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignmentdba58548-7546-449a-9f12-b6bf1e165f68">
+                                                <title>Assignment to t_error_code</title>
+                                                <operation source="constant" to="temp.t_error_code">200</operation>
+                                             </assignment>
+                                             <link id="a496ccd0e-65a4-4f42-9a0d-04bd59f936cd"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Service69f1da10-96da-4e90-aac6-145a716ada9f"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <flow id="e336986b1-895c-4cfe-ae9e-725a09a81a2e">
+                                             <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decision82c1ccc4-bbcb-43f6-b7f6-5f822e74a6f1"
+                                                        type="exclusive">
+                                                <title>code</title>
+                                                <flow id="ae03b44eb-47bb-4ece-b7d4-21f4af14664a">
+                                                   <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment40a75e49-9e0e-474e-a4c7-c4fe0855e55b">
+                                                      <title>Assignment to t_error_code</title>
+                                                      <operation source="constant" to="temp.t_error_code">HTTP_404</operation>
+                                                   </assignment>
+                                                   <link id="v35066f45-aa0d-4c08-8403-208fb7276f8d"
+                                                         targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision82c1ccc4-bbcb-43f6-b7f6-5f822e74a6f1"
+                                                         type="containerLink"/>
+                                                </flow>
+                                                <flow id="b30d79cb2-05ec-4234-a8b6-7682e1cd1153">
+                                                   <end id="a19LXPCdcRP4uf5u8MBRxOAo-End3b0feeb2-2aa5-435f-8908-0a3f2d6cadb7">
+                                                      <title>End 2</title>
+                                                      <httpStatus>401</httpStatus>
+                                                   </end>
+                                                </flow>
+                                                <link id="yb237243e-b6d4-4289-9005-62b3064bba19"
+                                                      targetId="ae03b44eb-47bb-4ece-b7d4-21f4af14664a"
+                                                      type="containerLink">
+                                                   <condition source="formula">
+                                                      <function name="contains">
+                                                         <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                                         <arg name="right">HTTP_404</arg>
+                                                      </function>
+                                                   </condition>
+                                                </link>
+                                                <link id="i1cba84aa-24a5-479c-a02d-44ab1b25f5dc"
+                                                      targetId="b30d79cb2-05ec-4234-a8b6-7682e1cd1153"
+                                                      type="containerLink"/>
+                                             </container>
+                                             <link id="cd2bba934-0378-40bf-ab9e-bb6e0e0d1b22"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Service69f1da10-96da-4e90-aac6-145a716ada9f"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <link id="e4a18331f-1991-4f7e-8c55-87dd16556a66"
+                                                targetId="q0341f914-4928-4cb8-85fb-51b1d1e49b99"
+                                                type="containerLink"/>
+                                          <link id="gd15f9868-b2a8-4cb5-9953-c34d1f932c6a"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignment72c95fd8-a0e6-4397-bfad-0f70e43b86d1"/>
+                                          <events>
+                                             <catch faultField="faultInfo"
+                                                    id="c76510445-115a-4b22-8af0-ad46f1b08c05"
+                                                    interrupting="true">
+                                                <link id="add2d8a8b-7bd1-4580-b859-84e597d42d55"
+                                                      targetId="e336986b1-895c-4cfe-ae9e-725a09a81a2e"
+                                                      type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment72c95fd8-a0e6-4397-bfad-0f70e43b86d1">
+                                          <title>Assignment to t_details, t_first5RecordsResponse</title>
+                                          <operation source="formula" to="temp.t_details">
+                                             <expression language="XQuery">let $is404 := $temp.t_error_code = 'HTTP_404'
+return
+  if ($is404) then
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $temp.t_partyIdSeggregation/first/record[ $temp.t_first5Records ]}&lt;/partyId&gt;
+&lt;partyNotFound xsi:type="xs:boolean"&gt;{ true() }&lt;/partyNotFound&gt;
+    &lt;/PartyCollection&gt;
+  else
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $output.EntireResponse/_meta/businessId/text() }&lt;/partyId&gt;
+
+      &lt;partyType&gt;
+        &lt;code&gt;{ $output.EntireResponse/partyType/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partyType/Name/text() }&lt;/name&gt;
+      &lt;/partyType&gt;
+
+      &lt;partyStatus&gt;
+        &lt;code&gt;{ $output.EntireResponse/partystatus/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partystatus/Name/text() }&lt;/name&gt;
+      &lt;/partyStatus&gt;
+
+      &lt;personFirstName&gt;{ $output.EntireResponse/personFirstName/text() }&lt;/personFirstName&gt;
+      &lt;personLastName&gt;{ $output.EntireResponse/personLastName/text() }&lt;/personLastName&gt;
+      &lt;personMiddleName&gt;{ $output.EntireResponse/personMiddleName/text() }&lt;/personMiddleName&gt;
+      &lt;personMiddleInitial&gt;{ $output.EntireResponse/personMiddleInitial/text() }&lt;/personMiddleInitial&gt;
+    &lt;/PartyCollection&gt;</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.t_first5RecordsResponse">
+                                             <expression language="XQuery">list:append( $temp.t_first5RecordsResponse , $temp.t_details )</expression>
+                                          </operation>
+                                          <link id="vaf3e91e7-7d52-4096-a1d1-984dc1fc6718"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignmenta24db76b-ee6f-47df-8576-0b43d4f235de"/>
+                                       </assignment>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignmenta24db76b-ee6f-47df-8576-0b43d4f235de">
+                                          <title>Assignment to t_first5Records, code</title>
+                                          <operation source="formula" to="temp.t_first5Records">
+                                             <expression language="XQuery">$temp.t_first5Records -1</expression>
+                                          </operation>
+                                       </assignment>
+                                    </flow>
+                                    <link id="b0f3020a5-6fe5-4ec4-8794-d91ba970ff10"
+                                          targetId="x25dfe3e3-f706-46c7-8e5f-bd86cebcae26"
+                                          type="containerLink"/>
+                                 </repeat>
+                                 <link id="x801df070-f324-456b-a193-520b3ab35013"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision1a2a1749-de50-4aef-b3d2-3321f1fee1fe"
+                                       type="containerLink"/>
+                              </flow>
+                              <link id="f03a8dcf9-5309-48e9-8709-f84ca9a99997"
+                                    targetId="d2644f247-3e05-4840-88b5-4a0847d1d511"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.t_first5Records}</arg>
+                                       <arg name="right">{0}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="j56842d0b-36d0-406f-a48f-c9c388d09e2d"
+                                    targetId="xad353edd-d480-4e3c-835e-51729f5efd1b"
+                                    type="containerLink"/>
+                           </container>
+                           <link id="a45367c28-cbc1-42e0-974d-adf6b9fa0637"
+                                 targetId="a19LXPCdcRP4uf5u8MBRxOAo-ParallelPath0f275376-f800-457e-958f-c392b47c1bf5"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="ofd2894c0-23cb-47aa-8eb7-a774de21aca4">
+                           <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decision0bc56253-82b8-42da-8477-3ea054f65b9c"
+                                      type="exclusive">
+                              <title>t_second5Records</title>
+                              <flow id="r4e69497f-8ed6-4827-9c6a-5e205de0df2e">
+                                 <link id="q8305cdce-25ce-4b1c-ad62-a8aed1629dd5"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision0bc56253-82b8-42da-8477-3ea054f65b9c"
+                                       type="containerLink"/>
+                              </flow>
+                              <flow id="gb5932a1d-d11b-4af1-ab11-3f3b8cdde51c">
+                                 <repeat id="a19LXPCdcRP4uf5u8MBRxOAo-Loopd0197896-7397-4e67-81f1-5a143a9cde01"
+                                         title="Loop 2"
+                                         type="Until">
+                                    <condition source="formula">
+                                       <expression language="XQuery">$temp.t_second5Records =0</expression>
+                                    </condition>
+                                    <flow id="i363ce90f-16ad-4753-b2b6-5769df1ef064">
+                                       <eventContainer id="a19LXPCdcRP4uf5u8MBRxOAo-Service23544bcc-3ed7-4774-8876-7e2ed4768d5c">
+                                          <service id="q95e6fd18-e803-4eb5-b74b-6cd8257d65e3">
+                                             <title>Get Investor Person Details</title>
+                                             <serviceName>ap-investor-operations-v2:Get Investor Person Details</serviceName>
+                                             <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                                             <serviceInput>
+                                                <parameter name="i_sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                                                <parameter name="businessId" source="formula">
+                                                   <expression language="XQuery">$temp.t_partyIdSeggregation/second/record[ $temp.t_second5Records ]</expression>
+                                                </parameter>
+                                                <parameter name="entityName" source="field">temp.entityName</parameter>
+                                             </serviceInput>
+                                          </service>
+                                          <flow id="hbc441587-6651-4288-9822-d7520b1f1fd6">
+                                             <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment83809ed4-9cad-4354-aa0d-35519ae9b742">
+                                                <title>Assignment to t_error_code 2</title>
+                                                <operation source="constant" to="temp.t_error_code">200</operation>
+                                             </assignment>
+                                             <link id="y3319e423-aab7-4af9-a724-c2badfec3d50"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Service23544bcc-3ed7-4774-8876-7e2ed4768d5c"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <flow id="mc74173d1-70cf-41bc-afe4-2a5621828a42">
+                                             <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decision184a4bfa-0e00-482b-a6a7-a0d00352f09b"
+                                                        type="exclusive">
+                                                <title>code</title>
+                                                <flow id="x11869171-c509-40e0-ab19-5412f7ba1880">
+                                                   <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment2d040d50-29fd-4c29-ada1-c895f7afb31e">
+                                                      <title>Assignment to t_error_code 1</title>
+                                                      <operation source="constant" to="temp.t_error_code">HTTP_404</operation>
+                                                   </assignment>
+                                                   <link id="w71446c18-a012-4d5b-86aa-5ec566c6b12c"
+                                                         targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision184a4bfa-0e00-482b-a6a7-a0d00352f09b"
+                                                         type="containerLink"/>
+                                                </flow>
+                                                <flow id="p2dfce483-82ea-4c95-acb0-6c3c5728276b">
+                                                   <end id="a19LXPCdcRP4uf5u8MBRxOAo-Endd35b7994-e458-4443-9c46-815fca433a27">
+                                                      <title>End 3</title>
+                                                      <httpStatus>401</httpStatus>
+                                                   </end>
+                                                </flow>
+                                                <link id="t81c50170-c9cc-4ba6-bd5b-9d7b1cd48830"
+                                                      targetId="x11869171-c509-40e0-ab19-5412f7ba1880"
+                                                      type="containerLink">
+                                                   <condition source="formula">
+                                                      <function name="contains">
+                                                         <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                                         <arg name="right">HTTP_404</arg>
+                                                      </function>
+                                                   </condition>
+                                                </link>
+                                                <link id="b1d1088a5-e2d1-4807-90b7-6a74773525d9"
+                                                      targetId="p2dfce483-82ea-4c95-acb0-6c3c5728276b"
+                                                      type="containerLink"/>
+                                             </container>
+                                             <link id="we44f99a0-ec70-40bb-bece-92f793930af4"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Service23544bcc-3ed7-4774-8876-7e2ed4768d5c"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <link id="te4bb2744-49b7-431d-ac3a-abe8f3708600"
+                                                targetId="hbc441587-6651-4288-9822-d7520b1f1fd6"
+                                                type="containerLink"/>
+                                          <link id="u6a4e7c8f-f5d2-4c78-a920-b675e2953786"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignment2dacbde2-5821-490e-af34-c2bfc65a007c"/>
+                                          <events>
+                                             <catch faultField="faultInfo"
+                                                    id="a750d64ab-394b-4c43-9bf8-a562fc6afc05"
+                                                    interrupting="true">
+                                                <link id="i93def0a3-914f-4616-a7f6-7135542437f9"
+                                                      targetId="mc74173d1-70cf-41bc-afe4-2a5621828a42"
+                                                      type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment2dacbde2-5821-490e-af34-c2bfc65a007c">
+                                          <title>Assignment to t_details, t_second5RecordsResponse</title>
+                                          <operation source="formula" to="temp.t_details">
+                                             <expression language="XQuery">let $is404 := $temp.t_error_code = 'HTTP_404'
+return
+  if ($is404) then
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $temp.t_partyIdSeggregation/second/record[ $temp.t_second5Records ] }&lt;/partyId&gt;
+&lt;partyNotFound xsi:type="xs:boolean"&gt;{ true() }&lt;/partyNotFound&gt;
+    &lt;/PartyCollection&gt;
+  else
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $output.EntireResponse/_meta/businessId/text() }&lt;/partyId&gt;
+
+      &lt;partyType&gt;
+        &lt;code&gt;{ $output.EntireResponse/partyType/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partyType/Name/text() }&lt;/name&gt;
+      &lt;/partyType&gt;
+
+      &lt;partyStatus&gt;
+        &lt;code&gt;{ $output.EntireResponse/partyStatus/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partyStatus/Name/text() }&lt;/name&gt;
+      &lt;/partyStatus&gt;
+
+      &lt;personFirstName&gt;{ $output.EntireResponse/personFirstName/text() }&lt;/personFirstName&gt;
+      &lt;personLastName&gt;{ $output.EntireResponse/personLastName/text() }&lt;/personLastName&gt;
+      &lt;personMiddleName&gt;{ $output.EntireResponse/personMiddleName/text() }&lt;/personMiddleName&gt;
+      &lt;personMiddleInitial&gt;{ $output.EntireResponse/personMiddleInitial/text() }&lt;/personMiddleInitial&gt;
+    &lt;/PartyCollection&gt;</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.t_second5RecordsResponse">
+                                             <expression language="XQuery">list:append( $temp.t_second5RecordsResponse , $temp.t_details )</expression>
+                                          </operation>
+                                          <link id="a67b78298-c884-4ef0-910a-78baf36d6f60"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignmentc6b18805-c2b2-464d-af6f-d98408857152"/>
+                                       </assignment>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignmentc6b18805-c2b2-464d-af6f-d98408857152">
+                                          <title>Assignment to t_second5Records, code</title>
+                                          <operation source="formula" to="temp.t_second5Records">
+                                             <expression language="XQuery">$temp.t_second5Records -1</expression>
+                                          </operation>
+                                       </assignment>
+                                    </flow>
+                                    <link id="u60251974-dd1f-4e72-893a-d2f26d4aaba8"
+                                          targetId="i363ce90f-16ad-4753-b2b6-5769df1ef064"
+                                          type="containerLink"/>
+                                 </repeat>
+                                 <link id="wc36a15fb-f3f1-4324-ad9d-2f60c76abcdc"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision0bc56253-82b8-42da-8477-3ea054f65b9c"
+                                       type="containerLink"/>
+                              </flow>
+                              <link id="zb253dcd0-d95b-4f78-9e20-d9a1dbaba94b"
+                                    targetId="r4e69497f-8ed6-4827-9c6a-5e205de0df2e"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.t_second5Records}</arg>
+                                       <arg name="right">{0}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="u05c88916-4d66-426d-bdc3-41191cd4f085"
+                                    targetId="gb5932a1d-d11b-4af1-ab11-3f3b8cdde51c"
+                                    type="containerLink"/>
+                           </container>
+                           <link id="z2412c03f-c6a0-4711-9894-ba7bdb3d3a60"
+                                 targetId="a19LXPCdcRP4uf5u8MBRxOAo-ParallelPath0f275376-f800-457e-958f-c392b47c1bf5"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="f9081864f-16e6-4d02-b477-c8c26618e18b">
+                           <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decisione3da4d05-c82e-45af-a469-332e1a285fc1"
+                                      type="exclusive">
+                              <title>t_third5Records</title>
+                              <flow id="pfb72a14b-1489-4b58-8bd7-204d3aa41aa6">
+                                 <link id="s5006e32e-b169-4bb7-a579-4b2001006480"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decisione3da4d05-c82e-45af-a469-332e1a285fc1"
+                                       type="containerLink"/>
+                              </flow>
+                              <flow id="b5fcc7a3e-958a-433a-83c4-78a99ba67cc6">
+                                 <repeat id="a19LXPCdcRP4uf5u8MBRxOAo-Loop69652fed-5718-4fbb-86f1-60b4ec8bb60d"
+                                         title="Loop 3"
+                                         type="Until">
+                                    <condition source="formula">
+                                       <expression language="XQuery">$temp.t_third5Records =0</expression>
+                                    </condition>
+                                    <flow id="ic089db12-8c07-4a62-8d35-c3f575fc0537">
+                                       <eventContainer id="a19LXPCdcRP4uf5u8MBRxOAo-Service28b51410-e29d-48f7-9a94-33ce2e950815">
+                                          <service id="l39593932-1623-4707-802a-f4156922bd09">
+                                             <title>Get Investor Person Details 1</title>
+                                             <serviceName>ap-investor-operations-v2:Get Investor Person Details</serviceName>
+                                             <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                                             <serviceInput>
+                                                <parameter name="i_sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                                                <parameter name="businessId" source="formula">
+                                                   <expression language="XQuery">$temp.t_partyIdSeggregation/third/record[ $temp.t_third5Records ]</expression>
+                                                </parameter>
+                                                <parameter name="entityName" source="field">temp.entityName</parameter>
+                                             </serviceInput>
+                                          </service>
+                                          <flow id="a27097151-17fe-41fe-b274-2ff8c87e97ee">
+                                             <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment9b44ea37-696b-4090-88fb-b03455f42a00">
+                                                <title>Assignment to t_error_code 2 1</title>
+                                                <operation source="constant" to="temp.t_error_code">200</operation>
+                                             </assignment>
+                                             <link id="zca897318-e3c7-47ed-82f3-0293b198f0c7"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Service28b51410-e29d-48f7-9a94-33ce2e950815"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <flow id="w777b9a76-0c5e-4020-a484-16c1df9024fe">
+                                             <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decisiona0bf1183-ba0b-401b-a0a3-958226a16dca"
+                                                        type="exclusive">
+                                                <title>code</title>
+                                                <flow id="k386c66a0-51ae-46ab-80bb-799f5ec19756">
+                                                   <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignmente85e1d93-c340-4beb-b634-87b69ddbf878">
+                                                      <title>Assignment to t_error_code 1 1</title>
+                                                      <operation source="constant" to="temp.t_error_code">HTTP_404</operation>
+                                                   </assignment>
+                                                   <link id="i33e0ae00-d496-42b5-931f-b4ba62466448"
+                                                         targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decisiona0bf1183-ba0b-401b-a0a3-958226a16dca"
+                                                         type="containerLink"/>
+                                                </flow>
+                                                <flow id="nb17bbfcf-6fca-4893-bb1f-9332a40fde5e">
+                                                   <end id="a19LXPCdcRP4uf5u8MBRxOAo-End8c67b3a2-c6d2-469d-b61d-017204b76a4f">
+                                                      <title>End 4</title>
+                                                      <httpStatus>401</httpStatus>
+                                                   </end>
+                                                </flow>
+                                                <link id="ld8413610-74c4-48e3-9ea1-c211b054ab47"
+                                                      targetId="k386c66a0-51ae-46ab-80bb-799f5ec19756"
+                                                      type="containerLink">
+                                                   <condition source="formula">
+                                                      <function name="contains">
+                                                         <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                                         <arg name="right">HTTP_404</arg>
+                                                      </function>
+                                                   </condition>
+                                                </link>
+                                                <link id="dc63a9c7c-add8-48a8-bbd3-080b33b40c59"
+                                                      targetId="nb17bbfcf-6fca-4893-bb1f-9332a40fde5e"
+                                                      type="containerLink"/>
+                                             </container>
+                                             <link id="tc1b001d6-3e13-485e-961f-d7ea2763fe2a"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Service28b51410-e29d-48f7-9a94-33ce2e950815"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <link id="d02228867-50fc-44c2-8392-84ef41bc150b"
+                                                targetId="a27097151-17fe-41fe-b274-2ff8c87e97ee"
+                                                type="containerLink"/>
+                                          <link id="k6c2aea06-45b8-438a-98fa-d41d7d7af0d6"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignment9b1ab8c9-add6-493d-850f-8124b811b509"/>
+                                          <events>
+                                             <catch faultField="faultInfo"
+                                                    id="gf6b50fe7-fdea-4b8c-baf4-a0f9f20f5271"
+                                                    interrupting="true">
+                                                <link id="fd3bdb8ad-81e5-4d2a-b786-7de2f7dcb31b"
+                                                      targetId="w777b9a76-0c5e-4020-a484-16c1df9024fe"
+                                                      type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment9b1ab8c9-add6-493d-850f-8124b811b509">
+                                          <title>Assignment to t_details, t_second5RecordsResponse 1</title>
+                                          <operation source="formula" to="temp.t_details">
+                                             <expression language="XQuery">let $is404 := $temp.t_error_code = 'HTTP_404'
+return
+  if ($is404) then
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $temp.t_partyIdSeggregation/third/record[ $temp.t_third5Records ] }&lt;/partyId&gt;
+&lt;partyNotFound xsi:type="xs:boolean"&gt;{ true() }&lt;/partyNotFound&gt;
+    &lt;/PartyCollection&gt;
+  else
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $output.EntireResponse/_meta/businessId/text() }&lt;/partyId&gt;
+
+      &lt;partyType&gt;
+        &lt;code&gt;{ $output.EntireResponse/partyType/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partyType/Name/text() }&lt;/name&gt;
+      &lt;/partyType&gt;
+
+      &lt;partyStatus&gt;
+        &lt;code&gt;{ $output.EntireResponse/partyStatus/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partyStatus/Name/text() }&lt;/name&gt;
+      &lt;/partyStatus&gt;
+
+      &lt;personFirstName&gt;{ $output.EntireResponse/personFirstName/text() }&lt;/personFirstName&gt;
+      &lt;personLastName&gt;{ $output.EntireResponse/personLastName/text() }&lt;/personLastName&gt;
+      &lt;personMiddleName&gt;{ $output.EntireResponse/personMiddleName/text() }&lt;/personMiddleName&gt;
+      &lt;personMiddleInitial&gt;{ $output.EntireResponse/personMiddleInitial/text() }&lt;/personMiddleInitial&gt;
+    &lt;/PartyCollection&gt;</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.t_third5RecordsResponse">
+                                             <expression language="XQuery">list:append( $temp.t_third5RecordsResponse , $temp.t_details )</expression>
+                                          </operation>
+                                          <link id="ybae7fce2-c458-43c2-b7ac-f6f3e4a93bce"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignment1dfeab1b-eaee-42f2-8798-5e97447fff59"/>
+                                       </assignment>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment1dfeab1b-eaee-42f2-8798-5e97447fff59">
+                                          <title>Assignment to t_third5Records</title>
+                                          <operation source="formula" to="temp.t_third5Records">
+                                             <expression language="XQuery">$temp.t_third5Records -1</expression>
+                                          </operation>
+                                       </assignment>
+                                    </flow>
+                                    <link id="w7bedf3d3-8198-41d8-9615-09c2a43857ac"
+                                          targetId="ic089db12-8c07-4a62-8d35-c3f575fc0537"
+                                          type="containerLink"/>
+                                 </repeat>
+                                 <link id="lc8db2a4a-a9d2-4142-9ddc-865a7b9c8135"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decisione3da4d05-c82e-45af-a469-332e1a285fc1"
+                                       type="containerLink"/>
+                              </flow>
+                              <link id="e87178630-f717-4efe-810f-ed7bc00c38e5"
+                                    targetId="pfb72a14b-1489-4b58-8bd7-204d3aa41aa6"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.t_third5Records}</arg>
+                                       <arg name="right">{0}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="pe3ebccb8-156a-4c3d-aa37-2310f24cc6dd"
+                                    targetId="b5fcc7a3e-958a-433a-83c4-78a99ba67cc6"
+                                    type="containerLink"/>
+                           </container>
+                           <link id="l121c5f98-42e7-4a39-8ca2-d67d3089b3ec"
+                                 targetId="a19LXPCdcRP4uf5u8MBRxOAo-ParallelPath0f275376-f800-457e-958f-c392b47c1bf5"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="a8c036866-bb72-447e-86df-93236db68478">
+                           <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decision9bbfe45d-172a-41eb-ac7a-270ddfd10077"
+                                      type="exclusive">
+                              <title>t_fourth5Records</title>
+                              <flow id="uea0b1fa7-6fbf-47b3-8012-373157baeea7">
+                                 <link id="ae142bbc3-12a5-49f5-b84b-34c0f44bce0d"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision9bbfe45d-172a-41eb-ac7a-270ddfd10077"
+                                       type="containerLink"/>
+                              </flow>
+                              <flow id="y6b0a5e20-aa83-405b-ab96-f6244e91add1">
+                                 <repeat id="a19LXPCdcRP4uf5u8MBRxOAo-Loop2d6075bd-8392-469f-a2e0-33c2eae1b4bb"
+                                         title="Loop 4"
+                                         type="Until">
+                                    <condition source="formula">
+                                       <expression language="XQuery">$temp.t_fourth5Records &lt;=0</expression>
+                                    </condition>
+                                    <flow id="k34536a2f-cc4f-4741-9f22-ee1702f12569">
+                                       <eventContainer id="a19LXPCdcRP4uf5u8MBRxOAo-Servicecccd8906-e4cd-419a-be2d-8251bc13fab9">
+                                          <service id="bf65edea2-ef9b-4f5f-811c-6eb906e15f4c">
+                                             <title>Get Investor Person Details 1 1</title>
+                                             <serviceName>ap-investor-operations-v2:Get Investor Person Details</serviceName>
+                                             <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                                             <serviceInput>
+                                                <parameter name="i_sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                                                <parameter name="businessId" source="formula">
+                                                   <expression language="XQuery">$temp.t_partyIdSeggregation/fourth/record[ $temp.t_fourth5Records ]</expression>
+                                                </parameter>
+                                                <parameter name="entityName" source="field">temp.entityName</parameter>
+                                             </serviceInput>
+                                          </service>
+                                          <flow id="b4b48b3de-db71-47b9-9451-ae936d0588f6">
+                                             <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignmentc85e82dd-4814-4859-a465-5223bdc5315c">
+                                                <title>Assignment to t_error_code 2 1 1</title>
+                                                <operation source="constant" to="temp.t_error_code">200</operation>
+                                             </assignment>
+                                             <link id="m3c8dfb76-b3d5-43d9-b337-17dff32fff5e"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Servicecccd8906-e4cd-419a-be2d-8251bc13fab9"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <flow id="zba9a366c-41b1-4e37-a39b-5d580150877d">
+                                             <container id="a19LXPCdcRP4uf5u8MBRxOAo-Decision98628c7e-4c4b-4e03-8289-17a4a2147a40"
+                                                        type="exclusive">
+                                                <title>code</title>
+                                                <flow id="j8e03b9eb-cc3f-4426-92c6-bbc072a342f6">
+                                                   <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment18a63e3b-6618-4dba-bcfd-e759f73a251d">
+                                                      <title>Assignment to t_error_code 1 1 1</title>
+                                                      <operation source="constant" to="temp.t_error_code">HTTP_404</operation>
+                                                   </assignment>
+                                                   <link id="ye1dac821-a014-441e-9bb8-38f89e45438c"
+                                                         targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision98628c7e-4c4b-4e03-8289-17a4a2147a40"
+                                                         type="containerLink"/>
+                                                </flow>
+                                                <flow id="nfa2dce59-d006-4181-896f-1bc506cc7bf8">
+                                                   <end id="a19LXPCdcRP4uf5u8MBRxOAo-End3c9850f2-26fa-4576-9d26-acc9b79a2f32">
+                                                      <title>End 5</title>
+                                                      <httpStatus>401</httpStatus>
+                                                   </end>
+                                                </flow>
+                                                <link id="gd61baebc-8612-4e67-8579-ce76fe6fbcec"
+                                                      targetId="j8e03b9eb-cc3f-4426-92c6-bbc072a342f6"
+                                                      type="containerLink">
+                                                   <condition source="formula">
+                                                      <function name="contains">
+                                                         <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                                         <arg name="right">HTTP_404</arg>
+                                                      </function>
+                                                   </condition>
+                                                </link>
+                                                <link id="le695a755-8456-48f6-91c0-35c9e9b4b1b5"
+                                                      targetId="nfa2dce59-d006-4181-896f-1bc506cc7bf8"
+                                                      type="containerLink"/>
+                                             </container>
+                                             <link id="v317596cd-c1ee-43ab-b3d3-63668eb3d65b"
+                                                   targetId="a19LXPCdcRP4uf5u8MBRxOAo-Servicecccd8906-e4cd-419a-be2d-8251bc13fab9"
+                                                   type="containerLink"/>
+                                          </flow>
+                                          <link id="m6ec535f5-622f-4ee5-882c-cbc4f65f5592"
+                                                targetId="b4b48b3de-db71-47b9-9451-ae936d0588f6"
+                                                type="containerLink"/>
+                                          <link id="x20bc973f-e7f1-484f-8e78-8322b51cbc4f"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignment62ce85d1-c587-4e97-a6f5-e73a71f262c1"/>
+                                          <events>
+                                             <catch faultField="faultInfo"
+                                                    id="l951d94cc-ad87-4acf-9bb2-51b41ac5f0ba"
+                                                    interrupting="true">
+                                                <link id="ad690b96e-b089-4706-b2b4-231584b38f68"
+                                                      targetId="zba9a366c-41b1-4e37-a39b-5d580150877d"
+                                                      type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment62ce85d1-c587-4e97-a6f5-e73a71f262c1">
+                                          <title>Assignment to t_details, t_second5RecordsResponse 1 1</title>
+                                          <operation source="formula" to="temp.t_details">
+                                             <expression language="XQuery">let $is404 := $temp.t_error_code = 'HTTP_404'
+return
+  if ($is404) then
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $temp.t_partyIdSeggregation/fourth/record[ $temp.t_fourth5Records ] }&lt;/partyId&gt;
+&lt;partyNotFound xsi:type="xs:boolean"&gt;{ true() }&lt;/partyNotFound&gt;
+    &lt;/PartyCollection&gt;
+  else
+    &lt;PartyCollection&gt;
+      &lt;partyId&gt;{ $output.EntireResponse/_meta/businessId/text() }&lt;/partyId&gt;
+
+      &lt;partyType&gt;
+        &lt;code&gt;{ $output.EntireResponse/partyType/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partyType/Name/text() }&lt;/name&gt;
+      &lt;/partyType&gt;
+
+      &lt;partyStatus&gt;
+        &lt;code&gt;{ $output.EntireResponse/partyStatus/Code/text() }&lt;/code&gt;
+        &lt;name&gt;{ $output.EntireResponse/partyStatus/Name/text() }&lt;/name&gt;
+      &lt;/partyStatus&gt;
+
+      &lt;personFirstName&gt;{ $output.EntireResponse/personFirstName/text() }&lt;/personFirstName&gt;
+      &lt;personLastName&gt;{ $output.EntireResponse/personLastName/text() }&lt;/personLastName&gt;
+      &lt;personMiddleName&gt;{ $output.EntireResponse/personMiddleName/text() }&lt;/personMiddleName&gt;
+      &lt;personMiddleInitial&gt;{ $output.EntireResponse/personMiddleInitial/text() }&lt;/personMiddleInitial&gt;
+    &lt;/PartyCollection&gt;</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.t_fourth5RecordsResponse">
+                                             <expression language="XQuery">list:append( $temp.t_fourth5RecordsResponse , $temp.t_details )</expression>
+                                          </operation>
+                                          <link id="gcc34fa81-4f0b-4211-936f-3a77a8741f1b"
+                                                targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignment541134d5-0640-4b5b-b070-937f0a84bbed"/>
+                                       </assignment>
+                                       <assignment id="a19LXPCdcRP4uf5u8MBRxOAo-Assignment541134d5-0640-4b5b-b070-937f0a84bbed">
+                                          <title>Assignment to t_fourth5Records</title>
+                                          <operation source="formula" to="temp.t_fourth5Records">
+                                             <expression language="XQuery">$temp.t_fourth5Records -1</expression>
+                                          </operation>
+                                       </assignment>
+                                    </flow>
+                                    <link id="ud430b72d-6f4f-4347-8791-1fc9c918d881"
+                                          targetId="k34536a2f-cc4f-4741-9f22-ee1702f12569"
+                                          type="containerLink"/>
+                                 </repeat>
+                                 <link id="vba45e53d-d550-4cea-9728-e19f4a07c4b5"
+                                       targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decision9bbfe45d-172a-41eb-ac7a-270ddfd10077"
+                                       type="containerLink"/>
+                              </flow>
+                              <link id="o8701388e-2335-43dc-a89b-501249e68ea2"
+                                    targetId="uea0b1fa7-6fbf-47b3-8012-373157baeea7"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.t_fourth5Records}</arg>
+                                       <arg name="right">{0}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="jc71de207-0dba-4189-9cd4-85180a9fee58"
+                                    targetId="y6b0a5e20-aa83-405b-ab96-f6244e91add1"
+                                    type="containerLink"/>
+                           </container>
+                           <link id="k3a47e2b4-81b3-4fb8-947a-ff22d5d7b2d6"
+                                 targetId="a19LXPCdcRP4uf5u8MBRxOAo-ParallelPath0f275376-f800-457e-958f-c392b47c1bf5"
+                                 type="containerLink"/>
+                        </flow>
+                        <link id="fc0c3874e-d2d6-4fcf-917f-63b56af2406a"
+                              targetId="hd2376354-64fa-4f68-af89-63b24b693c84"
+                              type="containerLink"/>
+                        <link id="l45865555-0412-4b00-a751-11a23f3aab39"
+                              targetId="ofd2894c0-23cb-47aa-8eb7-a774de21aca4"
+                              type="containerLink"/>
+                        <link id="keadbe984-fc17-4d81-84c1-2b14f115f3ef"
+                              targetId="f9081864f-16e6-4d02-b477-c8c26618e18b"
+                              type="containerLink"/>
+                        <link id="v20bafa0b-0799-4bd7-8a40-d7aeab1bae05"
+                              targetId="a8c036866-bb72-447e-86df-93236db68478"
+                              type="containerLink"/>
+                     </container>
+                     <link id="ub4dce606-fdc7-4d03-93e4-0cef2a176236"
+                           targetId="a19LXPCdcRP4uf5u8MBRxOAo-Decisionf1ad38e1-5ed3-4876-9809-6dea4fd417ba"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="e1a84db25-d9b8-455c-bc1e-dfc3eaec59c9"
+                        targetId="nf08f1576-a247-4e78-9507-ed5f07aae781"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left" source="formula">{$temp.t_count &gt;100}</arg>
+                           <arg name="right">true</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="yff2b0ef4-96c7-4f78-94f4-f4733dc30b6b"
+                        targetId="pe3a061aa-b5e2-4dc1-8551-9cee3b4997f3"
+                        type="containerLink"/>
+                  <link id="pbfc09346-d642-4ed0-bd4b-21a50ada2162"
+                        targetId="a19LXPCdcRP4uf5u8MBRxOAo-Assignment62f4c81a-f40e-4a9c-92bf-800eec80609c"/>
+               </container>
+               <end id="a19LXPCdcRP4uf5u8MBRxOAo-end-ha3b1020e-5cc7-4bf1-a231-bd7c70a6c514">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>0R5BRZeIf3zfXjNeTOJ8a1</types1:GUID>
+      <types1:DisplayName>Get Investor By PartyId Array V4</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.987Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
