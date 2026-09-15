@@ -20,7 +20,8 @@ jobs:
         with:
           ref: Demo-Central-Branch
 
-      - name: Create pull request to Dfactory-Branch
+      - name: Create or find pull request
+        id: pr
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -32,11 +33,22 @@ jobs:
             --jq '.[0].number')
 
           if [ -z "$existing_pr" ]; then
-            gh pr create \
+            pr_url=$(gh pr create \
               --base Dfactory-Branch \
               --head Demo-Central-Branch \
               --title "Move IICS assets from Demo-Central-Branch to Dfactory-Branch" \
-              --body "Auto-created PR for reviewing and approving IICS asset changes from Demo-Central-Branch to Dfactory-Branch."
+              --body "Auto-created PR for reviewing and approving IICS asset changes from Demo-Central-Branch to Dfactory-Branch.")
+
+            pr_number=$(echo "$pr_url" | grep -o '[0-9]*$')
           else
-            echo "Pull request already exists: #$existing_pr"
+            pr_number="$existing_pr"
+            echo "Pull request already exists: #$pr_number"
           fi
+
+          echo "pr_number=$pr_number" >> "$GITHUB_OUTPUT"
+
+      - name: Enable auto-merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr merge ${{ steps.pr.outputs.pr_number }} --auto --merge
