@@ -1,0 +1,41 @@
+name: Auto PR Demo to Dfactory
+
+on:
+  push:
+    branches:
+      - Demo-Central-Branch
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Demo-Central-Branch
+        uses: actions/checkout@v4
+        with:
+          ref: Demo-Central-Branch
+
+      - name: Create pull request to Dfactory-Branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          existing_pr=$(gh pr list \
+            --base Dfactory-Branch \
+            --head Demo-Central-Branch \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [ -z "$existing_pr" ]; then
+            gh pr create \
+              --base Dfactory-Branch \
+              --head Demo-Central-Branch \
+              --title "Move IICS assets from Demo-Central-Branch to Dfactory-Branch" \
+              --body "Auto-created PR for reviewing and approving IICS asset changes from Demo-Central-Branch to Dfactory-Branch."
+          else
+            echo "Pull request already exists: #$existing_pr"
+          fi
