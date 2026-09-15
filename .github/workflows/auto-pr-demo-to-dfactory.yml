@@ -23,7 +23,7 @@ jobs:
       - name: Create or find pull request
         id: pr
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.IICS_REPO }}
         run: |
           existing_pr=$(gh pr list \
             --base Dfactory-Branch \
