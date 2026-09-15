@@ -1,0 +1,587 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_logs_extraction_ism",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Expression -> StructureParser",
+        "groupLink" : "DefaultGroup -> Input_Group"
+      },
+      {
+        "link" : "Source -> Expression"
+      },
+      {
+        "link" : "StructureParser -> Target",
+        "groupLink" : "Unidentified -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-22T13:24:53.631Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "_026_08_17_02_14_05"
+            },
+            "name" : "_026_08_17_02_14_05",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "_09__thread_1__INFO__InventorySync___Connection_pool_size_adjusted_to_41"
+            },
+            "name" : "_09__thread_1__INFO__InventorySync___Connection_pool_size_adjusted_to_41",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@jyFIq0rk1uzlJ90ab6g86z",
+          "connectionName" : "conn_B2B_Inbound",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "sample_application_log.txt",
+            "label" : "sample_application_log.txt",
+            "objectName" : "sample_application_log.txt",
+            "path" : "sample_application_log.txt",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "_026_08_17_02_14_05",
+                "fieldType" : "CONNECTOR",
+                "label" : "2026-08-17 02:14:05",
+                "nativeName" : "2026-08-17 02:14:05",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sample_application_log.txt"
+                  }
+                ]
+              },
+              {
+                "name" : "_09__thread_1__INFO__InventorySync___Connection_pool_size_adjusted_to_41",
+                "fieldType" : "CONNECTOR",
+                "label" : "109 [thread-1] INFO  InventorySync - Connection pool size adjusted to 41",
+                "nativeName" : "109 [thread-1] INFO  InventorySync - Connection pool size adjusted to 41",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "sample_application_log.txt"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-22T13:24:53.631Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@jyFIq0rk1uzlJ90ab6g86z",
+          "connectionName" : "conn_B2B_Inbound",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "log.csv",
+            "label" : "log.csv",
+            "path" : "log.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-22T13:27:47.499Z",
+        "name" : "StructureParser",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input_Group",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "Unidentified",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "element",
+            "output" : "true"
+          }
+        ],
+        "fieldMappingMode" : "MANUAL",
+        "inputType" : "FILE",
+        "isdLastModify" : "2026-08-22T13:24:45Z",
+        "isdModelId" : "@4sf1zpulSmugG22QFUIPiD",
+        "isdModelName" : "lab_labs_extraction",
+        "modelString" : "ATLMDL_v2.1_ML Sat Aug 22 13:24:44 UTC 2026|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",
+        "outputType" : "Relational",
+        "parserMode" : "isdMode",
+        "inputGroups" : [
+          {
+            "name" : "Input_Group",
+            "passthrough" : "false",
+            "fields" : [
+              {
+                "name" : "FilePath",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 4096,
+                "scale" : 0,
+                "uniqueName" : "FilePath"
+              },
+              {
+                "name" : "Data",
+                "platformType" : {
+                  "name" : "binary"
+                },
+                "precision" : 65536,
+                "scale" : 0,
+                "uniqueName" : "Data"
+              }
+            ]
+          }
+        ],
+        "outputGroups" : [
+          {
+            "name" : "Unidentified",
+            "passthrough" : "false",
+            "fields" : [
+              {
+                "name" : "unidentified",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 4096,
+                "scale" : 0,
+                "uniqueName" : "00"
+              }
+            ]
+          },
+          {
+            "name" : "element",
+            "passthrough" : "false",
+            "fields" : [
+              {
+                "name" : "date",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "4"
+              },
+              {
+                "name" : "time",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 30,
+                "scale" : 0,
+                "uniqueName" : "5"
+              },
+              {
+                "name" : "token",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "10"
+              },
+              {
+                "name" : "number",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "12"
+              },
+              {
+                "name" : "logLevel",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 5,
+                "scale" : 0,
+                "uniqueName" : "14"
+              },
+              {
+                "name" : "text",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "15"
+              }
+            ]
+          }
+        ],
+        "dataAdapter" : {
+          "inputFields" : [
+            {
+              "name" : "FilePath",
+              "fieldType" : "CONNECTOR",
+              "label" : "FilePath",
+              "nativeName" : "FilePath",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 4096,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "Data",
+              "fieldType" : "CONNECTOR",
+              "label" : "Data",
+              "nativeName" : "Data",
+              "nativeType" : "binary",
+              "original" : "false",
+              "precision" : 65536,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            }
+          ],
+          "outputFields" : [
+            {
+              "name" : "unidentified",
+              "fieldType" : "CONNECTOR",
+              "label" : "unidentified",
+              "nativeName" : "00",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 4096,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "date",
+              "fieldType" : "CONNECTOR",
+              "label" : "date_output_field",
+              "nativeName" : "4",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "time",
+              "fieldType" : "CONNECTOR",
+              "label" : "time_output_field",
+              "nativeName" : "5",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 30,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "token",
+              "fieldType" : "CONNECTOR",
+              "label" : "token_output_field",
+              "nativeName" : "10",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "number",
+              "fieldType" : "CONNECTOR",
+              "label" : "number_output_field",
+              "nativeName" : "12",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "logLevel",
+              "fieldType" : "CONNECTOR",
+              "label" : "logLevel_output_field",
+              "nativeName" : "14",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 5,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "text",
+              "fieldType" : "CONNECTOR",
+              "label" : "text_output_field",
+              "nativeName" : "15",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "lab_labs_extraction"
+                }
+              ]
+            }
+          ]
+        },
+        "fieldMapping" : {
+          "fields" : [
+            {
+              "adapterField" : {
+                "name" : "Data"
+              },
+              "name" : "_026_08_17_02_14_05",
+              "precision" : 0,
+              "scale" : 0
+            },
+            {
+              "adapterField" : {
+                "name" : "FilePath"
+              },
+              "name" : "_09__thread_1__INFO__InventorySync___Connection_pool_size_adjusted_to_41",
+              "precision" : 0,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-22T13:29:16.983Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_path",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'E:\\infaagent\\gateway\\inbound'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 01:21:48 PDT"
+}

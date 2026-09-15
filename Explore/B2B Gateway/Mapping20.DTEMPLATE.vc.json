@@ -1,0 +1,874 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping20",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> HierarchyBuilder",
+        "groupLink" : "DefaultGroup -> DefaultGroup"
+      },
+      {
+        "link" : "HierarchyBuilder -> Target",
+        "groupLink" : "DefaultOutputGroup -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-26T03:00:09.190Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "or_FK_root"
+            },
+            "name" : "or_FK_root",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "or_orderid"
+            },
+            "name" : "or_orderid",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "or_orderdate"
+            },
+            "name" : "or_orderdate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "or_amount"
+            },
+            "name" : "or_amount",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "or_status"
+            },
+            "name" : "or_status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "FK_root"
+            },
+            "name" : "FK_root",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addresstype"
+            },
+            "name" : "addresstype",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "line1"
+            },
+            "name" : "line1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "city"
+            },
+            "name" : "city",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "postalcode"
+            },
+            "name" : "postalcode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "country"
+            },
+            "name" : "country",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PK_root"
+            },
+            "name" : "PK_root",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "customerid"
+            },
+            "name" : "customerid",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "firstname"
+            },
+            "name" : "firstname",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastname"
+            },
+            "name" : "lastname",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "email"
+            },
+            "name" : "email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@jyFIq0rk1uzlJ90ab6g86z",
+          "connectionName" : "conn_B2B_Inbound",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "output_hierarchy_parser.csv",
+            "label" : "output_hierarchy_parser.csv",
+            "objectName" : "output_hierarchy_parser.csv",
+            "path" : "output_hierarchy_parser.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "or_FK_root",
+                "fieldType" : "CONNECTOR",
+                "label" : "or_FK_root",
+                "nativeName" : "or_FK_root",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "or_orderid",
+                "fieldType" : "CONNECTOR",
+                "label" : "or_orderid",
+                "nativeName" : "or_orderid",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "or_orderdate",
+                "fieldType" : "CONNECTOR",
+                "label" : "or_orderdate",
+                "nativeName" : "or_orderdate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "or_amount",
+                "fieldType" : "CONNECTOR",
+                "label" : "or_amount",
+                "nativeName" : "or_amount",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "or_status",
+                "fieldType" : "CONNECTOR",
+                "label" : "or_status",
+                "nativeName" : "or_status",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "FK_root",
+                "fieldType" : "CONNECTOR",
+                "label" : "FK_root",
+                "nativeName" : "FK_root",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addresstype",
+                "fieldType" : "CONNECTOR",
+                "label" : "addresstype",
+                "nativeName" : "addresstype",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "line1",
+                "fieldType" : "CONNECTOR",
+                "label" : "line1",
+                "nativeName" : "line1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "city",
+                "fieldType" : "CONNECTOR",
+                "label" : "city",
+                "nativeName" : "city",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "postalcode",
+                "fieldType" : "CONNECTOR",
+                "label" : "postalcode",
+                "nativeName" : "postalcode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "country",
+                "fieldType" : "CONNECTOR",
+                "label" : "country",
+                "nativeName" : "country",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "PK_root",
+                "fieldType" : "CONNECTOR",
+                "label" : "PK_root",
+                "nativeName" : "PK_root",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "customerid",
+                "fieldType" : "CONNECTOR",
+                "label" : "customerid",
+                "nativeName" : "customerid",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "firstname",
+                "fieldType" : "CONNECTOR",
+                "label" : "firstname",
+                "nativeName" : "firstname",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastname",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastname",
+                "nativeName" : "lastname",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "email",
+                "fieldType" : "CONNECTOR",
+                "label" : "email",
+                "nativeName" : "email",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "output_hierarchy_parser.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-26T03:00:09.194Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@jyFIq0rk1uzlJ90ab6g86z",
+          "connectionName" : "conn_B2B_Inbound",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "output_hierarchy_builder.json",
+            "label" : "output_hierarchy_builder.json",
+            "path" : "output_hierarchy_builder.json",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "none"
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-26T03:01:01.795Z",
+        "name" : "HierarchyBuilder",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "DefaultOutputGroup",
+            "output" : "true"
+          }
+        ],
+        "collectAllRoots" : "false",
+        "enablePassthrough" : "false",
+        "hschemaLastModified" : "2026-08-25T11:04:03Z",
+        "inputSorted" : "false",
+        "outputFormat" : "String",
+        "outputType" : "NONE",
+        "performanceMode" : "true",
+        "schemaId" : "@5qLYPvvEbCjkLs1dTQsMmL",
+        "schemaName" : "hs_lab_customer_schema",
+        "uiCollectAllRoots" : "false",
+        "useLabels" : "false",
+        "outputFieldPrecision" : 1048576,
+        "outputField" : {
+          "name" : "Output",
+          "platformType" : {
+            "name" : "string"
+          },
+          "precision" : 1048576,
+          "scale" : 0
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Source",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "customerid",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:customerId"
+                },
+                {
+                  "name" : "firstname",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:firstName"
+                },
+                {
+                  "name" : "lastname",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:lastName"
+                },
+                {
+                  "name" : "email",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:email"
+                },
+                {
+                  "name" : "addresstype",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:addressesArray/json:addresses/json:addressType"
+                },
+                {
+                  "name" : "line1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:addressesArray/json:addresses/json:line1"
+                },
+                {
+                  "name" : "city",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:addressesArray/json:addresses/json:city"
+                },
+                {
+                  "name" : "state",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:addressesArray/json:addresses/json:state"
+                },
+                {
+                  "name" : "postalcode",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:addressesArray/json:addresses/json:postalCode"
+                },
+                {
+                  "name" : "country",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:addressesArray/json:addresses/json:country"
+                },
+                {
+                  "name" : "or_orderid",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:orderHistoryArray/json:orderHistory/json:orderId"
+                },
+                {
+                  "name" : "or_orderdate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:orderHistoryArray/json:orderHistory/json:orderDate"
+                },
+                {
+                  "name" : "or_amount",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:orderHistoryArray/json:orderHistory/json:amount"
+                },
+                {
+                  "name" : "or_status",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:orderHistoryArray/json:orderHistory/json:status"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 01:21:48 PDT"
+}

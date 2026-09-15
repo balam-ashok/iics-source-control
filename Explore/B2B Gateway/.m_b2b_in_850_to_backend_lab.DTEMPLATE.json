@@ -1,0 +1,70 @@
+{
+  "objectInfo" : {
+    "id" : "7lw0aW4unuheswX6YcXLeq",
+    "name" : "m_b2b_in_850_to_backend_lab",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM170000000000E2"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "B2B Gateway inbound",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2026-09-15T08:21:49.269Z",
+  "objectRefs" : [ {
+    "id" : "5Ekfrc5xbh2crXd0pWU4Gy",
+    "name" : "B2BGateway_EDI850_5030_v2",
+    "type" : "HSCHEMA",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM36000000000003"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "EDIX12 850 version: 5030. Uses element names in XML interface files.",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Default"
+  }, {
+    "id" : "i5KDwmeMxw9hwSAA8tzAQ5",
+    "name" : "FF_BACKEND_IN_LAB",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000005S"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ],
+  "readableFileExtension" : "json",
+  "readableFilePresent" : true
+}

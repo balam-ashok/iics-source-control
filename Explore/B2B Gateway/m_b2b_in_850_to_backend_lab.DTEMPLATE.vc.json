@@ -1,0 +1,1084 @@
+{
+  "content" : {
+    "description" : "B2B Gateway inbound",
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_b2b_in_850_to_backend_lab",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "src_gateway_edi -> fil_850"
+      },
+      {
+        "link" : "fil_850 -> HierarchyParser",
+        "groupLink" : "DefaultGroup -> DefaultGroup"
+      },
+      {
+        "link" : "HierarchyParser -> Expression",
+        "groupLink" : "interchanges -> DefaultGroup"
+      },
+      {
+        "link" : "Expression -> tgt_po_header"
+      },
+      {
+        "link" : "Expression -> tgt_po_detail"
+      }
+    ],
+    "parameters" : [
+      {
+        "input" : "true",
+        "output" : "false",
+        "precision" : 0,
+        "scale" : 0,
+        "allowRuntimeOverride" : "false",
+        "expressionVariable" : "false",
+        "name" : "p_src_conn",
+        "anonymousType" : {
+          "typeSystem" : "TOOLKIT",
+          "connectionType" : "B2B EDI Gateway"
+        }
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-30T12:56:42.346Z",
+        "name" : "src_gateway_edi",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "EVENT_ID"
+            },
+            "name" : "EVENT_ID",
+            "platformType" : {
+              "name" : "bigint"
+            },
+            "precision" : 19,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "OUT_FILE_PATH"
+            },
+            "name" : "OUT_FILE_PATH",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PARTNER_NAME"
+            },
+            "name" : "PARTNER_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PARTNER_NUMBER"
+            },
+            "name" : "PARTNER_NUMBER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PARTNER_PROD_INTERCHANGE_ID"
+            },
+            "name" : "PARTNER_PROD_INTERCHANGE_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PARTNER_TEST_INTERCHANGE_ID"
+            },
+            "name" : "PARTNER_TEST_INTERCHANGE_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "TRANSACTION_CONTROL"
+            },
+            "name" : "TRANSACTION_CONTROL",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "GROUP_CONTROL"
+            },
+            "name" : "GROUP_CONTROL",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "INTERCHANGE_CONTROL"
+            },
+            "name" : "INTERCHANGE_CONTROL",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "MESSAGE_TYPE"
+            },
+            "name" : "MESSAGE_TYPE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ENTITY_NUMBER"
+            },
+            "name" : "ENTITY_NUMBER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "NUMBER_OF_LINE_ITEMS"
+            },
+            "name" : "NUMBER_OF_LINE_ITEMS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ORIGINAL_FILE_NAME"
+            },
+            "name" : "ORIGINAL_FILE_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PARTNER_GROUP_ID"
+            },
+            "name" : "PARTNER_GROUP_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SENDER_INTERCHANGE_ID"
+            },
+            "name" : "SENDER_INTERCHANGE_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SENDER_INTERCHANGE_QUALIFIER"
+            },
+            "name" : "SENDER_INTERCHANGE_QUALIFIER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 512,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId$" : {
+            "name" : "p_src_conn"
+          },
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "GW_EDI_SOURCE",
+            "label" : "GW_EDI_SOURCE",
+            "objectName" : "GW_EDI_SOURCE",
+            "objectType" : "Gateway record ",
+            "path" : "GW_EDI_SOURCE",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "EVENT_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "EVENT_ID",
+                "nativeName" : "EVENT_ID",
+                "nativeType" : "long",
+                "original" : "false",
+                "precision" : 19,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "OUT_FILE_PATH",
+                "fieldType" : "CONNECTOR",
+                "label" : "OUT_FILE_PATH",
+                "nativeName" : "OUT_FILE_PATH",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "PARTNER_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "PARTNER_NAME",
+                "nativeName" : "PARTNER_NAME",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "PARTNER_NUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "PARTNER_NUMBER",
+                "nativeName" : "PARTNER_NUMBER",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "PARTNER_PROD_INTERCHANGE_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "PARTNER_PROD_INTERCHANGE_ID",
+                "nativeName" : "PARTNER_PROD_INTERCHANGE_ID",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "PARTNER_TEST_INTERCHANGE_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "PARTNER_TEST_INTERCHANGE_ID",
+                "nativeName" : "PARTNER_TEST_INTERCHANGE_ID",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "TRANSACTION_CONTROL",
+                "fieldType" : "CONNECTOR",
+                "label" : "TRANSACTION_CONTROL",
+                "nativeName" : "TRANSACTION_CONTROL",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "GROUP_CONTROL",
+                "fieldType" : "CONNECTOR",
+                "label" : "GROUP_CONTROL",
+                "nativeName" : "GROUP_CONTROL",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "INTERCHANGE_CONTROL",
+                "fieldType" : "CONNECTOR",
+                "label" : "INTERCHANGE_CONTROL",
+                "nativeName" : "INTERCHANGE_CONTROL",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "MESSAGE_TYPE",
+                "fieldType" : "CONNECTOR",
+                "label" : "MESSAGE_TYPE",
+                "nativeName" : "MESSAGE_TYPE",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "ENTITY_NUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "ENTITY_NUMBER",
+                "nativeName" : "ENTITY_NUMBER",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "NUMBER_OF_LINE_ITEMS",
+                "fieldType" : "CONNECTOR",
+                "label" : "NUMBER_OF_LINE_ITEMS",
+                "nativeName" : "NUMBER_OF_LINE_ITEMS",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "ORIGINAL_FILE_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "ORIGINAL_FILE_NAME",
+                "nativeName" : "ORIGINAL_FILE_NAME",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "PARTNER_GROUP_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "PARTNER_GROUP_ID",
+                "nativeName" : "PARTNER_GROUP_ID",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "SENDER_INTERCHANGE_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "SENDER_INTERCHANGE_ID",
+                "nativeName" : "SENDER_INTERCHANGE_ID",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              },
+              {
+                "name" : "SENDER_INTERCHANGE_QUALIFIER",
+                "fieldType" : "CONNECTOR",
+                "label" : "SENDER_INTERCHANGE_QUALIFIER",
+                "nativeName" : "SENDER_INTERCHANGE_QUALIFIER",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 512,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "GW_EDI_SOURCE"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-30T12:56:42.346Z",
+        "name" : "tgt_po_header",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "date_r02"
+                  },
+                  {
+                    "inputName" : "date_r05"
+                  },
+                  {
+                    "inputName" : "identificationcode_r04"
+                  },
+                  {
+                    "inputName" : "name_r02"
+                  },
+                  {
+                    "inputName" : "numberoflineitems_r01"
+                  },
+                  {
+                    "inputName" : "purchaseordernumber_r03"
+                  },
+                  {
+                    "inputName" : "purchaseordertypecode_r02"
+                  },
+                  {
+                    "inputName" : "transactionsetpurposecode_r01"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@i5KDwmeMxw9hwSAA8tzAQ5",
+          "connectionName" : "FF_BACKEND_IN_LAB",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "po_header.csv",
+            "label" : "po_header.csv",
+            "path" : "po_header.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-30T12:59:15.443Z",
+        "name" : "fil_850",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "filterConditions" : [
+          {
+            "fieldName" : "MESSAGE_TYPE",
+            "filterValue" : "850",
+            "operator" : "="
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-30T13:02:52.515Z",
+        "name" : "HierarchyParser",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "interchanges",
+            "output" : "true"
+          }
+        ],
+        "enablePassthrough" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "hschemaLastModified" : "2026-08-21T10:21:37Z",
+        "inputType" : "FILE",
+        "performanceMode" : "true",
+        "schemaId" : "@5Ekfrc5xbh2crXd0pWU4Gy",
+        "schemaName" : "B2BGateway_EDI850_5030_v2",
+        "useLabels" : "false",
+        "dataAdapter" : {
+          "adapterInputField" : {
+            "name" : "Input",
+            "fieldType" : "CONNECTOR",
+            "label" : "Default_Input",
+            "nativeName" : "Input",
+            "nativeType" : "string",
+            "original" : "false",
+            "precision" : 32768,
+            "scale" : 0
+          }
+        },
+        "fieldMapping" : {
+          "fields" : [
+            {
+              "adapterField" : {
+                "name" : "Input"
+              },
+              "name" : "OUT_FILE_PATH",
+              "precision" : 0,
+              "scale" : 0
+            }
+          ]
+        },
+        "inputField" : {
+          "name" : "Input",
+          "platformType" : {
+            "name" : "string"
+          },
+          "precision" : 32768,
+          "scale" : 0
+        },
+        "xFieldMap" : {
+          "denormalized" : "true",
+          "mappings" : [
+            {
+              "groupName" : "interchanges",
+              "isRoot" : "false",
+              "xPath" : "/x12_v2:interchanges",
+              "xfields" : [
+                {
+                  "name" : "transactionsetpurposecode_r01",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/BEG/TransactionSetPurposeCode_R01"
+                },
+                {
+                  "name" : "purchaseordertypecode_r02",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/BEG/PurchaseOrderTypeCode_R02"
+                },
+                {
+                  "name" : "purchaseordernumber_r03",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/BEG/PurchaseOrderNumber_R03"
+                },
+                {
+                  "name" : "date_r05",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/BEG/Date_R05"
+                },
+                {
+                  "name" : "date_r02",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/DTM/Date_R02"
+                },
+                {
+                  "name" : "name_r02",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_N1_1/N1/Name_R02"
+                },
+                {
+                  "name" : "identificationcode_r04",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_N1_1/N1/IdentificationCode_R04"
+                },
+                {
+                  "name" : "assignedidentification_r01",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/PO1/AssignedIdentification_R01"
+                },
+                {
+                  "name" : "quantity_r02",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/PO1/Quantity_R02"
+                },
+                {
+                  "name" : "unitorbasisformeasurementcode_r03",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/PO1/UnitorBasisforMeasurementCode_R03"
+                },
+                {
+                  "name" : "unitprice_r04",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/PO1/UnitPrice_R04"
+                },
+                {
+                  "name" : "productserviceidqualifier_r06",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/PO1/ProductServiceIDQualifier_R06"
+                },
+                {
+                  "name" : "productserviceid_r07",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/PO1/ProductServiceID_R07"
+                },
+                {
+                  "name" : "itemdescriptiontype_r01",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/LOOP_PID/PID/ItemDescriptionType_R01"
+                },
+                {
+                  "name" : "numberoflineitems_r01",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_CTT/CTT/NumberofLineItems_R01"
+                },
+                {
+                  "name" : "description_r05",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/x12_v2:interchanges/interchange/x12_v2:TS_850/LOOP_PO1/LOOP_PID/PID/Description_R05"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-30T13:12:46.386Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-30T13:15:24.789Z",
+        "name" : "tgt_po_detail",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "description_r05"
+                  },
+                  {
+                    "inputName" : "numberoflineitems_r01"
+                  },
+                  {
+                    "inputName" : "productserviceid_r07"
+                  },
+                  {
+                    "inputName" : "productserviceidqualifier_r06"
+                  },
+                  {
+                    "inputName" : "purchaseordernumber_r03"
+                  },
+                  {
+                    "inputName" : "quantity_r02"
+                  },
+                  {
+                    "inputName" : "unitorbasisformeasurementcode_r03"
+                  },
+                  {
+                    "inputName" : "unitprice_r04"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@i5KDwmeMxw9hwSAA8tzAQ5",
+          "connectionName" : "FF_BACKEND_IN_LAB",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "po_detail.csv",
+            "label" : "po_detail.csv",
+            "path" : "po_detail.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 01:21:47 PDT"
+}

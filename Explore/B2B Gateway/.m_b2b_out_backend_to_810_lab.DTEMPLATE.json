@@ -1,0 +1,70 @@
+{
+  "objectInfo" : {
+    "id" : "5c4WO2zAMYniKrjiePr4uS",
+    "name" : "m_b2b_out_backend_to_810_lab",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM170000000000E3"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "B2B Gateway outbound",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2026-09-15T08:21:49.270Z",
+  "objectRefs" : [ {
+    "id" : "jX9lhG9AG6wkvurAIvmh0v",
+    "name" : "FF_BACKEND_OUT_LAB",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000005V"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "gJ30M4fBlYfi9gp1Nq5Sw6",
+    "name" : "B2BGateway_EDI810_5030_v2",
+    "type" : "HSCHEMA",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM36000000000002"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "EDIX12 810 version: 5030. Uses element names in XML interface files.",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Default"
+  } ],
+  "readableFileExtension" : "json",
+  "readableFilePresent" : true
+}

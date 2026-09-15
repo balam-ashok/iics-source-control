@@ -1,0 +1,1169 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_multi_excel_extraction",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> StructureParser",
+        "groupLink" : "DefaultGroup -> Input_Group"
+      },
+      {
+        "link" : "Joiner1 -> Target",
+        "groupLink" : "OutputGroup -> DefaultGroup"
+      },
+      {
+        "link" : "Sorter -> Joiner",
+        "groupLink" : "DefaultGroup -> Master"
+      },
+      {
+        "link" : "StructureParser -> Sorter",
+        "groupLink" : "element1 -> DefaultGroup"
+      },
+      {
+        "link" : "Sorter1 -> Joiner",
+        "groupLink" : "DefaultGroup -> Detail"
+      },
+      {
+        "link" : "StructureParser -> Sorter1",
+        "groupLink" : "element2 -> DefaultGroup"
+      },
+      {
+        "link" : "Sorter2 -> Joiner1",
+        "groupLink" : "DefaultGroup -> Master"
+      },
+      {
+        "link" : "StructureParser -> Sorter2",
+        "groupLink" : "element3 -> DefaultGroup"
+      },
+      {
+        "link" : "Sorter3 -> Joiner1",
+        "groupLink" : "DefaultGroup -> Detail"
+      },
+      {
+        "link" : "Joiner -> Sorter3",
+        "groupLink" : "OutputGroup -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T03:28:29.663Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "FIELD1"
+            },
+            "name" : "FIELD1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@jyFIq0rk1uzlJ90ab6g86z",
+          "connectionName" : "conn_B2B_Inbound",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "excelFileLoc.txt",
+            "label" : "excelFileLoc.txt",
+            "objectName" : "excelFileLoc.txt",
+            "path" : "excelFileLoc.txt",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "FIELD1",
+                "fieldType" : "CONNECTOR",
+                "label" : "FIELD1",
+                "nativeName" : "FIELD1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "excelFileLoc.txt"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 1,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 2147483647,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T03:28:29.667Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@jyFIq0rk1uzlJ90ab6g86z",
+          "connectionName" : "conn_B2B_Inbound",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "multiSheetOutput.csv",
+            "label" : "multiSheetOutput.csv",
+            "path" : "multiSheetOutput.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T03:29:29.013Z",
+        "name" : "StructureParser",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input_Group",
+            "output" : "false",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "DefaultGroup",
+                "precedingTxName" : "Source",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "orders_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "DefaultGroup",
+                "precedingTxName" : "Source1",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "cus_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "Unidentified",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "element1",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "element2",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "element3",
+            "output" : "true"
+          }
+        ],
+        "fieldMappingMode" : "MANUAL",
+        "inputType" : "FILE",
+        "isdLastModify" : "2026-08-24T03:04:27Z",
+        "isdModelId" : "@68Oq1CQXyVGfUCSJOJAVc0",
+        "isdModelName" : "labs_excel_extraction",
+        "modelString" : "ATLMDL_v2.1_ML Mon Aug 24 03:04:26 UTC 2026|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",
+        "outputType" : "Relational",
+        "parserMode" : "isdMode",
+        "inputGroups" : [
+          {
+            "name" : "Input_Group",
+            "passthrough" : "false",
+            "fields" : [
+              {
+                "name" : "FilePath",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 4096,
+                "scale" : 0,
+                "uniqueName" : "FilePath"
+              },
+              {
+                "name" : "Data",
+                "platformType" : {
+                  "name" : "binary"
+                },
+                "precision" : 65536,
+                "scale" : 0,
+                "uniqueName" : "Data"
+              }
+            ]
+          }
+        ],
+        "outputGroups" : [
+          {
+            "name" : "Unidentified",
+            "passthrough" : "false",
+            "fields" : [
+              {
+                "name" : "unidentified",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 4096,
+                "scale" : 0,
+                "uniqueName" : "00"
+              }
+            ]
+          },
+          {
+            "name" : "element1",
+            "passthrough" : "true",
+            "fields" : [
+              {
+                "name" : "OrderID",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "16"
+              },
+              {
+                "name" : "CustomerID",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "17"
+              },
+              {
+                "name" : "OrderDate",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "18"
+              },
+              {
+                "name" : "SKU_token",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "20"
+              },
+              {
+                "name" : "SKU_number",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "22"
+              },
+              {
+                "name" : "Quantity",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "23"
+              },
+              {
+                "name" : "LineTotalUSD",
+                "platformType" : {
+                  "name" : "decimal"
+                },
+                "precision" : 10,
+                "scale" : 2,
+                "uniqueName" : "24"
+              }
+            ]
+          },
+          {
+            "name" : "element2",
+            "passthrough" : "true",
+            "fields" : [
+              {
+                "name" : "CustomerID",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "42"
+              },
+              {
+                "name" : "CustomerName",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 93,
+                "scale" : 0,
+                "uniqueName" : "43"
+              },
+              {
+                "name" : "Region",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "44"
+              },
+              {
+                "name" : "AccountManager",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "45"
+              },
+              {
+                "name" : "Tier",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "46"
+              }
+            ]
+          },
+          {
+            "name" : "element3",
+            "passthrough" : "true",
+            "fields" : [
+              {
+                "name" : "SKU_token",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "63"
+              },
+              {
+                "name" : "SKU_number",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "65"
+              },
+              {
+                "name" : "Description",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "66"
+              },
+              {
+                "name" : "WarehouseCode",
+                "platformType" : {
+                  "name" : "string"
+                },
+                "precision" : 255,
+                "scale" : 0,
+                "uniqueName" : "67"
+              },
+              {
+                "name" : "QtyOnHand",
+                "platformType" : {
+                  "name" : "bigint"
+                },
+                "precision" : 19,
+                "scale" : 0,
+                "uniqueName" : "68"
+              }
+            ]
+          }
+        ],
+        "dataAdapter" : {
+          "inputFields" : [
+            {
+              "name" : "FilePath",
+              "fieldType" : "CONNECTOR",
+              "label" : "FilePath",
+              "nativeName" : "FilePath",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 4096,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "Data",
+              "fieldType" : "CONNECTOR",
+              "label" : "Data",
+              "nativeName" : "Data",
+              "nativeType" : "binary",
+              "original" : "false",
+              "precision" : 65536,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            }
+          ],
+          "outputFields" : [
+            {
+              "name" : "unidentified",
+              "fieldType" : "CONNECTOR",
+              "label" : "unidentified",
+              "nativeName" : "00",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 4096,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "OrderID",
+              "fieldType" : "CONNECTOR",
+              "label" : "OrderID_output_field",
+              "nativeName" : "16",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "CustomerID",
+              "fieldType" : "CONNECTOR",
+              "label" : "CustomerID_output_field",
+              "nativeName" : "17",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "OrderDate",
+              "fieldType" : "CONNECTOR",
+              "label" : "OrderDate_output_field",
+              "nativeName" : "18",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "SKU_token",
+              "fieldType" : "CONNECTOR",
+              "label" : "SKU_token_output_field",
+              "nativeName" : "20",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "SKU_number",
+              "fieldType" : "CONNECTOR",
+              "label" : "SKU_number_output_field",
+              "nativeName" : "22",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "Quantity",
+              "fieldType" : "CONNECTOR",
+              "label" : "Quantity_output_field",
+              "nativeName" : "23",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "LineTotalUSD",
+              "fieldType" : "CONNECTOR",
+              "label" : "LineTotalUSD_output_field",
+              "nativeName" : "24",
+              "nativeType" : "decimal",
+              "original" : "false",
+              "precision" : 10,
+              "scale" : 2,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "CustomerID",
+              "fieldType" : "CONNECTOR",
+              "label" : "CustomerID_output_field",
+              "nativeName" : "42",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "CustomerName",
+              "fieldType" : "CONNECTOR",
+              "label" : "CustomerName_output_field",
+              "nativeName" : "43",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 93,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "Region",
+              "fieldType" : "CONNECTOR",
+              "label" : "Region_output_field",
+              "nativeName" : "44",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "AccountManager",
+              "fieldType" : "CONNECTOR",
+              "label" : "AccountManager_output_field",
+              "nativeName" : "45",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "Tier",
+              "fieldType" : "CONNECTOR",
+              "label" : "Tier_output_field",
+              "nativeName" : "46",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "SKU_token",
+              "fieldType" : "CONNECTOR",
+              "label" : "SKU_token_output_field",
+              "nativeName" : "63",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "SKU_number",
+              "fieldType" : "CONNECTOR",
+              "label" : "SKU_number_output_field",
+              "nativeName" : "65",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "Description",
+              "fieldType" : "CONNECTOR",
+              "label" : "Description_output_field",
+              "nativeName" : "66",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "WarehouseCode",
+              "fieldType" : "CONNECTOR",
+              "label" : "WarehouseCode_output_field",
+              "nativeName" : "67",
+              "nativeType" : "string",
+              "original" : "false",
+              "precision" : 255,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            },
+            {
+              "name" : "QtyOnHand",
+              "fieldType" : "CONNECTOR",
+              "label" : "QtyOnHand_output_field",
+              "nativeName" : "68",
+              "nativeType" : "bigint",
+              "original" : "false",
+              "precision" : 19,
+              "scale" : 0,
+              "properties" : [
+                {
+                  "name" : "parentObject",
+                  "value" : "labs_excel_extraction"
+                }
+              ]
+            }
+          ]
+        },
+        "fieldMapping" : {
+          "fields" : [
+            {
+              "adapterField" : {
+                "name" : "FilePath"
+              },
+              "name" : "orders_FIELD1",
+              "precision" : 0,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T07:10:43.700Z",
+        "name" : "Joiner",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Cache Directory",
+            "value" : "$PMCacheDir"
+          },
+          {
+            "name" : "Null ordering in master",
+            "value" : "Null is Highest Value"
+          },
+          {
+            "name" : "Null ordering in detail",
+            "value" : "Null is Higest Value"
+          },
+          {
+            "name" : "Joiner Data Cache Size",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Joiner Index Cache Size",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Sorted Input",
+            "value" : "true"
+          },
+          {
+            "name" : "Master Sort Order",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "Optional",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Master",
+            "output" : "false",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "element1",
+                "precedingTxName" : "StructureParser",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "orders_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "true",
+            "name" : "Detail",
+            "output" : "false",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "element2",
+                "precedingTxName" : "StructureParser",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "cus_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "OutputGroup",
+            "output" : "true"
+          }
+        ],
+        "joinType" : "Normal Join",
+        "joinConditions" : [
+          {
+            "leftOperand" : "orders_CustomerID",
+            "operator" : "=",
+            "rightOperand" : "cust_CustomerID"
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T07:12:07.886Z",
+        "name" : "Joiner1",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Cache Directory",
+            "value" : "$PMCacheDir"
+          },
+          {
+            "name" : "Null ordering in master",
+            "value" : "Null is Highest Value"
+          },
+          {
+            "name" : "Null ordering in detail",
+            "value" : "Null is Higest Value"
+          },
+          {
+            "name" : "Joiner Data Cache Size",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Joiner Index Cache Size",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Sorted Input",
+            "value" : "true"
+          },
+          {
+            "name" : "Master Sort Order",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "Optional",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Master",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "true",
+                "include" : "true",
+                "bulkRenameOption" : {
+                  "literal" : "inv_",
+                  "suffix" : "false"
+                }
+              }
+            ]
+          },
+          {
+            "input" : "true",
+            "name" : "Detail",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "OutputGroup",
+            "output" : "true"
+          }
+        ],
+        "joinType" : "Normal Join",
+        "joinConditions" : [
+          {
+            "leftOperand" : "inv_inv_SKU_number",
+            "operator" : "=",
+            "rightOperand" : "orders_SKU_number"
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T07:17:51.407Z",
+        "name" : "Sorter",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "true",
+                "include" : "true",
+                "bulkRenameOption" : {
+                  "literal" : "orders_",
+                  "suffix" : "false"
+                }
+              }
+            ]
+          }
+        ],
+        "sorterMode" : "SIMPLE",
+        "sortEntries" : [
+          {
+            "ascending" : "true",
+            "fieldName" : "orders_CustomerID"
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T07:18:18.396Z",
+        "name" : "Sorter1",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "true",
+                "include" : "true",
+                "bulkRenameOption" : {
+                  "literal" : "cust_",
+                  "suffix" : "false"
+                }
+              }
+            ]
+          }
+        ],
+        "sorterMode" : "SIMPLE",
+        "sortEntries" : [
+          {
+            "ascending" : "true",
+            "fieldName" : "cust_CustomerID"
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T07:18:40.486Z",
+        "name" : "Sorter2",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "true",
+                "include" : "true",
+                "bulkRenameOption" : {
+                  "literal" : "inv_",
+                  "suffix" : "false"
+                }
+              }
+            ]
+          }
+        ],
+        "sorterMode" : "SIMPLE",
+        "sortEntries" : [
+          {
+            "ascending" : "true",
+            "fieldName" : "inv_SKU_number"
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-24T07:19:11.022Z",
+        "name" : "Sorter3",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sorterMode" : "SIMPLE",
+        "sortEntries" : [
+          {
+            "ascending" : "true",
+            "fieldName" : "orders_SKU_number"
+          }
+        ]
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 01:21:48 PDT"
+}
