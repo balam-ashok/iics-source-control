@@ -49,6 +49,6 @@ jobs:
 
       - name: Enable auto-merge
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.IICS_REPO }}
         run: |
           gh pr merge ${{ steps.pr.outputs.pr_number }} --auto --merge
