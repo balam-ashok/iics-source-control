@@ -1,8 +1,8 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>x6Ru5V1FyuRZXDy-gt-401291-2026-06-17T06:10:08.373Z::po.xml</types1:EntryId>
-      <types1:Name>country-1</types1:Name>
+      <types1:EntryId>DDUQbgdwUiQLnzY-gt-401308-2026-06-17T06:10:08.474Z::po.xml</types1:EntryId>
+      <types1:Name>countrySubdivision</types1:Name>
       <types1:MimeType>application/xml+processobject</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -16,9 +16,9 @@
       <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:Entry>
          <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
-                        displayName="country"
+                        displayName="countrySubdivision"
                         isByCopy="true"
-                        name="country-1">
+                        name="countrySubdivision">
             <description/>
             <tags/>
             <detail>
@@ -30,7 +30,14 @@
                   <options/>
                </field>
                <field label=""
-                      name="iso3Code"
+                      name="code"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="alpha2code"
                       nullable="true"
                       required="false"
                       type="string">
@@ -38,13 +45,6 @@
                </field>
                <field label=""
                       name="name"
-                      nullable="true"
-                      required="false"
-                      type="string">
-                  <options/>
-               </field>
-               <field label=""
-                      name="code"
                       nullable="true"
                       required="false"
                       type="string">
@@ -60,8 +60,8 @@
             </detail>
          </processObject>
       </types1:Entry>
-      <types1:GUID>3yNVMvRse0UfgrS9k2x06k</types1:GUID>
-      <types1:DisplayName>country</types1:DisplayName>
+      <types1:GUID>500VmU1eNa5hUXWXuRBRaE</types1:GUID>
+      <types1:DisplayName>countrySubdivision</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2026-09-15T10:52:34.206Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.221Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

@@ -1,0 +1,127 @@
+{
+  "objectInfo" : {
+    "id" : "0K4YZvDUPOScFDEgnyxlYp",
+    "name" : "Get Investor By Search Match",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "21GRvDINciZBpDU-gt-401412-2026-06-17T06:10:10.865Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-15T10:52:36.144Z",
+  "objectRefs" : [ {
+    "id" : "3b9aOeg4GAGh4jrQo3ONMd",
+    "name" : "ap-investor-operations-v2",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "nKfPNzUzeA8rJ4p-gt-396415-2026-06-17T06:10:10.214Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  }, {
+    "id" : "2E1FpBLSzGacZ1tGsl0uAI",
+    "name" : "taxIdentificationType",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "xiggor3rp3yD7ty-gt-396321-2026-06-17T06:10:08.376Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  }, {
+    "id" : "lFVJu0jR585ipnXbd0keaZ",
+    "name" : "contactMechanismSearchMatch",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "xZ6or3rp3yD7tyG-gt-401352-2026-06-17T06:10:09.385Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  }, {
+    "id" : "628cl7GSufXkTlKOGnabaR",
+    "name" : "searchMatchRes",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "GJZx1XmgaabclvA-gt-401316-2026-06-17T06:10:08.525Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  }, {
+    "id" : "iHIgkFnZXoOdSbWshMXIcK",
+    "name" : "address",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "MBu8zbgdwUiQLnz-gt-401382-2026-06-17T06:10:09.628Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

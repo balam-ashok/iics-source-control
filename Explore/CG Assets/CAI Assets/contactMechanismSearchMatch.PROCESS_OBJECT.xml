@@ -1,8 +1,9 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>x6Ru5V1FyuRZXDy-gt-401291-2026-06-17T06:10:08.373Z::po.xml</types1:EntryId>
-      <types1:Name>country-1</types1:Name>
+      <types1:EntryId>xZ6or3rp3yD7tyG-gt-401352-2026-06-17T06:10:09.385Z::po.xml</types1:EntryId>
+      <types1:Name>contactMechanismSearchMatch</types1:Name>
+      <types1:ParentFlowIds>21GRvDINciZBpDU-gt-401412-2026-06-17T06:10:10.865Z::pd.xml</types1:ParentFlowIds>
       <types1:MimeType>application/xml+processobject</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -11,57 +12,41 @@
       <types1:State>CURRENT</types1:State>
       <types1:ProcessGroup/>
       <types1:CreatedBy>balam_ashok</types1:CreatedBy>
-      <types1:CreationDate>2026-06-17T06:10:08Z</types1:CreationDate>
+      <types1:CreationDate>2026-06-17T06:10:09Z</types1:CreationDate>
       <types1:ModifiedBy/>
       <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:Entry>
          <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
-                        displayName="country"
+                        displayName="contactMechanismSearchMatch"
                         isByCopy="true"
-                        name="country-1">
+                        name="contactMechanismSearchMatch">
             <description/>
             <tags/>
             <detail>
                <field label=""
-                      name="isoCode"
+                      name="contactMechanismValue"
                       nullable="true"
                       required="false"
                       type="string">
                   <options/>
                </field>
                <field label=""
-                      name="iso3Code"
+                      name="contactMechanismType"
                       nullable="true"
                       required="false"
-                      type="string">
-                  <options/>
-               </field>
-               <field label=""
-                      name="name"
-                      nullable="true"
-                      required="false"
-                      type="string">
-                  <options/>
-               </field>
-               <field label=""
-                      name="code"
-                      nullable="true"
-                      required="false"
-                      type="string">
-                  <options/>
-               </field>
-               <field label=""
-                      name="effectiveReferenceId"
-                      nullable="true"
-                      required="false"
-                      type="string">
-                  <options/>
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:contactMechanismType</option>
+                     <option name="guid">akv38Qc9iUsdmJ8YjPKUsM</option>
+                     <option name="isCopy">true</option>
+                  </options>
                </field>
             </detail>
          </processObject>
       </types1:Entry>
-      <types1:GUID>3yNVMvRse0UfgrS9k2x06k</types1:GUID>
-      <types1:DisplayName>country</types1:DisplayName>
+      <types1:GUID>lFVJu0jR585ipnXbd0keaZ</types1:GUID>
+      <types1:DisplayName>contactMechanismSearchMatch</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2026-09-15T10:52:34.206Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.877Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

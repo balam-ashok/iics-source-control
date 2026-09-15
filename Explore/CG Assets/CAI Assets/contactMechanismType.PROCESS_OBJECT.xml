@@ -1,8 +1,8 @@
 <aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
                    xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
    <types1:Item>
-      <types1:EntryId>x6Ru5V1FyuRZXDy-gt-401291-2026-06-17T06:10:08.373Z::po.xml</types1:EntryId>
-      <types1:Name>country-1</types1:Name>
+      <types1:EntryId>A4oDdvrTdtqSLlB-gt-401300-2026-06-17T06:10:08.423Z::po.xml</types1:EntryId>
+      <types1:Name>contactMechanismType</types1:Name>
       <types1:MimeType>application/xml+processobject</types1:MimeType>
       <types1:Description/>
       <types1:AppliesTo/>
@@ -16,26 +16,12 @@
       <types1:PublicationStatus>unpublished</types1:PublicationStatus>
       <types1:Entry>
          <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
-                        displayName="country"
+                        displayName="contactMechanismType"
                         isByCopy="true"
-                        name="country-1">
+                        name="contactMechanismType">
             <description/>
             <tags/>
             <detail>
-               <field label=""
-                      name="isoCode"
-                      nullable="true"
-                      required="false"
-                      type="string">
-                  <options/>
-               </field>
-               <field label=""
-                      name="iso3Code"
-                      nullable="true"
-                      required="false"
-                      type="string">
-                  <options/>
-               </field>
                <field label=""
                       name="name"
                       nullable="true"
@@ -60,8 +46,8 @@
             </detail>
          </processObject>
       </types1:Entry>
-      <types1:GUID>3yNVMvRse0UfgrS9k2x06k</types1:GUID>
-      <types1:DisplayName>country</types1:DisplayName>
+      <types1:GUID>akv38Qc9iUsdmJ8YjPKUsM</types1:GUID>
+      <types1:DisplayName>contactMechanismType</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2026-09-15T10:52:34.206Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.172Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>

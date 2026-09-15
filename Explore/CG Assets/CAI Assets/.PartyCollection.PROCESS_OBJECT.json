@@ -1,0 +1,67 @@
+{
+  "objectInfo" : {
+    "id" : "fJC74bEyaOpgaWGHAE6qIE",
+    "name" : "PartyCollection",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "uJxiggor3rp3yD7-gt-401342-2026-06-17T06:10:09.325Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-15T10:52:36.127Z",
+  "objectRefs" : [ {
+    "id" : "aRLcgaCkGRGiGwkomz3ZSI",
+    "name" : "partyStatus",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8Ok81V4AdypKwKB-gt-401324-2026-06-17T06:10:08.952Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  }, {
+    "id" : "7c3J9XHd5AKfX3LbhCiW2Z",
+    "name" : "partyType",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "zI1dq2ME9paabdq-gt-396329-2026-06-17T06:10:08.419Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/CAI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
