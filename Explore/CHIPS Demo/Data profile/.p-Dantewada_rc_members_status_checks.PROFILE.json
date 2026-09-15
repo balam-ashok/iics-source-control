@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "8PTGlp2Arc3jCXUNcey0Wj",
+    "name" : "p-Dantewada_rc_members_status_checks",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "86e4cecc-d319-4041-b700-8cc1c6c4e615"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-15T11:49:31.945Z",
+  "objectRefs" : [ {
+    "id" : "1y3nQcd5aQZhiqOOjhd3qx",
+    "name" : "Conn-CHIPS-Demo",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000003A"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
