@@ -1,0 +1,86 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>W90LK2D86CjqFVN-gt-1430368-2026-05-08T07:08:57.744Z::conn.xml</types1:EntryId>
+      <types1:Name>app-Conn-SFDC</types1:Name>
+      <types1:ParentFlowIds>xGAjBeE1KoJBUht-gt-1416585-2026-05-08T07:17:52.381Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>pooja</types1:CreatedBy>
+      <types1:CreationDate>2026-05-08T07:08:58Z</types1:CreationDate>
+      <types1:ModifiedBy>pooja</types1:ModifiedBy>
+      <types1:ModificationDate>2026-05-11T07:06:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>pooja</types1:PublishedBy>
+      <types1:PublicationDate>2026-05-11T07:06:55Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/app-Conn-SFDC/app-Conn-SFDC.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     GUID="3zf1cRmhWoifcFFZAmknc7"
+                     displayName="app-Conn-SFDC"
+                     label="app-Conn-SFDC"
+                     name="app-Conn-SFDC">
+            <description/>
+            <tags/>
+            <agent/>
+            <consumers>
+               <consumer enabled="true" name="Source" typeName="Source">
+                  <description>Use this event source to consume events from Salesforce streaming channels.</description>
+                  <attributes>
+                     <attribute encrypted="false" name="loadBalance" value="false"/>
+                     <attribute encrypted="false"
+                                name="Destination"
+                                value="/data/AccountChangeEvent"/>
+                     <attribute encrypted="false" name="Filter" value=""/>
+                     <attribute encrypted="false" name="fetchCDCMetadata" value="false"/>
+                  </attributes>
+               </consumer>
+            </consumers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="false"
+                           cloudOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="salesforcestreaming"
+                           uuid="1b1db754-672c-4b14-b300-a570b2f4cf33">
+               <description>Listen to Salesforce platform events, PushTopic queries and change events.</description>
+            </javaConnector>
+            <authentication type="$infa_oauth2-authorization_code">
+               <attributes>
+                  <attribute encrypted="false" name="grantType" value="authorization_code"/>
+                  <attribute encrypted="false" name="authProviderName" value="Salesforce"/>
+                  <attribute encrypted="false"
+                             name="authUrl"
+                             value="https://test.salesforce.com/services/oauth2/authorize"/>
+                  <attribute encrypted="false"
+                             name="tokenUrl"
+                             value="https://test.salesforce.com/services/oauth2/token"/>
+                  <attribute encrypted="false"
+                             name="clientId"
+                             value="3MVG9xOCXq4ID1uGLcy3DpgY477aDNaEoBicuOmIXFK5e3RLtboke4OmR0RanYBcnnFTUbV4iEJ7BW9PdXODd"/>
+                  <attribute encrypted="true" name="clientSecret" value=""/>
+                  <attribute encrypted="false"
+                             name="redirectUri"
+                             value="https://oauthcallback.rt.informaticacloud.com/oauthcallback/"/>
+                  <attribute encrypted="false" name="responseType" value="code"/>
+                  <attribute encrypted="false"
+                             name="otherParameters"
+                             value="display=popup; prompt=login consent"/>
+                  <attribute encrypted="false" name="sessionDuration" value="60"/>
+               </attributes>
+            </authentication>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>3zf1cRmhWoifcFFZAmknc7</types1:GUID>
+      <types1:DisplayName>app-Conn-SFDC</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T08:05:29.055Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

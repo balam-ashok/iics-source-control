@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "3zf1cRmhWoifcFFZAmknc7",
+    "name" : "app-Conn-SFDC",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "W90LK2D86CjqFVN-gt-1430368-2026-05-08T07:08:57.744Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-15T08:05:29.215Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
