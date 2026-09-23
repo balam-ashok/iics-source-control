@@ -1,0 +1,1597 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_BFSI_employee_orcl",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Employee -> cl_name",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "cl_name -> rs_fullName",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Employee -> rs_postalCode",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "rs_fullName -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "rs_postalCode -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Employee -> Expression"
+      },
+      {
+        "link" : "Employee -> rs_officialEmail",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "rs_officialEmail -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Expression -> Target"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T12:41:42.945Z",
+        "name" : "Employee",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "EMPLOYEEID"
+            },
+            "name" : "EMPLOYEEID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BRANCHID"
+            },
+            "name" : "BRANCHID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "FIRSTNAME"
+            },
+            "name" : "FIRSTNAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "MIDDLENAME"
+            },
+            "name" : "MIDDLENAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LASTNAME"
+            },
+            "name" : "LASTNAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "FULLNAME"
+            },
+            "name" : "FULLNAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESSLINE1"
+            },
+            "name" : "ADDRESSLINE1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESSLINE2"
+            },
+            "name" : "ADDRESSLINE2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESSLINE3"
+            },
+            "name" : "ADDRESSLINE3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 128,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CITY"
+            },
+            "name" : "CITY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "STATE"
+            },
+            "name" : "STATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "COUNTRY"
+            },
+            "name" : "COUNTRY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "POSTALCODE"
+            },
+            "name" : "POSTALCODE",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "STATUS"
+            },
+            "name" : "STATUS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CONTACTNUMBER"
+            },
+            "name" : "CONTACTNUMBER",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "OFFICIALEMAIL"
+            },
+            "name" : "OFFICIALEMAIL",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DESIGNATION"
+            },
+            "name" : "DESIGNATION",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DEPARTMENT"
+            },
+            "name" : "DEPARTMENT",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CREATEDBY"
+            },
+            "name" : "CREATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CREATEDDATE"
+            },
+            "name" : "CREATEDDATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "LASTUPDATEDBY"
+            },
+            "name" : "LASTUPDATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LASTUPDATEDDATE"
+            },
+            "name" : "LASTUPDATEDDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@503WgIMobCGlDr2LLvdnqy",
+          "connectionName" : "Conn-BM-Oracle-BFSI",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "BFSI/BFSI_EMPLOYEE_ORCL",
+            "dbSchema" : "BFSI",
+            "label" : "BFSI_EMPLOYEE_ORCL",
+            "objectName" : "BFSI_EMPLOYEE_ORCL",
+            "path" : "BFSI/BFSI_EMPLOYEE_ORCL",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "EMPLOYEEID",
+                "fieldType" : "CONNECTOR",
+                "label" : "EMPLOYEEID",
+                "nativeName" : "EMPLOYEEID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "BRANCHID",
+                "fieldType" : "CONNECTOR",
+                "label" : "BRANCHID",
+                "nativeName" : "BRANCHID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "FIRSTNAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "FIRSTNAME",
+                "nativeName" : "FIRSTNAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "MIDDLENAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "MIDDLENAME",
+                "nativeName" : "MIDDLENAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "LASTNAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "LASTNAME",
+                "nativeName" : "LASTNAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "FULLNAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "FULLNAME",
+                "nativeName" : "FULLNAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESSLINE1",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESSLINE1",
+                "nativeName" : "ADDRESSLINE1",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESSLINE2",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESSLINE2",
+                "nativeName" : "ADDRESSLINE2",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESSLINE3",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESSLINE3",
+                "nativeName" : "ADDRESSLINE3",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 128,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CITY",
+                "fieldType" : "CONNECTOR",
+                "label" : "CITY",
+                "nativeName" : "CITY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "STATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "STATE",
+                "nativeName" : "STATE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "COUNTRY",
+                "fieldType" : "CONNECTOR",
+                "label" : "COUNTRY",
+                "nativeName" : "COUNTRY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "POSTALCODE",
+                "fieldType" : "CONNECTOR",
+                "label" : "POSTALCODE",
+                "nativeName" : "POSTALCODE",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "STATUS",
+                "fieldType" : "CONNECTOR",
+                "label" : "STATUS",
+                "nativeName" : "STATUS",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CONTACTNUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "CONTACTNUMBER",
+                "nativeName" : "CONTACTNUMBER",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "OFFICIALEMAIL",
+                "fieldType" : "CONNECTOR",
+                "label" : "OFFICIALEMAIL",
+                "nativeName" : "OFFICIALEMAIL",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "DESIGNATION",
+                "fieldType" : "CONNECTOR",
+                "label" : "DESIGNATION",
+                "nativeName" : "DESIGNATION",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "DEPARTMENT",
+                "fieldType" : "CONNECTOR",
+                "label" : "DEPARTMENT",
+                "nativeName" : "DEPARTMENT",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CREATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "CREATEDBY",
+                "nativeName" : "CREATEDBY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CREATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "CREATEDDATE",
+                "nativeName" : "CREATEDDATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "LASTUPDATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "LASTUPDATEDBY",
+                "nativeName" : "LASTUPDATEDBY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "LASTUPDATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "LASTUPDATEDDATE",
+                "nativeName" : "LASTUPDATEDDATE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_EMPLOYEE_ORCL"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T12:48:14.841Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "rs_fullName",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "rs_fn_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "rs_postalCode",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "rs_pc_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "rs_officialEmail",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "rs_oe_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "DefaultGroup",
+                "precedingTxName" : "Employee",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "emp_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_sourcesystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'cbs'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SYSDATE"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_country_code",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'+91'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T12:46:13.320Z",
+        "name" : "rs_postalCode",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "POSTALCODE"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@ewKLTXod0qbdRM6fZYD3kj",
+        "ruleId" : "@ewKLTXod0qbdRM6fZYD3kj",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "POSTALCODE",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "postal_code"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "postal_code",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T12:43:39.948Z",
+        "name" : "cl_name",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "FIRSTNAME"
+                  },
+                  {
+                    "inputName" : "LASTNAME"
+                  },
+                  {
+                    "inputName" : "MIDDLENAME"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@3gCqA7R03OUlB2BskErCUx",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "BY_NAME"
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "FIRSTNAME",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "MIDDLENAME",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "LASTNAME",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "FIRSTNAME_cl_name",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "MIDDLENAME_cl_name",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "LASTNAME_cl_name",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T12:44:50.622Z",
+        "name" : "rs_fullName",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "FIRSTNAME_cl_name"
+                  },
+                  {
+                    "inputName" : "LASTNAME_cl_name"
+                  },
+                  {
+                    "inputName" : "MIDDLENAME_cl_name"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@7Bthfhmc3kBbqbwQIEvS6U",
+        "ruleId" : "@7Bthfhmc3kBbqbwQIEvS6U",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "FIRSTNAME_cl_name",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "firstName"
+                  }
+                },
+                {
+                  "name" : "MIDDLENAME_cl_name",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "middleName"
+                  }
+                },
+                {
+                  "name" : "LASTNAME_cl_name",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "lastName"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "firstName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            },
+            {
+              "name" : "middleName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            },
+            {
+              "name" : "lastName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "dq_fullName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T16:23:46.437Z",
+        "name" : "rs_officialEmail",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "OFFICIALEMAIL"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@5taiy5514R9cIoO7C56lih",
+        "ruleId" : "@5taiy5514R9cIoO7C56lih",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "OFFICIALEMAIL",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "official_email"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "official_email",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T16:26:46.639Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI_Employee(id=bfsi_employee)",
+            "label" : "Home/Custom Assets/Business Entities/BFSI_Employee(id=bfsi_employee)",
+            "objectName" : "BFSI_Employee(id=bfsi_employee)",
+            "path" : "Home/Custom Assets/Business Entities/BFSI_Employee(id=bfsi_employee)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Expression",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "o_sourcesystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:sourceSystem"
+                },
+                {
+                  "name" : "emp_EMPLOYEEID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:sourcePKey"
+                },
+                {
+                  "name" : "emp_EMPLOYEEID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:employeeId"
+                },
+                {
+                  "name" : "emp_BRANCHID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:branchId"
+                },
+                {
+                  "name" : "rs_fn_FIRSTNAME_cl_name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:firstName"
+                },
+                {
+                  "name" : "rs_fn_LASTNAME_cl_name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:lastName"
+                },
+                {
+                  "name" : "rs_fn_MIDDLENAME_cl_name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:middleName"
+                },
+                {
+                  "name" : "rs_fn_dq_fullName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:fullName"
+                },
+                {
+                  "name" : "emp_STATUS",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:status"
+                },
+                {
+                  "name" : "emp_DESIGNATION",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:designation"
+                },
+                {
+                  "name" : "emp_DEPARTMENT",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:department"
+                },
+                {
+                  "name" : "emp_CREATEDBY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:createdBy"
+                },
+                {
+                  "name" : "emp_LASTUPDATEDBY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "New_date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:createdDate"
+                },
+                {
+                  "name" : "New_date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:lastUpdatedDate"
+                },
+                {
+                  "name" : "emp_EMPLOYEEID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:sourcePKey"
+                },
+                {
+                  "name" : "emp_EMPLOYEEID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:parentId"
+                },
+                {
+                  "name" : "emp_EMPLOYEEID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:contactDetailsArray/json:contactDetails/json:sourcePKey"
+                },
+                {
+                  "name" : "emp_EMPLOYEEID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:contactDetailsArray/json:contactDetails/json:parentId"
+                },
+                {
+                  "name" : "emp_ADDRESSLINE1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:addressLine1"
+                },
+                {
+                  "name" : "emp_ADDRESSLINE2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:addressLine2"
+                },
+                {
+                  "name" : "emp_ADDRESSLINE3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 128,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:addressLine3"
+                },
+                {
+                  "name" : "emp_CITY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:city"
+                },
+                {
+                  "name" : "emp_COUNTRY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:country"
+                },
+                {
+                  "name" : "rs_pc_POSTALCODE",
+                  "platformType" : {
+                    "name" : "decimal"
+                  },
+                  "precision" : 38,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:postalCode"
+                },
+                {
+                  "name" : "emp_CONTACTNUMBER",
+                  "platformType" : {
+                    "name" : "decimal"
+                  },
+                  "precision" : 38,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:contactDetailsArray/json:contactDetails/json:contactNum"
+                },
+                {
+                  "name" : "rs_oe_OFFICIALEMAIL",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:contactDetailsArray/json:contactDetails/json:officialEmail"
+                },
+                {
+                  "name" : "New_country_code",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:contactDetailsArray/json:contactDetails/json:countryCode"
+                },
+                {
+                  "name" : "emp_STATE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Employee_id_bfsi_employee_/json:BFSI_Employee/json:addressDetailsArray/json:addressDetails/json:state"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:35 PDT"
+}

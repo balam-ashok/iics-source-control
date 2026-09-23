@@ -1,0 +1,225 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>HZCU7uMydx2CGeF-gt-860741-2026-04-27T13:24:49.546Z::pd.xml</types1:EntryId>
+      <types1:Name>ManageAsset_singleStep</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Manage Asset single Step Process</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ishita.j</types1:CreatedBy>
+      <types1:CreationDate>2026-04-27T13:24:50Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>ishita.j</types1:PublishedBy>
+      <types1:PublicationDate>2026-04-27T13:30:17Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ManageAsset_singleStep/ManageAsset_singleStep.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="6zNlHP26s4Sja23mJ7pZ2A"
+                  displayName="ManageAsset_singleStep"
+                  name="ManageAsset_singleStep"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Manage Asset single Step Process</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="Approver Input desc"
+                          name="Approver"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AeHumanTaskAssignment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="EditUser Input Desc"
+                          name="EditUser"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AeHumanTaskAssignment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="Asset name Input Desc"
+                          name="AssetName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="All Stakeholders Inout Desc"
+                          name="AllStakeholders"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AeHumanTaskAssignment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="locrr5n3" targetId="locrr5n2"/>
+               </start>
+               <milestone id="locrr5n2">
+                  <title>Milestone</title>
+                  <link id="loyfkg02" targetId="loyfkg01"/>
+               </milestone>
+               <humanTask id="loyfkg01">
+                  <title>SingleStep_Approver</title>
+                  <subflowGUID>6dYChPNa5e0dhDdOw4Pw8K</subflowGUID>
+                  <subflowPath>SingleStep_Approver</subflowPath>
+                  <peopleActivityName>SingleStep_Approver</peopleActivityName>
+                  <asset>
+                     <GUID>6dYChPNa5e0dhDdOw4Pw8K</GUID>
+                     <taskName>SingleStep_Approver</taskName>
+                  </asset>
+                  <input>
+                     <field name="AssetName" source="constant" updatable="true">{$input.AssetName}</field>
+                  </input>
+                  <outputDef>
+                     <field name="taskOutcome" type="string"/>
+                  </outputDef>
+                  <overrides>
+                     <assignments>
+                        <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd">
+                           <include source="field">input.Approver</include>
+                        </potentialOwners>
+                        <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                      source="field">input.AllStakeholders</stakeholders>
+                     </assignments>
+                  </overrides>
+                  <config>
+                     <disableOutcomeLinksGeneration>true</disableOutcomeLinksGeneration>
+                  </config>
+                  <link id="loyfkg03" targetId="locrun73"/>
+               </humanTask>
+               <container id="locrun73" type="exclusive">
+                  <title>Approver</title>
+                  <flow id="locrun77">
+                     <link id="locrun78" targetId="locrun73" type="containerLink"/>
+                  </flow>
+                  <flow id="locrun7a">
+                     <link id="locrun7b" targetId="locrun73" type="containerLink"/>
+                  </flow>
+                  <flow id="locrun8v">
+                     <humanTask id="loyfkg3g">
+                        <title>SingleStep_EditUser</title>
+                        <subflowGUID>2lUjXTO8MXSirF4RyRJ1kG</subflowGUID>
+                        <subflowPath>SingleStep_EditUser</subflowPath>
+                        <peopleActivityName>SingleStep_EditUser</peopleActivityName>
+                        <asset>
+                           <GUID>2lUjXTO8MXSirF4RyRJ1kG</GUID>
+                           <taskName>SingleStep_EditUser</taskName>
+                        </asset>
+                        <input>
+                           <field name="AssetName" source="constant" updatable="true">{$input.AssetName}</field>
+                        </input>
+                        <outputDef>
+                           <field name="taskOutcome" type="string"/>
+                        </outputDef>
+                        <overrides>
+                           <assignments>
+                              <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd">
+                                 <include source="field">input.EditUser</include>
+                              </potentialOwners>
+                              <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                            source="field">input.AllStakeholders</stakeholders>
+                           </assignments>
+                        </overrides>
+                        <config>
+                           <disableOutcomeLinksGeneration>true</disableOutcomeLinksGeneration>
+                        </config>
+                        <link id="loyfkg3h" targetId="locrunai"/>
+                     </humanTask>
+                     <container id="locrunai" type="exclusive">
+                        <title>Task Outcome</title>
+                        <flow id="locrunal">
+                           <jumpTo id="locruncb">
+                              <link id="locruncc" targetId="loyfkg01"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="locrunao">
+                           <link id="locrunap" targetId="locrunai" type="containerLink"/>
+                        </flow>
+                        <flow id="locrunby">
+                           <link id="locrunbz" targetId="locrunai" type="containerLink"/>
+                        </flow>
+                        <link id="locrunak" targetId="locrunal" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.taskOutcome}</arg>
+                                 <arg name="right">Resubmit</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="locrunan" targetId="locrunao" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.taskOutcome}</arg>
+                                 <arg name="right">Discard</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="locrunbx" targetId="locrunby" type="containerLink"/>
+                     </container>
+                     <link id="locrun8w" targetId="locrun73" type="containerLink"/>
+                  </flow>
+                  <flow id="locrun8x">
+                     <link id="locrun8y" targetId="locrun73" type="containerLink"/>
+                  </flow>
+                  <link id="locrun76" targetId="locrun77" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.taskOutcome}</arg>
+                           <arg name="right">Approve</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="locrun79" targetId="locrun7a" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.taskOutcome}</arg>
+                           <arg name="right">Reject</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="locrun8t" targetId="locrun8v" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.taskOutcome}</arg>
+                           <arg name="right">Return</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="locrun8u" targetId="locrun8x" type="containerLink"/>
+                  <link id="locrun75" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>6zNlHP26s4Sja23mJ7pZ2A</types1:GUID>
+      <types1:DisplayName>ManageAsset_singleStep</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-23T08:34:44.212Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

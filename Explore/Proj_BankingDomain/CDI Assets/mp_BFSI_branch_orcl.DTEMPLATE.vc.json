@@ -1,0 +1,1376 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_BFSI_branch_orcl",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "rs_postalCode -> Expression2",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "rs_ifscCode -> Expression2",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Branch -> rs_postalCode",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Branch -> rs_ifscCode",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Branch -> Expression2"
+      },
+      {
+        "link" : "Branch -> rs_emailId",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "rs_emailId -> Expression2",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Expression2 -> Target"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-30T04:58:30.445Z",
+        "name" : "Expression2",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "rs_postalCode",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "rs_pc_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "mask_contactNo",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "m_cn_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "rs_ifscCode",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "rs_ic_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "DefaultGroup",
+                "precedingTxName" : "Branch",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "br_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_sourcesystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'cbs'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SYSDATE"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_country_code",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'+91'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-30T04:59:52.045Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI_Branch(id=bfsi_branch)",
+            "label" : "Home/Custom Assets/Business Entities/BFSI_Branch(id=bfsi_branch)",
+            "objectName" : "BFSI_Branch(id=bfsi_branch)",
+            "path" : "Home/Custom Assets/Business Entities/BFSI_Branch(id=bfsi_branch)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Expression2",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "o_sourcesystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:sourceSystem"
+                },
+                {
+                  "name" : "br_BRANCHID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:sourcePKey"
+                },
+                {
+                  "name" : "br_BRANCHID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:branchId"
+                },
+                {
+                  "name" : "rs_ic_IFSCCODE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:ifscCode"
+                },
+                {
+                  "name" : "br_BRANCHNAME",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:branchName"
+                },
+                {
+                  "name" : "br_STATUS",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:status"
+                },
+                {
+                  "name" : "br_REGION",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:region"
+                },
+                {
+                  "name" : "br_CREATEDBY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:createdBy"
+                },
+                {
+                  "name" : "br_LASTUPDATEDBY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "New_date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:createdDate"
+                },
+                {
+                  "name" : "New_date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:lastUpdatedDate"
+                },
+                {
+                  "name" : "br_OPENEDDATE",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:opened_Date"
+                },
+                {
+                  "name" : "br_BANKNAME",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:bankName"
+                },
+                {
+                  "name" : "br_BRANCHID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:sourcePKey"
+                },
+                {
+                  "name" : "br_BRANCHID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:parentId"
+                },
+                {
+                  "name" : "br_BRANCHID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:contactDetailsArray/json:contactDetails/json:sourcePKey"
+                },
+                {
+                  "name" : "br_BRANCHID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:contactDetailsArray/json:contactDetails/json:parentId"
+                },
+                {
+                  "name" : "EMAILID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:contactDetailsArray/json:contactDetails/json:emailId"
+                },
+                {
+                  "name" : "br_CONTACTNO",
+                  "platformType" : {
+                    "name" : "decimal"
+                  },
+                  "precision" : 38,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:contactDetailsArray/json:contactDetails/json:contactNum"
+                },
+                {
+                  "name" : "br_ADDRESSLINE1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 128,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:addressLine1"
+                },
+                {
+                  "name" : "br_ADDRESSLINE2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:addressLine2"
+                },
+                {
+                  "name" : "br_ADDRESSLINE3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:addressLine3"
+                },
+                {
+                  "name" : "br_CITY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:city"
+                },
+                {
+                  "name" : "br_STATE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:state"
+                },
+                {
+                  "name" : "br_COUNTRY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:country"
+                },
+                {
+                  "name" : "rs_pc_POSTALCODE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 38,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:addressDetailsArray/json:addressDetails/json:postalCode"
+                },
+                {
+                  "name" : "New_country_code",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Branch_id_bfsi_branch_/json:BFSI_Branch/json:contactDetailsArray/json:contactDetails/json:countryCode"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-09T04:39:27.013Z",
+        "name" : "rs_postalCode",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "POSTALCODE"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@ewKLTXod0qbdRM6fZYD3kj",
+        "ruleId" : "@ewKLTXod0qbdRM6fZYD3kj",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "POSTALCODE",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "postal_code"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "postal_code",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-09T04:43:25.600Z",
+        "name" : "rs_ifscCode",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "IFSCCODE"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@9jtxnM3L5mLbm2Nv28NZK7",
+        "ruleId" : "@9jtxnM3L5mLbm2Nv28NZK7",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "IFSCCODE",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "ifsc_code"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "ifsc_code",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-09T07:17:16.079Z",
+        "name" : "Branch",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "BRANCHID"
+            },
+            "name" : "BRANCHID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BANKNAME"
+            },
+            "name" : "BANKNAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "IFSCCODE"
+            },
+            "name" : "IFSCCODE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BRANCHNAME"
+            },
+            "name" : "BRANCHNAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESSLINE1"
+            },
+            "name" : "ADDRESSLINE1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 128,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESSLINE2"
+            },
+            "name" : "ADDRESSLINE2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESSLINE3"
+            },
+            "name" : "ADDRESSLINE3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CITY"
+            },
+            "name" : "CITY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "STATE"
+            },
+            "name" : "STATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "COUNTRY"
+            },
+            "name" : "COUNTRY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "POSTALCODE"
+            },
+            "name" : "POSTALCODE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "OPENEDDATE"
+            },
+            "name" : "OPENEDDATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "CONTACTNO"
+            },
+            "name" : "CONTACTNO",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "STATUS"
+            },
+            "name" : "STATUS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "REGION"
+            },
+            "name" : "REGION",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CREATEDBY"
+            },
+            "name" : "CREATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CREATEDDATE"
+            },
+            "name" : "CREATEDDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LASTUPDATEDBY"
+            },
+            "name" : "LASTUPDATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LASTUPDATEDDATE"
+            },
+            "name" : "LASTUPDATEDDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EMAILID"
+            },
+            "name" : "EMAILID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@503WgIMobCGlDr2LLvdnqy",
+          "connectionName" : "Conn-BM-Oracle-BFSI",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "BFSI/BFSI_BRANCH_ORCL",
+            "dbSchema" : "BFSI",
+            "label" : "BFSI_BRANCH_ORCL",
+            "objectName" : "BFSI_BRANCH_ORCL",
+            "path" : "BFSI/BFSI_BRANCH_ORCL",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "BRANCHID",
+                "fieldType" : "CONNECTOR",
+                "label" : "BRANCHID",
+                "nativeName" : "BRANCHID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "BANKNAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "BANKNAME",
+                "nativeName" : "BANKNAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "IFSCCODE",
+                "fieldType" : "CONNECTOR",
+                "label" : "IFSCCODE",
+                "nativeName" : "IFSCCODE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "BRANCHNAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "BRANCHNAME",
+                "nativeName" : "BRANCHNAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESSLINE1",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESSLINE1",
+                "nativeName" : "ADDRESSLINE1",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 128,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESSLINE2",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESSLINE2",
+                "nativeName" : "ADDRESSLINE2",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESSLINE3",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESSLINE3",
+                "nativeName" : "ADDRESSLINE3",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CITY",
+                "fieldType" : "CONNECTOR",
+                "label" : "CITY",
+                "nativeName" : "CITY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "STATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "STATE",
+                "nativeName" : "STATE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "COUNTRY",
+                "fieldType" : "CONNECTOR",
+                "label" : "COUNTRY",
+                "nativeName" : "COUNTRY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "POSTALCODE",
+                "fieldType" : "CONNECTOR",
+                "label" : "POSTALCODE",
+                "nativeName" : "POSTALCODE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "OPENEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "OPENEDDATE",
+                "nativeName" : "OPENEDDATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CONTACTNO",
+                "fieldType" : "CONNECTOR",
+                "label" : "CONTACTNO",
+                "nativeName" : "CONTACTNO",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "STATUS",
+                "fieldType" : "CONNECTOR",
+                "label" : "STATUS",
+                "nativeName" : "STATUS",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "REGION",
+                "fieldType" : "CONNECTOR",
+                "label" : "REGION",
+                "nativeName" : "REGION",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CREATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "CREATEDBY",
+                "nativeName" : "CREATEDBY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CREATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "CREATEDDATE",
+                "nativeName" : "CREATEDDATE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "LASTUPDATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "LASTUPDATEDBY",
+                "nativeName" : "LASTUPDATEDBY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "LASTUPDATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "LASTUPDATEDDATE",
+                "nativeName" : "LASTUPDATEDDATE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "EMAILID",
+                "fieldType" : "CONNECTOR",
+                "label" : "EMAILID",
+                "nativeName" : "EMAILID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_BRANCH_ORCL"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-13T10:07:12.167Z",
+        "name" : "rs_emailId",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "EMAILID"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@5taiy5514R9cIoO7C56lih",
+        "ruleId" : "@5taiy5514R9cIoO7C56lih",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "EMAILID",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "official_email"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "official_email",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:35 PDT"
+}

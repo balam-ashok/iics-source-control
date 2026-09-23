@@ -1,0 +1,1188 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping5",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "DataMasking -> Target",
+        "groupLink" : "OutputGroup -> DefaultGroup"
+      },
+      {
+        "link" : "Source -> DataMasking",
+        "groupLink" : "DefaultGroup -> InputGroup"
+      },
+      {
+        "link" : "Source1 -> Target1"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-06T07:33:09.767Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "ACCOUNTID"
+            },
+            "name" : "ACCOUNTID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CUSTOMERID"
+            },
+            "name" : "CUSTOMERID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ACCOUNTTYPE"
+            },
+            "name" : "ACCOUNTTYPE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ACCOUNTNUMBER"
+            },
+            "name" : "ACCOUNTNUMBER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "STATUS"
+            },
+            "name" : "STATUS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BALANCE"
+            },
+            "name" : "BALANCE",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "INTERESTRATE"
+            },
+            "name" : "INTERESTRATE",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 1
+          },
+          {
+            "adapterField" : {
+              "name" : "OPENDATE"
+            },
+            "name" : "OPENDATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "CLOSINGDATE"
+            },
+            "name" : "CLOSINGDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CURRENCY"
+            },
+            "name" : "CURRENCY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "OVERDRAFTLIMIT"
+            },
+            "name" : "OVERDRAFTLIMIT",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CREATEDBY"
+            },
+            "name" : "CREATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CREATEDDATE"
+            },
+            "name" : "CREATEDDATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "LASTUPDATEDBY"
+            },
+            "name" : "LASTUPDATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LASTUPDATEDDATE"
+            },
+            "name" : "LASTUPDATEDDATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@503WgIMobCGlDr2LLvdnqy",
+          "connectionName" : "Conn-BM-Oracle-BFSI",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "BFSI/BFSI_ACCOUNT_ORCL",
+            "dbSchema" : "BFSI",
+            "label" : "BFSI_ACCOUNT_ORCL",
+            "objectName" : "BFSI_ACCOUNT_ORCL",
+            "path" : "BFSI/BFSI_ACCOUNT_ORCL",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "ACCOUNTID",
+                "fieldType" : "CONNECTOR",
+                "label" : "ACCOUNTID",
+                "nativeName" : "ACCOUNTID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CUSTOMERID",
+                "fieldType" : "CONNECTOR",
+                "label" : "CUSTOMERID",
+                "nativeName" : "CUSTOMERID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ACCOUNTTYPE",
+                "fieldType" : "CONNECTOR",
+                "label" : "ACCOUNTTYPE",
+                "nativeName" : "ACCOUNTTYPE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "ACCOUNTNUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "ACCOUNTNUMBER",
+                "nativeName" : "ACCOUNTNUMBER",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "STATUS",
+                "fieldType" : "CONNECTOR",
+                "label" : "STATUS",
+                "nativeName" : "STATUS",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "BALANCE",
+                "fieldType" : "CONNECTOR",
+                "label" : "BALANCE",
+                "nativeName" : "BALANCE",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "INTERESTRATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "INTERESTRATE",
+                "nativeName" : "INTERESTRATE",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 1,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "OPENDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "OPENDATE",
+                "nativeName" : "OPENDATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CLOSINGDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "CLOSINGDATE",
+                "nativeName" : "CLOSINGDATE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CURRENCY",
+                "fieldType" : "CONNECTOR",
+                "label" : "CURRENCY",
+                "nativeName" : "CURRENCY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "OVERDRAFTLIMIT",
+                "fieldType" : "CONNECTOR",
+                "label" : "OVERDRAFTLIMIT",
+                "nativeName" : "OVERDRAFTLIMIT",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CREATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "CREATEDBY",
+                "nativeName" : "CREATEDBY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "CREATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "CREATEDDATE",
+                "nativeName" : "CREATEDDATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "LASTUPDATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "LASTUPDATEDBY",
+                "nativeName" : "LASTUPDATEDBY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              },
+              {
+                "name" : "LASTUPDATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "LASTUPDATEDDATE",
+                "nativeName" : "LASTUPDATEDDATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI/BFSI_ACCOUNT_ORCL"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-06T07:33:09.777Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@6VPVtdr67e6d5JONaJ1ySu",
+          "connectionName" : "conn_BFSI_ Flatfile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "BFSI_Ac_masking",
+            "label" : "BFSI_Ac_masking",
+            "path" : "BFSI_Ac_masking",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "true",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-06T07:34:16.383Z",
+        "name" : "DataMasking",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "InputGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "OutputGroup",
+            "output" : "true"
+          }
+        ],
+        "dmoMode" : "SIMPLE",
+        "locale" : "en_US",
+        "maskingEntries" : [
+          {
+            "maskingType" : "Random",
+            "pcType" : "string",
+            "precision" : "26",
+            "referenceField" : "ACCOUNTNUMBER",
+            "scale" : "0",
+            "maskingData" : [
+              {
+                "data" : "FALSE",
+                "param" : "overrideAllowed"
+              },
+              {
+                "data" : "FALSE",
+                "param" : "useRange"
+              },
+              {
+                "data" : "TRUE",
+                "param" : "useMaskFormat"
+              },
+              {
+                "data" : "R",
+                "param" : "maskFormat"
+              },
+              {
+                "data" : "TRUE",
+                "param" : "useSrcFilter"
+              },
+              {
+                "data" : "Mask Only",
+                "param" : "srcFilterOption"
+              },
+              {
+                "data" : "********",
+                "param" : "srcFilterStr"
+              },
+              {
+                "data" : "TRUE",
+                "param" : "useTargetFilter"
+              },
+              {
+                "data" : "Use Only",
+                "param" : "targetFilterOption"
+              },
+              {
+                "data" : "********",
+                "param" : "targetFilterStr"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-06T08:18:10.251Z",
+        "name" : "Source1",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "out_ACCOUNTID"
+            },
+            "name" : "out_ACCOUNTID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_CUSTOMERID"
+            },
+            "name" : "out_CUSTOMERID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_ACCOUNTTYPE"
+            },
+            "name" : "out_ACCOUNTTYPE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_ACCOUNTNUMBER"
+            },
+            "name" : "out_ACCOUNTNUMBER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_STATUS"
+            },
+            "name" : "out_STATUS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_BALANCE"
+            },
+            "name" : "out_BALANCE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_INTERESTRATE"
+            },
+            "name" : "out_INTERESTRATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_OPENDATE"
+            },
+            "name" : "out_OPENDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_CLOSINGDATE"
+            },
+            "name" : "out_CLOSINGDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_CURRENCY"
+            },
+            "name" : "out_CURRENCY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_OVERDRAFTLIMIT"
+            },
+            "name" : "out_OVERDRAFTLIMIT",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_CREATEDBY"
+            },
+            "name" : "out_CREATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_CREATEDDATE"
+            },
+            "name" : "out_CREATEDDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_LASTUPDATEDBY"
+            },
+            "name" : "out_LASTUPDATEDBY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "out_LASTUPDATEDDATE"
+            },
+            "name" : "out_LASTUPDATEDDATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@6VPVtdr67e6d5JONaJ1ySu",
+          "connectionName" : "conn_BFSI_ Flatfile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "BFSI_Ac_masking",
+            "label" : "BFSI_Ac_masking",
+            "objectName" : "BFSI_Ac_masking",
+            "path" : "BFSI_Ac_masking",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "out_ACCOUNTID",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_ACCOUNTID",
+                "nativeName" : "out_ACCOUNTID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_CUSTOMERID",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_CUSTOMERID",
+                "nativeName" : "out_CUSTOMERID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_ACCOUNTTYPE",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_ACCOUNTTYPE",
+                "nativeName" : "out_ACCOUNTTYPE",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_ACCOUNTNUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_ACCOUNTNUMBER",
+                "nativeName" : "out_ACCOUNTNUMBER",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_STATUS",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_STATUS",
+                "nativeName" : "out_STATUS",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_BALANCE",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_BALANCE",
+                "nativeName" : "out_BALANCE",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_INTERESTRATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_INTERESTRATE",
+                "nativeName" : "out_INTERESTRATE",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_OPENDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_OPENDATE",
+                "nativeName" : "out_OPENDATE",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_CLOSINGDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_CLOSINGDATE",
+                "nativeName" : "out_CLOSINGDATE",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_CURRENCY",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_CURRENCY",
+                "nativeName" : "out_CURRENCY",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_OVERDRAFTLIMIT",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_OVERDRAFTLIMIT",
+                "nativeName" : "out_OVERDRAFTLIMIT",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_CREATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_CREATEDBY",
+                "nativeName" : "out_CREATEDBY",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_CREATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_CREATEDDATE",
+                "nativeName" : "out_CREATEDDATE",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_LASTUPDATEDBY",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_LASTUPDATEDBY",
+                "nativeName" : "out_LASTUPDATEDBY",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              },
+              {
+                "name" : "out_LASTUPDATEDDATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "out_LASTUPDATEDDATE",
+                "nativeName" : "out_LASTUPDATEDDATE",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Ac_masking"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-06T08:18:47.945Z",
+        "name" : "Target1",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "useDynamicFileName" : "false",
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:36 PDT"
+}
