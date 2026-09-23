@@ -1,0 +1,80 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>2QX3cjk91pqrzYL-gt-865827-2026-04-27T13:24:48.864Z::ht.xml</types1:EntryId>
+      <types1:Name>ThreeStep_FinalApprover</types1:Name>
+      <types1:MimeType>application/xml+humantask</types1:MimeType>
+      <types1:Description>Three Step Final Approve HT Desc</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ishita.j</types1:CreatedBy>
+      <types1:CreationDate>2026-04-27T13:24:49Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <HumanTask xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskAsset.xsd"
+                    xmlns:core="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                    xmlns:htc="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                    displayName="ThreeStep_FinalApprover"
+                    name="ThreeStep_FinalApprover">
+            <description>Three Step Final Approve HT Desc</description>
+            <priority source="constant">1</priority>
+            <skippable source="constant">false</skippable>
+            <origin source="constant"/>
+            <interface>
+               <input>
+                  <field name="AssetName" required="true" type="string">
+                     <description>AssetName Desc</description>
+                  </field>
+               </input>
+               <outcomes>
+                  <outcome>
+                     <id>outcomes-1697119277104</id>
+                     <value>Approve</value>
+                     <label/>
+                     <description>Approve Task Desc</description>
+                  </outcome>
+                  <outcome>
+                     <id>outcomes-1697119277521</id>
+                     <value>Reject</value>
+                     <label/>
+                     <description>Reject Task Desc</description>
+                  </outcome>
+                  <outcome>
+                     <id>outcomes-1697119277969</id>
+                     <value>Return</value>
+                     <label/>
+                     <description>Return Task Desc</description>
+                  </outcome>
+               </outcomes>
+            </interface>
+            <presentation>
+               <displayName source="constant">Three Step Final Approver</displayName>
+               <subject source="constant">Final Approver | {$AssetName}</subject>
+               <description source="constant">Three Step Final Approver HT Desc</description>
+            </presentation>
+            <assignments>
+               <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                canOverwrite="true">
+                  <include/>
+                  <exclude/>
+               </potentialOwners>
+               <administrators xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                               canOverwrite="true"
+                               source="constant">
+                  <user>cwf_mkg_final_1</user>
+               </administrators>
+               <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                             canOverwrite="true"
+                             source="constant"/>
+            </assignments>
+         </HumanTask>
+      </types1:Entry>
+      <types1:GUID>gvri7kKiG4Kj6a1AuClxGq</types1:GUID>
+      <types1:DisplayName>ThreeStep_FinalApprover</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-23T08:34:34.123Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

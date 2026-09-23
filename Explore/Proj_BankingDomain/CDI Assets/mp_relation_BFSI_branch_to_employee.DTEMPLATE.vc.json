@@ -1,0 +1,653 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_relation_BFSI_branch_to_employee",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Expression"
+      },
+      {
+        "link" : "Expression -> Target1"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T13:06:29.926Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "Pkey"
+            },
+            "name" : "Pkey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "fromsourcePKey"
+            },
+            "name" : "fromsourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "frombusinessId"
+            },
+            "name" : "frombusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "fromsourceSystem"
+            },
+            "name" : "fromsourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "tosourcePKey"
+            },
+            "name" : "tosourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "tobusinessId"
+            },
+            "name" : "tobusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "tosourceSystem"
+            },
+            "name" : "tosourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@6VPVtdr67e6d5JONaJ1ySu",
+          "connectionName" : "conn_BFSI_ Flatfile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Relation_Branch_employee.csv",
+            "label" : "Relation_Branch_employee.csv",
+            "objectName" : "Relation_Branch_employee.csv",
+            "path" : "Relation_Branch_employee.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "Pkey",
+                "fieldType" : "CONNECTOR",
+                "label" : "Pkey",
+                "nativeName" : "Pkey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Relation_Branch_employee.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "fromsourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "fromsourcePKey",
+                "nativeName" : "fromsourcePKey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Relation_Branch_employee.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "frombusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "frombusinessId",
+                "nativeName" : "frombusinessId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Relation_Branch_employee.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "fromsourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "fromsourceSystem",
+                "nativeName" : "fromsourceSystem",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Relation_Branch_employee.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "tosourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "tosourcePKey",
+                "nativeName" : "tosourcePKey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Relation_Branch_employee.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "tobusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "tobusinessId",
+                "nativeName" : "tobusinessId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Relation_Branch_employee.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "tosourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "tosourceSystem",
+                "nativeName" : "tosourceSystem",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Relation_Branch_employee.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T12:24:16.376Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'crm'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "fromBE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'BFSI_Branch'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "toBE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'BFSI_Employee'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "fromBEId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'bfsi_branch'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "toBEId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'bfsi_employee'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "relName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'Branch_and_Employee'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "relId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'branch_and_employee'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'active'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T11:44:50.382Z",
+        "name" : "Target1",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Relationships/Branch_and_Employee(id=branch_and_employee)",
+            "label" : "Home/Custom Assets/Relationships/Branch_and_Employee(id=branch_and_employee)",
+            "objectName" : "Branch_and_Employee(id=branch_and_employee)",
+            "path" : "Home/Custom Assets/Relationships/Branch_and_Employee(id=branch_and_employee)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Expression",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "Pkey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:sourcePKey"
+                },
+                {
+                  "name" : "sourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:sourceSystem"
+                },
+                {
+                  "name" : "fromBE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_from/json:businessEntity/json:name"
+                },
+                {
+                  "name" : "fromBEId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_from/json:businessEntity/json:id"
+                },
+                {
+                  "name" : "fromsourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_from/json:id/json:sourcePKey"
+                },
+                {
+                  "name" : "fromsourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_from/json:id/json:sourceSystem"
+                },
+                {
+                  "name" : "frombusinessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_from/json:id/json:businessId"
+                },
+                {
+                  "name" : "toBE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_to/json:businessEntity/json:name"
+                },
+                {
+                  "name" : "toBEId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_to/json:businessEntity/json:id"
+                },
+                {
+                  "name" : "tosourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_to/json:id/json:sourcePKey"
+                },
+                {
+                  "name" : "tobusinessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_to/json:id/json:businessId"
+                },
+                {
+                  "name" : "tosourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:Branch_and_Employee/json:_to/json:id/json:sourceSystem"
+                },
+                {
+                  "name" : "relId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:relationship/json:id"
+                },
+                {
+                  "name" : "relName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Branch_and_Employee_id_branch_and_employee_/json:relationship/json:name"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:35 PDT"
+}

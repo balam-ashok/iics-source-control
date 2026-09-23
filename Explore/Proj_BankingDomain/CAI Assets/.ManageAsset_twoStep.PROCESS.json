@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "hGoenXkRnsOdGLV87scIwL",
+    "name" : "ManageAsset_twoStep",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "XSTu0kMVX3cjk91-gt-860761-2026-04-27T13:24:49.798Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Manage Asset two Step Process",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T08:34:48.173Z",
+  "objectRefs" : [ {
+    "id" : "fZ0hf2lRzgjdzFaHBV3bIG",
+    "name" : "TwoStep_EditUser",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "abdreAFLK2D86Cj-gt-860723-2026-04-27T13:24:49.015Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Two Step EditUser HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  }, {
+    "id" : "6NNq422p92djgyNvfX7eEI",
+    "name" : "TwoStep_FinalApprover",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "22Cv2jop81V4Ady-gt-860699-2026-04-27T13:24:48.865Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Two Step Final Approve HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  }, {
+    "id" : "8qi1T4MG0uXiV8C8kvd1w3",
+    "name" : "TwoStep_FirstApprover",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eAeFz7M1reAFLK2-gt-860731-2026-04-27T13:24:49.065Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Two Step First Approve HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,1796 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_BFSI_corporate_SQL",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Cleanse",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Cleanse -> RS_GST",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "RS_duns -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "RS_GST -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Cleanse -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Cleanse -> RS_State",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Exp_dunsNumber -> RS_duns",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Cleanse -> Exp_dunsNumber",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Expression -> Target"
+      },
+      {
+        "link" : "RS_State -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T14:47:13.501Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "corporateId"
+            },
+            "name" : "corporateId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "companyName"
+            },
+            "name" : "companyName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "industryType"
+            },
+            "name" : "industryType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "organizationType"
+            },
+            "name" : "organizationType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "yearOfIncorporation"
+            },
+            "name" : "yearOfIncorporation",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "companySize"
+            },
+            "name" : "companySize",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "annualTurnover"
+            },
+            "name" : "annualTurnover",
+            "platformType" : {
+              "name" : "double"
+            },
+            "precision" : 15,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "riskRating"
+            },
+            "name" : "riskRating",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "kycCompletionStatus"
+            },
+            "name" : "kycCompletionStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "gstNumber"
+            },
+            "name" : "gstNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "cinNumber"
+            },
+            "name" : "cinNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "dunsNumber"
+            },
+            "name" : "dunsNumber",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine1"
+            },
+            "name" : "addressLine1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine2"
+            },
+            "name" : "addressLine2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine3"
+            },
+            "name" : "addressLine3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "city"
+            },
+            "name" : "city",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pinCode"
+            },
+            "name" : "pinCode",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "contactNumber"
+            },
+            "name" : "contactNumber",
+            "platformType" : {
+              "name" : "bigint"
+            },
+            "precision" : 19,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "country"
+            },
+            "name" : "country",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "countryCode"
+            },
+            "name" : "countryCode",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "contact"
+            },
+            "name" : "contact",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdDate"
+            },
+            "name" : "createdDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedBy"
+            },
+            "name" : "lastUpdatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedDate"
+            },
+            "name" : "lastUpdatedDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@bPnYizB7GSnltLgjnW3ZUp",
+          "connectionName" : "conn-BFSI-SQL",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dbo/BFSI_Corporate_SQL",
+            "dbSchema" : "dbo",
+            "label" : "BFSI_Corporate_SQL",
+            "objectName" : "BFSI_Corporate_SQL",
+            "path" : "dbo/BFSI_Corporate_SQL",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "corporateId",
+                "fieldType" : "CONNECTOR",
+                "label" : "corporateId",
+                "nativeName" : "corporateId",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "companyName",
+                "fieldType" : "CONNECTOR",
+                "label" : "companyName",
+                "nativeName" : "companyName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "industryType",
+                "fieldType" : "CONNECTOR",
+                "label" : "industryType",
+                "nativeName" : "industryType",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "organizationType",
+                "fieldType" : "CONNECTOR",
+                "label" : "organizationType",
+                "nativeName" : "organizationType",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "yearOfIncorporation",
+                "fieldType" : "CONNECTOR",
+                "label" : "yearOfIncorporation",
+                "nativeName" : "yearOfIncorporation",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "companySize",
+                "fieldType" : "CONNECTOR",
+                "label" : "companySize",
+                "nativeName" : "companySize",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "annualTurnover",
+                "fieldType" : "CONNECTOR",
+                "label" : "annualTurnover",
+                "nativeName" : "annualTurnover",
+                "nativeType" : "float",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "riskRating",
+                "fieldType" : "CONNECTOR",
+                "label" : "riskRating",
+                "nativeName" : "riskRating",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "kycCompletionStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "kycCompletionStatus",
+                "nativeName" : "kycCompletionStatus",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "gstNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "gstNumber",
+                "nativeName" : "gstNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "cinNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "cinNumber",
+                "nativeName" : "cinNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "dunsNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "dunsNumber",
+                "nativeName" : "dunsNumber",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine1",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine1",
+                "nativeName" : "addressLine1",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine2",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine2",
+                "nativeName" : "addressLine2",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine3",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine3",
+                "nativeName" : "addressLine3",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "city",
+                "fieldType" : "CONNECTOR",
+                "label" : "city",
+                "nativeName" : "city",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "pinCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "pinCode",
+                "nativeName" : "pinCode",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "contactNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "contactNumber",
+                "nativeName" : "contactNumber",
+                "nativeType" : "bigint",
+                "original" : "false",
+                "precision" : 19,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "country",
+                "fieldType" : "CONNECTOR",
+                "label" : "country",
+                "nativeName" : "country",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "countryCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "countryCode",
+                "nativeName" : "countryCode",
+                "nativeType" : "tinyint",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "contact",
+                "fieldType" : "CONNECTOR",
+                "label" : "contact",
+                "nativeName" : "contact",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "createdDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdDate",
+                "nativeName" : "createdDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedBy",
+                "nativeName" : "lastUpdatedBy",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedDate",
+                "nativeName" : "lastUpdatedDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/BFSI_Corporate_SQL"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T14:47:13.503Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "RS_State",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "state_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI_Corporate(id=bfsi_corporate)",
+            "label" : "Home/Custom Assets/Business Entities/BFSI_Corporate(id=bfsi_corporate)",
+            "objectName" : "BFSI_Corporate(id=bfsi_corporate)",
+            "path" : "Home/Custom Assets/Business Entities/BFSI_Corporate(id=bfsi_corporate)",
+            "retainMetadata" : "false",
+            "objectAttributes" : [
+              {
+                "name" : "allowMany",
+                "value" : "false"
+              },
+              {
+                "name" : "recordType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "dataType",
+                "value" : "Object"
+              },
+              {
+                "name" : "solutionName",
+                "value" : "CUSTOM"
+              },
+              {
+                "name" : "storageType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "guid",
+                "value" : "bfsi_corporate"
+              },
+              {
+                "name" : "metaFields",
+                "value" : "{}"
+              },
+              {
+                "name" : "storage",
+                "value" : "ent"
+              },
+              {
+                "name" : "fepGuid",
+                "value" : "bfsi_corporate"
+              },
+              {
+                "name" : "sharded",
+                "value" : "true"
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Expression",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "Source_system",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:sourceSystem"
+                },
+                {
+                  "name" : "corporateId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:sourcePKey"
+                },
+                {
+                  "name" : "corporateId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:corporateId"
+                },
+                {
+                  "name" : "companyName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:companyName"
+                },
+                {
+                  "name" : "industryType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:industryType"
+                },
+                {
+                  "name" : "organizationType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:organizationType"
+                },
+                {
+                  "name" : "yearOfIncorporation",
+                  "platformType" : {
+                    "name" : "integer"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:yearOfIncorporation"
+                },
+                {
+                  "name" : "New_dunsNumber",
+                  "platformType" : {
+                    "name" : "integer"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:dunsNumber"
+                },
+                {
+                  "name" : "New_AnnaulTurnover",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:annualTurnover"
+                },
+                {
+                  "name" : "gst_rs_Account_Number",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:gstNumber"
+                },
+                {
+                  "name" : "cinNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:cinNumber"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:createdBy"
+                },
+                {
+                  "name" : "lastUpdatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "New_Date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:createdDate"
+                },
+                {
+                  "name" : "New_Date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:lastUpdatedDate"
+                },
+                {
+                  "name" : "companySize",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:companySize"
+                },
+                {
+                  "name" : "riskRating",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:riskRating"
+                },
+                {
+                  "name" : "kycCompletionStatus",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:kycCompletionStatus"
+                },
+                {
+                  "name" : "addressLine1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:addressLine1"
+                },
+                {
+                  "name" : "addressLine2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:addressLine2"
+                },
+                {
+                  "name" : "addressLine3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:addressLine3"
+                },
+                {
+                  "name" : "city",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:city"
+                },
+                {
+                  "name" : "state_PrimaryRuleSet",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:state"
+                },
+                {
+                  "name" : "pinCode",
+                  "platformType" : {
+                    "name" : "integer"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:postalCode"
+                },
+                {
+                  "name" : "country",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:country"
+                },
+                {
+                  "name" : "corporateId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:sourcePKey"
+                },
+                {
+                  "name" : "corporateId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:parentId"
+                },
+                {
+                  "name" : "corporateId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:sourcePKey"
+                },
+                {
+                  "name" : "corporateId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:parentId"
+                },
+                {
+                  "name" : "contact",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 50,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:email"
+                },
+                {
+                  "name" : "New_Contactnumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contact_Number"
+                },
+                {
+                  "name" : "New_countryCode",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:countryCode"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T14:47:52.025Z",
+        "name" : "Cleanse",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@3gCqA7R03OUlB2BskErCUx",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "BY_NAME"
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "companyName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "companyName_Cleanse",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T14:49:07.597Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "RS_duns",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "duns_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "RS_GST",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "gst_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "RS_State",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "state_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Source_system",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'DWH'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_dunsNumber",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert the string field rs_Account_Number to an integer.\nTO_INTEGER(duns_dunsNumber)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SYSDATE"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_AnnaulTurnover",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert the annualTurnover field (DOUBLE) to a string.\nTO_CHAR(annualTurnover)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_Contactnumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert BIGINT contactNumber to string using TO_CHAR function.\nTO_CHAR(contactNumber)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_countryCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'+91'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T14:52:32.212Z",
+        "name" : "RS_duns",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "dunsNumber"
+                  },
+                  {
+                    "inputName" : "New_DunsNumber"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@5W6OUAzXySSfdah9XDQvOK",
+        "ruleId" : "@5W6OUAzXySSfdah9XDQvOK",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "dunsNumber",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Account_number"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Account_number",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "rs_Account_Number",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T14:55:37.762Z",
+        "name" : "RS_GST",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "gstNumber"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@5W6OUAzXySSfdah9XDQvOK",
+        "ruleId" : "@5W6OUAzXySSfdah9XDQvOK",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "gstNumber",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Account_number"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Account_number",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "rs_Account_Number",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T15:39:45.152Z",
+        "name" : "RS_State",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "state"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@jp6fNiEvds1ftkjvw3G4YC",
+        "ruleId" : "@jp6fNiEvds1ftkjvw3G4YC",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "state",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "NewInput1"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "NewInput1",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T15:52:12.092Z",
+        "name" : "Exp_dunsNumber",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_DunsNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert dunsNumber (INTEGER) to string using TO_CHAR function.\nTO_CHAR(dunsNumber)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:34 PDT"
+}
