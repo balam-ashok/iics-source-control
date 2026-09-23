@@ -1,0 +1,3161 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_BFSI_branch_flatfile",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Expression"
+      },
+      {
+        "link" : "Expression -> Target"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-07T11:00:57.865Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "branchId"
+            },
+            "name" : "branchId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ifscCode"
+            },
+            "name" : "ifscCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "branchName"
+            },
+            "name" : "branchName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine1"
+            },
+            "name" : "addressLine1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine2"
+            },
+            "name" : "addressLine2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine3"
+            },
+            "name" : "addressLine3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "city"
+            },
+            "name" : "city",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state_PL_"
+            },
+            "name" : "state_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "country_PL_"
+            },
+            "name" : "country_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "postalCode"
+            },
+            "name" : "postalCode",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "openedDate"
+            },
+            "name" : "openedDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "employeeId"
+            },
+            "name" : "employeeId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "contactNo"
+            },
+            "name" : "contactNo",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "status_PL_"
+            },
+            "name" : "status_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "serviceType_PL_"
+            },
+            "name" : "serviceType_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "region_PL_"
+            },
+            "name" : "region_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdDate"
+            },
+            "name" : "createdDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedBy"
+            },
+            "name" : "lastUpdatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedDate"
+            },
+            "name" : "lastUpdatedDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "employeeId_1"
+            },
+            "name" : "employeeId_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "firstName"
+            },
+            "name" : "firstName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "middleName"
+            },
+            "name" : "middleName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastName"
+            },
+            "name" : "lastName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "fullName"
+            },
+            "name" : "fullName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine1_1"
+            },
+            "name" : "addressLine1_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine2_1"
+            },
+            "name" : "addressLine2_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine3_1"
+            },
+            "name" : "addressLine3_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "city_1"
+            },
+            "name" : "city_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state_PL__1"
+            },
+            "name" : "state_PL__1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "country"
+            },
+            "name" : "country",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "postalCode_1"
+            },
+            "name" : "postalCode_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "status_PL__1"
+            },
+            "name" : "status_PL__1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "officialEmail"
+            },
+            "name" : "officialEmail",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "branchCode_PL_"
+            },
+            "name" : "branchCode_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "designation_PL_"
+            },
+            "name" : "designation_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "department_PL_"
+            },
+            "name" : "department_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy_1"
+            },
+            "name" : "createdBy_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdDate_1"
+            },
+            "name" : "createdDate_1",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedBy_1"
+            },
+            "name" : "lastUpdatedBy_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedDate_1"
+            },
+            "name" : "lastUpdatedDate_1",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@fUQ1KUqwZycgrADnxIy128",
+          "connectionName" : "Conn-BM-FlatFile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "BFSI_Branch_FlatFile_root.csv",
+            "label" : "BFSI_Branch_FlatFile_root.csv",
+            "objectName" : "BFSI_Branch_FlatFile_root.csv",
+            "path" : "BFSI_Branch_FlatFile_root.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "branchId",
+                "fieldType" : "CONNECTOR",
+                "label" : "branchId",
+                "nativeName" : "branchId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ifscCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ifscCode",
+                "nativeName" : "ifscCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "branchName",
+                "fieldType" : "CONNECTOR",
+                "label" : "branchName",
+                "nativeName" : "branchName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine1",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine1",
+                "nativeName" : "addressLine1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine2",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine2",
+                "nativeName" : "addressLine2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine3",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine3",
+                "nativeName" : "addressLine3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "city",
+                "fieldType" : "CONNECTOR",
+                "label" : "city",
+                "nativeName" : "city",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "state(PL)",
+                "nativeName" : "state(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "country_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "country(PL)",
+                "nativeName" : "country(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "postalCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "postalCode",
+                "nativeName" : "postalCode",
+                "nativeType" : "int",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "openedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "openedDate",
+                "nativeName" : "openedDate",
+                "nativeType" : "datetime",
+                "original" : "false",
+                "precision" : 29,
+                "scale" : 9,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "employeeId",
+                "fieldType" : "CONNECTOR",
+                "label" : "employeeId",
+                "nativeName" : "employeeId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "contactNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "contactNo",
+                "nativeName" : "contactNo",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "status_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "status(PL)",
+                "nativeName" : "status(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "serviceType_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "serviceType(PL)",
+                "nativeName" : "serviceType(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "region_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "region(PL)",
+                "nativeName" : "region(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdDate",
+                "nativeName" : "createdDate",
+                "nativeType" : "datetime",
+                "original" : "false",
+                "precision" : 29,
+                "scale" : 9,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedBy",
+                "nativeName" : "lastUpdatedBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedDate",
+                "nativeName" : "lastUpdatedDate",
+                "nativeType" : "datetime",
+                "original" : "false",
+                "precision" : 29,
+                "scale" : 9,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "employeeId_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "employeeId",
+                "nativeName" : "employeeId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "firstName",
+                "fieldType" : "CONNECTOR",
+                "label" : "firstName",
+                "nativeName" : "firstName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "middleName",
+                "fieldType" : "CONNECTOR",
+                "label" : "middleName",
+                "nativeName" : "middleName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastName",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastName",
+                "nativeName" : "lastName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "fullName",
+                "fieldType" : "CONNECTOR",
+                "label" : "fullName",
+                "nativeName" : "fullName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine1_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine1",
+                "nativeName" : "addressLine1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine2_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine2",
+                "nativeName" : "addressLine2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine3_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine3",
+                "nativeName" : "addressLine3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "city_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "city",
+                "nativeName" : "city",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state_PL__1",
+                "fieldType" : "CONNECTOR",
+                "label" : "state(PL)",
+                "nativeName" : "state(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "country",
+                "fieldType" : "CONNECTOR",
+                "label" : "country",
+                "nativeName" : "country",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "postalCode_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "postalCode",
+                "nativeName" : "postalCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "status_PL__1",
+                "fieldType" : "CONNECTOR",
+                "label" : "status(PL)",
+                "nativeName" : "status(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "officialEmail",
+                "fieldType" : "CONNECTOR",
+                "label" : "officialEmail",
+                "nativeName" : "officialEmail",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "branchCode_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "branchCode(PL)",
+                "nativeName" : "branchCode(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "designation_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "designation(PL)",
+                "nativeName" : "designation(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "department_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "department(PL)",
+                "nativeName" : "department(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdDate_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdDate",
+                "nativeName" : "createdDate",
+                "nativeType" : "datetime",
+                "original" : "false",
+                "precision" : 29,
+                "scale" : 9,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedBy_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedBy",
+                "nativeName" : "lastUpdatedBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedDate_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedDate",
+                "nativeName" : "lastUpdatedDate",
+                "nativeType" : "datetime",
+                "original" : "false",
+                "precision" : 29,
+                "scale" : 9,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Branch_FlatFile_root.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-07T11:00:57.865Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creationDate"
+            },
+            "name" : "creationDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdateDate"
+            },
+            "name" : "lastUpdateDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "updatedBy"
+            },
+            "name" : "updatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "originalBusinessId"
+            },
+            "name" : "originalBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mergedBusinessId"
+            },
+            "name" : "mergedBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 30000,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "validationStatus"
+            },
+            "name" : "validationStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "populationName"
+            },
+            "name" : "populationName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "notReadyForMatch"
+            },
+            "name" : "notReadyForMatch",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "matchMergeState"
+            },
+            "name" : "matchMergeState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "states_validation"
+            },
+            "name" : "states_validation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_branchId"
+            },
+            "name" : "BFSI_Branch_branchId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_ifscCode"
+            },
+            "name" : "BFSI_Branch_ifscCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_branchName"
+            },
+            "name" : "BFSI_Branch_branchName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_addressLine1"
+            },
+            "name" : "BFSI_Branch_addressLine1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_addressLine2"
+            },
+            "name" : "BFSI_Branch_addressLine2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_addressLine3"
+            },
+            "name" : "BFSI_Branch_addressLine3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_city"
+            },
+            "name" : "BFSI_Branch_city",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_state"
+            },
+            "name" : "BFSI_Branch_state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_country"
+            },
+            "name" : "BFSI_Branch_country",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_postalCode"
+            },
+            "name" : "BFSI_Branch_postalCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_openedDate"
+            },
+            "name" : "BFSI_Branch_openedDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_employeeId"
+            },
+            "name" : "BFSI_Branch_employeeId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_contactNo"
+            },
+            "name" : "BFSI_Branch_contactNo",
+            "platformType" : {
+              "name" : "double"
+            },
+            "precision" : 15,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_status"
+            },
+            "name" : "BFSI_Branch_status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_serviceType"
+            },
+            "name" : "BFSI_Branch_serviceType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_region"
+            },
+            "name" : "BFSI_Branch_region",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_createdBy"
+            },
+            "name" : "BFSI_Branch_createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_createdDate"
+            },
+            "name" : "BFSI_Branch_createdDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_lastUpdatedBy"
+            },
+            "name" : "BFSI_Branch_lastUpdatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_lastUpdatedDate"
+            },
+            "name" : "BFSI_Branch_lastUpdatedDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch_opened_Date"
+            },
+            "name" : "BFSI_Branch_opened_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Branch__cm_sourceLastUpdateDate"
+            },
+            "name" : "BFSI_Branch__cm_sourceLastUpdateDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@9fJk4HsgbFHipWi4hQgocI",
+          "connectionName" : "conn-BM-Business FEP",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI Branch(id=bfsi_branch)/bfsi_branch",
+            "label" : "Home/Custom Assets/Business Entities/BFSI Branch(id=bfsi_branch)/bfsi_branch",
+            "objectName" : "bfsi_branch",
+            "objectType" : "flatmdmentity",
+            "path" : "Home/Custom Assets/Business Entities/BFSI Branch(id=bfsi_branch)/bfsi_branch",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourcePKey"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_businessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourceSystem"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "creationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "creationDate",
+                "nativeName" : "creationDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_creationDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdateDate",
+                "nativeName" : "lastUpdateDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_lastUpdateDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_state"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_createdBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "updatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "updatedBy",
+                "nativeName" : "updatedBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_updatedBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "originalBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "originalBusinessId",
+                "nativeName" : "originalBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_originalBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "mergedBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "mergedBusinessId",
+                "nativeName" : "mergedBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 30000,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_mergedBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "validationStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "validationStatus",
+                "nativeName" : "validationStatus",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_validationStatus"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "populationName",
+                "fieldType" : "CONNECTOR",
+                "label" : "populationName",
+                "nativeName" : "populationName",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_populationName"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "notReadyForMatch",
+                "fieldType" : "CONNECTOR",
+                "label" : "notReadyForMatch",
+                "nativeName" : "notReadyForMatch",
+                "nativeType" : "boolean",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_notReadyForMatch"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "matchMergeState",
+                "fieldType" : "CONNECTOR",
+                "label" : "matchMergeState",
+                "nativeName" : "matchMergeState",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_matchMergeState"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "states_validation",
+                "fieldType" : "CONNECTOR",
+                "label" : "states.validation",
+                "nativeName" : "states.validation",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "validation"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "states"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_branchId",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.branchId",
+                "nativeName" : "BFSI Branch.branchId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "branchId"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_ifscCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.ifscCode",
+                "nativeName" : "BFSI Branch.ifscCode",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "ifscCode"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_branchName",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.branchName",
+                "nativeName" : "BFSI Branch.branchName",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "branchName"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_addressLine1",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.addressLine1",
+                "nativeName" : "BFSI Branch.addressLine1",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "addressLine1"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_addressLine2",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.addressLine2",
+                "nativeName" : "BFSI Branch.addressLine2",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "addressLine2"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_addressLine3",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.addressLine3",
+                "nativeName" : "BFSI Branch.addressLine3",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "addressLine3"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_city",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.city",
+                "nativeName" : "BFSI Branch.city",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "city"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_state",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.state",
+                "nativeName" : "BFSI Branch.state",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "state"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_country",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.country",
+                "nativeName" : "BFSI Branch.country",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "country"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_postalCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.postalCode",
+                "nativeName" : "BFSI Branch.postalCode",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "postalCode"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_openedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.openedDate",
+                "nativeName" : "BFSI Branch.openedDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "openedDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_employeeId",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.employeeId",
+                "nativeName" : "BFSI Branch.employeeId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "employeeId"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_contactNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.contactNo",
+                "nativeName" : "BFSI Branch.contactNo",
+                "nativeType" : "double",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "contactNo"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "0.0"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_status",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.status",
+                "nativeName" : "BFSI Branch.status",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "status"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_serviceType",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.serviceType",
+                "nativeName" : "BFSI Branch.serviceType",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "serviceType"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_region",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.region",
+                "nativeName" : "BFSI Branch.region",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "region"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.createdBy",
+                "nativeName" : "BFSI Branch.createdBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "createdBy"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_createdDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.createdDate",
+                "nativeName" : "BFSI Branch.createdDate",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "createdDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_lastUpdatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.lastUpdatedBy",
+                "nativeName" : "BFSI Branch.lastUpdatedBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "lastUpdatedBy"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_lastUpdatedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.lastUpdatedDate",
+                "nativeName" : "BFSI Branch.lastUpdatedDate",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "lastUpdatedDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch_opened_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch.opened_Date",
+                "nativeName" : "BFSI Branch.opened_Date",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "opened_Date"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Branch__cm_sourceLastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI Branch._cm.sourceLastUpdateDate",
+                "nativeName" : "BFSI Branch._cm.sourceLastUpdateDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "sourceLastUpdateDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI Branch.BFSI Branch._cm"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_branch"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "allowMany",
+                "value" : "false"
+              },
+              {
+                "name" : "recordType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "dataType",
+                "value" : "Object"
+              },
+              {
+                "name" : "solutionName",
+                "value" : "CUSTOM"
+              },
+              {
+                "name" : "storageType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "guid",
+                "value" : "bfsi_branch"
+              },
+              {
+                "name" : "metaFields",
+                "value" : "{}"
+              },
+              {
+                "name" : "fepGuid",
+                "value" : "bfsi_branch"
+              },
+              {
+                "name" : "storage",
+                "value" : "ent"
+              },
+              {
+                "name" : "sharded",
+                "value" : "true"
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "o_sourcesystem",
+              "toField" : {
+                "name" : "sourceSystem"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "o_pkey",
+              "toField" : {
+                "name" : "sourcePKey"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "branchId",
+              "toField" : {
+                "name" : "BFSI_Branch_branchId"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "ifscCode",
+              "toField" : {
+                "name" : "BFSI_Branch_ifscCode"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "branchName",
+              "toField" : {
+                "name" : "BFSI_Branch_branchName"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "addressLine1",
+              "toField" : {
+                "name" : "BFSI_Branch_addressLine1"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "addressLine2",
+              "toField" : {
+                "name" : "BFSI_Branch_addressLine2"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "addressLine3",
+              "toField" : {
+                "name" : "BFSI_Branch_addressLine3"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "city",
+              "toField" : {
+                "name" : "BFSI_Branch_city"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "state_PL_",
+              "toField" : {
+                "name" : "BFSI_Branch_state"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "country_PL_",
+              "toField" : {
+                "name" : "BFSI_Branch_country"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "postalCode",
+              "toField" : {
+                "name" : "BFSI_Branch_postalCode"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "employeeId",
+              "toField" : {
+                "name" : "BFSI_Branch_employeeId"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "contactNo",
+              "toField" : {
+                "name" : "BFSI_Branch_contactNo"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "status_PL_",
+              "toField" : {
+                "name" : "BFSI_Branch_status"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "serviceType_PL_",
+              "toField" : {
+                "name" : "BFSI_Branch_serviceType"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "region_PL_",
+              "toField" : {
+                "name" : "BFSI_Branch_region"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "createdBy",
+              "toField" : {
+                "name" : "BFSI_Branch_createdBy"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "createdDate",
+              "toField" : {
+                "name" : "BFSI_Branch_createdDate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "lastUpdatedBy",
+              "toField" : {
+                "name" : "BFSI_Branch_lastUpdatedBy"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "lastUpdatedDate",
+              "toField" : {
+                "name" : "BFSI_Branch_lastUpdatedDate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "openedDate",
+              "toField" : {
+                "name" : "BFSI_Branch_opened_Date"
+              },
+              "fromFieldNames" : null
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-07T11:02:10.327Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_sourcesystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'crm'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_pkey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "md5(branchId)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:05:58 PDT"
+}
