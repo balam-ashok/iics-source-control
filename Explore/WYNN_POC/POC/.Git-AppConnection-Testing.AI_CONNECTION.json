@@ -1,7 +1,7 @@
 {
   "objectInfo" : {
     "id" : "a4emhestRQMjfjPTnvNaeR",
-    "name" : "Git-AppConnection-Test",
+    "name" : "Git-AppConnection-Testing",
     "type" : "AI_CONNECTION",
     "metadata" : {
       "modelVersion" : {
@@ -13,14 +13,14 @@
       },
       "contextAttributes" : null,
       "additionalInfo" : {
-        "description" : "",
+        "description" : "Test Connection",
         "contentType" : "application/json; charset=utf-8",
         "documentState" : "INVALID"
       }
     }
   },
   "dataFileExtension" : "xml",
-  "updateTime" : "2026-09-30T09:23:20.930Z",
+  "updateTime" : "2026-09-30T09:27:15.974Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false
