@@ -55,8 +55,8 @@ jobs:
           IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
           UAT_IICS_USERNAME: ${{ secrets.UAT_IICS_USERNAME }}
           UAT_IICS_PASSWORD: ${{ secrets.UAT_IICS_PASSWORD }}
-          # connection passwords named in cicd/config.yml are read from here
-          SECRETS_JSON: ${{ toJSON(secrets) }}
+          # optional: JSON of Dfactory connection passwords, e.g. {"Oracle_Sales": "..."} (see cicd/config.yml)
+          SECRETS_JSON: ${{ secrets.IDMC_CONNECTION_PASSWORDS }}
           COMMIT_HASH: ${{ github.event.inputs.commit_hash }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
           RUN_TESTS: ${{ github.event.inputs.run_tests }}
