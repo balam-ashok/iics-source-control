@@ -19,13 +19,14 @@ connections:
   # overwrite existing Dfactory connections whose definition differs from Demo (off: only report the drift)
   update_existing: false
   # per-connection settings (connection name as in Demo):
-  #   password_secret: name of a GitHub secret holding the Dfactory password
+  #   password_secret: key in the IDMC_CONNECTION_PASSWORDS GitHub secret (a JSON object of
+  #                    {"key": "Dfactory password"}) holding this connection's password
   #   overrides:       Dfactory-specific values applied after create/update (host, database, username, ...)
   #   test:            run the connection test afterwards (default true)
   settings: {}
   # example:
   #   Oracle_Sales:
-  #     password_secret: ORACLE_SALES_PASSWORD
+  #     password_secret: Oracle_Sales
   #     overrides:
   #       host: oracle-dfactory.internal
   #       database: SALESUAT
