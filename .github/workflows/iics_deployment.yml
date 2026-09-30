@@ -1,0 +1,123 @@
+# This sample source code is offered only as an example of what can or might be built using the IICS Github APIs, 
+# and is provided for educational purposes only. This source code is provided "as-is" 
+# and without representations or warrantees of any kind, is not supported by Informatica.
+# Users of this sample code in whole or in part or any extraction or derivative of it 
+# assume all the risks attendant thereto, and Informatica disclaims any/all liabilities 
+# arising from any such use to the fullest extent permitted by law.
+
+name: DEPLOY_MAPPING_TASK
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs:
+      committed_sha:
+        description: "Commit hash on Demo-Central-Branch to deploy"
+        type: string
+        required: true
+
+env:
+  IICS_LOGIN_URL: https://dmp-us.informaticacloud.com
+  # IICS_POD_URL / UAT_IICS_POD_URL are set by scripts/infa_login.py from the login response
+
+  # IDMC source control branches (this repository)
+  SOURCE_BRANCH: Demo-Central-Branch
+  TARGET_BRANCH: Dfactory-Branch
+
+  # Source org (checks in to SOURCE_BRANCH)
+  IICS_USERNAME: ${{ secrets.IICS_USERNAME }}
+  IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
+
+  # Target org (linked to TARGET_BRANCH)
+  UAT_IICS_USERNAME: ${{ secrets.UAT_IICS_USERNAME }}
+  UAT_IICS_PASSWORD: ${{ secrets.UAT_IICS_PASSWORD }}
+
+  COMMIT_HASH: ${{ github.event.inputs.committed_sha }}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  dev_build:
+    name: Review Development Code
+    environment:
+      name: development
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out the pipeline scripts (main branch of this repository)
+      - uses: actions/checkout@v4
+
+      # Install python and dependent modules
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install python modules
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+
+      # Runs a single command using the runners shell
+      - name: Login to development
+        run: |
+            python ./scripts/infa_login.py
+
+      - name: Test Committed Mapping Tasks
+        run: python ./scripts/infa_get_updates.py
+
+  uat_commit:
+    name: Complete uat promotion
+    environment:
+      name: uat
+    needs: dev_build
+    runs-on: ubuntu-latest
+
+    steps:
+      # IDMC assets: this repository at the target branch (IICS_REPO token is used to push to it)
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+          token: ${{ secrets.IICS_REPO }}
+          path: iics-source-control
+          fetch-depth: 0
+
+      # Pipeline scripts: this repository at the branch the workflow was run from (main)
+      - uses: actions/checkout@v4
+        with:
+          path: iics-promotion-pipeline
+
+      # Install python and dependent modules
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Install python modules
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r ./iics-promotion-pipeline/requirements.txt
+
+      - name: Set default username
+        run: git config --global user.email "41898333+github-actions[bot]@users.noreply.github.com"; git config --global user.name "github-actions[bot]"
+
+      # If the commit is already on the target branch (e.g. merged by the auto-PR), deploy it as-is;
+      # otherwise cherry-pick it onto the target branch and deploy the new commit.
+      - name: Commit changes to target branch
+        run: |
+            cd ./iics-source-control
+            git fetch --all
+            if git merge-base --is-ancestor "${COMMIT_HASH}" HEAD; then
+              echo "Commit ${COMMIT_HASH} is already on ${TARGET_BRANCH}; deploying it as-is"
+              echo "UAT_COMMIT_HASH=${COMMIT_HASH}" >> "$GITHUB_ENV"
+            else
+              git cherry-pick --strategy=recursive -X theirs "${COMMIT_HASH}"
+              git push origin "HEAD:${TARGET_BRANCH}"
+              echo "UAT_COMMIT_HASH=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+            fi
+      
+      - name: Login to UAT
+        run: |
+            python ./iics-promotion-pipeline/scripts/infa_login.py
+
+      - name: Sync and test UAT deployment
+        run: python ./iics-promotion-pipeline/scripts/infa_update_and_test.py
