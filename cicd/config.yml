@@ -1,0 +1,51 @@
+# IDMC CI/CD settings, read by scripts/idmc_cicd.py
+# Demo org checks in to source_branch; the Auto PR merges it into target_branch; the pipeline deploys
+# target_branch to the Dfactory org.
+
+source_branch: Demo-Central-Branch
+target_branch: Dfactory-Branch
+
+# true = discover and report only; nothing is created, pulled, published or run
+dry_run: false
+
+# accept mapping tasks that complete with errors and pulls that end in WARNING
+allow_warnings: false
+
+connections:
+  # find the connections used by the changed assets and create any that are missing in Dfactory
+  sync: true
+  # connections to check on every run, even if no changed asset uses them
+  always_include: []
+  # overwrite existing Dfactory connections whose definition differs from Demo (off: only report the drift)
+  update_existing: false
+  # per-connection settings (connection name as in Demo):
+  #   password_secret: name of a GitHub secret holding the Dfactory password
+  #   overrides:       Dfactory-specific values applied after create/update (host, database, username, ...)
+  #   test:            run the connection test afterwards (default true)
+  settings: {}
+  # example:
+  #   Oracle_Sales:
+  #     password_secret: ORACLE_SALES_PASSWORD
+  #     overrides:
+  #       host: oracle-dfactory.internal
+  #       database: SALESUAT
+
+# Demo name -> Dfactory name, only where they differ (used for the import and the pull)
+connection_map: {}
+runtime_environment_map: {}
+
+schedules:
+  # create the schedules used by changed mapping tasks if Dfactory lacks them, and re-link after the pull
+  sync: true
+
+publish:
+  # publish changed taskflows, processes, guides, App Connections and service connectors after the pull
+  enabled: true
+
+tests:
+  # run the changed mapping tasks in Dfactory after the pull
+  enabled: true
+  timeout_seconds: 3600
+  poll_seconds: 30
+
+pull_timeout_seconds: 1800
