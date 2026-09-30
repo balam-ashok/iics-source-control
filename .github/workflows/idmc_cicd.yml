@@ -1,0 +1,65 @@
+name: IDMC CI/CD - Deploy to Dfactory
+
+# Runs automatically after "Auto PR Demo to Dfactory" (i.e. after a Demo check-in is merged into
+# Dfactory-Branch), or manually from the Actions tab.
+on:
+  workflow_run:
+    workflows: ["Auto PR Demo to Dfactory"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      commit_hash:
+        description: "Dfactory-Branch commit to deploy (blank = latest)"
+        type: string
+        required: false
+      dry_run:
+        description: "Dry run: discover and report only"
+        type: boolean
+        default: false
+      run_tests:
+        description: "Run the changed mapping tasks after the pull"
+        type: boolean
+        default: true
+
+concurrency:
+  group: idmc-deploy-dfactory
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy Demo changes to Dfactory
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: uat
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install python modules
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+
+      - name: Deploy
+        env:
+          IICS_LOGIN_URL: https://dmp-us.informaticacloud.com
+          IICS_USERNAME: ${{ secrets.IICS_USERNAME }}
+          IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
+          UAT_IICS_USERNAME: ${{ secrets.UAT_IICS_USERNAME }}
+          UAT_IICS_PASSWORD: ${{ secrets.UAT_IICS_PASSWORD }}
+          # connection passwords named in cicd/config.yml are read from here
+          SECRETS_JSON: ${{ toJSON(secrets) }}
+          COMMIT_HASH: ${{ github.event.inputs.commit_hash }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+          RUN_TESTS: ${{ github.event.inputs.run_tests }}
+          # after an Auto PR run: wait until that Demo commit is merged into Dfactory-Branch
+          WAIT_FOR_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: python ./scripts/idmc_cicd.py
