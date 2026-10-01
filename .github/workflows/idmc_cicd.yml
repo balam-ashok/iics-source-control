@@ -51,10 +51,13 @@ jobs:
       - name: Deploy
         env:
           IICS_LOGIN_URL: https://dmp-us.informaticacloud.com
-          IICS_USERNAME: ${{ secrets.IICS_USERNAME }}
-          IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
-          UAT_IICS_USERNAME: ${{ secrets.UAT_IICS_USERNAME }}
-          UAT_IICS_PASSWORD: ${{ secrets.UAT_IICS_PASSWORD }}
+          # The repository secrets are named the other way round: IICS_* log in to DFactory Inc DEV and
+          # UAT_IICS_* log in to DemoCentral (confirmed by the org check). Mapped here so that
+          # IICS_* = source (DemoCentral) and UAT_IICS_* = target (DFactory Inc DEV) for the script.
+          IICS_USERNAME: ${{ secrets.UAT_IICS_USERNAME }}
+          IICS_PASSWORD: ${{ secrets.UAT_IICS_PASSWORD }}
+          UAT_IICS_USERNAME: ${{ secrets.IICS_USERNAME }}
+          UAT_IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
           # optional: JSON of Dfactory connection passwords, e.g. {"Oracle_Sales": "..."} (see cicd/config.yml)
           SECRETS_JSON: ${{ secrets.IDMC_CONNECTION_PASSWORDS }}
           COMMIT_HASH: ${{ github.event.inputs.commit_hash }}
