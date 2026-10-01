@@ -175,6 +175,26 @@ class Org:
             str(o.get('path', '')).split('/')[-1] + ' (' + str(o.get('type')) + ')' for o in objs[:15])
         return objs
 
+    def search_by_name(self, name, obj_type):
+        """Object of this type anywhere in the org with this name (for assets moved since check-in)."""
+        skip = 0
+        while skip < 5000:
+            r = self.v3('GET', '/objects', params={'q': "type=='" + obj_type + "'", 'limit': 200, 'skip': skip})
+            if r.status_code != 200:
+                self.last_search = str(r.status_code) + ' ' + r.text[:200]
+                return None
+            objs = r.json().get('objects') or []
+            for o in objs:
+                if str(o.get('path', '')).split('/')[-1].lower() == name.lower():
+                    self.last_search = 'found at ' + str(o.get('path'))
+                    return o
+            if len(objs) < 200:
+                self.last_search = 'no ' + obj_type + ' named ' + name + ' in the org'
+                return None
+            skip += 200
+        self.last_search = 'not found in the first 5000 objects'
+        return None
+
     def find_id(self, ids, path, obj_type):
         """Object ID: commit details (by path, then name), then lookup, then a folder listing."""
         t, name = norm_type(obj_type), path.split('/')[-1]
@@ -186,10 +206,17 @@ class Org:
             typed = [o for o in same if norm_type(o.get('type')) == t]
             hit = (typed or same or [None])[0]
             obj_id = hit.get('id') if hit else None
+        if not obj_id and name:
+            hit = self.search_by_name(name, t)
+            if hit and hit.get('id'):
+                obj_id = hit['id']
+                log('  ~ ' + t + ' ' + name + ' is no longer at ' + path + ' in ' + self.label +
+                    ' org; using ' + str(hit.get('path')))
         if not obj_id:
             log('  ! ' + t + ' ' + path + ' not found in ' + self.label + ' org')
             log('      lookup: ' + getattr(self, 'last_lookup', '-'))
             log('      folder: ' + getattr(self, 'last_folder', '-'))
+            log('      search: ' + getattr(self, 'last_search', '-'))
             if not getattr(self, 'changes_logged', False):
                 self.changes_logged = True
                 seen = []
