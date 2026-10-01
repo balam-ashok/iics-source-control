@@ -102,12 +102,43 @@ class Org:
     def lookup(self, path, obj_type):
         """ID of an object by path and type, or None."""
         r = self.v3('POST', '/lookup', json={'objects': [{'path': path, 'type': obj_type}]})
+        self.last_lookup = str(r.status_code) + ' ' + r.text[:300]
         if r.status_code != 200:
             return None
         for o in r.json().get('objects') or []:
             if o.get('id'):
                 return o['id']
         return None
+
+    def commit_ids(self, commits):
+        """(asset path, TYPE) -> object ID in this org, from the commit details of the given commits."""
+        ids = {}
+        for c in commits:
+            r = self.v3('GET', '/commit/' + c)
+            if r.status_code != 200:
+                log('  ! ' + self.label + ' org could not read commit ' + c[:7] + ': ' + r.text[:200])
+                continue
+            for ch in r.json().get('changes') or []:
+                if not ch.get('id') or not ch.get('type'):
+                    continue
+                path = ch.get('path')
+                parts = list(path) if isinstance(path, list) else str(path or '').split('/')
+                if parts and parts[0] == 'Explore':
+                    parts = parts[1:]
+                key_type = str(ch['type']).upper()
+                ids[('/'.join(parts), key_type)] = ch['id']
+                if ch.get('name'):
+                    ids.setdefault(('name:' + ch['name'], key_type), ch['id'])
+        return ids
+
+    def find_id(self, ids, path, obj_type):
+        """Object ID from commit details, else by name, else by lookup."""
+        obj_id = (ids.get((path, obj_type)) or ids.get(('name:' + path.split('/')[-1], obj_type))
+                  or self.lookup(path, obj_type))
+        if not obj_id:
+            log('  ! ' + obj_type + ' ' + path + ' not found in ' + self.label + ' org (lookup: ' +
+                getattr(self, 'last_lookup', '') + ')')
+        return obj_id
 
     def references(self, obj_id):
         """Objects that obj_id uses."""
@@ -239,15 +270,15 @@ def definition_hash(obj, volatile):
     return hashlib.sha256(json.dumps(clean, sort_keys=True, default=str).encode()).hexdigest()[:12]
 
 
-def discover_connections(src, assets, cfg):
+def discover_connections(src, assets, cfg, src_ids):
     """Connection name -> source connection ID, for the connections the changed assets use."""
     found = {}
     for a in assets:
-        if a['deleted']:
+        # Application Integration assets don't use Administrator connections
+        if a['deleted'] or a['type'].startswith('AI_') or a['type'] in ('PROCESS', 'GUIDE', 'PROCESS_OBJECT'):
             continue
-        obj_id = src.lookup(a['path'], a['type'])
+        obj_id = src.find_id(src_ids, a['path'], a['type'])
         if not obj_id:
-            log('  ! ' + a['type'] + ' ' + a['path'] + ' not found in Demo org; skipping its dependencies')
             continue
         for ref in src.references(obj_id):
             rtype = str(ref.get('documentType') or ref.get('type') or '')
@@ -316,13 +347,13 @@ def test_connection(dst, conn):
     return 'test passed' if ok in (True, None) else 'test failed: ' + str(body.get('message', ''))[:120]
 
 
-def sync_connections(src, dst, assets, cfg, dry_run, secrets, report):
+def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids):
     ccfg = cfg['connections']
     if not ccfg.get('sync', True):
         log('Connection sync disabled in config')
         return
     log('\n== Connections')
-    wanted = discover_connections(src, assets, cfg)
+    wanted = discover_connections(src, assets, cfg, src_ids)
     if not wanted:
         log('No connections used by the changed assets')
         return
@@ -404,7 +435,7 @@ def task_schedule(org, obj_id):
     return task, (s.json() if s.status_code == 200 else None)
 
 
-def sync_schedules(src, dst, assets, cfg, dry_run, report):
+def sync_schedules(src, dst, assets, cfg, dry_run, report, src_ids):
     if not cfg['schedules'].get('sync', True):
         return {}
     log('\n== Schedules')
@@ -412,7 +443,7 @@ def sync_schedules(src, dst, assets, cfg, dry_run, report):
     for a in assets:
         if a['deleted'] or a['type'] != 'MTT':
             continue
-        obj_id = src.lookup(a['path'], 'MTT')
+        obj_id = src.find_id(src_ids, a['path'], 'MTT')
         _, sched = task_schedule(src, obj_id) if obj_id else (None, None)
         if sched:
             needed[a['path']] = sched
@@ -441,9 +472,9 @@ def sync_schedules(src, dst, assets, cfg, dry_run, report):
     return needed
 
 
-def relink_schedules(dst, needed, dry_run, report):
+def relink_schedules(dst, needed, dry_run, report, dst_ids):
     for path, sched in needed.items():
-        obj_id = dst.lookup(path, 'MTT')
+        obj_id = dst.find_id(dst_ids, path, 'MTT') if not dry_run else None
         if not obj_id or dry_run:
             continue
         task, current = task_schedule(dst, obj_id)
@@ -493,6 +524,7 @@ def pull(dst, commit, cfg):
         t = o.get('target') or {}
         path = t.get('path')
         objs.append({'path': '/'.join(path) if isinstance(path, list) else str(path), 'type': t.get('type'),
+                     'id': t.get('id'),
                      'state': (t.get('status') or o.get('status') or {}).get('state'),
                      'message': (t.get('status') or o.get('status') or {}).get('message') or ''})
     return state, (b.get('status') or {}).get('message') or '', objs
@@ -559,7 +591,7 @@ def publish(dst, assets, cfg, dry_run, report):
 # Step 8: tests
 # --------------------------------------------------------------------------------------------
 
-def run_tests(dst, assets, cfg, dry_run, report):
+def run_tests(dst, assets, cfg, dry_run, report, dst_ids):
     tasks = [a for a in assets if a['type'] == 'MTT' and not a['deleted']]
     if not tasks:
         return
@@ -572,7 +604,7 @@ def run_tests(dst, assets, cfg, dry_run, report):
         if dry_run:
             log('DRY RUN: would run ' + a['path'])
             continue
-        obj_id = dst.lookup(a['path'], 'MTT')
+        obj_id = dst.find_id(dst_ids, a['path'], 'MTT')
         if not obj_id:
             report['tests'].append({'task': a['path'], 'result': 'not found in Dfactory'})
             failed.append(a['path'])
@@ -675,13 +707,24 @@ def main():
         dst = Org('Dfactory', login_url, os.environ['UAT_IICS_USERNAME'], os.environ['UAT_IICS_PASSWORD'])
         orgs.append(dst)
 
-        sync_connections(src, dst, assets, cfg, dry_run, secrets, report)
-        needed = sync_schedules(src, dst, assets, cfg, dry_run, report)
+        # object IDs in Demo, straight from IDMC's commit details (hash-based)
+        src_ids = src.commit_ids(merged or [commit]) if any(not a['deleted'] for a in assets) else {}
+        sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids)
+        needed = sync_schedules(src, dst, assets, cfg, dry_run, report, src_ids)
         pull_all(dst, commit, merged, cfg, dry_run, report)
-        relink_schedules(dst, needed, dry_run, report)
+        # object IDs in Dfactory after the pull
+        dst_ids = {}
+        for o in report['pulled_objects']:
+            if o.get('id') and o.get('type'):
+                parts = o['path'].split('/')
+                if parts and parts[0] == 'Explore':
+                    parts = parts[1:]
+                dst_ids[('/'.join(parts), str(o['type']).upper())] = o['id']
+                dst_ids.setdefault(('name:' + parts[-1], str(o['type']).upper()), o['id'])
+        relink_schedules(dst, needed, dry_run, report, dst_ids)
         publish(dst, assets, cfg, dry_run, report)
         if tests_on:
-            run_tests(dst, assets, cfg, dry_run, report)
+            run_tests(dst, assets, cfg, dry_run, report, dst_ids)
         log('\nDeployment ' + ('dry run ' if dry_run else '') + 'completed')
     except (DeployError, subprocess.CalledProcessError, KeyError, requests.RequestException) as e:
         error = str(e)
