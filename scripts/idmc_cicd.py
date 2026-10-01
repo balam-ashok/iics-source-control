@@ -449,13 +449,17 @@ def test_connection(dst, conn):
     return 'test passed' if ok in (True, None) else 'test failed: ' + str(body.get('message', ''))[:300]
 
 
-def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, deps=None):
+def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, deps=None, wanted=None,
+                     always_test=False):
+    """wanted = {name: Demo id or None} to migrate exactly those connections instead of discovering them;
+    always_test = test every one, even when it is already in sync."""
     ccfg = cfg['connections']
-    if not ccfg.get('sync', True):
+    if not ccfg.get('sync', True) and wanted is None:
         log('Connection sync disabled in config')
         return
     log('\n== Connections')
-    wanted = discover_connections(src, assets, cfg, src_ids, deps)
+    if wanted is None:
+        wanted = discover_connections(src, assets, cfg, src_ids, deps)
     if not wanted:
         log('No connections used by the changed assets')
         return
@@ -516,7 +520,7 @@ def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, d
             set_connection_fields(dst, t, fields)
             if 'password' in fields:
                 row['action'] += ', password set'
-        if s_cfg.get('test', True) and row['action'] != 'exists, in sync':
+        if always_test or (s_cfg.get('test', True) and row['action'] != 'exists, in sync'):
             row['action'] += ', ' + test_connection(dst, t)
 
 
