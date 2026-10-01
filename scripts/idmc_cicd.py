@@ -39,6 +39,38 @@ VOLATILE_CONNECTION_KEYS = {'id', 'orgId', 'createTime', 'updateTime', 'createdB
                             'federatedId', 'majorUpdateTime', 'agentId', 'runtimeEnvironmentId',
                             'password', 'securityToken', 'internal', 'retryNetworkError'}
 VOLATILE_SCHEDULE_KEYS = {'id', 'orgId', 'createTime', 'updateTime', 'createdBy', 'updatedBy'}
+# IDMC uses different names for the same type depending on the API (git file suffix vs. v3 APIs)
+TYPE_ALIASES = {'MAPPING': 'DTEMPLATE', 'MAPPING_TASK': 'MTT', 'MAPPINGTASK': 'MTT',
+                'SYNCHRONIZATION_TASK': 'DSS', 'REPLICATION_TASK': 'DRS', 'WORKFLOW': 'WORKFLOW'}
+
+
+def norm_type(t):
+    t = str(t or '').upper()
+    return TYPE_ALIASES.get(t, t)
+
+
+def add_id(ids, path, obj_type, obj_id):
+    """Index an object ID by (path, type), (name, type) and (name, any type)."""
+    if not obj_id:
+        return
+    parts = list(path) if isinstance(path, list) else str(path or '').strip('/').split('/')
+    if parts and parts[0] == 'Explore':
+        parts = parts[1:]
+    if parts:
+        # git-style file names: <name>.<TYPE>[.xml|.zip|.json]
+        last = parts[-1]
+        for suffix in ('.vc.json', '.zip', '.xml', '.json'):
+            if last.endswith(suffix):
+                last = last[:-len(suffix)]
+                if '.' in last and last.rsplit('.', 1)[1].upper() == norm_type(obj_type):
+                    last = last.rsplit('.', 1)[0]
+                break
+        parts[-1] = last
+    t = norm_type(obj_type)
+    name = parts[-1] if parts else ''
+    ids.setdefault(('/'.join(parts), t), obj_id)
+    ids.setdefault(('name:' + name.lower(), t), obj_id)
+    ids.setdefault(('name:' + name.lower(), '*'), obj_id)
 
 
 class DeployError(Exception):
@@ -111,33 +143,64 @@ class Org:
         return None
 
     def commit_ids(self, commits):
-        """(asset path, TYPE) -> object ID in this org, from the commit details of the given commits."""
-        ids = {}
+        """Object IDs in this org from IDMC's commit details (GET /commit/<hash>), indexed by add_id()."""
+        ids, self.commit_changes = {}, []
         for c in commits:
             r = self.v3('GET', '/commit/' + c)
             if r.status_code != 200:
                 log('  ! ' + self.label + ' org could not read commit ' + c[:7] + ': ' + r.text[:200])
                 continue
-            for ch in r.json().get('changes') or []:
-                if not ch.get('id') or not ch.get('type'):
+            changes = r.json().get('changes') or []
+            log('  ' + self.label + ' commit ' + c[:7] + ': ' + str(len(changes)) + ' change(s)')
+            for ch in changes:
+                self.commit_changes.append(ch)
+                if not ch.get('id'):
                     continue
-                path = ch.get('path')
-                parts = list(path) if isinstance(path, list) else str(path or '').split('/')
-                if parts and parts[0] == 'Explore':
-                    parts = parts[1:]
-                key_type = str(ch['type']).upper()
-                ids[('/'.join(parts), key_type)] = ch['id']
-                if ch.get('name'):
-                    ids.setdefault(('name:' + ch['name'], key_type), ch['id'])
+                path, name = ch.get('path'), ch.get('name')
+                parts = list(path) if isinstance(path, list) else str(path or '').strip('/').split('/')
+                parts = [p for p in parts if p]
+                if name and (not parts or parts[-1].split('.')[0] != name):
+                    parts.append(name)          # path holds only the folder
+                add_id(ids, parts, ch.get('type'), ch['id'])
         return ids
 
+    def folder_objects(self, folder):
+        """Objects in an Explore folder ('Project/Folder'), via the v3 objects query."""
+        r = self.v3('GET', '/objects', params={'q': "location=='" + folder + "'", 'limit': 200})
+        if r.status_code != 200:
+            self.last_folder = str(r.status_code) + ' ' + r.text[:200]
+            return []
+        objs = r.json().get('objects') or []
+        self.last_folder = str(len(objs)) + ' object(s): ' + ', '.join(
+            str(o.get('path', '')).split('/')[-1] + ' (' + str(o.get('type')) + ')' for o in objs[:15])
+        return objs
+
     def find_id(self, ids, path, obj_type):
-        """Object ID from commit details, else by name, else by lookup."""
-        obj_id = (ids.get((path, obj_type)) or ids.get(('name:' + path.split('/')[-1], obj_type))
-                  or self.lookup(path, obj_type))
+        """Object ID: commit details (by path, then name), then lookup, then a folder listing."""
+        t, name = norm_type(obj_type), path.split('/')[-1]
+        obj_id = (ids.get((path, t)) or ids.get(('name:' + name.lower(), t))
+                  or ids.get(('name:' + name.lower(), '*')) or self.lookup(path, t))
+        if not obj_id and '/' in path:
+            objs = self.folder_objects(path.rsplit('/', 1)[0])
+            same = [o for o in objs if str(o.get('path', '')).split('/')[-1].lower() == name.lower()]
+            typed = [o for o in same if norm_type(o.get('type')) == t]
+            hit = (typed or same or [None])[0]
+            obj_id = hit.get('id') if hit else None
         if not obj_id:
-            log('  ! ' + obj_type + ' ' + path + ' not found in ' + self.label + ' org (lookup: ' +
-                getattr(self, 'last_lookup', '') + ')')
+            log('  ! ' + t + ' ' + path + ' not found in ' + self.label + ' org')
+            log('      lookup: ' + getattr(self, 'last_lookup', '-'))
+            log('      folder: ' + getattr(self, 'last_folder', '-'))
+            if not getattr(self, 'changes_logged', False):
+                self.changes_logged = True
+                seen = []
+                for ch in getattr(self, 'commit_changes', None) or []:
+                    row = json.dumps({k: ch.get(k) for k in ('id', 'name', 'type', 'path', 'action')})
+                    if row not in seen:
+                        seen.append(row)
+                for row in seen[:15]:
+                    log('      commit change: ' + row)
+                if not seen:
+                    log('      commit change: (none returned)')
         return obj_id
 
     def references(self, obj_id):
@@ -716,11 +779,7 @@ def main():
         dst_ids = {}
         for o in report['pulled_objects']:
             if o.get('id') and o.get('type'):
-                parts = o['path'].split('/')
-                if parts and parts[0] == 'Explore':
-                    parts = parts[1:]
-                dst_ids[('/'.join(parts), str(o['type']).upper())] = o['id']
-                dst_ids.setdefault(('name:' + parts[-1], str(o['type']).upper()), o['id'])
+                add_id(dst_ids, o['path'], o['type'], o['id'])
         relink_schedules(dst, needed, dry_run, report, dst_ids)
         publish(dst, assets, cfg, dry_run, report)
         if tests_on:
