@@ -1,10 +1,10 @@
 name: IDMC CI/CD - Deploy to Dfactory
 
-# Runs automatically after "Auto PR Demo to Dfactory" (i.e. after a Demo check-in is merged into
-# Dfactory-Branch), or manually from the Actions tab.
+# Runs automatically when a PR into Dfactory-Branch is merged (after any required approval), via
+# "Trigger Dfactory deploy on merge" on Demo-Central-Branch, or manually from the Actions tab.
 on:
   workflow_run:
-    workflows: ["Auto PR Demo to Dfactory"]
+    workflows: ["Trigger Dfactory deploy on merge"]
     types: [completed]
   workflow_dispatch:
     inputs:
@@ -60,6 +60,6 @@ jobs:
           COMMIT_HASH: ${{ github.event.inputs.commit_hash }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
           RUN_TESTS: ${{ github.event.inputs.run_tests }}
-          # after an Auto PR run: wait until that Demo commit is merged into Dfactory-Branch
+          # after a merge: make sure that Demo commit is on Dfactory-Branch, then deploy the branch head
           WAIT_FOR_SHA: ${{ github.event.workflow_run.head_sha }}
         run: python ./scripts/idmc_cicd.py
