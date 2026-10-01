@@ -1,0 +1,51 @@
+{
+  "objectInfo" : {
+    "id" : "at5IEBrYbvkeoBkkvajHYn",
+    "name" : "Business360 Security Configuration",
+    "type" : "MDM_AUTHORIZATION",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : { },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null,
+      "populationManifest" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "b360.authorization"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2026-10-01T09:46:36.268Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
