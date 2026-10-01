@@ -434,10 +434,13 @@ def set_connection_fields(dst, conn, fields):
 def test_connection(dst, conn):
     r = dst.v2('GET', '/connection/test/' + conn['id'])
     if r.status_code != 200:
-        return 'test failed: ' + r.text[:120]
+        try:
+            return 'test failed: ' + str(r.json().get('description') or r.text)[:300]
+        except ValueError:
+            return 'test failed: ' + r.text[:300]
     body = r.json() if r.text else {}
     ok = body.get('success') if isinstance(body, dict) else None
-    return 'test passed' if ok in (True, None) else 'test failed: ' + str(body.get('message', ''))[:120]
+    return 'test passed' if ok in (True, None) else 'test failed: ' + str(body.get('message', ''))[:300]
 
 
 def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids):
@@ -615,12 +618,36 @@ def pull(dst, commit, cfg):
     objs = []
     for o in b.get('objects') or []:
         t = o.get('target') or {}
-        path = t.get('path')
-        objs.append({'path': '/'.join(path) if isinstance(path, list) else str(path), 'type': t.get('type'),
-                     'id': t.get('id'),
-                     'state': (t.get('status') or o.get('status') or {}).get('state'),
-                     'message': (t.get('status') or o.get('status') or {}).get('message') or ''})
-    return state, (b.get('status') or {}).get('message') or '', objs
+        src = o.get('source') or {}
+        path = t.get('path') or src.get('path')
+        st = t.get('status') or o.get('status') or {}
+        obj = {'path': '/'.join(path) if isinstance(path, list) else str(path), 'type': t.get('type') or src.get('type'),
+               'id': t.get('id'), 'state': st.get('state'), 'message': object_message(o)}
+        if str(obj['state']).upper() in ('FAILED', 'CANCELLED', 'WARNING'):
+            obj['raw'] = o
+        objs.append(obj)
+    msg = (b.get('status') or {}).get('message') or ''
+    if state != 'SUCCESSFUL':
+        detail = b.get('status', {}).get('detailMessage') or b.get('status', {}).get('details') or ''
+        if detail:
+            msg += ' ' + str(detail)[:300]
+    return state, msg, objs
+
+
+def object_message(o):
+    """The most specific status message IDMC gives for one pulled object."""
+    msgs = []
+    for part in (o.get('target') or {}, o, o.get('source') or {}):
+        st = part.get('status') or {}
+        for k in ('message', 'detailMessage', 'details', 'errorMessage'):
+            v = st.get(k) if isinstance(st, dict) else None
+            if v and str(v) not in msgs:
+                msgs.append(str(v))
+        for k in ('message', 'errorMessage', 'error'):
+            v = part.get(k)
+            if v and not isinstance(v, (dict, list)) and str(v) not in msgs:
+                msgs.append(str(v))
+    return ' | '.join(msgs)[:500]
 
 
 def pull_all(dst, commit, merged, cfg, dry_run, report):
@@ -643,12 +670,16 @@ def pull_all(dst, commit, merged, cfg, dry_run, report):
         report['pulls'].append({'commit': c[:7], 'state': s, 'message': m})
         report['pulled_objects'].extend(dict(o, commit=c[:7]) for o in objs)
         for o in objs:
-            log('  ' + str(o['state']) + ' ' + str(o['type']) + ' ' + o['path'])
+            log('  ' + str(o['state']) + ' ' + str(o['type']) + ' ' + o['path'] +
+                (': ' + o['message'] if o['message'] else ''))
+            if o.get('raw'):
+                log('      IDMC response for this object: ' + json.dumps(o.pop('raw'), default=str)[:1500])
     bad = [p for p in pulls if not (p[1] == 'SUCCESSFUL' or (p[1] == 'WARNING' and allow))]
     bad_objs = [o for o in report['pulled_objects'] if o['state'] in ('FAILED', 'CANCELLED')]
     if bad or bad_objs:
         raise DeployError('pull did not succeed: ' + '; '.join(p[0][:7] + ' ' + p[1] + ' ' + p[2] for p in bad) +
-                          ('; failed objects: ' + ', '.join(o['path'] for o in bad_objs) if bad_objs else ''))
+                          ('; failed objects: ' + ', '.join(o['path'] + (' (' + o['message'] + ')' if o['message'] else '')
+                                                            for o in bad_objs) if bad_objs else ''))
 
 
 # --------------------------------------------------------------------------------------------
@@ -776,7 +807,8 @@ def write_summary(report, ok, error):
                                                               ('Demo hash', 'demo_hash'), ('Dfactory hash', 'target_hash')])
     md += '\n## Schedules\n' + table(report['schedules'], [('Schedule', 'name'), ('Result', 'action')])
     md += '\n## Pull\n' + table(report['pulls'], [('Commit', 'commit'), ('State', 'state'), ('Message', 'message')])
-    md += '\n' + table(report['pulled_objects'], [('State', 'state'), ('Type', 'type'), ('Object', 'path')])
+    md += '\n' + table(report['pulled_objects'], [('State', 'state'), ('Type', 'type'), ('Object', 'path'),
+                                                   ('Message', 'message')])
     md += '\n## Publish\n' + table(report['published'], [('Asset', 'asset'), ('Result', 'state')])
     md += '\n## Tests\n' + table(report['tests'], [('Mapping task', 'task'), ('Result', 'result')])
     path = os.environ.get('GITHUB_STEP_SUMMARY')
