@@ -35,6 +35,14 @@ connections:
 connection_map: {}
 runtime_environment_map: {}
 
+dependencies:
+  # bring over objects the changed assets use (mappings, mapplets, schemas...) that are missing in Dfactory:
+  # pulled from Git when they were checked in earlier, otherwise exported from Demo and imported
+  sync: true
+  import_from_demo: true
+  # how many levels of "uses" to follow
+  max_depth: 5
+
 schedules:
   # create the schedules used by changed mapping tasks if Dfactory lacks them, and re-link after the pull
   sync: true
