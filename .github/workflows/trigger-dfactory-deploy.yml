@@ -1,0 +1,16 @@
+name: Trigger Dfactory deploy on merge
+
+# Runs when a PR into Dfactory-Branch is closed. If it was merged (after any required approval),
+# its successful completion starts "IDMC CI/CD - Deploy to Dfactory" on main.
+on:
+  pull_request:
+    types: [closed]
+    branches: [Dfactory-Branch]
+
+jobs:
+  merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merged into Dfactory-Branch
+        run: echo "PR #${{ github.event.pull_request.number }} merged as ${{ github.event.pull_request.merge_commit_sha }}"
