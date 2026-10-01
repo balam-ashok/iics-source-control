@@ -1,28 +1,42 @@
 name: IDMC - Migrate connections or schedules
 
-# Run by hand (Actions > Run workflow) to move connections or schedules from DemoCentral to
-# DFactory Inc DEV on their own, without a check-in. Settings (connection_map,
-# runtime_environment_map, passwords, overrides, org names) come from cicd/config.yml.
+# Moves connections and schedules from DemoCentral to DFactory Inc DEV on their own, without a check-in.
+#  - Excel: mark rows Migrate = Y in cicd/migration_objects.xlsx and push it to main; this runs on its own.
+#  - Names: Actions > Run workflow, Source = names, and type the names.
+# Settings (connection_map, runtime_environment_map, passwords, overrides, org names) come from
+# cicd/config.yml. The results are in the run summary and in migration_results.xlsx attached to the run.
 on:
+  push:
+    branches: [main]
+    paths:
+      - cicd/migration_objects.xlsx
   workflow_dispatch:
     inputs:
-      object_type:
-        description: "What to migrate"
+      source:
+        description: "Migrate the rows marked Y in cicd/migration_objects.xlsx, or the names typed below"
         type: choice
         options:
+          - excel
+          - names
+        default: excel
+      object_type:
+        description: "Connections, schedules or both (both: Excel only)"
+        type: choice
+        options:
+          - both
           - connection
           - schedule
-        required: true
+        default: both
       names:
-        description: "Names as in DemoCentral, comma-separated (* = all)"
+        description: "Names only: as in DemoCentral, comma-separated (* = all)"
         type: string
-        required: true
+        required: false
       update_existing:
-        description: "Overwrite DFactory copies whose definition differs"
+        description: "Names only: overwrite DFactory copies whose definition differs"
         type: boolean
         default: false
       test_connections:
-        description: "Test each connection afterwards"
+        description: "Names only: test each connection afterwards"
         type: boolean
         default: true
       dry_run:
@@ -37,7 +51,7 @@ concurrency:
 
 jobs:
   migrate:
-    name: Migrate ${{ github.event.inputs.object_type }}s to Dfactory
+    name: Migrate connections and schedules to Dfactory
     runs-on: ubuntu-latest
     environment:
       name: uat
@@ -66,9 +80,19 @@ jobs:
           UAT_IICS_USERNAME: ${{ secrets.IICS_USERNAME }}
           UAT_IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
           SECRETS_JSON: ${{ secrets.IDMC_CONNECTION_PASSWORDS }}
+          # empty on a push: the script then reads the Excel file for both sheets
+          SOURCE: ${{ github.event.inputs.source }}
           OBJECT_TYPE: ${{ github.event.inputs.object_type }}
           NAMES: ${{ github.event.inputs.names }}
           UPDATE_EXISTING: ${{ github.event.inputs.update_existing }}
           TEST_CONNECTIONS: ${{ github.event.inputs.test_connections }}
           DRY_RUN: ${{ github.event.inputs.dry_run }}
         run: python ./scripts/idmc_migrate_objects.py
+
+      - name: Attach migration_results.xlsx
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: migration-results
+          path: migration_results.xlsx
+          if-no-files-found: ignore
