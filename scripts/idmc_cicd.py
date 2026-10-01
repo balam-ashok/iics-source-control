@@ -505,7 +505,7 @@ def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, d
         if not t:
             continue
         fields = {}
-        if row['action'] == 'exists, differs' and ccfg.get('update_existing'):
+        if row['action'] == 'exists, differs' and (ccfg.get('update_existing') or s_cfg.get('update_existing')):
             s = src.connection_by_name(row['name'])
             fields.update({k: v for k, v in s.items() if k not in VOLATILE_CONNECTION_KEYS and k != 'connParams'})
             row['action'] = 'updated'
@@ -520,7 +520,7 @@ def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, d
             set_connection_fields(dst, t, fields)
             if 'password' in fields:
                 row['action'] += ', password set'
-        if always_test or (s_cfg.get('test', True) and row['action'] != 'exists, in sync'):
+        if always_test or s_cfg.get('test_always') or (s_cfg.get('test', True) and row['action'] != 'exists, in sync'):
             row['action'] += ', ' + test_connection(dst, t)
 
 
