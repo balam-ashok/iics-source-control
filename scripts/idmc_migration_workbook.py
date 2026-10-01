@@ -43,14 +43,17 @@ def by_name(org, resource):
     return {o['name']: o for o in (body if isinstance(body, list) else []) if o.get('name')}
 
 
-def statuses(src, dst, resource, volatile):
+def statuses(src, dst, resource, volatile, detail):
+    """Status of every Demo object in Dfactory; objects in both orgs are compared on their full
+    definitions (detail = the same by-name read the migration uses), so both report the same status."""
     demo, dfac = by_name(src, resource), by_name(dst, resource)
     out = {}
-    for name, s in demo.items():
-        t = dfac.get(name)
-        if not t:
+    for name in demo:
+        if name not in dfac:
             out[name] = 'missing'
-        elif core.definition_hash(s, volatile) == core.definition_hash(t, volatile):
+            continue
+        s, t = detail(src, name) or demo[name], detail(dst, name) or dfac[name]
+        if core.definition_hash(s, volatile) == core.definition_hash(t, volatile):
             out[name] = 'exists, in sync'
         else:
             out[name] = 'exists, differs'
@@ -242,8 +245,8 @@ def main():
         dst = Org('Dfactory', login_url, os.environ['UAT_IICS_USERNAME'], os.environ['UAT_IICS_PASSWORD'])
         logins.append(dst)
         core.check_orgs(src, dst, cfg)
-        conns = statuses(src, dst, 'connection', core.VOLATILE_CONNECTION_KEYS)
-        scheds = statuses(src, dst, 'schedule', core.VOLATILE_SCHEDULE_KEYS)
+        conns = statuses(src, dst, 'connection', core.VOLATILE_CONNECTION_KEYS, lambda o, n: o.connection_by_name(n))
+        scheds = statuses(src, dst, 'schedule', core.VOLATILE_SCHEDULE_KEYS, mig.schedule_by_name)
         prev = previous_choices(path)
         kept = sum(1 for rows in prev.values() for r in rows.values() if r['migrate'])
         nc, ns = build(path, conns, scheds, prev, datetime.date.today().isoformat())
