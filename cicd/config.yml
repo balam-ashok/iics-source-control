@@ -54,5 +54,5 @@ pull_timeout_seconds: 1800
 # safety check: the IDMC org names the two logins must reach (blank = don't check); the run stops
 # before changing anything if they don't match
 orgs:
-  source: ""                    # Demo org (IICS_USERNAME / IICS_PASSWORD)
+  source: "DemoCentral"         # Demo org (IICS_USERNAME / IICS_PASSWORD)
   target: "DFactory Inc DEV"    # Dfactory org (UAT_IICS_USERNAME / UAT_IICS_PASSWORD)
