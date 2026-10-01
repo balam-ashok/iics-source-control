@@ -8,6 +8,8 @@ Steps
                      missing in Dfactory (export/import); report drift with a hash of each definition;
                      optionally update existing ones and set passwords from GitHub secrets
   4. Schedules     - create schedules used by changed mapping tasks if Dfactory lacks them
+     Dependencies  - objects the changed assets use (mappings, mapplets, schemas...) that are missing in
+                     Dfactory are pulled from Git (or exported/imported from Demo if never checked in)
   5. Pull          - pullByCommitHash into Dfactory (falls back to the individual merged commits)
   6. Schedules     - re-link mapping tasks to their schedule if the pull left them unscheduled
   7. Publish       - publish changed taskflows and Application Integration assets
@@ -23,6 +25,7 @@ must be merged first), DRY_RUN=true, RUN_TESTS=false, SECRETS_JSON (JSON of GitH
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -363,16 +366,19 @@ def definition_hash(obj, volatile):
     return hashlib.sha256(json.dumps(clean, sort_keys=True, default=str).encode()).hexdigest()[:12]
 
 
-def discover_connections(src, assets, cfg, src_ids):
-    """Connection name -> source connection ID, for the connections the changed assets use."""
+def discover_connections(src, assets, cfg, src_ids, deps=None):
+    """Connection name -> source connection ID, for the connections the changed assets and their dependencies use."""
     found = {}
+    ids = []
     for a in assets:
         # Application Integration assets don't use Administrator connections
         if a['deleted'] or a['type'].startswith('AI_') or a['type'] in ('PROCESS', 'GUIDE', 'PROCESS_OBJECT'):
             continue
         obj_id = src.find_id(src_ids, a['path'], a['type'])
-        if not obj_id:
-            continue
+        if obj_id:
+            ids.append(obj_id)
+    ids.extend(i for (_, t), i in (deps or {}).items() if i and not t.startswith('AI_'))
+    for obj_id in dict.fromkeys(ids):
         for ref in src.references(obj_id):
             rtype = str(ref.get('documentType') or ref.get('type') or '')
             if 'connection' in rtype.lower() and not rtype.upper().startswith('AI_'):
@@ -443,13 +449,13 @@ def test_connection(dst, conn):
     return 'test passed' if ok in (True, None) else 'test failed: ' + str(body.get('message', ''))[:300]
 
 
-def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids):
+def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, deps=None):
     ccfg = cfg['connections']
     if not ccfg.get('sync', True):
         log('Connection sync disabled in config')
         return
     log('\n== Connections')
-    wanted = discover_connections(src, assets, cfg, src_ids)
+    wanted = discover_connections(src, assets, cfg, src_ids, deps)
     if not wanted:
         log('No connections used by the changed assets')
         return
@@ -512,6 +518,164 @@ def sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids):
                 row['action'] += ', password set'
         if s_cfg.get('test', True) and row['action'] != 'exists, in sync':
             row['action'] += ', ' + test_connection(dst, t)
+
+
+# --------------------------------------------------------------------------------------------
+# Dependencies: objects the changed assets need that are missing in Dfactory
+# --------------------------------------------------------------------------------------------
+
+NOT_DEPENDENCIES = {'CONNECTION', 'AGENTGROUP', 'AGENT', 'SCHEDULE', 'RUNTIMEENVIRONMENT', 'RUNTIME_ENVIRONMENT',
+                    'PROJECT', 'FOLDER', 'USER', 'USERGROUP', 'ROLE'}
+MISSING_RE = re.compile(r'dependent objects? (?:are|is) missing:\s*\[(.*?)\]', re.I | re.S)
+
+
+def is_dependency_type(t):
+    if not t or t in NOT_DEPENDENCIES:
+        return False
+    return not ('CONNECTION' in t and not t.startswith('AI_'))
+
+
+def ref_path_type(ref):
+    """(asset path without 'Explore/', TYPE) of a reference returned by the objects/references API."""
+    t = norm_type(ref.get('documentType') or ref.get('type'))
+    path = ref.get('path') or ''
+    parts = list(path) if isinstance(path, list) else str(path).strip('/').split('/')
+    parts = [x for x in parts if x]
+    if parts and parts[0] == 'Explore':
+        parts = parts[1:]
+    name = ref.get('name')
+    if name and (not parts or parts[-1] != name):
+        parts.append(name)
+    return '/'.join(parts), t
+
+
+def repo_assets(commit):
+    """(asset path, TYPE) of every asset in Git at this commit."""
+    out = set()
+    files = git('-c', 'core.quotePath=false', 'ls-tree', '-r', '--name-only', commit, '--', 'Explore')
+    for f in files.splitlines():
+        parsed = parse_asset_file(f)
+        if parsed:
+            out.add(parsed)
+    return out
+
+
+def discover_dependencies(src, assets, cfg, src_ids):
+    """{(path, TYPE): Demo id} of the Explore objects the changed assets use, followed recursively."""
+    max_depth = int((cfg.get('dependencies') or {}).get('max_depth', 5))
+    changed = {(a['path'], a['type']) for a in assets}
+    found, seen, queue = {}, set(), []
+    for a in assets:
+        if not a['deleted']:
+            obj_id = src.find_id(src_ids, a['path'], a['type'])
+            if obj_id:
+                queue.append((obj_id, 0))
+    while queue:
+        obj_id, depth = queue.pop(0)
+        if obj_id in seen or depth >= max_depth:
+            continue
+        seen.add(obj_id)
+        for ref in src.references(obj_id):
+            path, t = ref_path_type(ref)
+            if not path or not is_dependency_type(t) or (path, t) in changed or (path, t) in found:
+                continue
+            found[(path, t)] = ref.get('id')
+            if ref.get('id'):
+                queue.append((ref['id'], depth + 1))
+    return found
+
+
+def missing_from_messages(messages):
+    """(path, TYPE) pairs from IDMC's 'The following dependent objects are missing: [...]' messages."""
+    out = set()
+    for m in messages:
+        for group in MISSING_RE.findall(m or ''):
+            for item in group.split(','):
+                mm = re.match(r'\s*(\S+)\s+(.+?)\s*$', item)
+                if not mm:
+                    continue
+                path = mm.group(2).strip().strip('/')
+                if path.startswith('Explore/'):
+                    path = path[len('Explore/'):]
+                out.add((path, norm_type(mm.group(1))))
+    return out
+
+
+def bring_objects(src, dst, wanted, cfg, dry_run, report, commit, repo):
+    """Create objects that are missing in Dfactory: pull them from Git if they were checked in,
+    otherwise export them from Demo and import them. wanted = {(path, TYPE): Demo id or None}."""
+    dcfg = cfg.get('dependencies') or {}
+    allow = cfg.get('allow_warnings', False)
+    from_git = [k for k in sorted(wanted) if k in repo]
+    from_demo = [k for k in sorted(wanted) if k not in repo]
+    rows = {k: {'object': k[0], 'type': k[1]} for k in wanted}
+    if dry_run:
+        for k in from_git:
+            rows[k]['result'] = 'missing (dry run: would pull from Git)'
+        for k in from_demo:
+            rows[k]['result'] = 'missing, not in Git (dry run: would import from Demo)'
+    else:
+        if from_git:
+            body = {'commitHash': commit, 'objects': [{'path': k[0].split('/'), 'type': k[1]} for k in from_git]}
+            state, msg, objs = run_pull(dst, '/pull', body, cfg)
+            log('  Pull from Git of ' + ', '.join(k[0] for k in from_git) + ': ' + state + ' ' + msg)
+            for o in objs:
+                if o.get('raw'):
+                    log('      IDMC response: ' + json.dumps(o.pop('raw'), default=str)[:1000])
+            ok = state == 'SUCCESSFUL' or (state == 'WARNING' and allow)
+            failed = {(o['path'], norm_type(o['type'])): o['message'] for o in objs
+                      if str(o['state']).upper() in ('FAILED', 'CANCELLED')}
+            for k in from_git:
+                if ok and k not in failed:
+                    rows[k]['result'] = 'pulled from Git'
+                else:
+                    rows[k]['result'] = 'pull from Git failed: ' + (failed.get(k) or msg)[:200]
+                    if dcfg.get('import_from_demo', True):
+                        from_demo.append(k)
+        if from_demo:
+            if not dcfg.get('import_from_demo', True):
+                for k in from_demo:
+                    rows[k]['result'] = 'missing and not in Git: check it in from Demo'
+            else:
+                ids = []
+                for k in from_demo:
+                    sid = wanted.get(k) or src.lookup(k[0], k[1])
+                    if sid:
+                        ids.append(sid)
+                    else:
+                        rows[k]['result'] = 'not found in Demo either'
+                if ids:
+                    try:
+                        export_import(src, dst, ids, cfg, 'dependencies')
+                        for k in from_demo:
+                            if 'not found' not in rows[k].get('result', ''):
+                                rows[k]['result'] = ('imported from Demo (not in Git; check it in from Demo to keep it '
+                                                     'under source control)') if k not in repo else 'imported from Demo'
+                    except DeployError as e:
+                        for k in from_demo:
+                            rows[k].setdefault('result', 'import from Demo failed: ' + str(e)[:200])
+    for k, row in rows.items():
+        row.setdefault('result', '-')
+        report['dependencies'].append(row)
+        log('  ' + k[1] + ' ' + k[0] + ': ' + row['result'])
+
+
+def sync_dependencies(src, dst, assets, cfg, dry_run, report, deps, commit, repo):
+    """Bring over the dependencies (found in Demo) that Dfactory doesn't have yet."""
+    if not (cfg.get('dependencies') or {}).get('sync', True):
+        return
+    log('\n== Dependencies')
+    if not deps:
+        log('No dependencies found for the changed assets')
+        return
+    missing = {}
+    for (path, t), sid in sorted(deps.items()):
+        if dst.lookup(path, t):
+            log('  ' + t + ' ' + path + ': exists in Dfactory')
+        else:
+            missing[(path, t)] = sid
+    if missing:
+        bring_objects(src, dst, missing, cfg, dry_run, report, commit, repo)
 
 
 # --------------------------------------------------------------------------------------------
@@ -600,12 +764,16 @@ def object_spec(cfg):
 
 
 def pull(dst, commit, cfg):
-    body = {'commitHash': commit}
+    return run_pull(dst, '/pullByCommitHash', {'commitHash': commit}, cfg)
+
+
+def run_pull(dst, endpoint, body, cfg):
+    """Start a pull (pullByCommitHash, or pull of named objects) and wait for it: (state, message, objects)."""
     spec = object_spec(cfg)
     if spec:
         body['objectSpecification'] = spec
         body['relaxObjectSpecificationValidation'] = True
-    r = dst.v3('POST', '/pullByCommitHash', json=body)
+    r = dst.v3('POST', endpoint, json=body)
     if r.status_code != 200:
         return 'FAILED', r.text[:300], []
     action_id = r.json()['pullActionId']
@@ -650,12 +818,7 @@ def object_message(o):
     return ' | '.join(msgs)[:500]
 
 
-def pull_all(dst, commit, merged, cfg, dry_run, report):
-    log('\n== Pull')
-    if dry_run:
-        log('DRY RUN: would pull ' + commit[:7] + (' (merged commits: ' + ', '.join(c[:7] for c in merged) + ')' if merged else ''))
-        return
-    allow = cfg.get('allow_warnings', False)
+def pull_commits(dst, commit, merged, cfg):
     state, msg, objs = pull(dst, commit, cfg)
     log('Pull ' + commit[:7] + ': ' + state + ' ' + msg + ' (' + str(len(objs)) + ' objects)')
     pulls = [(commit, state, msg, objs)]
@@ -666,6 +829,28 @@ def pull_all(dst, commit, merged, cfg, dry_run, report):
             s, m, o = pull(dst, c, cfg)
             log('Pull ' + c[:7] + ': ' + s + ' ' + m + ' (' + str(len(o)) + ' objects)')
             pulls.append((c, s, m, o))
+    return pulls
+
+
+def pull_all(dst, commit, merged, cfg, dry_run, report, resolve=None):
+    log('\n== Pull')
+    if dry_run:
+        log('DRY RUN: would pull ' + commit[:7] + (' (merged commits: ' + ', '.join(c[:7] for c in merged) + ')' if merged else ''))
+        return
+    allow = cfg.get('allow_warnings', False)
+    for attempt in range(4):
+        pulls = pull_commits(dst, commit, merged, cfg)
+        failed = [p for p in pulls if not (p[1] == 'SUCCESSFUL' or (p[1] == 'WARNING' and allow))] or \
+            [o for p in pulls for o in p[3] if o['state'] in ('FAILED', 'CANCELLED')]
+        if not failed or not resolve or attempt == 3:
+            break
+        missing = missing_from_messages([p[2] for p in pulls] + [o['message'] for p in pulls for o in p[3]])
+        if not missing:
+            break
+        log('IDMC reports missing dependencies: ' + ', '.join(t + ' ' + pth for pth, t in sorted(missing)))
+        if not resolve(missing):
+            break
+        log('Retrying the pull')
     for c, s, m, objs in pulls:
         report['pulls'].append({'commit': c[:7], 'state': s, 'message': m})
         report['pulled_objects'].extend(dict(o, commit=c[:7]) for o in objs)
@@ -805,6 +990,8 @@ def write_summary(report, ok, error):
     md += '## Changed assets\n' + table(report['assets'], [('Type', 'type'), ('Asset', 'path'), ('Change', 'change')])
     md += '\n## Connections\n' + table(report['connections'], [('Connection', 'name'), ('Result', 'action'),
                                                               ('Demo hash', 'demo_hash'), ('Dfactory hash', 'target_hash')])
+    md += '\n## Dependencies\n' + table(report.get('dependencies'), [('Object', 'object'), ('Type', 'type'),
+                                                                  ('Result', 'result')])
     md += '\n## Schedules\n' + table(report['schedules'], [('Schedule', 'name'), ('Result', 'action')])
     md += '\n## Pull\n' + table(report['pulls'], [('Commit', 'commit'), ('State', 'state'), ('Message', 'message')])
     md += '\n' + table(report['pulled_objects'], [('State', 'state'), ('Type', 'type'), ('Object', 'path'),
@@ -833,8 +1020,8 @@ def main():
     except ValueError:
         secrets = {}
 
-    report = {'commit': '', 'merged': [], 'dry_run': dry_run, 'assets': [], 'connections': [], 'schedules': [],
-              'pulls': [], 'pulled_objects': [], 'published': [], 'tests': []}
+    report = {'commit': '', 'merged': [], 'dry_run': dry_run, 'assets': [], 'connections': [], 'dependencies': [],
+              'schedules': [], 'pulls': [], 'pulled_objects': [], 'published': [], 'tests': []}
     orgs, error = [], None
     try:
         commit, parents, merged = resolve_commit(cfg)
@@ -856,9 +1043,26 @@ def main():
 
         # object IDs in Demo, straight from IDMC's commit details (hash-based)
         src_ids = src.commit_ids(merged or [commit]) if any(not a['deleted'] for a in assets) else {}
-        sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids)
+        dep_on = (cfg.get('dependencies') or {}).get('sync', True)
+        deps = discover_dependencies(src, assets, cfg, src_ids) if dep_on else {}
+        repo = repo_assets(commit)
+        sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, deps)
         needed = sync_schedules(src, dst, assets, cfg, dry_run, report, src_ids)
-        pull_all(dst, commit, merged, cfg, dry_run, report)
+        sync_dependencies(src, dst, assets, cfg, dry_run, report, deps, commit, repo)
+
+        tried = set()
+
+        def resolve(missing):
+            # dependencies IDMC still reports as missing during the pull
+            new = {k: deps.get(k) for k in missing if k not in tried}
+            tried.update(new)
+            if not new or not dep_on:
+                return False
+            log('\n== Dependencies reported by the pull')
+            bring_objects(src, dst, new, cfg, False, report, commit, repo)
+            return True
+
+        pull_all(dst, commit, merged, cfg, dry_run, report, resolve)
         # object IDs in Dfactory after the pull
         dst_ids = {}
         for o in report['pulled_objects']:
