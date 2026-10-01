@@ -1,0 +1,74 @@
+name: IDMC - Migrate connections or schedules
+
+# Run by hand (Actions > Run workflow) to move connections or schedules from DemoCentral to
+# DFactory Inc DEV on their own, without a check-in. Settings (connection_map,
+# runtime_environment_map, passwords, overrides, org names) come from cicd/config.yml.
+on:
+  workflow_dispatch:
+    inputs:
+      object_type:
+        description: "What to migrate"
+        type: choice
+        options:
+          - connection
+          - schedule
+        required: true
+      names:
+        description: "Names as in DemoCentral, comma-separated (* = all)"
+        type: string
+        required: true
+      update_existing:
+        description: "Overwrite DFactory copies whose definition differs"
+        type: boolean
+        default: false
+      test_connections:
+        description: "Test each connection afterwards"
+        type: boolean
+        default: true
+      dry_run:
+        description: "Dry run: report only, change nothing"
+        type: boolean
+        default: false
+
+# never run at the same time as a deploy
+concurrency:
+  group: idmc-deploy-dfactory
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    name: Migrate ${{ github.event.inputs.object_type }}s to Dfactory
+    runs-on: ubuntu-latest
+    environment:
+      name: uat
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install python modules
+        run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+
+      - name: Migrate
+        env:
+          IICS_LOGIN_URL: https://dmp-us.informaticacloud.com
+          # same mapping as idmc_cicd.yml: the IICS_* secrets log in to DFactory Inc DEV and the
+          # UAT_IICS_* secrets to DemoCentral, so they are swapped here
+          IICS_USERNAME: ${{ secrets.UAT_IICS_USERNAME }}
+          IICS_PASSWORD: ${{ secrets.UAT_IICS_PASSWORD }}
+          UAT_IICS_USERNAME: ${{ secrets.IICS_USERNAME }}
+          UAT_IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
+          SECRETS_JSON: ${{ secrets.IDMC_CONNECTION_PASSWORDS }}
+          OBJECT_TYPE: ${{ github.event.inputs.object_type }}
+          NAMES: ${{ github.event.inputs.names }}
+          UPDATE_EXISTING: ${{ github.event.inputs.update_existing }}
+          TEST_CONNECTIONS: ${{ github.event.inputs.test_connections }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: python ./scripts/idmc_migrate_objects.py
