@@ -1,0 +1,2809 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_pharma_erp_pharmacy_site",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Cl_pharmacyname",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Source -> Rs_panmasking",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Source -> Rs_state",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Source -> Rs_coutry",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Source -> Rs_postcode",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Cl_pharmacyname -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Rs_panmasking -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Rs_state -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Rs_coutry -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Rs_postcode -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Source -> Expression1"
+      },
+      {
+        "link" : "Expression -> Expression1"
+      },
+      {
+        "link" : "Expression1 -> Target"
+      },
+      {
+        "link" : "Source -> Title_Case",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Title_Case -> Full_Name_Concat",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Full_Name_Concat -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T09:38:11.452Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "pharmacyId"
+            },
+            "name" : "pharmacyId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacyName"
+            },
+            "name" : "pharmacyName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "tradeName"
+            },
+            "name" : "tradeName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacyType"
+            },
+            "name" : "pharmacyType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ownershipType"
+            },
+            "name" : "ownershipType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "drugLicenseNumber"
+            },
+            "name" : "drugLicenseNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "licenseIssueDate"
+            },
+            "name" : "licenseIssueDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "licenseExpiryDate"
+            },
+            "name" : "licenseExpiryDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "gstNumber"
+            },
+            "name" : "gstNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "tanNumber"
+            },
+            "name" : "tanNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "panNumber"
+            },
+            "name" : "panNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "regulatoryStatus"
+            },
+            "name" : "regulatoryStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "primaryPhone"
+            },
+            "name" : "primaryPhone",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "secondaryPhone"
+            },
+            "name" : "secondaryPhone",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "email"
+            },
+            "name" : "email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "emailType"
+            },
+            "name" : "emailType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine1"
+            },
+            "name" : "addressLine1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine2"
+            },
+            "name" : "addressLine2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "addressLine3"
+            },
+            "name" : "addressLine3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "city"
+            },
+            "name" : "city",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "district"
+            },
+            "name" : "district",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "country"
+            },
+            "name" : "country",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "postalCode"
+            },
+            "name" : "postalCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "latitude"
+            },
+            "name" : "latitude",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "longitude"
+            },
+            "name" : "longitude",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacistFirstName"
+            },
+            "name" : "pharmacistFirstName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "middleName"
+            },
+            "name" : "middleName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacistLastName"
+            },
+            "name" : "pharmacistLastName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacistFullName"
+            },
+            "name" : "pharmacistFullName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacistRegistrationNumber"
+            },
+            "name" : "pharmacistRegistrationNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacistQualification"
+            },
+            "name" : "pharmacistQualification",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacistMobile"
+            },
+            "name" : "pharmacistMobile",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "pharmacistEmail"
+            },
+            "name" : "pharmacistEmail",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdTime"
+            },
+            "name" : "createdTime",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastCreatedBy"
+            },
+            "name" : "lastCreatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedTime"
+            },
+            "name" : "lastUpdatedTime",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@6DCTdPPc8PTbpDqBygEOaz",
+          "connectionName" : "Conn-BM-Flatfile-Pharma",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Pharmacy_site_new.csv",
+            "label" : "Pharmacy_site_new.csv",
+            "objectName" : "Pharmacy_site_new.csv",
+            "path" : "Pharmacy_site_new.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "pharmacyId",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacyId",
+                "nativeName" : "pharmacyId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacyName",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacyName",
+                "nativeName" : "pharmacyName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "tradeName",
+                "fieldType" : "CONNECTOR",
+                "label" : "tradeName",
+                "nativeName" : "tradeName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacyType",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacyType",
+                "nativeName" : "pharmacyType",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ownershipType",
+                "fieldType" : "CONNECTOR",
+                "label" : "ownershipType",
+                "nativeName" : "ownershipType",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "drugLicenseNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "drugLicenseNumber",
+                "nativeName" : "drugLicenseNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "licenseIssueDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "licenseIssueDate",
+                "nativeName" : "licenseIssueDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "licenseExpiryDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "licenseExpiryDate",
+                "nativeName" : "licenseExpiryDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "gstNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "gstNumber",
+                "nativeName" : "gstNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "tanNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "tanNumber",
+                "nativeName" : "tanNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "panNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "panNumber",
+                "nativeName" : "panNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "regulatoryStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "regulatoryStatus",
+                "nativeName" : "regulatoryStatus",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "primaryPhone",
+                "fieldType" : "CONNECTOR",
+                "label" : "primaryPhone",
+                "nativeName" : "primaryPhone",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "secondaryPhone",
+                "fieldType" : "CONNECTOR",
+                "label" : "secondaryPhone",
+                "nativeName" : "secondaryPhone",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "email",
+                "fieldType" : "CONNECTOR",
+                "label" : "email",
+                "nativeName" : "email",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "emailType",
+                "fieldType" : "CONNECTOR",
+                "label" : "emailType",
+                "nativeName" : "emailType",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine1",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine1",
+                "nativeName" : "addressLine1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine2",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine2",
+                "nativeName" : "addressLine2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "addressLine3",
+                "fieldType" : "CONNECTOR",
+                "label" : "addressLine3",
+                "nativeName" : "addressLine3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "city",
+                "fieldType" : "CONNECTOR",
+                "label" : "city",
+                "nativeName" : "city",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "district",
+                "fieldType" : "CONNECTOR",
+                "label" : "district",
+                "nativeName" : "district",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "country",
+                "fieldType" : "CONNECTOR",
+                "label" : "country",
+                "nativeName" : "country",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "postalCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "postalCode",
+                "nativeName" : "postalCode",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "latitude",
+                "fieldType" : "CONNECTOR",
+                "label" : "latitude",
+                "nativeName" : "latitude",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "longitude",
+                "fieldType" : "CONNECTOR",
+                "label" : "longitude",
+                "nativeName" : "longitude",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacistFirstName",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacistFirstName",
+                "nativeName" : "pharmacistFirstName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "middleName",
+                "fieldType" : "CONNECTOR",
+                "label" : "middleName",
+                "nativeName" : "middleName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacistLastName",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacistLastName",
+                "nativeName" : "pharmacistLastName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacistFullName",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacistFullName",
+                "nativeName" : "pharmacistFullName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacistRegistrationNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacistRegistrationNumber",
+                "nativeName" : "pharmacistRegistrationNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacistQualification",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacistQualification",
+                "nativeName" : "pharmacistQualification",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacistMobile",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacistMobile",
+                "nativeName" : "pharmacistMobile",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "pharmacistEmail",
+                "fieldType" : "CONNECTOR",
+                "label" : "pharmacistEmail",
+                "nativeName" : "pharmacistEmail",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdTime",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdTime",
+                "nativeName" : "createdTime",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastCreatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastCreatedBy",
+                "nativeName" : "lastCreatedBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedTime",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedTime",
+                "nativeName" : "lastUpdatedTime",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Pharmacy_site_new.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T09:38:11.453Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/Pharmacy Site(id=pharmacy_site)",
+            "label" : "Home/Custom Assets/Business Entities/Pharmacy Site(id=pharmacy_site)",
+            "objectName" : "Pharmacy Site(id=pharmacy_site)",
+            "path" : "Home/Custom Assets/Business Entities/Pharmacy Site(id=pharmacy_site)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Expression1",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "o_sourcesystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:sourceSystem"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:sourcePKey"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacy_id"
+                },
+                {
+                  "name" : "tradeName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:tradeName"
+                },
+                {
+                  "name" : "pharmacyType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacyType"
+                },
+                {
+                  "name" : "ownershipType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:ownership"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:sourcePKey"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:parentId"
+                },
+                {
+                  "name" : "drugLicenseNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:drugLicenseNumber"
+                },
+                {
+                  "name" : "gstNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:gstNumber"
+                },
+                {
+                  "name" : "tanNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:tanNumber"
+                },
+                {
+                  "name" : "regulatoryStatus",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:regulatoryStatus"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:createdBy"
+                },
+                {
+                  "name" : "lastCreatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:sourcePKey"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:parentId"
+                },
+                {
+                  "name" : "addressLine1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:addressLine1"
+                },
+                {
+                  "name" : "addressLine2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:addressLine2"
+                },
+                {
+                  "name" : "city",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:city"
+                },
+                {
+                  "name" : "district",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:district"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:createdBy"
+                },
+                {
+                  "name" : "lastCreatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:sourcePKey"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:parentId"
+                },
+                {
+                  "name" : "pharmacistQualification",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistQualification"
+                },
+                {
+                  "name" : "pharmacistEmail",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistEmail"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:createdBy"
+                },
+                {
+                  "name" : "lastCreatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:sourcePKey"
+                },
+                {
+                  "name" : "pharmacyId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:parentId"
+                },
+                {
+                  "name" : "secondaryPhone",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:secondaryPhone"
+                },
+                {
+                  "name" : "email",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:email"
+                },
+                {
+                  "name" : "emailType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:emailType"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:createdBy"
+                },
+                {
+                  "name" : "lastCreatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:createdBy"
+                },
+                {
+                  "name" : "lastCreatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:lastCreatedBy"
+                },
+                {
+                  "name" : "f_pharmacyName_Cleanse",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacyName"
+                },
+                {
+                  "name" : "pan_rs_Account_Number",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:panNumber"
+                },
+                {
+                  "name" : "S_PrimaryRuleSet",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:state"
+                },
+                {
+                  "name" : "C_PrimaryRuleSet",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:country"
+                },
+                {
+                  "name" : "full_middleName_Title_Case",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistMiddleName"
+                },
+                {
+                  "name" : "full_pharmacistFirstName_Title_Case",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistFirstName"
+                },
+                {
+                  "name" : "full_pharmacistLastName_Title_Case",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistLastName"
+                },
+                {
+                  "name" : "pharmacistRegistrationNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistRegistrationNumber"
+                },
+                {
+                  "name" : "full_PrimaryRuleSet",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistFullName"
+                },
+                {
+                  "name" : "N_LD",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:licenseIssueDate"
+                },
+                {
+                  "name" : "N_ED",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:licenseExpiryDate"
+                },
+                {
+                  "name" : "N_CT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:createdTime"
+                },
+                {
+                  "name" : "N_UT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:regulatoryAndComplianceArray/json:regulatoryAndCompliance/json:lastUpdatedTime"
+                },
+                {
+                  "name" : "p_PrimaryRuleSet",
+                  "platformType" : {
+                    "name" : "integer"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:postalCode"
+                },
+                {
+                  "name" : "N_CT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:createdTime"
+                },
+                {
+                  "name" : "N_UT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:lastUpdatedTime"
+                },
+                {
+                  "name" : "N_CT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:createdTime"
+                },
+                {
+                  "name" : "N_UT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:lastUpdatedTime"
+                },
+                {
+                  "name" : "N_CT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:createdTime"
+                },
+                {
+                  "name" : "N_UT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:lastUpdatedTime"
+                },
+                {
+                  "name" : "N_CT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:createdTime"
+                },
+                {
+                  "name" : "N_UT",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:lastUpdatedTime"
+                },
+                {
+                  "name" : "N_LOG",
+                  "platformType" : {
+                    "name" : "decimal"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:longitude"
+                },
+                {
+                  "name" : "N_LAT",
+                  "platformType" : {
+                    "name" : "decimal"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:latitude"
+                },
+                {
+                  "name" : "addressLine3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:address_and_locationArray/json:address_and_location/json:addressLine3"
+                },
+                {
+                  "name" : "primaryPhone",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:contactInformationArray/json:contactInformation/json:primaryPhone"
+                },
+                {
+                  "name" : "pharmacistMobile",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Pharmacy_Site_id_pharmacy_site_/json:Pharmacy_Site/json:pharmacistArray/json:pharmacist/json:pharmacistMobile"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T09:43:13.478Z",
+        "name" : "Cl_pharmacyname",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "pharmacyName"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@4UheLjYJyxHgsWOOzd9guL",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "BY_NAME"
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "pharmacyName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "pharmacyName_Cleanse",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T09:52:46.344Z",
+        "name" : "Rs_panmasking",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "panNumber"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@5W6OUAzXySSfdah9XDQvOK",
+        "ruleId" : "@5W6OUAzXySSfdah9XDQvOK",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "panNumber",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Account_number"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Account_number",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "rs_Account_Number",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T09:55:12.154Z",
+        "name" : "Rs_state",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "state"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@jp6fNiEvds1ftkjvw3G4YC",
+        "ruleId" : "@jp6fNiEvds1ftkjvw3G4YC",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "state",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "NewInput1"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "NewInput1",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T09:57:42.068Z",
+        "name" : "Rs_coutry",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "country"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@9p79SIyySeNcDnJYlbPYOf",
+        "ruleId" : "@9p79SIyySeNcDnJYlbPYOf",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "country",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "NewInput1"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "NewInput1",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T10:04:47.700Z",
+        "name" : "Rs_postcode",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "postalCode"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@f0cadrA36IklwtRusY0gMd",
+        "ruleId" : "@f0cadrA36IklwtRusY0gMd",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "postalCode",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "NewInput1"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "NewInput1",
+              "platformType" : {
+                "name" : "decimal"
+              },
+              "precision" : 10,
+              "scale" : 4
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "integer"
+              },
+              "precision" : 10,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T10:23:19.697Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "Cl_pharmacyname",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "f_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "Rs_panmasking",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "pan_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "Rs_state",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "S_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "Rs_coutry",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "C_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "Rs_postcode",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "p_",
+                    "suffix" : "false"
+                  }
+                }
+              },
+              {
+                "precedingGroupName" : "MappletOutputTx_Output",
+                "precedingTxName" : "Full_Name_Concat",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "full_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "C_PrimaryRuleSet"
+                  },
+                  {
+                    "inputName" : "f_pharmacyName_Cleanse"
+                  },
+                  {
+                    "inputName" : "full_middleName_Title_Case"
+                  },
+                  {
+                    "inputName" : "full_pharmacistFirstName_Title_Case"
+                  },
+                  {
+                    "inputName" : "full_pharmacistLastName_Title_Case"
+                  },
+                  {
+                    "inputName" : "full_PrimaryRuleSet"
+                  },
+                  {
+                    "inputName" : "p_PrimaryRuleSet"
+                  },
+                  {
+                    "inputName" : "pan_rs_Account_Number"
+                  },
+                  {
+                    "inputName" : "S_PrimaryRuleSet"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-18T10:24:02.180Z",
+        "name" : "Expression1",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_sourcesystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'erp'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "N_CT",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "IIF(\n    ISNULL(createdTime) OR createdTime = '',\n    NULL,\n    TO_DATE(createdTime, 'DD-MM-YYYY HH24:MI')\n)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "N_UT",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "IIF(\n    ISNULL(lastUpdatedTime) OR lastUpdatedTime = '',\n    NULL,\n    TO_DATE(lastUpdatedTime, 'DD-MM-YYYY HH24:MI')\n)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "N_LD",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "IIF(\n    ISNULL(licenseIssueDate) OR licenseIssueDate = '',\n    NULL,\n    TO_DATE(licenseIssueDate, 'DD-MM-YYYY')\n)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "N_ED",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "IIF(\n    ISNULL(licenseExpiryDate) OR licenseExpiryDate = '',\n    NULL,\n    TO_DATE(licenseExpiryDate, 'DD-MM-YYYY')\n)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "N_LOG",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "TO_DECIMAL(longitude)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "N_LAT",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "TO_DECIMAL(latitude)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-06T10:04:02.404Z",
+        "name" : "Title_Case",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "middleName"
+                  },
+                  {
+                    "inputName" : "pharmacistFirstName"
+                  },
+                  {
+                    "inputName" : "pharmacistLastName"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@96ogzvxICwMhImg2GdghYP",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "BY_NAME"
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "pharmacistFirstName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "middleName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "pharmacistLastName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "pharmacistFirstName_Title_Case",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "middleName_Title_Case",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "pharmacistLastName_Title_Case",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-06T10:05:39.448Z",
+        "name" : "Full_Name_Concat",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "middleName_Title_Case"
+                  },
+                  {
+                    "inputName" : "pharmacistFirstName_Title_Case"
+                  },
+                  {
+                    "inputName" : "pharmacistLastName_Title_Case"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@2zAL1CZ0g0liD1VZUPNsOX",
+        "ruleId" : "@2zAL1CZ0g0liD1VZUPNsOX",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "pharmacistFirstName_Title_Case",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "firstName"
+                  }
+                },
+                {
+                  "name" : "middleName_Title_Case",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "middleName"
+                  }
+                },
+                {
+                  "name" : "pharmacistLastName_Title_Case",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "lastName"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "firstName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            },
+            {
+              "name" : "middleName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            },
+            {
+              "name" : "lastName",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-10-01 01:39:50 PDT"
+}
