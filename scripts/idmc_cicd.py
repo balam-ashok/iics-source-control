@@ -104,7 +104,10 @@ class Org:
         self.session_id = body['userInfo']['sessionId']
         self.base = body['products'][0]['baseApiUrl'].rstrip('/')      # https://<pod>.<region>.informaticacloud.com/saas
         self.host = self.base[:-len('/saas')] if self.base.endswith('/saas') else self.base
-        log('Logged in to ' + label + ' org (' + self.base + ')')
+        info = body.get('userInfo') or {}
+        self.org_id, self.org_name, self.user = info.get('orgId'), info.get('orgName') or '?', info.get('name') or username
+        log('Logged in to ' + label + ' org: IDMC org "' + self.org_name + '" (' + str(self.org_id) + ') as ' +
+            self.user + ' (' + self.base + ')')
 
     def _send(self, method, url, auth=True, v2=False, retries=4, **kw):
         headers = kw.pop('headers', {})
@@ -740,12 +743,32 @@ def table(rows, cols):
     return out
 
 
+def check_orgs(src, dst, cfg):
+    """Stop before changing anything if the credentials don't reach the expected IDMC orgs."""
+    def same(a, b):
+        return str(a or '').strip().lower() == str(b or '').strip().lower()
+    want = cfg.get('orgs') or {}
+    if src.org_id and src.org_id == dst.org_id:
+        raise DeployError('IICS_* and UAT_IICS_* secrets both log in to IDMC org "' + src.org_name +
+                          '"; UAT_IICS_USERNAME / UAT_IICS_PASSWORD must be a Dfactory org user')
+    if want.get('target') and not same(dst.org_name, want['target']):
+        hint = ' (the IICS_* and UAT_IICS_* secrets look swapped)' if same(src.org_name, want['target']) else ''
+        raise DeployError('UAT_IICS_USERNAME / UAT_IICS_PASSWORD log in to IDMC org "' + dst.org_name +
+                          '", expected "' + want['target'] + '"' + hint + '; fix the secrets or orgs.target in cicd/config.yml')
+    if want.get('source') and not same(src.org_name, want['source']):
+        raise DeployError('IICS_USERNAME / IICS_PASSWORD log in to IDMC org "' + src.org_name +
+                          '", expected "' + want['source'] + '"; fix the secrets or orgs.source in cicd/config.yml')
+
+
 def write_summary(report, ok, error):
     md = '# IDMC deployment: Demo → Dfactory ' + ('✅' if ok else '❌') + '\n\n'
     md += '**Commit:** `' + report['commit'][:7] + '`'
     if report['merged']:
         md += ' (merges ' + ', '.join('`' + c[:7] + '`' for c in report['merged']) + ')'
-    md += '  \n**Mode:** ' + ('dry run' if report['dry_run'] else 'deploy') + '\n\n'
+    md += '  \n**Mode:** ' + ('dry run' if report['dry_run'] else 'deploy')
+    if report.get('orgs'):
+        md += '  \n**Orgs:** ' + report['orgs']['Demo'] + ' → ' + report['orgs']['Dfactory']
+    md += '\n\n'
     if error:
         md += '> **Failed:** ' + error + '\n\n'
     md += '## Changed assets\n' + table(report['assets'], [('Type', 'type'), ('Asset', 'path'), ('Change', 'change')])
@@ -796,6 +819,8 @@ def main():
         orgs.append(src)
         dst = Org('Dfactory', login_url, os.environ['UAT_IICS_USERNAME'], os.environ['UAT_IICS_PASSWORD'])
         orgs.append(dst)
+        report['orgs'] = {'Demo': src.org_name + ' (' + src.user + ')', 'Dfactory': dst.org_name + ' (' + dst.user + ')'}
+        check_orgs(src, dst, cfg)
 
         # object IDs in Demo, straight from IDMC's commit details (hash-based)
         src_ids = src.commit_ids(merged or [commit]) if any(not a['deleted'] for a in assets) else {}
