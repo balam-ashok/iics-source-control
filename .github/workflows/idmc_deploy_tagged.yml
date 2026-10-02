@@ -1,9 +1,9 @@
 name: IDMC - Deploy tagged assets
 
-# Deploys to DFactory Inc DEV only the DemoCentral assets tagged ready-to-deploy (cicd-ready-qa) that are
-# checked in (not checked out) and whose last check-in is merged into Dfactory-Branch. Everything ready
-# goes in one pull; afterwards each asset is re-tagged in DemoCentral: cicd-ready-qa -> cicd-deployed-qa,
-# or cicd-failed-qa when its pull failed. Tag names are in cicd/config.yml (tags:).
+# Deploys to DFactory Inc DEV only the DemoCentral assets tagged ready-to-deploy that are checked in (not
+# checked out) and whose last check-in is merged into Dfactory-Branch. Everything ready goes in one pull;
+# afterwards each deployed asset is re-tagged in DemoCentral: ready-to-deploy / reviewed / in-review -> deployed.
+# An asset whose pull failed keeps ready-to-deploy, so the next run tries it again. Tag names: cicd/config.yml (tags:).
 on:
   workflow_dispatch:
     inputs:
