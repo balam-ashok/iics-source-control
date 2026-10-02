@@ -79,6 +79,67 @@ def merged_into(sha, ref):
                           capture_output=True).returncode == 0
 
 
+def sync_branches(cfg, dry_run):
+    """Ask for the check-ins on the source branch (where DemoCentral checks in) to be merged into the target
+    branch (what DFactory pulls from): open a pull request, or reuse the open one, and turn on auto-merge so
+    GitHub merges it as soon as it is approved. Called only when an asset tagged ready-to-deploy is not on the
+    target branch yet. Nothing is merged without review; the assets go on the first run after the merge.
+    Needs GH_TOKEN and GH_REPO. Returns (merged now, pull request number or '')."""
+    source, target = cfg.get('source_branch', 'Demo-Central-Branch'), cfg['target_branch']
+    log('\n== Git: check-ins from ' + source + ' into ' + target)
+
+    def pending():
+        core.git('fetch', '--quiet', 'origin', source, target)
+        return int(core.git('rev-list', '--count', 'origin/' + target + '..origin/' + source) or 0)
+
+    try:
+        count = pending()
+    except subprocess.CalledProcessError as e:
+        log('Could not compare the branches: ' + (e.stderr or str(e)).strip()[:300])
+        return False, ''
+    if not count:
+        log('Nothing to merge: every check-in on ' + source + ' is already on ' + target)
+        return False, ''
+    if dry_run:
+        log('DRY RUN: would open a pull request for ' + str(count) + ' commit(s) from ' + source + ' into ' + target)
+        return False, ''
+    if not os.environ.get('GH_TOKEN'):
+        log('GH_TOKEN is not set, so no pull request can be opened')
+        return False, ''
+
+    def gh(*args):
+        return subprocess.run(['gh'] + list(args), cwd=core.ROOT, check=True, capture_output=True, text=True).stdout.strip()
+
+    try:
+        number = gh('pr', 'list', '--base', target, '--head', source, '--state', 'open', '--json', 'number',
+                    '--jq', '.[0].number')
+        if number:
+            log('Pull request #' + number + ' is already open')
+        else:
+            url = gh('pr', 'create', '--base', target, '--head', source,
+                     '--title', 'Move IICS assets from ' + source + ' to ' + target,
+                     '--body', 'Opened by IDMC - Deploy tagged assets because assets tagged ' + cfg['tags']['ready'] +
+                     ' are checked in but not yet on ' + target + '. Approve it to let them deploy.')
+            number = url.rstrip('/').split('/')[-1]
+            log('Opened pull request #' + number + ' (' + str(count) + ' commit(s))')
+    except subprocess.CalledProcessError as e:
+        log('Opening the pull request failed: ' + (e.stderr or str(e)).strip()[:300])
+        return False, ''
+    try:
+        gh('pr', 'merge', number, '--auto', '--merge')
+    except subprocess.CalledProcessError as e:
+        log('Auto-merge could not be turned on (' + (e.stderr or str(e)).strip()[:200] +
+            '); merge the pull request after approving it')
+    try:
+        if not pending():
+            log('Pull request #' + number + ' is merged')
+            return True, number
+    except subprocess.CalledProcessError:
+        pass
+    log('Waiting for pull request #' + number + ' to be approved; the assets deploy on the first run after it merges')
+    return False, number
+
+
 def find_tagged(org, tag):
     """Every asset in org carrying tag (the objects API returns at most 200 per call)."""
     out, skip = [], 0
@@ -123,13 +184,13 @@ def select(objs, tags, release, files, ref):
         elif sc.get('checkedOutBy'):
             reason = 'checked out by ' + str(sc['checkedOutBy']) + '; check it in first'
         elif (path, t) not in files:
-            reason = 'not found in Git on ' + ref.split('/')[-1] + '; check it in and let the Auto PR merge it'
+            reason = 'not found in Git on ' + ref.split('/')[-1]
         elif commit and not merged_into(commit, ref):
             reason = 'last check-in ' + commit[:7] + ' is not merged into ' + ref.split('/')[-1] + ' yet'
         row = {'path': path, 'type': t, 'id': o.get('id'), 'tags': otags, 'checkin': commit[:7] or '-',
                'checkin_by': sc.get('lastCheckinBy') or '-'}
         if reason:
-            skipped.append(dict(row, reason=reason))
+            skipped.append(dict(row, reason=reason, needs_sync=reason.startswith(('not found in Git', 'last check-in'))))
             continue
         xml = next((f for f in files[(path, t)] if f.endswith('.xml') and not f.split('/')[-1].startswith('.')), None)
         ready.append(dict(row, deleted=False, xml=xml))
@@ -339,6 +400,18 @@ def main():
 
         tagged = find_tagged(src, tags['ready'])
         assets, skipped = select(tagged, tags, release, files, ref)
+        # a ready asset whose check-in is not on the target branch yet: merge the check-ins first, then look again
+        if any(s.get('needs_sync') for s in skipped):
+            merged, pr = sync_branches(cfg, dry_run)
+            if merged:
+                commit, ref = target_head(cfg)
+                report.update(commit=commit)
+                files = repo_files(commit)
+                assets, skipped = select(tagged, tags, release, files, ref)
+            elif pr:
+                for s in skipped:
+                    if s.get('needs_sync'):
+                        s['reason'] += '; waiting for approval of pull request #' + pr
         report['skipped'] = skipped
         log('Assets tagged ' + tags['ready'] + (' and ' + release if release else '') + ': ' + str(len(tagged)) +
             ' found, ' + str(len(assets)) + ' to deploy, ' + str(len(skipped)) + ' skipped')
