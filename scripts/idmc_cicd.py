@@ -43,7 +43,10 @@ VOLATILE_CONNECTION_KEYS = {'id', 'orgId', 'createTime', 'updateTime', 'createdB
                             'password', 'securityToken', 'internal', 'retryNetworkError'}
 VOLATILE_SCHEDULE_KEYS = {'id', 'orgId', 'createTime', 'updateTime', 'createdBy', 'updatedBy'}
 # IDMC uses different names for the same type depending on the API (git file suffix vs. v3 APIs)
-TYPE_ALIASES = {'MAPPING': 'DTEMPLATE', 'MAPPING_TASK': 'MTT', 'MAPPINGTASK': 'MTT',
+# the dependency ("uses") API names some types differently from Git and the pull API: a mapping task is MCT there
+# (MTT in Git), a business service SAAS_BSERVICES (BSERVICE in Git)
+TYPE_ALIASES = {'MAPPING': 'DTEMPLATE', 'MAPPING_TASK': 'MTT', 'MAPPINGTASK': 'MTT', 'MCT': 'MTT',
+                'SAAS_BSERVICES': 'BSERVICE', 'SAAS_BSERVICE': 'BSERVICE',
                 'SYNCHRONIZATION_TASK': 'DSS', 'REPLICATION_TASK': 'DRS', 'WORKFLOW': 'WORKFLOW'}
 
 
