@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "6Y9TvbK4bKBluYjlhyGlu9",
+    "name" : "HOT_GUEST_RESERVATIONS",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "fb235b31-45af-4a74-8d29-7c87b99eb2ac"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-10-02T10:11:06.631Z",
+  "objectRefs" : [ {
+    "id" : "lNRfXEIJjwvd8PN5N5IPgz",
+    "name" : "rs_Null_Check",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "lNRfXEIJjwvd8PN5N5IPgz"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This rule spec check for nulls and returns 'True' or 'False'.",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Guest360/Rules"
+  }, {
+    "id" : "cFqfiiJDLitex0pec4Kjej",
+    "name" : "RSP_Checkin_checkout_date_valid",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "cFqfiiJDLitex0pec4Kjej"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This Rule Specification Checks Check in date should not be greater than check out date .",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Guest360/Rules"
+  }, {
+    "id" : "aDZfZ5Hop6BhEHQaCX9iS6",
+    "name" : "WYNN_DEMO_SNOWFLAKE_STG_CONN",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000002P"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
