@@ -419,6 +419,10 @@ def main():
             log('  skip ' + s['type'] + ' ' + s['path'] + ': ' + s['reason'])
         for a in assets:
             log('  deploy ' + a['type'] + ' ' + a['path'] + ' (last check-in ' + a['checkin'] + ' by ' + a['checkin_by'] + ')')
+        # for the workflow: the approval step is only requested when there is something to deploy
+        if os.environ.get('GITHUB_OUTPUT'):
+            with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+                f.write('to_deploy=' + str(len(assets)) + '\n')
         if not assets:
             log('\nNothing to deploy')
             return
