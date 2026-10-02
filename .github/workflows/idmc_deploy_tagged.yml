@@ -19,10 +19,12 @@ on:
         description: "Also run the deployed mapping tasks in Dfactory afterwards (needs a Secure Agent)"
         type: boolean
         default: false
-  # Runs on its own every 15 minutes and deploys only the assets tagged ready-to-deploy (IDMC cannot notify
-  # GitHub when an asset is tagged, so it checks on a timer). A check-in alone never starts a deploy.
-  schedule:
-    - cron: '*/15 * * * *'
+  # Runs on its own right after each check-in (once the Auto PR has merged it into Dfactory-Branch), checks the
+  # tags in DemoCentral and deploys only the assets tagged ready-to-deploy. Tag an asset before checking it in.
+  # A check-in with nothing tagged ends in seconds and migrates nothing.
+  workflow_run:
+    workflows: ["Trigger Dfactory deploy on merge"]
+    types: [completed]
 
 # never run at the same time as another deploy or migration
 concurrency:
@@ -32,6 +34,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy assets tagged ready to Dfactory
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: uat
