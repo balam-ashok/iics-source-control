@@ -6,7 +6,9 @@ name: IDMC - Deploy tagged assets
 # An asset whose pull failed keeps ready-to-deploy, so the next run tries it again. Tag names: cicd/config.yml (tags:).
 #
 # Two steps with an approval in between:
-#   1. "Check tagged assets"  - reads the tags and lists what would be migrated (changes nothing)
+#   1. "Check tagged assets"  - reads the tags and lists what would be migrated. If a tagged asset uses assets that
+#                               were never checked in (e.g. a taskflow's mapping task and mapping), it checks them
+#                               in from DemoCentral; that check-in starts this workflow again for the full set.
 #   2. "Migrate to Dfactory"  - waits for a reviewer to approve (GitHub environment dfactory-approval),
 #                               then migrates. Only requested when step 1 found something to migrate.
 on:
@@ -65,11 +67,13 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt
 
-      - name: List the assets tagged ready-to-deploy (changes nothing)
+      - name: List the assets tagged ready-to-deploy and check in their dependencies
         id: check
         env:
           DRY_RUN: "true"
           RUN_TESTS: "false"
+          # check in never-checked-in dependencies (not in a dry run started by hand)
+          AUTO_CHECKIN: ${{ github.event.inputs.dry_run != 'true' }}
         run: python ./scripts/idmc_deploy_tagged.py
 
   deploy:
@@ -104,5 +108,6 @@ jobs:
       - name: Migrate tagged assets
         env:
           DRY_RUN: "false"
+          AUTO_CHECKIN: "false"
           RUN_TESTS: ${{ github.event.inputs.run_tests }}
         run: python ./scripts/idmc_deploy_tagged.py
