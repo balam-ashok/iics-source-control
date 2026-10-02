@@ -1,0 +1,55 @@
+{
+  "objectInfo" : {
+    "id" : "7HYGgEdLiNhdx3AmlrTYo4",
+    "name" : "Guest Status",
+    "type" : "MDM_REFERENCE_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null,
+      "populationManifest" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "rdm.value.be.ent_guest_status"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2026-10-02T09:49:02.154Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
