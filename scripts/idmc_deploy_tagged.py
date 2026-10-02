@@ -248,6 +248,33 @@ def checkin_dependencies(src, blocked, cfg):
     return results
 
 
+def show_folder(src, folder):
+    """Read-only: list what IDMC returns for every asset in a DemoCentral folder (id, type, tags, source control
+    state) and what each one uses. For checking why an asset is or is not treated as checked in or tagged."""
+    log('\n== Assets in ' + folder + ' (DemoCentral, as the API returns them)')
+    rows = []
+    for k, o in sorted(location_objects(src, folder, {}).items(), key=lambda x: str(x[0])):
+        if isinstance(k, str):
+            continue
+        uses = []
+        for r in src.references(o.get('id')) if o.get('id') else []:
+            p, t = ref_path_type(r)
+            uses.append(t + ' ' + p + ' [' + str(r.get('id')) + ']')
+        row = {'asset': k[0], 'type': k[1], 'id': o.get('id'), 'tags': ', '.join(o.get('tags') or []) or '-',
+               'source': json.dumps(o.get('sourceControl'), default=str) if o.get('sourceControl') is not None
+               else 'not returned', 'uses': '; '.join(uses) or '-'}
+        rows.append(row)
+        log('  ' + row['type'] + ' ' + row['asset'] + '\n      id=' + str(row['id']) + '  tags=' + row['tags'] +
+            '\n      sourceControl=' + row['source'] + '\n      uses: ' + row['uses'])
+        log('      all fields: ' + ', '.join(sorted(o.keys())))
+    path = os.environ.get('GITHUB_STEP_SUMMARY')
+    if path:
+        with open(path, 'a', encoding='utf-8') as f:
+            f.write('# Assets in ' + folder + '\n\n' + core.table(rows, [
+                ('Asset', 'asset'), ('Type', 'type'), ('Id', 'id'), ('Tags', 'tags'), ('Source control', 'source'),
+                ('Uses', 'uses')]))
+
+
 def sync_branches(cfg, dry_run):
     """Ask for the check-ins on the source branch (where DemoCentral checks in) to be merged into the target
     branch (what DFactory pulls from): open a pull request, or reuse the open one, and turn on auto-merge so
@@ -596,6 +623,13 @@ def main():
         logins.append(dst)
         report['orgs'] = src.org_name + ' → ' + dst.org_name
         core.check_orgs(src, dst, cfg)
+
+        if os.environ.get('SHOW_FOLDER', '').strip():
+            show_folder(src, os.environ['SHOW_FOLDER'].strip().strip('/'))
+            if os.environ.get('GITHUB_OUTPUT'):
+                with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
+                    f.write('to_deploy=0\n')
+            return
 
         tagged = find_tagged(src, tags['ready'])
 
