@@ -2,14 +2,16 @@
 IDMC: deploy the assets tagged ready-to-deploy in the Demo org to the Dfactory org, then re-tag them.
 
 Instead of deploying every check-in, this deploys only the assets a reviewer has tagged (default tag
-cicd-ready-qa) and that are safe to deploy:
+ready-to-deploy) and that are safe to deploy:
   - under source control and not checked out (so the version in DemoCentral is the checked-in one)
   - their last check-in is merged into Dfactory-Branch (the branch the Dfactory org pulls from)
-  - not tagged cicd-hold, and (if RELEASE_TAG is given) also carrying that release tag
+  - not tagged hold (only when a hold tag is set in config), and (if RELEASE_TAG is given) also carrying
+    that release tag
 
 Steps: find the tagged assets -> check each one -> connections, schedules and missing dependencies (as
 idmc_cicd.py does) -> one pull of exactly those assets from Dfactory-Branch -> re-tag them in DemoCentral
-(cicd-ready-qa -> cicd-deployed-qa, or cicd-failed-qa) -> re-link schedules, publish, test -> summary.
+(ready-to-deploy / reviewed / in-review -> deployed; a failed asset keeps ready-to-deploy, or gets the failed
+tag when one is set) -> re-link schedules, publish, test -> summary.
 
 Tag names live under tags: in cicd/config.yml. Environment: IICS_LOGIN_URL, IICS_USERNAME / IICS_PASSWORD
 (Demo), UAT_IICS_USERNAME / UAT_IICS_PASSWORD (Dfactory), RELEASE_TAG, DRY_RUN, RUN_TESTS, SECRETS_JSON.
@@ -26,8 +28,9 @@ import yaml
 import idmc_cicd as core
 from idmc_cicd import DeployError, Org, add_id, env_flag, log, norm_type
 
-DEFAULT_TAGS = {'in_review': 'cicd-in-review', 'ready': 'cicd-ready-qa', 'deployed': 'cicd-deployed-qa',
-                'failed': 'cicd-failed-qa', 'hold': 'cicd-hold'}
+# the tags that exist in the IDMC orgs; failed and hold are optional (blank = not used)
+DEFAULT_TAGS = {'in_review': 'in-review', 'reviewed': 'reviewed', 'ready': 'ready-to-deploy',
+                'deployed': 'deployed', 'failed': '', 'hold': ''}
 NOT_DEPLOYABLE = {'PROJECT', 'FOLDER'}
 
 
@@ -39,7 +42,10 @@ def load_config():
     cfg.setdefault('target_branch', 'Dfactory-Branch')
     cfg['allow_warnings'] = env_flag('ALLOW_WARNINGS', cfg.get('allow_warnings', False))
     tags = dict(DEFAULT_TAGS)
-    tags.update({k: v for k, v in (cfg.get('tags') or {}).items() if v})
+    tags.update({k: str(v or '').strip() for k, v in (cfg.get('tags') or {}).items()})
+    for k in ('ready', 'deployed'):
+        if not tags.get(k):
+            raise DeployError('cicd/config.yml tags: ' + k + ' must be set')
     cfg['tags'] = tags
     return cfg
 
@@ -108,7 +114,7 @@ def select(objs, tags, release, files, ref):
         reason = None
         if t in NOT_DEPLOYABLE:
             reason = 'projects and folders are not deployed by tag; tag the assets inside'
-        elif tags['hold'] in otags:
+        elif tags['hold'] and tags['hold'] in otags:
             reason = 'on hold (' + tags['hold'] + ')'
         elif release and release not in otags:
             reason = 'not in release ' + release
@@ -199,13 +205,20 @@ def change_tags(org, endpoint, changes):
 
 
 def retag(src, assets, outcome, tags):
-    """In DemoCentral: deployed assets -> deployed tag (ready / failed / in-review removed);
-    failed ones -> failed tag (ready removed). Returns {(path, TYPE): tag change text}."""
+    """In DemoCentral: deployed assets get the deployed tag (ready / reviewed / in-review / failed removed).
+    A failed asset gets the failed tag in place of ready when a failed tag is set; otherwise its tags are left
+    as they are, so it stays ready and the next run tries it again. Returns {(path, TYPE): tag change text}."""
     untag, tag, text = [], [], {}
     for a in assets:
         ok, _ = outcome[(a['path'], a['type'])]
-        drop = [t for t in ([tags['ready'], tags['failed'], tags['in_review']] if ok else [tags['ready']])
-                if t in a['tags']]
+        if not ok and not tags['failed']:
+            text[(a['path'], a['type'])] = 'unchanged (still ' + tags['ready'] + ')'
+            continue
+        if ok:
+            drop = [tags[k] for k in ('ready', 'reviewed', 'in_review', 'failed') if tags.get(k)]
+        else:
+            drop = [tags['ready']]
+        drop = [t for t in drop if t in a['tags']]
         add = tags['deployed'] if ok else tags['failed']
         untag.append({'id': a['id'], 'tags': drop})
         tag.append({'id': a['id'], 'tags': [add] if add not in a['tags'] else []})
@@ -300,7 +313,8 @@ def main():
             log('\n== Pull\nDRY RUN: would pull ' + ', '.join(a['path'] for a in assets) + ' at ' + commit[:7] +
                 ' and re-tag them ' + tags['ready'] + ' -> ' + tags['deployed'])
             for a in assets:
-                report['assets'].append(dict(a, result='would deploy', tag_change=tags['ready'] + ' -> ' + tags['deployed']))
+                drop = [tags[k] for k in ('ready', 'reviewed', 'in_review', 'failed') if tags.get(k) and tags[k] in a['tags']]
+                report['assets'].append(dict(a, result='would deploy', tag_change=', '.join(drop) + ' -> ' + tags['deployed']))
             core.publish(dst, assets, cfg, True, report)
             if tests_on:
                 core.run_tests(dst, assets, cfg, True, report, {})
