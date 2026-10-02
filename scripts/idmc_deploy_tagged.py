@@ -115,7 +115,7 @@ def check_dependencies(src, assets, files, ref, cfg):
         return assets, []
     max_depth = int((cfg.get('dependencies') or {}).get('max_depth', 5))
     branch = ref.split('/')[-1]
-    folders, refs_cache, problems, to_checkin = {}, {}, {}, {}
+    folders, refs_cache, problems, to_checkin, demo_obj = {}, {}, {}, {}, {}
     # Git file names and the "uses" list name some types differently (MTT / MCT, BSERVICE / SAAS_BSERVICES), so an
     # asset counts as in Git when Git has that path, whatever the type is called there
     git_paths = {p for p, _ in files}
@@ -128,6 +128,7 @@ def check_dependencies(src, assets, files, ref, cfg):
             path, t = key
             listing = location_objects(src, path.rsplit('/', 1)[0] if '/' in path else path, folders)
             o = listing.get(key) or (listing.get('id:' + obj_id) if obj_id else None)
+            demo_obj[key] = o
             sc = (o or {}).get('sourceControl') or {}
             commit = sc.get('hash') or ''
             if sc.get('checkedOutBy'):
@@ -175,6 +176,9 @@ def check_dependencies(src, assets, files, ref, cfg):
             log('  blocked ' + a['type'] + ' ' + a['path'] + ': ' + str(len(bad)) + ' of its ' + str(len(tree)) +
                 ' dependencies not checked in')
         else:
+            # remembered so the dependencies get the deployed tag together with the asset
+            a['deps'] = {k: {'id': (demo_obj.get(k) or {}).get('id') or tree[k],
+                             'tags': (demo_obj.get(k) or {}).get('tags')} for k in tree}
             ok.append(a)
             if tree:
                 log('  ' + a['type'] + ' ' + a['path'] + ': all ' + str(len(tree)) + ' dependencies checked in')
@@ -482,10 +486,34 @@ def change_tags(org, endpoint, changes):
 
 
 def retag(src, assets, outcome, tags):
-    """In DemoCentral: deployed assets get the deployed tag (ready / reviewed / in-review / failed removed).
-    A failed asset gets the failed tag in place of ready when a failed tag is set; otherwise its tags are left
-    as they are, so it stays ready and the next run tries it again. Returns {(path, TYPE): tag change text}."""
+    """In DemoCentral: deployed assets get the deployed tag (ready / reviewed / in-review / failed removed), and so
+    do the assets they use (mapping task, mapping, business service ...; connections and runtime environments have
+    no tags here). A failed asset gets the failed tag in place of ready when a failed tag is set; otherwise its
+    tags are left as they are, so it stays ready and the next run tries it again.
+    Returns ({(path, TYPE): tag change text}, {id: error})."""
     untag, tag, text = [], [], {}
+    own_ids = {a['id'] for a in assets}
+    dep_done, dep_count = set(), {}
+    for a in assets:
+        ok, _ = outcome[(a['path'], a['type'])]
+        if not ok:
+            continue
+        n = 0
+        for k, d in sorted((a.get('deps') or {}).items()):
+            if not d.get('id') or d['id'] in own_ids:
+                continue
+            n += 1
+            if d['id'] in dep_done:
+                continue
+            dep_done.add(d['id'])
+            have = d.get('tags')
+            if have is not None:
+                drop = [tags[x] for x in ('ready', 'reviewed', 'in_review', 'failed') if tags.get(x) and tags[x] in have]
+                if drop:
+                    untag.append({'id': d['id'], 'tags': drop})
+            if have is None or tags['deployed'] not in have:
+                tag.append({'id': d['id'], 'tags': [tags['deployed']]})
+        dep_count[a['id']] = n
     for a in assets:
         ok, _ = outcome[(a['path'], a['type'])]
         if not ok and not tags['failed']:
@@ -500,11 +528,17 @@ def retag(src, assets, outcome, tags):
         untag.append({'id': a['id'], 'tags': drop})
         tag.append({'id': a['id'], 'tags': [add] if add not in a['tags'] else []})
         text[(a['path'], a['type'])] = (', '.join(drop) or '-') + ' -> ' + add
+        if dep_count.get(a['id']):
+            text[(a['path'], a['type'])] += ' (and its ' + str(dep_count[a['id']]) + ' dependencies -> ' + add + ')'
     errors = change_tags(src, 'UntagObjects', untag)
     errors.update(change_tags(src, 'TagObjects', tag))
     for a in assets:
         if a['id'] in errors:
             text[(a['path'], a['type'])] += ' (tagging failed: ' + errors[a['id']] + ')'
+        dep_errors = [k[0].split('/')[-1] + ': ' + errors[d['id']] for k, d in (a.get('deps') or {}).items()
+                      if d.get('id') in errors]
+        if dep_errors:
+            text[(a['path'], a['type'])] += ' (tagging dependencies failed: ' + '; '.join(dep_errors)[:300] + ')'
     return text, errors
 
 
@@ -635,7 +669,9 @@ def main():
                 ' and re-tag them ' + tags['ready'] + ' -> ' + tags['deployed'])
             for a in assets:
                 drop = [tags[k] for k in ('ready', 'reviewed', 'in_review', 'failed') if tags.get(k) and tags[k] in a['tags']]
-                report['assets'].append(dict(a, result='would deploy', tag_change=', '.join(drop) + ' -> ' + tags['deployed']))
+                deps_n = len([d for d in (a.get('deps') or {}).values() if d.get('id')])
+                report['assets'].append(dict(a, result='would deploy', tag_change=', '.join(drop) + ' -> ' + tags['deployed'] +
+                                             (' (and its ' + str(deps_n) + ' dependencies)' if deps_n else '')))
             core.publish(dst, assets, cfg, True, report)
             if tests_on:
                 core.run_tests(dst, assets, cfg, True, report, {})
