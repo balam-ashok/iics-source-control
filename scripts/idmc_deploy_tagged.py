@@ -267,12 +267,47 @@ def show_folder(src, folder):
         log('  ' + row['type'] + ' ' + row['asset'] + '\n      id=' + str(row['id']) + '  tags=' + row['tags'] +
             '\n      sourceControl=' + row['source'] + '\n      uses: ' + row['uses'])
         log('      all fields: ' + ', '.join(sorted(o.keys())))
+    probe_source_control(src, folder, [o for k, o in location_objects(src, folder, {}).items() if not isinstance(k, str)])
     path = os.environ.get('GITHUB_STEP_SUMMARY')
     if path:
         with open(path, 'a', encoding='utf-8') as f:
             f.write('# Assets in ' + folder + '\n\n' + core.table(rows, [
                 ('Asset', 'asset'), ('Type', 'type'), ('Id', 'id'), ('Tags', 'tags'), ('Source control', 'source'),
                 ('Uses', 'uses')]))
+
+
+def probe_source_control(src, folder, objs):
+    """Read-only: which IDMC calls return the check-in state of these objects (for show_folder)."""
+    log('\n== Where IDMC returns the check-in state')
+    ids = {o.get('id'): o for o in objs if o.get('id')}
+
+    def query(label, q, limit=200):
+        r = src.v3('GET', '/objects', params={'q': q, 'limit': limit})
+        if r.status_code != 200:
+            log('  ' + label + ': HTTP ' + str(r.status_code) + ' ' + r.text[:200])
+            return
+        got = [o for o in (r.json().get('objects') or []) if o.get('id') in ids]
+        log('  ' + label + ' (q=' + q + '): ' + str(len(got)) + ' of these objects returned')
+        for o in got[:20]:
+            log('      ' + str(o.get('type')) + ' ' + clean_path(o.get('path')) + ': sourceControl=' +
+                json.dumps(o.get('sourceControl'), default=str) + '  fields=' + ','.join(sorted(o.keys())))
+
+    for t in sorted({str(o.get('type')) for o in objs}):
+        query('folder + type ' + t, "location=='" + folder + "' and type=='" + t + "'")
+    for tag in sorted({tg for o in objs for tg in (o.get('tags') or [])}):
+        query('tag ' + tag, "tag=='" + tag + "'")
+    for t in ('DTEMPLATE', 'MTT', 'BSERVICE', 'TASKFLOW'):
+        query('type ' + t, "type=='" + t + "'")
+    for o in objs:
+        if str(o.get('type')) not in ('DTEMPLATE', 'MTT', 'BSERVICE', 'TASKFLOW'):
+            continue
+        p = clean_path(o.get('path'))
+        for label, path_ in (('commitHistory', '/commitHistory'), ('object by id', '/objects/' + str(o.get('id')))):
+            params = {'q': "path=='" + p + "' and type=='" + str(o.get('type')) + "'", 'limit': 2} \
+                if path_ == '/commitHistory' else None
+            r = src.v3('GET', path_, params=params)
+            log('  ' + label + ' ' + str(o.get('type')) + ' ' + p + ': HTTP ' + str(r.status_code) + ' ' +
+                r.text[:400].replace('\n', ' '))
 
 
 def sync_branches(cfg, dry_run):
