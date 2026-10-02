@@ -1,0 +1,132 @@
+{
+  "name" : "mt_hot_guest_reservations_stg",
+  "runtimeEnvironmentId" : "@a5Ov5a2wiculgnFfINaha8",
+  "runtimeEnvironmentName" : "DESKTOP-K4B9BJF",
+  "maxLogs" : 10,
+  "parameters" : [
+    {
+      "name" : "$Source$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "Source",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "originalPath" : "Source"
+      },
+      "sourceConnectionId" : "@46fMACxblA9ccgvOiVGAKF",
+      "connectionName" : "WYNN_DEMO_SNOWFLAKE_RAW_CONN",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "WYNN_RESORT_DWH_DEV/RAW_HOTEL/GUEST_RESERVATIONS",
+          "label" : "WYNN_RESORT_DWH_DEV/RAW_HOTEL/GUEST_RESERVATIONS",
+          "metadataUpdated" : false
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "WYNN_RESORT_DWH_DEV/RAW_HOTEL/GUEST_RESERVATIONS",
+            "label" : "WYNN_RESORT_DWH_DEV/RAW_HOTEL/GUEST_RESERVATIONS",
+            "metadataUpdated" : false
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "fetchMode" : "ORIGINAL",
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$Target$",
+      "type" : "TARGET",
+      "label" : "Target",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "supportApplyDDLChanges" : "true",
+        "originalPath" : "Target"
+      },
+      "targetConnectionId" : "@aDZfZ5Hop6BhEHQaCX9iS6",
+      "connectionName" : "WYNN_DEMO_SNOWFLAKE_STG_CONN",
+      "targetObject" : "WYNN_RESORT_DWH_DEV/STG_DATA/HOT_GUEST_RESERVATIONS",
+      "targetObjectLabel" : "WYNN_RESORT_DWH_DEV/STG_DATA/HOT_GUEST_RESERVATIONS",
+      "newFlatFile" : false,
+      "newObject" : true,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "newObjectName" : "WYNN_RESORT_DWH_DEV/STG_DATA/HOT_GUEST_RESERVATIONS",
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "operationType" : "Insert",
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "singleMode" : true
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "WYNN_RESORT_DWH_DEV/STG_DATA/HOT_GUEST_RESERVATIONS",
+      "objectLabel" : "WYNN_RESORT_DWH_DEV/STG_DATA/HOT_GUEST_RESERVATIONS",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "fetchMode" : "ORIGINAL",
+      "tgtObjectAttributes" : {
+        "parent" : "WYNN_RESORT_DWH_DEV/STG_DATA",
+        "tableFormat" : "Standard Table"
+      },
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "targetSchemaProviderType" : "SELECTED_OBJECT",
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    }
+  ],
+  "verbose" : false,
+  "mappingId" : "@3porysxb3SMbSwVVndjOS6",
+  "mappingTemplateName" : "m_hot_guest_reservations_stg",
+  "hidden" : false,
+  "enableCrossSchemaPushdown" : false,
+  "enableParallelRun" : false,
+  "autoTunedApplied" : false,
+  "autoTunedAppliedType" : "NONE",
+  "schemaMode" : "async",
+  "valid" : true,
+  "optimizationPlan" : "NONE",
+  "allowMaxFieldLength" : false,
+  "specialCharacterSupport" : false,
+  "midstreamPreview" : false,
+  "vcsExportTime" : "2026-10-02 03:23:48 PDT"
+}
