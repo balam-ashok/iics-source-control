@@ -19,9 +19,15 @@ on:
         description: "Run the deployed mapping tasks afterwards"
         type: boolean
         default: true
-  # To deploy on a timetable as well, uncomment (UTC; 13:15 UTC = 18:45 IST, Monday to Friday):
-  # schedule:
-  #   - cron: '15 13 * * 1-5'
+  # Runs on its own (IDMC cannot notify GitHub when an asset is tagged, so it also checks on a timer):
+  #  - right after a check-in is merged into Dfactory-Branch (assets already tagged ready-to-deploy)
+  #  - every 15 minutes (assets tagged ready-to-deploy after their check-in)
+  # Each run deploys only what is tagged ready-to-deploy; with nothing tagged it ends in seconds.
+  workflow_run:
+    workflows: ["Trigger Dfactory deploy on merge"]
+    types: [completed]
+  schedule:
+    - cron: '*/15 * * * *'
 
 # never run at the same time as another deploy or migration
 concurrency:
@@ -31,6 +37,7 @@ concurrency:
 jobs:
   deploy:
     name: Deploy assets tagged ready to Dfactory
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     environment:
       name: uat
