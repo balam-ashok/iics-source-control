@@ -1,11 +1,13 @@
 name: IDMC CI/CD - Deploy to Dfactory
 
-# Runs automatically when a PR into Dfactory-Branch is merged (after any required approval), via
-# "Trigger Dfactory deploy on merge" on Demo-Central-Branch, or manually from the Actions tab.
+# Manual deploy of one Dfactory-Branch commit (Actions > Run workflow).
+# Deploys are now driven by IDMC tags: "IDMC - Deploy tagged assets" (idmc_deploy_tagged.yml) moves only
+# the assets tagged ready. A merge into Dfactory-Branch no longer deploys by itself; the Auto PR still
+# keeps Dfactory-Branch up to date. To deploy on every merge again, put back under on::
+#   workflow_run:
+#     workflows: ["Trigger Dfactory deploy on merge"]
+#     types: [completed]
 on:
-  workflow_run:
-    workflows: ["Trigger Dfactory deploy on merge"]
-    types: [completed]
   workflow_dispatch:
     inputs:
       commit_hash:
