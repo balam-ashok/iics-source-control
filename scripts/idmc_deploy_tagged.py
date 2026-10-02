@@ -136,7 +136,7 @@ def select(objs, tags, release, files, ref):
     return ready, skipped
 
 
-def pull_assets(src, dst, assets, cfg, commit, repo, deps, report):
+def pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files=None):
     """One pull of exactly these assets at commit; fetch missing dependencies and retry if IDMC reports any.
     Returns {(path, TYPE): (ok, message)}."""
     log('\n== Pull')
@@ -161,15 +161,18 @@ def pull_assets(src, dst, assets, cfg, commit, repo, deps, report):
         core.bring_objects(src, dst, new, cfg, False, report, commit, repo)
         log('Retrying the pull')
     report['pulls'].append({'commit': commit[:7], 'state': state, 'message': msg})
-    report['pulled_objects'].extend(objs)
-    by_key = {}
     for o in objs:
         log('  ' + str(o['state']) + ' ' + str(o['type']) + ' ' + o['path'] + (': ' + o['message'] if o['message'] else ''))
         if o.get('raw'):
             log('      IDMC response for this object: ' + json.dumps(o.pop('raw'), default=str)[:1500])
+    objs = commit_fallback(dst, assets, cfg, commit, files or {}, objs, allow, report)
+    report['pulled_objects'].extend(objs)
+    by_key = {}
+    for o in objs:
         by_key[(o['path'], norm_type(o['type']))] = o
     whole_ok = state == 'SUCCESSFUL' or (state == 'WARNING' and allow)
     out = {}
+    # an asset retried by commit counts by its own result, not the first pull's overall state
     for a in assets:
         o = by_key.get((a['path'], a['type']))
         if o is not None:
@@ -178,6 +181,54 @@ def pull_assets(src, dst, assets, cfg, commit, repo, deps, report):
         else:
             out[(a['path'], a['type'])] = (whole_ok, msg or state)
     return out
+
+
+def object_failed(o, allow):
+    st = str(o.get('state')).upper()
+    return not (st == 'SUCCESSFUL' or (st == 'WARNING' and allow))
+
+
+def commit_fallback(dst, assets, cfg, head, files, objs, allow, report):
+    """IDMC sometimes fails an object in a pull of named objects ("Internal error", seen with an MDM reference
+    entity) that it pulls fine as part of a whole commit. For each ready asset that failed, find the
+    Dfactory-Branch commit that last changed it; if everything that commit changed is ready to deploy, pull
+    that commit instead. Returns objs with the retried assets' entries replaced by the new results."""
+    ready = {(a['path'], a['type']) for a in assets}
+    failed = {(o['path'], norm_type(o['type'])) for o in objs if object_failed(o, allow)} & ready
+    if not failed:
+        return objs
+    by_commit = {}
+    for key in sorted(failed):
+        paths = files.get(key) or []
+        # first-parent: the Dfactory-Branch commit (usually the Auto PR merge) that brought the asset in
+        sha = core.git('log', '-1', '--first-parent', '--format=%H', head, '--', *paths) if paths else ''
+        if sha:
+            by_commit.setdefault(sha, []).append(key)
+    for sha, keys in by_commit.items():
+        parents = core.git('log', '-1', '--format=%P', sha).split()
+        changed = {(a['path'], a['type']) for a in core.changed_assets(sha, parents)}
+        others = sorted(changed - ready)
+        names = ', '.join(k[0] for k in keys)
+        if others:
+            log('Not retrying ' + names + ' by commit ' + sha[:7] + ': that commit also changes assets not tagged ready (' +
+                ', '.join(k[0] for k in others[:5]) + (' ...' if len(others) > 5 else '') + ')')
+            continue
+        log('Retrying ' + names + ' by pulling commit ' + sha[:7] + ' (it changes only assets tagged ready)')
+        state, msg, cobjs = core.run_pull(dst, '/pullByCommitHash', {'commitHash': sha}, cfg)
+        log('Pull of commit ' + sha[:7] + ': ' + state + ' ' + msg)
+        report['pulls'].append({'commit': sha[:7], 'state': state, 'message': msg})
+        for o in cobjs:
+            log('  ' + str(o['state']) + ' ' + str(o['type']) + ' ' + o['path'] + (': ' + o['message'] if o['message'] else ''))
+            if o.get('raw'):
+                log('      IDMC response for this object: ' + json.dumps(o.pop('raw'), default=str)[:1500])
+        got = {(o['path'], norm_type(o['type'])): o for o in cobjs}
+        ok_all = state == 'SUCCESSFUL' or (state == 'WARNING' and allow)
+        for key in keys:
+            new = got.get(key) or {'path': key[0], 'type': key[1], 'id': None, 'message': msg or state,
+                                   'state': 'SUCCESSFUL' if ok_all else 'FAILED'}
+            objs = [x for x in objs if (x['path'], norm_type(x['type'])) != key] + [new]
+        objs += [o for k, o in got.items() if k not in keys]
+    return objs
 
 
 def change_tags(org, endpoint, changes):
@@ -321,7 +372,7 @@ def main():
             log('\nDeployment dry run completed')
             return
 
-        outcome = pull_assets(src, dst, assets, cfg, commit, repo, deps, report)
+        outcome = pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files)
         log('\n== Tags in DemoCentral')
         tag_text, tag_errors = retag(src, assets, outcome, tags)
         for a in assets:
