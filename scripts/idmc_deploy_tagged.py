@@ -433,6 +433,26 @@ def select(objs, tags, release, files, ref):
     return ready, skipped
 
 
+def containers(paths, commit):
+    """[(path, 'Project'|'Folder')] holding these asset paths, as far as Git has them at commit. A pull of named
+    objects does not create a missing project or folder in Dfactory ("dependent objects are missing: [Folder ...]"),
+    so they go into the pull too; existing ones are just updated."""
+    out = []
+    for path in sorted({p.rsplit('/', 1)[0] for p in paths if '/' in p}):
+        parts = path.split('/')
+        for i in range(1, len(parts) + 1):
+            prefix = '/'.join(parts[:i])
+            kind = 'Project' if i == 1 else 'Folder'
+            entry = (prefix, kind)
+            if entry in out:
+                continue
+            f = 'Explore/' + prefix + '/' + parts[i - 1] + '.' + kind + '.json'
+            if subprocess.run(['git', 'cat-file', '-e', commit + ':' + f], cwd=core.ROOT,
+                              capture_output=True).returncode == 0:
+                out.append(entry)
+    return out
+
+
 def pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files=None, with_deps=None):
     """One pull of these assets at commit, together with with_deps [(path, TYPE)] (their dependencies, pulled from
     Git so they are checked in in Dfactory too); otherwise fetch missing dependencies and retry if IDMC reports any.
@@ -442,15 +462,31 @@ def pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files=None, w
     tried = set()
     state, msg, objs = 'FAILED', '', []
     extra = list(with_deps or [])
+    git_by_path = {k[0]: k for k in (files or {})}
     for attempt in range(4):
+        boxes = containers([a['path'] for a in assets] + [k[0] for k in extra], commit)
         body = {'commitHash': commit,
-                'objects': [{'path': a['path'].split('/'), 'type': a['type']} for a in assets] +
+                'objects': [{'path': c[0].split('/'), 'type': c[1]} for c in boxes] +
+                           [{'path': a['path'].split('/'), 'type': a['type']} for a in assets] +
                            [{'path': k[0].split('/'), 'type': k[1]} for k in extra]}
         state, msg, objs = core.run_pull(dst, '/pull', body, cfg)
         log('Pull of ' + str(len(assets)) + ' asset(s)' + (' and ' + str(len(extra)) + ' dependencies' if extra else '') +
             ' at ' + commit[:7] + ': ' + state + ' ' + msg)
         if with_deps is not None:
-            break       # strict: everything is in Git and in this one pull; nothing is imported
+            # strict: nothing is imported. If IDMC still names a missing object that Git has, add it and pull again
+            bad = state not in ('SUCCESSFUL', 'WARNING') or (state == 'WARNING' and not allow)
+            missing = core.missing_from_messages([msg] + [o['message'] for o in objs]) if bad else set()
+            more = []
+            for k in sorted(missing):
+                g = k if k in (files or {}) else git_by_path.get(k[0])
+                if g and g not in extra and (g[0], g[1]) not in {(a['path'], a['type']) for a in assets}:
+                    more.append(g)
+            if not more or attempt == 3:
+                break
+            log('IDMC reports missing objects that are in Git; adding them and pulling again: ' +
+                ', '.join(k[1] + ' ' + k[0] for k in more))
+            extra += more
+            continue
         bad = state not in ('SUCCESSFUL', 'WARNING') or (state == 'WARNING' and not allow) or \
             any(str(o['state']).upper() in ('FAILED', 'CANCELLED') for o in objs)
         if not bad or attempt == 3:
