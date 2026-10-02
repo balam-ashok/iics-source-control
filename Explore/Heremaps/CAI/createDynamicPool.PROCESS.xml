@@ -1,0 +1,266 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>VuslqAOclkZ2sBs-gt-5252424-2026-09-29T08:04:07.703Z::pd.xml</types1:EntryId>
+      <types1:Name>createDynamicPool</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>pooja</types1:CreatedBy>
+      <types1:CreationDate>2026-09-29T08:04:08Z</types1:CreationDate>
+      <types1:ModifiedBy>pooja</types1:ModifiedBy>
+      <types1:ModificationDate>2026-09-29T10:08:37Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>pooja</types1:PublishedBy>
+      <types1:PublicationDate>2026-09-29T10:08:41Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.createDynamicPool/createDynamicPool.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="6CEW8o0KO8edRkPIyHzVco"
+                  displayName="createDynamicPool"
+                  name="createDynamicPool"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="FolderId" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Guid" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Version" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Name" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="FieldName"
+                          required="false"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="DataType"
+                          required="false"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="changeType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="MSG" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+            </extData>
+            <flow id="gf3343d34-d40e-448c-b058-df36f187072a">
+               <start id="c74d770c5-d612-4942-b74b-efb598a863ab">
+                  <link id="kdcc55010-a76b-4aa9-af33-0280c679d2ec"
+                        targetId="a16CEW8o0KO8edRkPIyHzVco-Service1b848af4-02ac-4fc0-a0cf-76d7fd2eb5e2"/>
+               </start>
+               <service id="a16CEW8o0KO8edRkPIyHzVco-Service1b848af4-02ac-4fc0-a0cf-76d7fd2eb5e2">
+                  <title>Connection 1</title>
+                  <serviceName>ac-migration:Login</serviceName>
+                  <serviceGUID>ij87FVZxQghgk62PLw56Ww</serviceGUID>
+                  <link id="l2dfa98cf-d408-4d53-92db-344e00b82105"
+                        targetId="a16CEW8o0KO8edRkPIyHzVco-Service2d1d9f82-dbcb-4809-8428-9d23f566111e"/>
+               </service>
+               <service id="a16CEW8o0KO8edRkPIyHzVco-Service2d1d9f82-dbcb-4809-8428-9d23f566111e">
+                  <title>Connection 2</title>
+                  <serviceName>ac-migration:createDynamicPool</serviceName>
+                  <serviceGUID>ij87FVZxQghgk62PLw56Ww</serviceGUID>
+                  <serviceInput>
+                     <parameter name="i_sessionId" source="field">output.sessionId</parameter>
+                     <parameter name="Body" source="formula">
+                        <expression language="XQuery">let $folderId := normalize-space($input.FolderId)
+let $guid := normalize-space($input.Guid)
+let $name := normalize-space($input.Name)
+let $version := normalize-space($input.Version)
+
+return
+concat(
+'{',
+'"folder":"', $folderId, '",',
+'"frsID":"",',
+'"guid":"', $guid, '",',
+'"method":"create",',
+'"resource":"dynamicPool",',
+'"payload":{',
+    '"guid":"', $guid, '",',
+    '"_meta":{',
+        '"version":', $version,
+    '},',
+    '"ownerRole":"",',
+    '"icon":"icon:customBe",',
+    '"label":{',
+        '"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText",',
+        '"en":"', $name, '"',
+    '}',
+'},',
+'"undeployDQRules":false',
+'}'
+)</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="nc5f05fb8-d860-447b-b6e4-5a8959c9fdb5"
+                        targetId="a16CEW8o0KO8edRkPIyHzVco-Service587b37a9-6945-41e7-a97c-89c4b5110959"/>
+               </service>
+               <service id="a16CEW8o0KO8edRkPIyHzVco-Service587b37a9-6945-41e7-a97c-89c4b5110959">
+                  <title>Connection 3</title>
+                  <serviceName>ac-migration:createFields</serviceName>
+                  <serviceGUID>ij87FVZxQghgk62PLw56Ww</serviceGUID>
+                  <serviceInput>
+                     <parameter name="ip_sessionId" source="field">output.sessionId</parameter>
+                     <parameter name="Body" source="formula">
+                        <expression language="XQuery">let $folderId := normalize-space($input.FolderId)
+let $poolGuid := normalize-space($input.Guid)
+let $fieldNames := $input.FieldName
+let $dataTypes := $input.DataType
+
+let $dynamicFields :=
+    for $i in 1 to count($fieldNames)
+
+    let $fieldName := normalize-space($fieldNames[$i])
+    let $dataType := lower-case(normalize-space($dataTypes[$i]))
+
+    let $fieldEclass :=
+        if ($dataType = 'text')
+        then 'http://informatica.com/mdm/v2/Core#//TextField'
+        else if ($dataType = 'integer')
+        then 'http://informatica.com/mdm/v2/Core#//IntegerField'
+        else if ($dataType = 'decimal')
+        then 'http://informatica.com/mdm/v2/Core#//DecimalField'
+        else if ($dataType = 'double')
+        then 'http://informatica.com/mdm/v2/Core#//DoubleField'
+        else
+        'http://informatica.com/mdm/v2/Core#//TextField'
+
+    let $position := 400000 + ($i - 1)
+
+    return
+        concat(
+            '{',
+                '"dynamicFieldTemplateOptions":{',
+                    '"eClass":"http://informatica.com/mdm/v2/Core#//DynamicFieldTemplateOptions",',
+                    '"searchConfiguration":{',
+                        '"eClass":"http://informatica.com/mdm/v2/Core#//BusinessEntitySearchConfiguration",',
+                        '"searchField":[]',
+                    '}',
+                '},',
+
+                '"dynamicPool":{',
+                    '"$ref":"', $poolGuid, '"',
+                '},',
+
+                '"field":{',
+                    '"eClass":"', $fieldEclass, '",',
+
+                    '"label":{',
+                        '"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText",',
+                        '"en":"', $fieldName, '"',
+                    '},',
+
+                    if ($dataType = 'text')
+                    then '"length":255,'
+                    else '',
+
+                    '"name":"', lower-case($fieldName), '",',
+                    '"position":', $position,
+                '},',
+
+                '"guid":"', lower-case($fieldName), '_', $poolGuid, '",',
+
+                '"_meta":{',
+                    '"version":1',
+                '}',
+            '}'
+        )
+
+return
+concat(
+    '{',
+        '"folder":"', $folderId, '",',
+        '"guid":"datamodel",',
+        '"method":"update",',
+        '"resource":"tenantModel",',
+        '"payload":{',
+            '"guid":"datamodel",',
+            '"dynamicFieldTemplate":[',
+                string-join($dynamicFields, ','),
+            ']',
+        '},',
+        '"undeployDQRules":false',
+    '}'
+)</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="n13470a25-3b94-4730-84a2-0655fa4bc40a"
+                        targetId="Assignment2cec3251-3055-47c7-a795-79b8dbc52420"/>
+               </service>
+               <assignment id="Assignment2cec3251-3055-47c7-a795-79b8dbc52420">
+                  <title>Assignment to changeType, MSG</title>
+                  <operation source="field" to="output.changeType">output.Type</operation>
+                  <operation source="formula" to="output.MSG">
+                     <expression language="XQuery">if($output.StatusCode = 200)
+then 
+'SUCCESS'
+else
+'FAILED'
+</expression>
+                  </operation>
+                  <link id="w0a86535a-5b80-4322-9ba4-65425f529918"
+                        targetId="a16CEW8o0KO8edRkPIyHzVco-end-bffd9beb5-8ba8-41c2-8099-6fc035bdf765"/>
+               </assignment>
+               <end id="a16CEW8o0KO8edRkPIyHzVco-end-bffd9beb5-8ba8-41c2-8099-6fc035bdf765">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>6CEW8o0KO8edRkPIyHzVco</types1:GUID>
+      <types1:DisplayName>createDynamicPool</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:47:53.155Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
