@@ -1,0 +1,25 @@
+{
+  "objectInfo" : {
+    "id" : "2RhW1oXxg41i9C59sXuy2X",
+    "name" : "Guest360",
+    "type" : "Project",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : null,
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "The project contains the list of assets used for the Guest 360 Implementation\nDO NOT TOUCH\n",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-10-02T10:11:06.631Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
