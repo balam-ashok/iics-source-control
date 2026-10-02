@@ -100,6 +100,12 @@ def location_objects(org, folder, cache):
     return cache[folder]
 
 
+def checkin_type(t):
+    """Types that live in Git. Connections, runtime environments (SAAS_RUNTIME_ENVIRONMENT ...), agents and schedules
+    are never checked in, so they are not required to be."""
+    return core.is_dependency_type(t) and not any(w in t for w in ('RUNTIME', 'AGENT', 'SCHEDULE', 'CONNECTION'))
+
+
 def check_dependencies(src, assets, files, ref, cfg):
     """Every asset a ready asset uses (followed down: taskflow -> mapping task -> mapping -> mapplet ...) must be
     checked in too: under source control, not checked out, on the target branch and with its last check-in merged.
@@ -110,6 +116,12 @@ def check_dependencies(src, assets, files, ref, cfg):
     max_depth = int((cfg.get('dependencies') or {}).get('max_depth', 5))
     branch = ref.split('/')[-1]
     folders, refs_cache, problems, to_checkin = {}, {}, {}, {}
+    # Git file names and the "uses" list name some types differently (MTT / MCT, BSERVICE / SAAS_BSERVICES), so an
+    # asset counts as in Git when Git has that path, whatever the type is called there
+    git_paths = {p for p, _ in files}
+
+    def in_git(key):
+        return key in files or key[0] in git_paths
 
     def problem(key, obj_id=None):
         if key not in problems:
@@ -118,20 +130,19 @@ def check_dependencies(src, assets, files, ref, cfg):
             o = listing.get(key) or (listing.get('id:' + obj_id) if obj_id else None)
             sc = (o or {}).get('sourceControl') or {}
             commit = sc.get('hash') or ''
-            if o is None:
-                why = 'not found in DemoCentral'
-            elif sc.get('sourceControlled') is False or (not sc and key not in files):
-                why = 'never checked in'
-                if o.get('id'):
-                    to_checkin[key] = o['id']
-            elif sc.get('checkedOutBy'):
+            if sc.get('checkedOutBy'):
                 why = 'checked out by ' + str(sc['checkedOutBy'])
-            elif key not in files:
-                why = 'not on ' + branch
-            elif commit and not merged_into(commit, ref):
-                why = 'last check-in ' + commit[:7] + ' not merged into ' + branch
+            elif in_git(key):
+                why = ('last check-in ' + commit[:7] + ' not merged into ' + branch) \
+                    if commit and not merged_into(commit, ref) else None
+            elif o is None and not obj_id:
+                why = 'not found in DemoCentral'
+            elif sc.get('sourceControlled'):
+                why = 'checked in but not on ' + branch + ' yet'
             else:
-                why = None
+                why = 'never checked in'
+                if (o or {}).get('id') or obj_id:
+                    to_checkin[key] = (o or {}).get('id') or obj_id
             problems[key] = why
         return problems[key]
 
@@ -150,7 +161,7 @@ def check_dependencies(src, assets, files, ref, cfg):
             seen.add(obj_id)
             for r in uses(obj_id):
                 key = ref_path_type(r)
-                if not key[0] or not core.is_dependency_type(key[1]) or key in tree or key == (a['path'], a['type']):
+                if not key[0] or not checkin_type(key[1]) or key in tree or key == (a['path'], a['type']):
                     continue
                 tree[key] = r.get('id')
                 queue.append((r.get('id'), depth + 1))
@@ -159,7 +170,7 @@ def check_dependencies(src, assets, files, ref, cfg):
             names = '; '.join(k[1] + ' ' + k[0] + ' (' + why + ')' for k, why in bad[:5]) + (' ...' if len(bad) > 5 else '')
             blocked.append(dict(a, reason='uses assets that are not checked in: ' + names +
                                 '. Check them in and run again',
-                                needs_sync=all(why.startswith(('not on', 'last check-in')) for _, why in bad),
+                                needs_sync=all(why.startswith(('checked in but', 'last check-in')) for _, why in bad),
                                 checkin_deps={k: to_checkin[k] for k, _ in bad if k in to_checkin}))
             log('  blocked ' + a['type'] + ' ' + a['path'] + ': ' + str(len(bad)) + ' of its ' + str(len(tree)) +
                 ' dependencies not checked in')
@@ -168,6 +179,19 @@ def check_dependencies(src, assets, files, ref, cfg):
             if tree:
                 log('  ' + a['type'] + ' ' + a['path'] + ': all ' + str(len(tree)) + ' dependencies checked in')
     return ok, blocked
+
+
+CHECKIN_SUMMARY = 'Dependencies of '
+
+
+def last_source_commit(cfg):
+    """Subject of the latest commit on the source branch (where DemoCentral checks in)."""
+    source = cfg.get('source_branch', 'Demo-Central-Branch')
+    try:
+        core.git('fetch', '--quiet', 'origin', source)
+        return core.git('log', '-1', '--format=%s', 'origin/' + source)
+    except subprocess.CalledProcessError:
+        return ''
 
 
 def checkin_dependencies(src, blocked, cfg):
@@ -183,7 +207,7 @@ def checkin_dependencies(src, blocked, cfg):
     log('\n== Check in dependencies in DemoCentral')
     users = sorted({w[1] for w in wanted.values()})
     body = {'objects': [{'id': obj_id} for obj_id, _ in wanted.values()],
-            'summary': 'Dependencies of ' + ', '.join(users)[:200],
+            'summary': CHECKIN_SUMMARY + ', '.join(users)[:200],
             'description': 'Checked in by IDMC - Deploy tagged assets: used by ' + ', '.join(users) +
                            ', which is tagged ' + cfg['tags']['ready'] + '.'}
     results = {}
@@ -263,13 +287,13 @@ def sync_branches(cfg, dry_run):
                      ' are checked in but not yet on ' + target + '. Approve it to let them deploy.')
             number = url.rstrip('/').split('/')[-1]
             log('Opened pull request #' + number + ' (' + str(count) + ' commit(s))')
-    except subprocess.CalledProcessError as e:
-        log('Opening the pull request failed: ' + (e.stderr or str(e)).strip()[:300])
+    except (subprocess.CalledProcessError, OSError) as e:
+        log('Opening the pull request failed: ' + (getattr(e, 'stderr', '') or str(e)).strip()[:300])
         return False, ''
     try:
         gh('pr', 'merge', number, '--auto', '--merge')
-    except subprocess.CalledProcessError as e:
-        log('Auto-merge could not be turned on (' + (e.stderr or str(e)).strip()[:200] +
+    except (subprocess.CalledProcessError, OSError) as e:
+        log('Auto-merge could not be turned on (' + (getattr(e, 'stderr', '') or str(e)).strip()[:200] +
             '); merge the pull request after approving it')
     try:
         if not pending():
@@ -561,8 +585,16 @@ def main():
                         s['reason'] += '; waiting for approval of pull request #' + pr
         # dependencies that were never checked in: check them in now (not in a dry run started by hand). They reach
         # Dfactory-Branch through the Auto PR, which starts this workflow again; that run deploys the whole set.
-        if env_flag('AUTO_CHECKIN', (cfg.get('dependencies') or {}).get('auto_checkin', True)) and \
-                any(s.get('checkin_deps') for s in skipped):
+        want_checkin = env_flag('AUTO_CHECKIN', (cfg.get('dependencies') or {}).get('auto_checkin', True)) and \
+            any(s.get('checkin_deps') for s in skipped)
+        if want_checkin and last_source_commit(cfg).startswith(CHECKIN_SUMMARY):
+            # this run was started by our own check-in: never check in again from here, so it cannot repeat itself
+            log('\nThis run was started by an automatic check-in; not checking in again')
+            for s in skipped:
+                if s.get('checkin_deps'):
+                    s['reason'] += '. Already checked in automatically once; check these in by hand'
+            want_checkin = False
+        if want_checkin:
             done = checkin_dependencies(src, skipped, cfg)
             for s in skipped:
                 if s.get('checkin_deps'):
