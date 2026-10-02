@@ -1,0 +1,252 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Q5Hhwq9bdsreK8Z-gt-5386994-2026-09-30T09:21:08.692Z::pd.xml</types1:EntryId>
+      <types1:Name>p_Email_Notification</types1:Name>
+      <types1:ParentFlowIds>FHEJRxZsEi4tciS-gt-5371848-2026-09-30T09:21:10.515Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This process is to send email notification to the approver</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-09-30T09:21:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="2kXDeaeOvevgX3zYlQMRkj"
+                  displayName="p_Email_Notification"
+                  name="p_Email_Notification"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>This process is to send email notification to the approver</description>
+            <tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="i_File_Path" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_email_to" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="i_source_org"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="i_target_org"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_CC" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_Completion_Email" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="json_data_converted" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="File_path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fileExists" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_email" type="reference">
+                  <options>
+                     <option name="referenceTo">app-email:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8I8QQC0F89liJSeFmLBt0c</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TAKM_INWPF35GT5G-AAD</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llnsuo01" targetId="llnsuo00"/>
+               </start>
+               <assignment id="llnsuo00">
+                  <title>Assignment to path, fileExists</title>
+                  <operation source="formula" to="temp.File_path">
+                     <expression language="XQuery">'file:///'||$input.i_File_Path ||"/IICS_Object_Migration_List_Complete.csv"</expression>
+                  </operation>
+                  <operation source="formula" to="temp.fileExists">
+                     <expression language="XQuery">fn:unparsed-text-available($temp.File_path )</expression>
+                  </operation>
+                  <link id="llnsuo0e" targetId="llnsuo0d"/>
+               </assignment>
+               <container id="llnsuo0d" type="exclusive">
+                  <title>fileExists?</title>
+                  <flow id="llnsuo0h">
+                     <container id="lnye6hy0" type="exclusive">
+                        <title>i_Completion_Email?</title>
+                        <flow id="lnye6hy3">
+                           <assignment id="lnye6hzz">
+                              <title>a_File_Content_Email_success</title>
+                              <operation source="formula" to="temp.File_Content">
+                                 <expression language="XQuery">fn:unparsed-text($temp.File_path)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.File_path">
+                                 <expression language="XQuery">$temp.File_path </expression>
+                              </operation>
+                              <operation source="field" to="temp.temp_email[1]/to">input.i_email_to</operation>
+                              <operation source="field" to="temp.temp_email[1]/cc">input.i_CC</operation>
+                              <operation source="constant" to="temp.temp_email[1]/subject">Code Migration Completion: Code Migration From {$input.i_source_org} To {$input.i_target_org} has been completed</operation>
+                              <operation source="constant" to="temp.temp_email[1]/body">Hi,
+
+The attached document is the list of objects migrated from {$input.i_source_org} to {$input.i_target_org}.
+
+The code has now been migrated by developer({$input.i_CC}).
+
+Thanks!</operation>
+                              <operation source="constant" to="temp.temp_email[1]/attachments[1]/name">IICS_Object_Migration_List_Complete.csv</operation>
+                              <operation source="formula" to="temp.temp_email[1]/attachments[1]/content">
+                                 <expression language="XQuery">sff:createAttachmentFromBase64('IICS_Object_Migration_List_Complete', util:base64Encode($temp.File_Content ) ,'application/csv')</expression>
+                              </operation>
+                              <link id="lnye6i0o" targetId="lnye6i0n"/>
+                           </assignment>
+                           <service id="lnye6i0n">
+                              <title>sendEmailService_success</title>
+                              <serviceName>app-email:sendEmailService</serviceName>
+                              <serviceGUID>8I8QQC0F89liJSeFmLBt0c</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="emailTaskInput" source="field" updatable="true">temp.temp_email</parameter>
+                              </serviceInput>
+                           </service>
+                           <link id="lnye6hy4" targetId="lnye6hy0" type="containerLink"/>
+                        </flow>
+                        <flow id="lnye6hy6">
+                           <assignment id="lnye6hyg">
+                              <title>a_File_Content_Email</title>
+                              <operation source="formula" to="temp.File_Content">
+                                 <expression language="XQuery">fn:unparsed-text($temp.File_path)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.File_path">
+                                 <expression language="XQuery">$temp.File_path </expression>
+                              </operation>
+                              <operation source="field" to="temp.temp_email[1]/to">input.i_email_to</operation>
+                              <operation source="field" to="temp.temp_email[1]/cc">input.i_CC</operation>
+                              <operation source="constant" to="temp.temp_email[1]/subject">Approval Required: Code Migration From {$input.i_source_org} To {$input.i_target_org}</operation>
+                              <operation source="constant" to="temp.temp_email[1]/body">Hi,
+
+The attached document is the list of objects to be migrated from {$input.i_source_org} to {$input.i_target_org} and needs your approval. 
+
+Please reply to the developer({$input.i_CC}) with your response.
+
+Thanks!</operation>
+                              <operation source="constant" to="temp.temp_email[1]/attachments[1]/name">IICS_Object_Migration_List_Complete.csv</operation>
+                              <operation source="formula" to="temp.temp_email[1]/attachments[1]/content">
+                                 <expression language="XQuery">sff:createAttachmentFromBase64('IICS_Object_Migration_List_Complete', util:base64Encode($temp.File_Content ) ,'application/csv')</expression>
+                              </operation>
+                              <link id="lnye6hyw" targetId="lnye6hyv"/>
+                           </assignment>
+                           <service id="lnye6hyv">
+                              <title>sendEmailService</title>
+                              <serviceName>app-email:sendEmailService</serviceName>
+                              <serviceGUID>8I8QQC0F89liJSeFmLBt0c</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="emailTaskInput" source="field" updatable="true">temp.temp_email</parameter>
+                              </serviceInput>
+                           </service>
+                           <link id="lnye6hy7" targetId="lnye6hy0" type="containerLink"/>
+                        </flow>
+                        <link id="lnye6hy2" targetId="lnye6hy3" type="containerLink">
+                           <condition source="formula">
+                              <function name="true">
+                                 <arg name="field">{$input.i_Completion_Email}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lnye6hy5" targetId="lnye6hy6" type="containerLink">
+                           <condition source="formula">
+                              <function name="false">
+                                 <arg name="field">{$input.i_Completion_Email}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="llnsuo0i" targetId="llnsuo0d" type="containerLink"/>
+                  </flow>
+                  <flow id="llnsuo0k">
+                     <throw id="ln9wa6iu">
+                        <title>Throw 2</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">900</parameter>
+                           <parameter name="detail" source="constant" updatable="true">File does NOT exist.</parameter>
+                           <parameter name="reason" source="constant" updatable="true"/>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="llnsuo0g" targetId="llnsuo0h" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0j" targetId="llnsuo0k" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0x" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>2kXDeaeOvevgX3zYlQMRkj</types1:GUID>
+      <types1:DisplayName>p_Email_Notification</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:22:43.035Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

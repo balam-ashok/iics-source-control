@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "bRP84Vkvwg0fZrrtf4j0gQ",
+    "name" : "PO-DEPLOY-LISTOBJS",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "L5SeE1KoJBUhtyc-gt-5386982-2026-09-30T09:21:08.599Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Objects to be exported from IICS",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:22:43.419Z",
+  "objectRefs" : [ {
+    "id" : "aaeit6XmiakjR9wsthVVAa",
+    "name" : "ICS-Objects-List",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "aa-gt-5371758-2026-09-30T09:21:08.002Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "IICS Objects List",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,543 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>0B4EFpr1Iw8jIw8-gt-5371838-2026-09-30T09:21:09.92Z::pd.xml</types1:EntryId>
+      <types1:Name>p_Source_Control</types1:Name>
+      <types1:ParentFlowIds>FHEJRxZsEi4tciS-gt-5371848-2026-09-30T09:21:10.515Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This process is for check out and checkin the objects from target org.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-09-30T09:21:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="dy2TOrqjOQtludMyhRJnMN"
+                  displayName="p_Source_Control"
+                  name="p_Source_Control"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>This process is for check out and checkin the objects from target org.</description>
+            <tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="i_File_Path" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_Checkin_Comment" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_Action" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="json_data_converted" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_Fault_Source_Control" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                     <option name="initialvalue">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="File_path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fileExists" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content_Line" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="checkout_status" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_action_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_data" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_checkout_objects" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_single_object" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_end_process" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_email" type="reference">
+                  <options>
+                     <option name="referenceTo">app-email:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8I8QQC0F89liJSeFmLBt0c</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TAKM_INWPF35GT5G-AAD</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llnsuo01" targetId="llnsuo00"/>
+               </start>
+               <assignment id="llnsuo00">
+                  <title>Assignment to path, fileExists</title>
+                  <operation source="formula" to="temp.File_path">
+                     <expression language="XQuery">'file:///'||$input.i_File_Path ||"/IICS_Object_Migration_List_Complete.csv"</expression>
+                  </operation>
+                  <operation source="formula" to="temp.fileExists">
+                     <expression language="XQuery">fn:unparsed-text-available($temp.File_path )</expression>
+                  </operation>
+                  <link id="llnsuo0e" targetId="llnsuo0d"/>
+               </assignment>
+               <container id="llnsuo0d" type="exclusive">
+                  <title>fileExists?</title>
+                  <flow id="llnsuo0h">
+                     <eventContainer id="lnvo9qna">
+                        <service id="lm0iy7z7">
+                           <title>Login</title>
+                           <serviceName>AppCon-Login-Target-Org:Login</serviceName>
+                           <serviceGUID>49pDFaqH4sVc9QHW5O7UYp</serviceGUID>
+                           <serviceInput/>
+                        </service>
+                        <flow id="lnvo9qnc">
+                           <link id="lnvo9qnd" targetId="lnvo9qna" type="containerLink"/>
+                        </flow>
+                        <flow id="lnvo9qnf">
+                           <jumpTo id="lnvo9qnv">
+                              <link id="lnvo9qnw" targetId="lnvo9qed"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lnvo9qnb" targetId="lnvo9qnc" type="containerLink"/>
+                        <link id="lm60b05a" targetId="lm60b059"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lnvo9qn9" interrupting="true">
+                              <link id="lnvo9qne" targetId="lnvo9qnf" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="lm60b059" type="exclusive">
+                        <title>i_Action</title>
+                        <flow id="lm60b05d">
+                           <assignment id="lm60b074">
+                              <title>a_File_Content__CO</title>
+                              <operation source="formula" to="temp.File_Content">
+                                 <expression language="XQuery">fn:unparsed-text($temp.File_path)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.File_path">
+                                 <expression language="XQuery">$temp.File_path </expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_checkout_objects">
+                                 <expression language="XQuery">let $removeLastCR:=fn:replace($temp.File_Content   , '(\r?\n|\r)$', '')
+let $lines := tokenize($removeLastCR, '\r\n')
+for $line at $counter in $lines
+let $fields := tokenize($line, ',')
+where ($counter!=1)
+return
+	&lt;objects&gt;
+      &lt;path&gt;{$fields[1]}&lt;/path&gt;
+      &lt;path&gt;{$fields[2]}&lt;/path&gt;
+      &lt;path&gt;{$fields[3]}&lt;/path&gt;
+      &lt;type&gt;{$fields[4]}&lt;/type&gt;
+   &lt;/objects&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="output.json_data_converted">
+                                 <expression language="XQuery">util:toJSON(let $removeLastCR:=fn:replace($temp.File_Content   , '(\r?\n|\r)$', '')
+let $lines := tokenize($removeLastCR, '\r\n')
+for $line at $counter in $lines
+let $fields := tokenize($line, ',')
+where ($counter!=1)
+return
+   &lt;objects&gt;
+      &lt;path&gt;{$fields[1]}&lt;/path&gt;
+      &lt;path&gt;{$fields[2]}&lt;/path&gt;
+      &lt;path&gt;{$fields[3]}&lt;/path&gt;
+      &lt;type&gt;{$fields[4]}&lt;/type&gt;
+   &lt;/objects&gt;)</expression>
+                              </operation>
+                              <link id="ln5kl5tu" targetId="ln5kl5tt"/>
+                           </assignment>
+                           <assignment id="ln5kl5tt">
+                              <title>Assignment to temp_single_object, json_data_converted</title>
+                              <operation source="formula" to="temp.temp_single_object">
+                                 <expression language="XQuery">list:head($temp.temp_checkout_objects)</expression>
+                              </operation>
+                              <operation source="formula" to="output.json_data_converted">
+                                 <expression language="XQuery">fn:replace(util:toJSON(for $x at $j in $temp.temp_single_object  
+return
+&lt;objects xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data" m:isArray="true"&gt;
+{for $y in $x/path
+return if ($y/not(.="")) then (&lt;path  m:isArray="true"&gt;
+{$y/text()}&lt;/path&gt;)
+else()}
+&lt;type&gt;{$x/type/text()}&lt;/type&gt;
+&lt;/objects&gt;),'//','/')</expression>
+                              </operation>
+                              <link id="ln5kl5tv" targetId="ln5hxaaq"/>
+                           </assignment>
+                           <assignment id="ln5lnood">
+                              <title>Assignment to temp_checkout_objects, temp_end_process</title>
+                              <operation source="formula" to="temp.temp_checkout_objects">
+                                 <expression language="XQuery">list:tail($temp.temp_checkout_objects)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_end_process">
+                                 <expression language="XQuery">if(fn:empty($temp.temp_checkout_objects )) then 1 else 0</expression>
+                              </operation>
+                              <link id="ln5lnosz" targetId="ln5lnosy"/>
+                           </assignment>
+                           <eventContainer id="ln5hxaaq">
+                              <service id="lm60b07w">
+                                 <title>Check_Out</title>
+                                 <serviceName>AppCon-CODE-MIGRATION:Check_Out</serviceName>
+                                 <serviceGUID>cfhqeXZ4yUSfPzn7mG7Gwp</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="session_ID" source="field" updatable="true">output.ICS Session ID</parameter>
+                                    <parameter name="payload" source="field" updatable="true">output.json_data_converted</parameter>
+                                    <parameter name="BaseURL" source="formula">
+                                       <expression language="XQuery">$output.ICSServerURL  ||'/'</expression>
+                                    </parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="ln5hxaas">
+                                 <link id="ln5hxaat" targetId="ln5hxaaq" type="containerLink"/>
+                              </flow>
+                              <flow id="ln5hxaav">
+                                 <milestone id="ln5hxab8">
+                                    <title>Milestone 1</title>
+                                    <httpStatus>100</httpStatus>
+                                 </milestone>
+                                 <link id="ln5hxacg" targetId="ln5hxaaq" type="containerLink"/>
+                              </flow>
+                              <link id="ln5hxaar" targetId="ln5hxaas" type="containerLink"/>
+                              <link id="ln5lnooe" targetId="ln5lnood"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="ln5hxaap" interrupting="true">
+                                    <link id="ln5hxaau" targetId="ln5hxaav" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <container id="ln5lnosy" type="exclusive">
+                              <title>temp_end_process</title>
+                              <flow id="ln5lnot2">
+                                 <link id="ln5lnot3" targetId="ln5lnosy" type="containerLink"/>
+                              </flow>
+                              <flow id="ln5lnot5">
+                                 <jumpTo id="ln5lnov0">
+                                    <link id="ln5lnov1" targetId="ln5kl5tt"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="ln5lnot1" targetId="ln5lnot2" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.temp_end_process}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="ln5lnot4" targetId="ln5lnot5" type="containerLink"/>
+                              <link id="ln5lnot0" targetId="ln5lno7m"/>
+                           </container>
+                           <end id="ln5lno7m">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <flow id="lm60b05g">
+                           <assignment id="lm60b08o">
+                              <title>a_File_Content__CI</title>
+                              <operation source="formula" to="temp.File_Content">
+                                 <expression language="XQuery">fn:unparsed-text($temp.File_path)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.File_path">
+                                 <expression language="XQuery">$temp.File_path </expression>
+                              </operation>
+                              <operation source="formula" to="temp.File_Content_Line">
+                                 <expression language="XQuery">let $removeLastCR:=fn:replace($temp.File_Content   , '(\r?\n|\r)$', '')
+let $lines := tokenize($removeLastCR, '\r\n')
+for $line at $counter in $lines
+let $fields := tokenize($line, ',')
+where ($counter!=1)
+return
+   &lt;objects&gt;
+      &lt;path&gt;{$fields[1]}&lt;/path&gt;
+      &lt;path&gt;{$fields[2]}&lt;/path&gt;
+      &lt;path&gt;{$fields[3]}&lt;/path&gt;
+      &lt;type&gt;{$fields[4]}&lt;/type&gt;
+   &lt;/objects&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_data">
+                                 <expression language="XQuery">fn:replace(util:toJSON(for $x at $j in $temp.File_Content_Line  
+return
+&lt;objects xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data" m:isArray="true"&gt;
+{for $y in $x/path
+return if ($y/not(.="")) then (&lt;path  m:isArray="true"&gt;
+{$y/text()}&lt;/path&gt;)
+else()}
+&lt;type&gt;{$x/type/text()}&lt;/type&gt;
+&lt;/objects&gt;),'//','/')</expression>
+                              </operation>
+                              <operation source="formula" to="output.json_data_converted">
+                                 <expression language="XQuery">fn:concat(fn:substring($temp.temp_data  , 1, fn:string-length($temp.temp_data )-1),",
+  ""summary"": """,$input.i_Checkin_Comment,"""}")</expression>
+                              </operation>
+                              <link id="lm60b09k" targetId="lm60b09c"/>
+                           </assignment>
+                           <eventContainer id="lm60b09c">
+                              <service id="lm60b09g">
+                                 <title>Check_In</title>
+                                 <serviceName>AppCon-CODE-MIGRATION:Check_In</serviceName>
+                                 <serviceGUID>cfhqeXZ4yUSfPzn7mG7Gwp</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="session_ID" source="field" updatable="true">output.ICS Session ID</parameter>
+                                    <parameter name="payload" source="field" updatable="true">output.json_data_converted</parameter>
+                                    <parameter name="BaseURL" source="formula">
+                                       <expression language="XQuery">$output.ICSServerURL  ||'/'</expression>
+                                    </parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="lm60b09d">
+                                 <link id="lm60b09j" targetId="lm60b09c" type="containerLink"/>
+                              </flow>
+                              <flow id="lm60b09e">
+                                 <jumpTo id="lnvo9qol">
+                                    <link id="lnvo9qom" targetId="lnvo9qed"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="lm60b09h" targetId="lm60b09d" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="lm0khyq6" interrupting="true">
+                                    <link id="lm60b09i" targetId="lm60b09e" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lm60b05h" targetId="lm60b059" type="containerLink"/>
+                        </flow>
+                        <link id="lm60b05c" targetId="lm60b05d" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$input.i_Action}</arg>
+                                 <arg name="right">CO</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lm60b05f" targetId="lm60b05g" type="containerLink"/>
+                        <link id="lm60b0a8" targetId="lm4v8chf"/>
+                     </container>
+                     <container id="lm0khym2" type="exclusive">
+                        <title>checkout_status</title>
+                        <flow id="lm0khym5">
+                           <jumpTo id="lm0khymh">
+                              <link id="lm0khymi" targetId="lm4v8cdw"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lm0khym8">
+                           <container id="lm0khyo6" type="exclusive">
+                              <title>state</title>
+                              <flow id="lm0khyo8">
+                                 <link id="lm0khyo9" targetId="lm0khyo6" type="containerLink"/>
+                              </flow>
+                              <flow id="lm0khyob">
+                                 <container id="lnikn36u" type="exclusive">
+                                    <title>message</title>
+                                    <flow id="lnikn36x">
+                                       <link id="lnikn36y" targetId="lnikn36u" type="containerLink"/>
+                                    </flow>
+                                    <flow id="lnikn370">
+                                       <assignment id="lnvo9qed">
+                                          <title>Assignment to Recipient Addresses, Subject etc.</title>
+                                          <operation source="field" to="temp.temp_email[1]/to">output.ICS User Email</operation>
+                                          <operation source="constant" to="temp.temp_email[1]/subject">p_Source_Control Process Failed.</operation>
+                                          <operation source="constant" to="temp.temp_email[1]/body">Check-in/Check-out has failed during current migration. Please verify.
+
+{$output.faultInfo[1]/code}:{$output.faultInfo[1]/detail}:{$output.faultInfo[1]/reason} </operation>
+                                          <operation source="constant" to="output.o_Fault_Source_Control">true</operation>
+                                          <link id="lnvo9qee" targetId="lnx693gj"/>
+                                       </assignment>
+                                       <eventContainer id="lnx693gj">
+                                          <service id="lnvo9qbx">
+                                             <title>sendEmailService</title>
+                                             <serviceName>app-email:sendEmailService</serviceName>
+                                             <serviceGUID>8I8QQC0F89liJSeFmLBt0c</serviceGUID>
+                                             <serviceInput>
+                                                <parameter name="emailTaskInput" source="field" updatable="true">temp.temp_email</parameter>
+                                             </serviceInput>
+                                          </service>
+                                          <flow id="lnx693gl">
+                                             <link id="lnx693gm" targetId="lnx693gj" type="containerLink"/>
+                                          </flow>
+                                          <flow id="lnx693go">
+                                             <link id="lnx693gp" targetId="lnx693gj" type="containerLink"/>
+                                          </flow>
+                                          <link id="lnx693gk" targetId="lnx693gl" type="containerLink"/>
+                                          <link id="lnx693h6" targetId="lnx693h5"/>
+                                          <events>
+                                             <catch faultField="faultInfo" id="lnx693gi" interrupting="true">
+                                                <link id="lnx693gn" targetId="lnx693go" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <end id="lnx693h5">
+                                          <title>End 2</title>
+                                          <httpStatus>400</httpStatus>
+                                       </end>
+                                    </flow>
+                                    <link id="lnikn36w" targetId="lnikn36x" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="string-equals">
+                                             <arg name="left">{$output.message}</arg>
+                                             <arg name="right">There are no assets that can be checked in.</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="lnikn36z" targetId="lnikn370" type="containerLink"/>
+                                 </container>
+                                 <link id="lnikn38i" targetId="lm0khyo6" type="containerLink"/>
+                              </flow>
+                              <link id="lm0khyo7" targetId="lm0khyo8" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.state}</arg>
+                                       <arg name="right">SUCCESSFUL</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lm0khyoa" targetId="lm0khyob" type="containerLink"/>
+                           </container>
+                           <link id="lm0khym9" targetId="lm0khym2" type="containerLink"/>
+                        </flow>
+                        <link id="lm0khym4" targetId="lm0khym5" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.checkout_status}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lm0khym7" targetId="lm0khym8" type="containerLink"/>
+                     </container>
+                     <assignment id="lm4v8chf">
+                        <title>Assignment to t_action_ID</title>
+                        <operation source="formula" to="temp.t_action_ID">
+                           <expression language="XQuery">if($input.i_Action='CO') then $output.action_ID else $output.cin_action_ID</expression>
+                        </operation>
+                        <link id="lm4v8chh" targetId="lm4v8cdw"/>
+                     </assignment>
+                     <assignment id="lm0khymo">
+                        <title>Assignment to checkout_status</title>
+                        <operation source="formula" to="temp.checkout_status">
+                           <expression language="XQuery">if($output.state  ='NOT_STARTED' or $output.state  ='IN_PROGRESS') then '0' else '1'</expression>
+                        </operation>
+                        <link id="lm0khymq" targetId="lm0khym2"/>
+                     </assignment>
+                     <wait id="lm4v8cdw">
+                        <title>Wait 1</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">1</arg>
+                              <arg name="scale">M</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="lm4v8ch3" targetId="lm0khyj5"/>
+                     </wait>
+                     <service id="lm0khyj5">
+                        <title>Check_SC_Status</title>
+                        <serviceName>AppCon-CODE-MIGRATION:Check_SC_Status</serviceName>
+                        <serviceGUID>cfhqeXZ4yUSfPzn7mG7Gwp</serviceGUID>
+                        <serviceInput>
+                           <parameter name="action_ID" source="field" updatable="true">temp.t_action_ID</parameter>
+                           <parameter name="session_ID" source="field" updatable="true">output.ICS Session ID</parameter>
+                           <parameter name="BaseURL" source="field" updatable="true">output.ICS Server URL</parameter>
+                        </serviceInput>
+                        <link id="lm0khymp" targetId="lm0khymo"/>
+                     </service>
+                     <link id="llnsuo0i" targetId="llnsuo0d" type="containerLink"/>
+                  </flow>
+                  <flow id="llnsuo0k">
+                     <jumpTo id="lnvo9qml">
+                        <link id="lnvo9qmm" targetId="lnvo9qed"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="llnsuo0g" targetId="llnsuo0h" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0j" targetId="llnsuo0k" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0x" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>dy2TOrqjOQtludMyhRJnMN</types1:GUID>
+      <types1:DisplayName>p_Source_Control</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:22:42.93Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
