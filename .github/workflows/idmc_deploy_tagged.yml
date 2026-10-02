@@ -16,9 +16,9 @@ on:
         type: boolean
         default: false
       run_tests:
-        description: "Run the deployed mapping tasks afterwards"
+        description: "Also run the deployed mapping tasks in Dfactory afterwards (needs a Secure Agent)"
         type: boolean
-        default: true
+        default: false
   # Runs on its own (IDMC cannot notify GitHub when an asset is tagged, so it also checks on a timer):
   #  - right after a check-in is merged into Dfactory-Branch (assets already tagged ready-to-deploy)
   #  - every 15 minutes (assets tagged ready-to-deploy after their check-in)
