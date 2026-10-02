@@ -1,0 +1,127 @@
+{
+  "objectInfo" : {
+    "id" : "6NhAxeYVT12fVxgkeHPqsc",
+    "name" : "Guide_Code_Migration",
+    "type" : "GUIDE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "FHEJRxZsEi4tciS-gt-5371848-2026-09-30T09:21:10.515Z::gt.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This guide will be used as single executable asset to run migration process end-to-end.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:21:59.799Z",
+  "objectRefs" : [ {
+    "id" : "3DwBUZLNAMBboPIgm4qW6n",
+    "name" : "p_Publish_Assets",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "CHck5qbbfUryzfY-gt-5371806-2026-09-30T09:21:09.464Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process is to publish the assets",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "38bNC9mBF0VeqpJjIIhnEa",
+    "name" : "p_DeployObjects",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Vf4VQT53nQciSrZ-gt-5371828-2026-09-30T09:21:09.762Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "process to export and import the objects listed in the csv file",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "k32jsVCT28ug9oJhCl666W",
+    "name" : "p_tf_Get_Dependencies",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "t0N0Qqi7EkWoKeE-gt-5371794-2026-09-30T09:21:09.316Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process will run CDI taskflow to get the dependencies for objects.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "dy2TOrqjOQtludMyhRJnMN",
+    "name" : "p_Source_Control",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0B4EFpr1Iw8jIw8-gt-5371838-2026-09-30T09:21:09.92Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process is for check out and checkin the objects from target org.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "2kXDeaeOvevgX3zYlQMRkj",
+    "name" : "p_Email_Notification",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Q5Hhwq9bdsreK8Z-gt-5386994-2026-09-30T09:21:08.692Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process is to send email notification to the approver",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

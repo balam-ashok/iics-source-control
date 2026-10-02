@@ -23,7 +23,7 @@
     }
   },
   "dataFileExtension" : "zip",
-  "updateTime" : "2026-10-02T11:58:20.977Z",
+  "updateTime" : "2026-10-02T13:21:59.798Z",
   "objectRefs" : [ {
     "id" : "jFHZTO0VGMXlVyOUYf3v4h",
     "name" : "conn_BM_ff_BFSI",
@@ -56,13 +56,7 @@
       "repoInfo" : {
         "repoHandle" : "010XDM27000000000016"
       },
-      "contextAttributes" : [ {
-        "name" : "id",
-        "value" : "@1"
-      }, {
-        "name" : "010XDM28000000000038",
-        "value" : "8rg6XBlHeyEjcDsWRnX2qG@p_Get_DependenciesOperation"
-      } ],
+      "contextAttributes" : null,
       "additionalInfo" : {
         "description" : "",
         "contentType" : "JSON",
