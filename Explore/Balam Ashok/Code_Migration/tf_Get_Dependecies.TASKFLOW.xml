@@ -13,7 +13,10 @@
       <types1:CreatedBy>balam_ashok</types1:CreatedBy>
       <types1:CreationDate>2026-09-30T09:21:11Z</types1:CreationDate>
       <types1:ModifiedBy/>
-      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>balam_ashok</types1:PublishedBy>
+      <types1:PublicationDate>2026-10-02T13:56:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.tf_Get_Dependecies/tf_Get_Dependecies.tf.xml</types1:PublishedContributionId>
       <types1:Entry>
          <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
                    xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
@@ -200,5 +203,5 @@
       <types1:GUID>43pnmzuOeFdhFj38dONMK6</types1:GUID>
       <types1:DisplayName>tf_Get_Dependecies</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2026-10-02T12:13:49.502Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2026-10-02T13:57:51.69Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
