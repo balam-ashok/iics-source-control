@@ -101,8 +101,13 @@ def location_objects(org, folder, cache):
 
 
 def checkin_type(t):
-    """Types that live in Git. Connections, runtime environments (SAAS_RUNTIME_ENVIRONMENT ...), agents and schedules
-    are never checked in, so they are not required to be."""
+    """Types that live in Git. Application Integration assets (App Connections AI_CONNECTION, service connectors,
+    process objects ...) are Explore assets and are checked in like any other. Platform connections, runtime
+    environments (SAAS_RUNTIME_ENVIRONMENT ...), agents and schedules are never checked in, so they are not required."""
+    if not t:
+        return False
+    if t.startswith('AI_'):
+        return True
     return core.is_dependency_type(t) and not any(w in t for w in ('RUNTIME', 'AGENT', 'SCHEDULE', 'CONNECTION'))
 
 
@@ -428,18 +433,24 @@ def select(objs, tags, release, files, ref):
     return ready, skipped
 
 
-def pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files=None):
-    """One pull of exactly these assets at commit; fetch missing dependencies and retry if IDMC reports any.
+def pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files=None, with_deps=None):
+    """One pull of these assets at commit, together with with_deps [(path, TYPE)] (their dependencies, pulled from
+    Git so they are checked in in Dfactory too); otherwise fetch missing dependencies and retry if IDMC reports any.
     Returns {(path, TYPE): (ok, message)}."""
     log('\n== Pull')
     allow = cfg.get('allow_warnings', False)
     tried = set()
     state, msg, objs = 'FAILED', '', []
+    extra = list(with_deps or [])
     for attempt in range(4):
         body = {'commitHash': commit,
-                'objects': [{'path': a['path'].split('/'), 'type': a['type']} for a in assets]}
+                'objects': [{'path': a['path'].split('/'), 'type': a['type']} for a in assets] +
+                           [{'path': k[0].split('/'), 'type': k[1]} for k in extra]}
         state, msg, objs = core.run_pull(dst, '/pull', body, cfg)
-        log('Pull of ' + str(len(assets)) + ' asset(s) at ' + commit[:7] + ': ' + state + ' ' + msg)
+        log('Pull of ' + str(len(assets)) + ' asset(s)' + (' and ' + str(len(extra)) + ' dependencies' if extra else '') +
+            ' at ' + commit[:7] + ': ' + state + ' ' + msg)
+        if with_deps is not None:
+            break       # strict: everything is in Git and in this one pull; nothing is imported
         bad = state not in ('SUCCESSFUL', 'WARNING') or (state == 'WARNING' and not allow) or \
             any(str(o['state']).upper() in ('FAILED', 'CANCELLED') for o in objs)
         if not bad or attempt == 3:
@@ -462,6 +473,13 @@ def pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files=None):
     by_key = {}
     for o in objs:
         by_key[(o['path'], norm_type(o['type']))] = o
+    if with_deps:
+        for k in extra:
+            o = by_key.get(k)
+            st = str((o or {}).get('state') or state)
+            report['dependencies'].append({'object': k[0], 'type': k[1], 'result': (
+                'pulled from Git with the asset' if st.upper() == 'SUCCESSFUL' or (st.upper() == 'WARNING' and allow)
+                else 'pull from Git ' + st.lower() + ': ' + str((o or {}).get('message') or msg)[:200])})
     whole_ok = state == 'SUCCESSFUL' or (state == 'WARNING' and allow)
     out = {}
     # an asset retried by commit counts by its own result, not the first pull's overall state
@@ -731,7 +749,23 @@ def main():
         repo = set(files)
         core.sync_connections(src, dst, assets, cfg, dry_run, secrets, report, src_ids, deps)
         needed = core.sync_schedules(src, dst, assets, cfg, dry_run, report, src_ids)
-        core.sync_dependencies(src, dst, assets, cfg, dry_run, report, deps, commit, repo)
+        strict = (cfg.get('dependencies') or {}).get('require_checked_in', True)
+        with_deps = None
+        if strict:
+            # every dependency is checked in (check_dependencies made sure): pull them from Git together with the
+            # assets, also the ones Dfactory already has, so they are checked in (linked to Git) there too
+            git_key = {}
+            for k in files:
+                git_key.setdefault(k[0], k)
+            own = {(a['path'], a['type']) for a in assets}
+            with_deps = sorted({git_key.get(k[0], k) for a in assets for k in (a.get('deps') or {})} - own)
+            log('\n== Dependencies\n' + (str(len(with_deps)) + ' pulled from Git together with the assets: ' +
+                                         ', '.join(k[1] + ' ' + k[0] for k in with_deps) if with_deps else 'none'))
+            if dry_run:
+                report['dependencies'].extend({'object': k[0], 'type': k[1], 'result': 'would pull from Git with the asset'}
+                                              for k in with_deps)
+        else:
+            core.sync_dependencies(src, dst, assets, cfg, dry_run, report, deps, commit, repo)
 
         if dry_run:
             log('\n== Pull\nDRY RUN: would pull ' + ', '.join(a['path'] for a in assets) + ' at ' + commit[:7] +
@@ -747,7 +781,7 @@ def main():
             log('\nDeployment dry run completed')
             return
 
-        outcome = pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files)
+        outcome = pull_assets(src, dst, assets, cfg, commit, repo, deps, report, files, with_deps)
         log('\n== Tags in DemoCentral')
         tag_text, tag_errors = retag(src, assets, outcome, tags)
         for a in assets:
