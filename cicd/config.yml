@@ -71,8 +71,9 @@ publish:
   enabled: true
 
 tests:
-  # run the changed mapping tasks in Dfactory after the pull
-  enabled: true
+  # false = deploys only migrate the assets; nothing is run in Dfactory afterwards.
+  # true = run the deployed mapping tasks in Dfactory after the pull (needs a running Secure Agent there)
+  enabled: false
   timeout_seconds: 3600
   poll_seconds: 30
 
