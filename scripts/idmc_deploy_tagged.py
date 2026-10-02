@@ -79,6 +79,9 @@ def find_tagged(org, tag):
     while True:
         r = org.v3('GET', '/objects', params={'q': "tag=='" + tag + "'", 'limit': 200, 'skip': skip})
         if r.status_code != 200:
+            # IDMC answers 'Unable to find tag' when no asset in the org carries the tag yet
+            if 'unable to find tag' in r.text.lower():
+                return out
             raise DeployError('finding assets tagged ' + tag + ' failed: ' + r.text[:300])
         objs = r.json().get('objects') or []
         out.extend(objs)
