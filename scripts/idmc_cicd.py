@@ -323,7 +323,8 @@ def parse_asset_file(path):
     if len(parts) < 3 or parts[0] != 'Explore':
         return None
     fname = parts[-1].lstrip('.')
-    for suffix in ('.vc.json', '.zip', '.xml', '.json'):
+    # .dat: the data file IDMC writes next to MDM reference entities (e.g. Guest Status.MDM_REFERENCE_ENTITY.dat)
+    for suffix in ('.vc.json', '.zip', '.xml', '.json', '.dat'):
         if fname.endswith(suffix):
             fname = fname[:-len(suffix)]
             break
