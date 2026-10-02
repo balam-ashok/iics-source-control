@@ -26,7 +26,7 @@ import requests
 import yaml
 
 import idmc_cicd as core
-from idmc_cicd import DeployError, Org, add_id, env_flag, log, norm_type
+from idmc_cicd import DeployError, Org, add_id, env_flag, log, norm_type, ref_path_type
 
 # the tags that exist in the IDMC orgs; failed and hold are optional (blank = not used)
 DEFAULT_TAGS = {'in_review': 'in-review', 'reviewed': 'reviewed', 'ready': 'ready-to-deploy',
@@ -77,6 +77,94 @@ def merged_into(sha, ref):
         return False
     return subprocess.run(['git', 'merge-base', '--is-ancestor', sha, ref], cwd=core.ROOT,
                           capture_output=True).returncode == 0
+
+
+def location_objects(org, folder, cache):
+    """{(path, TYPE): object} of everything in an Explore folder or project, read once per run."""
+    if folder not in cache:
+        found, skip = {}, 0
+        while True:
+            r = org.v3('GET', '/objects', params={'q': "location=='" + folder + "'", 'limit': 200, 'skip': skip})
+            if r.status_code != 200:
+                log('  ! could not list ' + folder + ' in ' + org.label + ': ' + r.text[:200])
+                break
+            objs = r.json().get('objects') or []
+            for o in objs:
+                found[(clean_path(o.get('path')), norm_type(o.get('type')))] = o
+                if o.get('id'):
+                    found['id:' + o['id']] = o
+            if len(objs) < 200:
+                break
+            skip += 200
+        cache[folder] = found
+    return cache[folder]
+
+
+def check_dependencies(src, assets, files, ref, cfg):
+    """Every asset a ready asset uses (followed down: taskflow -> mapping task -> mapping -> mapplet ...) must be
+    checked in too: under source control, not checked out, on the target branch and with its last check-in merged.
+    Connections, schedules and runtime environments are not checked in, so they are not part of this.
+    Returns (assets whose dependencies are all checked in, blocked rows with the reason)."""
+    if not (cfg.get('dependencies') or {}).get('require_checked_in', True):
+        return assets, []
+    max_depth = int((cfg.get('dependencies') or {}).get('max_depth', 5))
+    branch = ref.split('/')[-1]
+    folders, refs_cache, problems = {}, {}, {}
+
+    def problem(key, obj_id=None):
+        if key not in problems:
+            path, t = key
+            listing = location_objects(src, path.rsplit('/', 1)[0] if '/' in path else path, folders)
+            o = listing.get(key) or (listing.get('id:' + obj_id) if obj_id else None)
+            sc = (o or {}).get('sourceControl') or {}
+            commit = sc.get('hash') or ''
+            if o is None:
+                why = 'not found in DemoCentral'
+            elif sc.get('sourceControlled') is False:
+                why = 'never checked in'
+            elif sc.get('checkedOutBy'):
+                why = 'checked out by ' + str(sc['checkedOutBy'])
+            elif key not in files:
+                why = 'not on ' + branch
+            elif commit and not merged_into(commit, ref):
+                why = 'last check-in ' + commit[:7] + ' not merged into ' + branch
+            else:
+                why = None
+            problems[key] = why
+        return problems[key]
+
+    def uses(obj_id):
+        if obj_id not in refs_cache:
+            refs_cache[obj_id] = src.references(obj_id)
+        return refs_cache[obj_id]
+
+    ok, blocked = [], []
+    for a in assets:
+        tree, seen, queue = {}, set(), [(a['id'], 0)]
+        while queue:
+            obj_id, depth = queue.pop(0)
+            if not obj_id or obj_id in seen or depth >= max_depth:
+                continue
+            seen.add(obj_id)
+            for r in uses(obj_id):
+                key = ref_path_type(r)
+                if not key[0] or not core.is_dependency_type(key[1]) or key in tree or key == (a['path'], a['type']):
+                    continue
+                tree[key] = r.get('id')
+                queue.append((r.get('id'), depth + 1))
+        bad = [(k, problem(k, tree[k])) for k in sorted(tree) if problem(k, tree[k])]
+        if bad:
+            names = '; '.join(k[1] + ' ' + k[0] + ' (' + why + ')' for k, why in bad[:5]) + (' ...' if len(bad) > 5 else '')
+            blocked.append(dict(a, reason='uses assets that are not checked in: ' + names +
+                                '. Check them in and run again',
+                                needs_sync=all(why.startswith(('not on', 'last check-in')) for _, why in bad)))
+            log('  blocked ' + a['type'] + ' ' + a['path'] + ': ' + str(len(bad)) + ' of its ' + str(len(tree)) +
+                ' dependencies not checked in')
+        else:
+            ok.append(a)
+            if tree:
+                log('  ' + a['type'] + ' ' + a['path'] + ': all ' + str(len(tree)) + ' dependencies checked in')
+    return ok, blocked
 
 
 def sync_branches(cfg, dry_run):
@@ -399,7 +487,13 @@ def main():
         core.check_orgs(src, dst, cfg)
 
         tagged = find_tagged(src, tags['ready'])
-        assets, skipped = select(tagged, tags, release, files, ref)
+
+        def evaluate():
+            ready, skip_rows = select(tagged, tags, release, files, ref)
+            ready, blocked = check_dependencies(src, ready, files, ref, cfg)
+            return ready, skip_rows + blocked
+
+        assets, skipped = evaluate()
         # a ready asset whose check-in is not on the target branch yet: merge the check-ins first, then look again
         if any(s.get('needs_sync') for s in skipped):
             merged, pr = sync_branches(cfg, dry_run)
@@ -407,7 +501,7 @@ def main():
                 commit, ref = target_head(cfg)
                 report.update(commit=commit)
                 files = repo_files(commit)
-                assets, skipped = select(tagged, tags, release, files, ref)
+                assets, skipped = evaluate()
             elif pr:
                 for s in skipped:
                     if s.get('needs_sync'):
