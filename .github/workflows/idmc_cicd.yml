@@ -19,9 +19,9 @@ on:
         type: boolean
         default: false
       run_tests:
-        description: "Run the changed mapping tasks after the pull"
+        description: "Also run the changed mapping tasks in Dfactory after the pull (needs a Secure Agent)"
         type: boolean
-        default: true
+        default: false
 
 concurrency:
   group: idmc-deploy-dfactory
