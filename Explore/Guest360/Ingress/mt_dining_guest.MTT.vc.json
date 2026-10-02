@@ -1,0 +1,135 @@
+{
+  "name" : "mt_dining_guest",
+  "runtimeEnvironmentId" : "@a5Ov5a2wiculgnFfINaha8",
+  "runtimeEnvironmentName" : "DESKTOP-K4B9BJF",
+  "maxLogs" : 10,
+  "parameters" : [
+    {
+      "name" : "$Source$",
+      "type" : "SOURCE",
+      "label" : "Source",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "originalPath" : "Source"
+      },
+      "sourceConnectionId" : "@hC6hLlFDIGChHXCYIKG4cx",
+      "connectionName" : "Demo_Conn",
+      "sourceObject" : "DUMMY_Source",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "customQuery" : "SELECT\n    c.*,\n    cc.*,\n    cp.*,\n    dr.*,\n    ds.*,\n    df.*,\n    so.*,\n    dv.*\n \nFROM WYNN_RESORT_DWH_DEV.STG_DATA.STG_CUSTOMER c\n \nLEFT JOIN WYNN_RESORT_DWH_DEV.STG_DATA.STG_CUSTOMER_CONTACT cc\n    ON c.customer_id = cc.customer_id\n \nLEFT JOIN WYNN_RESORT_DWH_DEV.STG_DATA.STG_CUSTOMER_PREFERENCE cp\n    ON c.customer_id = cp.customer_id\n \nLEFT JOIN WYNN_RESORT_DWH_DEV.STG_DATA.STG_DINING_RESERVATION dr\n    ON c.customer_id = dr.customer_id\n \nLEFT JOIN WYNN_RESORT_DWH_DEV.STG_DATA.STG_DINING_SPENDING ds\n    ON dr.reservation_id = ds.reservation_id\n \nLEFT JOIN WYNN_RESORT_DWH_DEV.STG_DATA.STG_DINING_SPECIAL_OCCASION so\n    ON dr.reservation_id = so.reservation_id\n    AND c.customer_id = so.customer_id\n \nLEFT JOIN WYNN_RESORT_DWH_DEV.STG_DATA.STG_DINING_FEEDBACK df\n    ON c.customer_id = df.customer_id\n \nLEFT JOIN WYNN_RESORT_DWH_DEV.STG_DATA.STG_DINING_VENUE dv\n    ON dr.dining_venue_name = dv.venue_name;",
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "DUMMY_Source",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$Target$",
+      "type" : "H_TARGET",
+      "label" : "Target",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "supportApplyDDLChanges" : "false",
+        "originalPath" : "Target"
+      },
+      "targetConnectionId" : "@kRRFJ7qylGnbjOt4amgpsm",
+      "connectionName" : "conn-BM-Business",
+      "targetObject" : "Home/Custom Assets/Business Entities/Guest(id=guest)",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "singleMode" : true
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "Home/Custom Assets/Business Entities/Guest(id=guest)",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "metadataVersion" : "0",
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    }
+  ],
+  "verbose" : false,
+  "lastRunTime" : 1772479865000,
+  "mappingId" : "@3bGpc0XPMcZitD8WF6D6sE",
+  "mappingTemplateName" : "mp_dining_guest",
+  "sessionPropertiesList" : [
+    {
+      "name" : "Pushdown Optimization",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Context",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Fallback Option",
+      "value" : "Partial PDO"
+    }
+  ],
+  "inOutParameters" : [
+    {
+      "name" : "jobInstanceId",
+      "datatype" : "STRING",
+      "precision" : "100",
+      "scale" : "0",
+      "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+      "aggregationType" : "MAX",
+      "currentValue" : "1213206877521887232"
+    }
+  ],
+  "hidden" : false,
+  "enableCrossSchemaPushdown" : true,
+  "enableParallelRun" : false,
+  "autoTunedApplied" : false,
+  "autoTunedAppliedType" : "NONE",
+  "paramFileType" : "PARAM_FILE_LOCAL",
+  "schemaMode" : "async",
+  "valid" : true,
+  "optimizationPlan" : "NONE",
+  "allowMaxFieldLength" : false,
+  "specialCharacterSupport" : false,
+  "midstreamPreview" : false,
+  "vcsExportTime" : "2026-10-02 07:03:47 PDT"
+}
