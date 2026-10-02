@@ -1,0 +1,87 @@
+{
+  "objectInfo" : {
+    "id" : "3DwBUZLNAMBboPIgm4qW6n",
+    "name" : "p_Publish_Assets",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "CHck5qbbfUryzfY-gt-5371806-2026-09-30T09:21:09.464Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process is to publish the assets",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:22:43.417Z",
+  "objectRefs" : [ {
+    "id" : "8I8QQC0F89liJSeFmLBt0c",
+    "name" : "app-email",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hEuHWvJ4rswVYx8-gt-5371782-2026-09-30T09:21:08.122Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection to send email notication",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "49pDFaqH4sVc9QHW5O7UYp",
+    "name" : "AppCon-Login-Target-Org",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eJ91pqrzYLnzYLn-gt-5371774-2026-09-30T09:21:08.075Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Login"
+  }, {
+    "id" : "cfhqeXZ4yUSfPzn7mG7Gwp",
+    "name" : "AppCon-CODE-MIGRATION",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3hGKcn8dzWztZK0-gt-5387014-2026-09-30T09:21:08.78Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection mainly used to get dependencies and source control.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
