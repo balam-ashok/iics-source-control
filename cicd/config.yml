@@ -42,6 +42,10 @@ dependencies:
   import_from_demo: true
   # how many levels of "uses" to follow
   max_depth: 5
+  # tagged deploy: an asset tagged ready-to-deploy is held back until everything it uses (taskflow -> mapping
+  # task -> mapping -> mapplet ...) is checked in too: under source control, not checked out and merged into
+  # Dfactory-Branch. The run summary names what is missing. false = deploy anyway (missing ones are imported)
+  require_checked_in: true
   # The tagged deploy (IDMC - Deploy tagged assets) also uses this: with sync: true a ready asset that uses an
   # object nobody tagged still deploys (that object comes along at its merged version); with sync: false
   # strictly only the tagged assets go and such an asset fails with the missing dependency named.
