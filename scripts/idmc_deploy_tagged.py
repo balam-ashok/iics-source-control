@@ -541,6 +541,19 @@ def commit_fallback(dst, assets, cfg, head, files, objs, allow, report):
     return objs
 
 
+def dependency_assets(with_deps, files, report, dry=False):
+    """The dependencies pulled with the assets, as publishable entries (App Connections, service connectors and
+    processes must be published in Dfactory before a guide or taskflow that uses them can run)."""
+    pulled = {(r['object'], r['type']) for r in report['dependencies']
+              if str(r.get('result', '')).startswith('pulled from Git' if not dry else 'would pull')}
+    out = []
+    for k in with_deps or []:
+        if k in pulled:
+            xml = next((f for f in files.get(k, []) if f.endswith('.xml') and not f.split('/')[-1].startswith('.')), None)
+            out.append({'path': k[0], 'type': k[1], 'deleted': False, 'xml': xml})
+    return out
+
+
 def change_tags(org, endpoint, changes):
     """POST /TagObjects or /UntagObjects for [{'id', 'tags'}], 100 per call. Returns {id: error} for failures."""
     errors = {}
@@ -775,7 +788,7 @@ def main():
                 deps_n = len([d for d in (a.get('deps') or {}).values() if d.get('id')])
                 report['assets'].append(dict(a, result='would deploy', tag_change=', '.join(drop) + ' -> ' + tags['deployed'] +
                                              (' (and its ' + str(deps_n) + ' dependencies)' if deps_n else '')))
-            core.publish(dst, assets, cfg, True, report)
+            core.publish(dst, assets + dependency_assets(with_deps, files, report, dry=True), cfg, True, report)
             if tests_on:
                 core.run_tests(dst, assets, cfg, True, report, {})
             log('\nDeployment dry run completed')
@@ -797,7 +810,7 @@ def main():
             if o.get('id') and o.get('type'):
                 add_id(dst_ids, o['path'], o['type'], o['id'])
         core.relink_schedules(dst, needed, False, report, dst_ids)
-        core.publish(dst, done, cfg, False, report)
+        core.publish(dst, done + dependency_assets(with_deps, files, report), cfg, False, report)
         problems = []
         if failed:
             problems.append('not deployed: ' + ', '.join(a['path'] for a in failed))
