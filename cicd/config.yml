@@ -46,6 +46,10 @@ dependencies:
   # task -> mapping -> mapplet ...) is checked in too: under source control, not checked out and merged into
   # Dfactory-Branch. The run summary names what is missing. false = deploy anyway (missing ones are imported)
   require_checked_in: true
+  # tagged deploy: check in, from DemoCentral, the dependencies that were never checked in (a taskflow's mapping
+  # task, mapping ...). The check-in starts the workflow again, which then deploys the whole set. Assets checked
+  # out by someone are not touched. false = only report them
+  auto_checkin: true
   # The tagged deploy (IDMC - Deploy tagged assets) also uses this: with sync: true a ready asset that uses an
   # object nobody tagged still deploys (that object comes along at its merged version); with sync: false
   # strictly only the tagged assets go and such an asset fails with the missing dependency named.
