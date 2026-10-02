@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "lvPZ03iR82fgzXbgWIW8mx",
+    "name" : "tf_dining_guest",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "jxcghuImXycotFg-gt-261194-2026-02-26T13:41:03.415Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T14:03:01.493Z",
+  "objectRefs" : [ {
+    "id" : "dSsccGz3F85gjxtAi4TAEA",
+    "name" : "mt_dining_guest",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z00000000008J"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Guest360/Ingress"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
