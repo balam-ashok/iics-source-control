@@ -42,6 +42,22 @@ dependencies:
   import_from_demo: true
   # how many levels of "uses" to follow
   max_depth: 5
+  # The tagged deploy (IDMC - Deploy tagged assets) also uses this: with sync: true a ready asset that uses an
+  # object nobody tagged still deploys (that object comes along at its merged version); with sync: false
+  # strictly only the tagged assets go and such an asset fails with the missing dependency named.
+
+# IDMC tags that drive "IDMC - Deploy tagged assets" (set them in DemoCentral on checked-in assets):
+#   in_review: checked in, waiting for review (never deployed)
+#   ready:     approved; the next tagged deploy takes it if its last check-in is merged into Dfactory-Branch
+#   deployed:  set by the deploy after a successful pull (replaces ready / failed / in_review)
+#   failed:    set by the deploy when the asset's pull failed (replaces ready); fix, check in, re-tag ready
+#   hold:      never deployed, even when also tagged ready
+tags:
+  in_review: cicd-in-review
+  ready: cicd-ready-qa
+  deployed: cicd-deployed-qa
+  failed: cicd-failed-qa
+  hold: cicd-hold
 
 schedules:
   # create the schedules used by changed mapping tasks if Dfactory lacks them, and re-link after the pull
