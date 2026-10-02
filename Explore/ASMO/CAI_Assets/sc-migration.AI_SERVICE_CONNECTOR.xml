@@ -1,0 +1,188 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>RN7Y3AxtPk7HNCn-gt-5266520-2026-09-29T07:59:39.704Z::svc.xml</types1:EntryId>
+      <types1:Name>sc-migration</types1:Name>
+      <types1:ParentFlowIds>KGXShOeCFk4Adyp-gt-5266711-2026-09-29T08:02:58.76Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>pooja</types1:CreatedBy>
+      <types1:CreationDate>2026-09-29T07:59:40Z</types1:CreationDate>
+      <types1:ModifiedBy>pooja</types1:ModifiedBy>
+      <types1:ModificationDate>2026-09-29T10:06:25Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>pooja</types1:PublishedBy>
+      <types1:PublicationDate>2026-09-29T10:06:29Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/sc_migration/sc_migration_svcDef.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="sc-migration"
+                            label=""
+                            name="sc-migration"
+                            uuid="973e535f-bd6b-4717-97c4-39d2ec022ce5">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    label="username"
+                                    masked="false"
+                                    name="username"
+                                    required="false"
+                                    testWith="Pooja"
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    label="password"
+                                    masked="true"
+                                    name="password"
+                                    required="false"
+                                    testWith=""
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Login"
+                       maxRedirects="100"
+                       name="Login"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://dmp-us.informaticacloud.com/saas/public/core/v3/login"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+"username":"{$username}",
+"password" :"{$password}"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="sessionId"
+                            property="sessionId"
+                            type="string"/>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="createDynamicPool"
+                       maxRedirects="100"
+                       name="createDynamicPool"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="i_sessionId"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="Body"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://usw1-cai.dmp-us.informaticacloud.com/active-bpel/services/REST/mdmMetadataFlow/?saveTranslation=en"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="IDS-SESSION-ID">{$i_sessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{$Body}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="createFields"
+                       maxRedirects="100"
+                       name="createFields"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="ip_sessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="gR3vV56gPQYldvJKlBsyO9"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="Body"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#xA;  &#34;folder&#34;: &#34;3ziDZyjOsyvb2ZyTyMjuMb&#34;,&#xA;  &#34;guid&#34;: &#34;datamodel&#34;,&#xA;  &#34;method&#34;: &#34;update&#34;,&#xA;  &#34;resource&#34;: &#34;tenantModel&#34;,&#xA;  &#34;payload&#34;: {&#xA;    &#34;guid&#34;: &#34;datamodel&#34;,&#xA;    &#34;dynamicFieldTemplate&#34;: [&#xA;      {&#xA;        &#34;dynamicFieldTemplateOptions&#34;: {&#xA;          &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//DynamicFieldTemplateOptions&#34;,&#xA;          &#34;searchConfiguration&#34;: {&#xA;            &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//BusinessEntitySearchConfiguration&#34;,&#xA;            &#34;searchField&#34;: []&#xA;          }&#xA;        },&#xA;        &#34;dynamicPool&#34;: {&#xA;          &#34;$ref&#34;: &#34;person_attribute_pool&#34;&#xA;        },&#xA;        &#34;field&#34;: {&#xA;          &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//TextField&#34;,&#xA;          &#34;label&#34;: {&#xA;            &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//LocalizedText&#34;,&#xA;            &#34;en&#34;: &#34;Name&#34;&#xA;          },&#xA;          &#34;length&#34;: 255,&#xA;          &#34;name&#34;: &#34;name&#34;,&#xA;          &#34;position&#34;: 400000&#xA;        },&#xA;        &#34;guid&#34;: &#34;name_person_attribute_pool&#34;,&#xA;        &#34;_meta&#34;: {&#xA;          &#34;version&#34;: 1&#xA;        }&#xA;      },&#xA;      {&#xA;        &#34;dynamicFieldTemplateOptions&#34;: {&#xA;          &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//DynamicFieldTemplateOptions&#34;,&#xA;          &#34;searchConfiguration&#34;: {&#xA;            &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//BusinessEntitySearchConfiguration&#34;,&#xA;            &#34;searchField&#34;: []&#xA;          }&#xA;        },&#xA;        &#34;dynamicPool&#34;: {&#xA;          &#34;$ref&#34;: &#34;person_attribute_pool&#34;&#xA;        },&#xA;        &#34;field&#34;: {&#xA;          &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//IntegerField&#34;,&#xA;          &#34;label&#34;: {&#xA;            &#34;eClass&#34;: &#34;http://informatica.com/mdm/v2/Core#//LocalizedText&#34;,&#xA;            &#34;en&#34;: &#34;Age&#34;&#xA;          },&#xA;          &#34;name&#34;: &#34;age&#34;,&#xA;          &#34;position&#34;: 400001&#xA;        },&#xA;        &#34;guid&#34;: &#34;age_person_attribute_pool&#34;,&#xA;        &#34;_meta&#34;: {&#xA;          &#34;version&#34;: 1&#xA;        }&#xA;      }&#xA;    ]&#xA;  },&#xA;  &#34;undeployDQRules&#34;: false&#xA;}"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://usw1-cai.dmp-us.informaticacloud.com/active-bpel/services/REST/mdmMetadataFlow/?saveTranslation=en"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="IDS-SESSION-ID">{$ip_sessionId}</header>
+                        </httpHeaders>
+                        <body>{$Body}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Type" property="changeType" type="string"/>
+                     <field description=""
+                            name="hasPhysicalResources"
+                            property="hasPhysicalResources"
+                            type="string"/>
+                     <field description=""
+                            name="StatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>5LoNLJ9N4rJhfGVApeVU6Q</types1:GUID>
+      <types1:DisplayName>sc-migration</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:48:38.299Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
