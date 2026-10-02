@@ -109,7 +109,7 @@ def check_dependencies(src, assets, files, ref, cfg):
         return assets, []
     max_depth = int((cfg.get('dependencies') or {}).get('max_depth', 5))
     branch = ref.split('/')[-1]
-    folders, refs_cache, problems = {}, {}, {}
+    folders, refs_cache, problems, to_checkin = {}, {}, {}, {}
 
     def problem(key, obj_id=None):
         if key not in problems:
@@ -120,8 +120,10 @@ def check_dependencies(src, assets, files, ref, cfg):
             commit = sc.get('hash') or ''
             if o is None:
                 why = 'not found in DemoCentral'
-            elif sc.get('sourceControlled') is False:
+            elif sc.get('sourceControlled') is False or (not sc and key not in files):
                 why = 'never checked in'
+                if o.get('id'):
+                    to_checkin[key] = o['id']
             elif sc.get('checkedOutBy'):
                 why = 'checked out by ' + str(sc['checkedOutBy'])
             elif key not in files:
@@ -157,7 +159,8 @@ def check_dependencies(src, assets, files, ref, cfg):
             names = '; '.join(k[1] + ' ' + k[0] + ' (' + why + ')' for k, why in bad[:5]) + (' ...' if len(bad) > 5 else '')
             blocked.append(dict(a, reason='uses assets that are not checked in: ' + names +
                                 '. Check them in and run again',
-                                needs_sync=all(why.startswith(('not on', 'last check-in')) for _, why in bad)))
+                                needs_sync=all(why.startswith(('not on', 'last check-in')) for _, why in bad),
+                                checkin_deps={k: to_checkin[k] for k, _ in bad if k in to_checkin}))
             log('  blocked ' + a['type'] + ' ' + a['path'] + ': ' + str(len(bad)) + ' of its ' + str(len(tree)) +
                 ' dependencies not checked in')
         else:
@@ -165,6 +168,56 @@ def check_dependencies(src, assets, files, ref, cfg):
             if tree:
                 log('  ' + a['type'] + ' ' + a['path'] + ': all ' + str(len(tree)) + ' dependencies checked in')
     return ok, blocked
+
+
+def checkin_dependencies(src, blocked, cfg):
+    """Check in, from DemoCentral, the never-checked-in assets that ready assets use (POST /checkin), so the next
+    run finds the whole set in Git. Objects checked out by someone are left alone. The check-in reaches
+    Dfactory-Branch through the Auto PR, which starts this workflow again. Returns {(path, TYPE): result}."""
+    wanted = {}
+    for b in blocked:
+        for k, obj_id in (b.get('checkin_deps') or {}).items():
+            wanted.setdefault(k, (obj_id, b['path']))
+    if not wanted:
+        return {}
+    log('\n== Check in dependencies in DemoCentral')
+    users = sorted({w[1] for w in wanted.values()})
+    body = {'objects': [{'id': obj_id} for obj_id, _ in wanted.values()],
+            'summary': 'Dependencies of ' + ', '.join(users)[:200],
+            'description': 'Checked in by IDMC - Deploy tagged assets: used by ' + ', '.join(users) +
+                           ', which is tagged ' + cfg['tags']['ready'] + '.'}
+    results = {}
+    r = src.v3('POST', '/checkin', json=body)
+    if r.status_code not in (200, 201, 202):
+        msg = 'check-in failed: ' + r.text[:300]
+        log(msg)
+        return {k: msg for k in wanted}
+    reply = r.json() if r.text.strip() else {}
+    action = next((v for k, v in reply.items() if k.lower().endswith('actionid')), None) or reply.get('id')
+    if not action:
+        log('check-in started; IDMC returned no action id to follow: ' + r.text[:200])
+        return {k: 'check-in started' for k in wanted}
+
+    def fetch():
+        b = src.v3('GET', '/sourceControlAction/' + action, params={'expand': 'objects'}).json()
+        return (b.get('status') or {}).get('state'), b
+
+    try:
+        state, b = core.wait_job(fetch, 'check-in', int(cfg.get('pull_timeout_seconds', 1800)), 5)
+    except DeployError as e:
+        return {k: str(e) for k in wanted}
+    per = {}
+    for o in b.get('objects') or []:
+        t = o.get('target') or o.get('source') or o
+        key = (clean_path(t.get('path')), norm_type(t.get('type')))
+        per[key] = core.object_message(o) or str((t.get('status') or o.get('status') or {}).get('state') or state)
+    commit = b.get('commitHash') or (b.get('status') or {}).get('commitHash') or ''
+    msg = (b.get('status') or {}).get('message') or ''
+    for k in wanted:
+        results[k] = ('checked in' + (' as ' + commit[:7] if commit else '')) if state == 'SUCCESSFUL' \
+            else 'check-in ' + state.lower() + ': ' + (per.get(k) or msg)[:200]
+        log('  ' + k[1] + ' ' + k[0] + ': ' + results[k])
+    return results
 
 
 def sync_branches(cfg, dry_run):
@@ -506,6 +559,20 @@ def main():
                 for s in skipped:
                     if s.get('needs_sync'):
                         s['reason'] += '; waiting for approval of pull request #' + pr
+        # dependencies that were never checked in: check them in now (not in a dry run started by hand). They reach
+        # Dfactory-Branch through the Auto PR, which starts this workflow again; that run deploys the whole set.
+        if env_flag('AUTO_CHECKIN', (cfg.get('dependencies') or {}).get('auto_checkin', True)) and \
+                any(s.get('checkin_deps') for s in skipped):
+            done = checkin_dependencies(src, skipped, cfg)
+            for s in skipped:
+                if s.get('checkin_deps'):
+                    got = [done.get(k, '') for k in s['checkin_deps']]
+                    if got and all(g.startswith(('checked in', 'check-in started')) for g in got):
+                        s['reason'] = s['reason'].replace('. Check them in and run again', '') + (
+                            '. Checked them in automatically; this asset deploys on the run that this check-in starts')
+                    else:
+                        s['reason'] += '. Automatic check-in: ' + '; '.join(
+                            k[0].split('/')[-1] + ' ' + done.get(k, '-') for k in s['checkin_deps'])
         report['skipped'] = skipped
         log('Assets tagged ' + tags['ready'] + (' and ' + release if release else '') + ': ' + str(len(tagged)) +
             ' found, ' + str(len(assets)) + ' to deploy, ' + str(len(skipped)) + ' skipped')
