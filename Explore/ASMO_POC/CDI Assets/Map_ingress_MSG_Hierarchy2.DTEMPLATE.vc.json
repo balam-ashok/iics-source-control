@@ -1,0 +1,1194 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Map_ingress_MSG_Hierarchy2",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Ingress_MSG_Hierarchy -> Target"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-04T17:36:09.164Z",
+        "name" : "Ingress_MSG_Hierarchy",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "responseXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "PK_root"
+            },
+            "name" : "PK_root",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "name"
+            },
+            "name" : "name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "rootSourcePKey"
+            },
+            "name" : "rootSourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "rootSourceSystem"
+            },
+            "name" : "rootSourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "rootState"
+            },
+            "name" : "rootState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "description"
+            },
+            "name" : "description",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "levels"
+            },
+            "name" : "levels",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "rootBusinessId"
+            },
+            "name" : "rootBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourcePKey1"
+            },
+            "name" : "sourcePKey1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId1"
+            },
+            "name" : "businessId1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem1"
+            },
+            "name" : "sourceSystem1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state1"
+            },
+            "name" : "state1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "id"
+            },
+            "name" : "id",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "name1"
+            },
+            "name" : "name1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "id1"
+            },
+            "name" : "id1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "name2"
+            },
+            "name" : "name2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourcePKey2"
+            },
+            "name" : "sourcePKey2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem2"
+            },
+            "name" : "sourceSystem2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId2"
+            },
+            "name" : "businessId2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state2"
+            },
+            "name" : "state2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "id2"
+            },
+            "name" : "id2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "name3"
+            },
+            "name" : "name3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourcePKey3"
+            },
+            "name" : "sourcePKey3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem3"
+            },
+            "name" : "sourceSystem3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId3"
+            },
+            "name" : "businessId3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state3"
+            },
+            "name" : "state3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@0PTUCywWvhpksMrtLZzBOY",
+          "connectionName" : "conn_flat_file_bm_asmo",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Asmo/Hierarchy.csv",
+            "label" : "Asmo/Hierarchy.csv",
+            "objectName" : "Hierarchy.csv",
+            "path" : "Asmo/Hierarchy.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "PK_root",
+                "fieldType" : "CONNECTOR",
+                "label" : "PK_root",
+                "nativeName" : "PK_root",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "name",
+                "fieldType" : "CONNECTOR",
+                "label" : "name",
+                "nativeName" : "name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "rootSourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "rootSourcePKey",
+                "nativeName" : "rootSourcePKey",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "rootSourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "rootSourceSystem",
+                "nativeName" : "rootSourceSystem",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "rootState",
+                "fieldType" : "CONNECTOR",
+                "label" : "rootState",
+                "nativeName" : "rootState",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "description",
+                "fieldType" : "CONNECTOR",
+                "label" : "description",
+                "nativeName" : "description",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "levels",
+                "fieldType" : "CONNECTOR",
+                "label" : "levels",
+                "nativeName" : "levels",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "rootBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "rootBusinessId",
+                "nativeName" : "rootBusinessId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourcePKey1",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey1",
+                "nativeName" : "sourcePKey1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId1",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId1",
+                "nativeName" : "businessId1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem1",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem1",
+                "nativeName" : "sourceSystem1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state1",
+                "fieldType" : "CONNECTOR",
+                "label" : "state1",
+                "nativeName" : "state1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "id",
+                "fieldType" : "CONNECTOR",
+                "label" : "id",
+                "nativeName" : "id",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "name1",
+                "fieldType" : "CONNECTOR",
+                "label" : "name1",
+                "nativeName" : "name1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "id1",
+                "fieldType" : "CONNECTOR",
+                "label" : "id1",
+                "nativeName" : "id1",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "name2",
+                "fieldType" : "CONNECTOR",
+                "label" : "name2",
+                "nativeName" : "name2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourcePKey2",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey2",
+                "nativeName" : "sourcePKey2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem2",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem2",
+                "nativeName" : "sourceSystem2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId2",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId2",
+                "nativeName" : "businessId2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state2",
+                "fieldType" : "CONNECTOR",
+                "label" : "state2",
+                "nativeName" : "state2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "id2",
+                "fieldType" : "CONNECTOR",
+                "label" : "id2",
+                "nativeName" : "id2",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "name3",
+                "fieldType" : "CONNECTOR",
+                "label" : "name3",
+                "nativeName" : "name3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourcePKey3",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey3",
+                "nativeName" : "sourcePKey3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem3",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem3",
+                "nativeName" : "sourceSystem3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId3",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId3",
+                "nativeName" : "businessId3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "state3",
+                "fieldType" : "CONNECTOR",
+                "label" : "state3",
+                "nativeName" : "state3",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Asmo/Hierarchy.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false",
+            "requestXml" : "{\n  \"body\" : {\n    \"username\" : \"Pooja\",\n    \"password\" : \"Akki-alur@581102\"\n  },\n  \"Accept\" : \"application/json\",\n  \"Content-Type\" : \"application/json\"\n}"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-08-05T05:50:10.869Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Hierarchies/MSG Hierarchy(id=asmo_msg_hierarchy_hierarchy)",
+            "label" : "Home/Custom Assets/Hierarchies/MSG Hierarchy(id=asmo_msg_hierarchy_hierarchy)",
+            "objectName" : "MSG Hierarchy(id=asmo_msg_hierarchy_hierarchy)",
+            "path" : "Home/Custom Assets/Hierarchies/MSG Hierarchy(id=asmo_msg_hierarchy_hierarchy)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Ingress_MSG_Hierarchy",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "sourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:sourceSystem"
+                },
+                {
+                  "name" : "name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:name"
+                },
+                {
+                  "name" : "rootSourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:rootSourceSystem"
+                },
+                {
+                  "name" : "rootState",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:rootState"
+                },
+                {
+                  "name" : "rootBusinessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:rootBusinessId"
+                },
+                {
+                  "name" : "businessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:businessId"
+                },
+                {
+                  "name" : "name1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:child/json:businessEntity/json:name"
+                },
+                {
+                  "name" : "id1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:child/json:businessEntity/json:id"
+                },
+                {
+                  "name" : "sourceSystem3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:child/json:id/json:sourceSystem"
+                },
+                {
+                  "name" : "businessId3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:child/json:id/json:businessId"
+                },
+                {
+                  "name" : "id2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:parent/json:businessEntity/json:id"
+                },
+                {
+                  "name" : "name3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:parent/json:businessEntity/json:name"
+                },
+                {
+                  "name" : "sourceSystem2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:parent/json:id/json:sourceSystem"
+                },
+                {
+                  "name" : "businessId2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:parent/json:id/json:businessId"
+                },
+                {
+                  "name" : "businessId1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:businessId"
+                },
+                {
+                  "name" : "sourceSystem1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Prime_Commodity_to_Sub_Commodity/json:sourceSystem"
+                },
+                {
+                  "name" : "PK_root",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:sourcePKey"
+                },
+                {
+                  "name" : "PK_root",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:MSG_Hierarchy_id_asmo_msg_hierarchy_hierarchy_/json:Hierarchy_Instance/json:rootSourcePKey"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-10-05 02:54:26 PDT"
+}
