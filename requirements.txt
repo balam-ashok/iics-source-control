@@ -1,4 +1,2 @@
 requests
-pynacl
 pyyaml
-openpyxl
