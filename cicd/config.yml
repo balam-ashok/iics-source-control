@@ -1,94 +1,27 @@
-# IDMC CI/CD settings, read by scripts/idmc_cicd.py
-# Demo org checks in to source_branch; the Auto PR merges it into target_branch; the pipeline deploys
-# target_branch to the Dfactory org.
+# Settings for .github/workflows/idmc-promote.yml (scripts/idmc_promote.py).
+# The workflow reads Git and the QA org only. It never contacts the Production org: Production is
+# migrated by hand from the package the workflow prepares after approval.
 
-source_branch: Demo-Central-Branch
-target_branch: Dfactory-Branch
+branches:
+  qa: Demo-Central-Branch          # where IDMC checks in (QA org: DemoCentral)
+  production: Dfactory-Branch      # what Production is migrated to (Production org: DFactory Inc DEV)
 
-# true = discover and report only; nothing is created, pulled, published or run
-dry_run: false
-
-# accept mapping tasks that complete with errors and pulls that end in WARNING
-allow_warnings: false
-
-connections:
-  # find the connections used by the changed assets and create any that are missing in Dfactory
-  sync: true
-  # connections to check on every run, even if no changed asset uses them
-  always_include: []
-  # overwrite existing Dfactory connections whose definition differs from Demo (off: only report the drift)
-  update_existing: false
-  # per-connection settings (connection name as in Demo):
-  #   password_secret: key in the IDMC_CONNECTION_PASSWORDS GitHub secret (a JSON object of
-  #                    {"key": "Dfactory password"}) holding this connection's password
-  #   overrides:       Dfactory-specific values applied after create/update (host, database, username, ...)
-  #   test:            run the connection test afterwards (default true)
-  settings: {}
-  # example:
-  #   Oracle_Sales:
-  #     password_secret: Oracle_Sales
-  #     overrides:
-  #       host: oracle-dfactory.internal
-  #       database: SALESUAT
-
-# Demo name -> Dfactory name, only where they differ (used for the import and the pull)
-connection_map: {}
-runtime_environment_map: {}
-
-dependencies:
-  # bring over objects the changed assets use (mappings, mapplets, schemas...) that are missing in Dfactory:
-  # pulled from Git when they were checked in earlier, otherwise exported from Demo and imported
-  sync: true
-  import_from_demo: true
-  # how many levels of "uses" to follow
-  max_depth: 5
-  # tagged deploy: an asset tagged ready-to-deploy is held back until everything it uses (taskflow -> mapping
-  # task -> mapping -> mapplet ...) is checked in too: under source control, not checked out and merged into
-  # Dfactory-Branch. The run summary names what is missing. false = deploy anyway (missing ones are imported)
-  require_checked_in: true
-  # tagged deploy: check in, from DemoCentral, the dependencies that were never checked in (a taskflow's mapping
-  # task, mapping ...). The check-in starts the workflow again, which then deploys the whole set. Assets checked
-  # out by someone are not touched. false = only report them
-  auto_checkin: true
-  # The tagged deploy (IDMC - Deploy tagged assets) also uses this: with sync: true a ready asset that uses an
-  # object nobody tagged still deploys (that object comes along at its merged version); with sync: false
-  # strictly only the tagged assets go and such an asset fails with the missing dependency named.
-
-# IDMC tags that drive "IDMC - Deploy tagged assets" (the tags that exist in DemoCentral; set them on
-# checked-in assets):
-#   in_review: checked in, waiting for review (not deployed)
-#   reviewed:  review done, not yet released (not deployed)
-#   ready:     released; the next tagged deploy takes it if its last check-in is merged into Dfactory-Branch
-#   deployed:  set by the deploy after a successful pull (ready-to-deploy, reviewed and in-review removed)
-#   failed:    optional; blank = a failed asset keeps ready-to-deploy and the next run tries it again
-#   hold:      optional; blank = not used (an asset with this tag is never deployed)
-tags:
-  in_review: in-review
-  reviewed: reviewed
-  ready: ready-to-deploy
-  deployed: deployed
-  failed: ""
-  hold: ""
-
-schedules:
-  # create the schedules used by changed mapping tasks if Dfactory lacks them, and re-link after the pull
-  sync: true
-
-publish:
-  # publish changed taskflows, processes, guides, App Connections and service connectors after the pull
-  enabled: true
-
-tests:
-  # false = deploys only migrate the assets; nothing is run in Dfactory afterwards.
-  # true = run the deployed mapping tasks in Dfactory after the pull (needs a running Secure Agent there)
-  enabled: false
-  timeout_seconds: 3600
-  poll_seconds: 30
-
-pull_timeout_seconds: 1800
-
-# safety check: the IDMC org names the two logins must reach (blank = don't check); the run stops
-# before changing anything if they don't match
+# safety check: the QA login must reach this org (blank = don't check)
 orgs:
-  source: "DemoCentral"         # Demo org (IICS_USERNAME / IICS_PASSWORD)
-  target: "DFactory Inc DEV"    # Dfactory org (UAT_IICS_USERNAME / UAT_IICS_PASSWORD)
+  qa: "DemoCentral"
+
+labels:
+  ready: Ready to Deploy           # set after approval, once the package is attached
+
+# GitHub users or teams mentioned when a promotion is ready for manual migration (the PR author is
+# always mentioned), for example: [balam-ashok, my-org/idmc-developers]
+notify: []
+
+validation:
+  # how many levels of "uses" to follow when checking that dependencies are checked in
+  max_depth: 5
+  # an asset whose type contains one of these words may not be in a promotion package
+  # (connections and schedules are set up in Production by hand)
+  blocked_type_words: [CONNECTION, SCHEDULE]
+  # dependencies of these kinds are never in Git; the check lists them as "must already exist in Production"
+  environment_type_words: [CONNECTION, SCHEDULE, RUNTIME, AGENT]
