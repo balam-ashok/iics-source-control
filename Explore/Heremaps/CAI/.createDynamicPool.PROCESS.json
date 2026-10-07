@@ -1,5 +1,8 @@
 {
   "objectInfo" : {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
     "id" : "6CEW8o0KO8edRkPIyHzVco",
     "name" : "createDynamicPool",
     "type" : "PROCESS",
@@ -20,8 +23,11 @@
     }
   },
   "dataFileExtension" : "xml",
-  "updateTime" : "2026-10-02T13:55:56.381Z",
+  "updateTime" : "2026-10-07T09:07:44.320Z",
   "objectRefs" : [ {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
     "id" : "ij87FVZxQghgk62PLw56Ww",
     "name" : "ac-migration",
     "type" : "AI_CONNECTION",
