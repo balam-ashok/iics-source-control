@@ -1,0 +1,5 @@
+# Reviewers who must approve a promotion PR into the Production branch (Dfactory-Branch).
+# GitHub reads this file from the PR's base branch, and enforces it when branch protection on that
+# branch has "Require review from Code Owners" turned on. Replace with your reviewer team, for
+# example: * @your-org/idmc-reviewers
+* @balam-ashok
