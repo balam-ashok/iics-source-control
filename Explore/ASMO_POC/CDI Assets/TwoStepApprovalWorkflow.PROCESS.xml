@@ -1,0 +1,248 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Omkbclopz4KhPVE-gt-2018076-2026-08-04T17:03:06.657Z::pd.xml</types1:EntryId>
+      <types1:Name>TwoStepApprovalWorkflow-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>pooja</types1:CreatedBy>
+      <types1:CreationDate>2026-08-04T17:03:07Z</types1:CreationDate>
+      <types1:ModifiedBy>pooja</types1:ModifiedBy>
+      <types1:ModificationDate>2026-08-04T18:11:19Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>pooja</types1:PublishedBy>
+      <types1:PublicationDate>2026-08-04T18:11:24Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.TwoStepApprovalWorkflow-1/TwoStepApprovalWorkflow-1.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="h81Hfx8ZkyGfIl77VyoDIH"
+                  displayName="TwoStepApprovalWorkflow"
+                  name="TwoStepApprovalWorkflow-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="input" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="template" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:Template</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="taskTypes"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:TaskTypes</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="approved" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="approvedBy" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowedUsers>
+                     <user>ashok_balam</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="a13ad8df6-77cc-4a16-97b2-7e3baf26e399">
+               <start id="yb5e05ae3-870f-4150-92af-7e387917a57b">
+                  <link id="affd7857b-9254-49e3-952a-77eeeb52a55a"
+                        targetId="a1h81Hfx8ZkyGfIl77VyoDIH-lxd3qh8k"/>
+               </start>
+               <service id="a1h81Hfx8ZkyGfIl77VyoDIH-lxd3qh8k">
+                  <title>Task 1</title>
+                  <serviceName>HumanTask</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="template" source="field">input.template</parameter>
+                     <parameter name="taskTypes" source="field">input.taskTypes</parameter>
+                     <parameter name="changelist" source="field">input.input</parameter>
+                     <parameter name="taskName" source="constant">Task 1</parameter>
+                     <parameter name="taskActions" source="constant">Approve;Reject;Send back</parameter>
+                  </serviceInput>
+                  <link id="i0bdb7ab0-af7d-44b5-b8c3-6653b3035893"
+                        targetId="a1h81Hfx8ZkyGfIl77VyoDIH-Decision585feb92-e010-4785-97ba-880bb45beda0"/>
+               </service>
+               <container id="a1h81Hfx8ZkyGfIl77VyoDIH-Decision585feb92-e010-4785-97ba-880bb45beda0"
+                          type="exclusive">
+                  <title>LastAction</title>
+                  <flow id="pdd09ceef-2666-45ae-8fec-87f49a2e2f0f">
+                     <service id="a1h81Hfx8ZkyGfIl77VyoDIH-Service09869467-6608-46bb-9caf-8c1dd68e84de">
+                        <title>Originator User Task</title>
+                        <serviceName>OriginatorHumanTask</serviceName>
+                        <serviceInput>
+                           <parameter name="template" source="field">input.template</parameter>
+                           <parameter name="taskTypes" source="field">input.taskTypes</parameter>
+                           <parameter name="changelist" source="field">input.input</parameter>
+                           <parameter name="taskName" source="constant">Originator User Task</parameter>
+                           <parameter name="taskActions" source="constant">Approve;Reject</parameter>
+                        </serviceInput>
+                        <link id="y89d9d163-c385-44a4-8327-f116efa87947"
+                              targetId="a1h81Hfx8ZkyGfIl77VyoDIH-Decision4080ef1e-f2cf-4dc1-bad6-9bd7529b9894"/>
+                     </service>
+                     <container id="a1h81Hfx8ZkyGfIl77VyoDIH-Decision4080ef1e-f2cf-4dc1-bad6-9bd7529b9894"
+                                type="exclusive">
+                        <title>LastAction</title>
+                        <flow id="kef7b4e16-24bf-41c4-ad8b-c2f3e51d9dcc">
+                           <jumpTo id="a1h81Hfx8ZkyGfIl77VyoDIH-Jump5defaad8-b714-4054-b7c7-11e35968b18c">
+                              <link id="w4e36ccd4-978a-414b-a1fe-4cbac1d43043"
+                                    targetId="a1h81Hfx8ZkyGfIl77VyoDIH-lxd3qh8k"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="sbfad5170-0b51-400e-87f0-01a01e98a418">
+                           <assignment id="a1h81Hfx8ZkyGfIl77VyoDIH-Assignmenta339e12a-fc2a-4956-8bfc-7747cae991ce">
+                              <title>Assignment to approved, approvedBy</title>
+                              <operation source="constant" to="output.approved">False</operation>
+                              <operation source="field" to="output.approvedBy">output.LastAction</operation>
+                              <link id="eb3e7def9-a2a5-4f91-af12-67b3bda67b82"
+                                    targetId="a1h81Hfx8ZkyGfIl77VyoDIH-End220b7b74-f6cb-41cc-91a5-841523663086"/>
+                           </assignment>
+                           <end id="a1h81Hfx8ZkyGfIl77VyoDIH-End220b7b74-f6cb-41cc-91a5-841523663086">
+                              <title>End - Originator Rejected</title>
+                           </end>
+                        </flow>
+                        <link id="i4ac68a8d-f485-4e7b-982e-3fbe598a6078"
+                              targetId="kef7b4e16-24bf-41c4-ad8b-c2f3e51d9dcc"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.LastAction}</arg>
+                                 <arg name="right">Approve</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ze5aba7c8-a96f-4ea6-b3c5-303d6b189b3a"
+                              targetId="sbfad5170-0b51-400e-87f0-01a01e98a418"
+                              type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="ha9bf95c7-001d-423f-99e0-e4b5f9da54fa">
+                     <service id="a1h81Hfx8ZkyGfIl77VyoDIH-Service41287e1e-2af2-48ac-b248-8d625e875c86">
+                        <title>Task 2</title>
+                        <serviceName>HumanTask</serviceName>
+                        <serviceInput>
+                           <parameter name="template" source="field">input.template</parameter>
+                           <parameter name="taskTypes" source="field">input.taskTypes</parameter>
+                           <parameter name="changelist" source="field">input.input</parameter>
+                           <parameter name="taskName" source="constant">Task 2</parameter>
+                           <parameter name="taskActions" source="constant">Final Review Complete</parameter>
+                        </serviceInput>
+                        <link id="te5d61078-4989-4e8b-8f92-7a571dc906a1"
+                              targetId="a1h81Hfx8ZkyGfIl77VyoDIH-Decision16e4b1f9-da48-424e-82d1-e90eacf57d7e"/>
+                     </service>
+                     <container id="a1h81Hfx8ZkyGfIl77VyoDIH-Decision16e4b1f9-da48-424e-82d1-e90eacf57d7e"
+                                type="exclusive">
+                        <title>LastAction</title>
+                        <flow id="a78833f69-a354-46fe-b578-2cc6a7c20818">
+                           <assignment id="a1h81Hfx8ZkyGfIl77VyoDIH-Assignmentc79c1486-b3f4-4fe1-bff4-7a89d556842a">
+                              <title>Assignment to approved, approvedBy</title>
+                              <operation source="constant" to="output.approved">True</operation>
+                              <operation source="field" to="output.approvedBy">output.LastApprover</operation>
+                              <link id="u73535707-3c69-4cf6-809c-7890ae3426b7"
+                                    targetId="a1h81Hfx8ZkyGfIl77VyoDIH-c"/>
+                           </assignment>
+                           <end id="a1h81Hfx8ZkyGfIl77VyoDIH-c">
+                              <title>End Task2 Approved</title>
+                           </end>
+                        </flow>
+                        <flow id="p48651af7-7e77-4ede-9c49-26c13c635418">
+                           <end id="a1h81Hfx8ZkyGfIl77VyoDIH-End09bc1459-f3d6-4b24-8579-d0f90ebb7ec1">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="vdaffc5b2-b5f2-4e44-a0ca-ea836f82c1b9"
+                              targetId="a78833f69-a354-46fe-b578-2cc6a7c20818"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.LastAction}</arg>
+                                 <arg name="right">Final Review Complete</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="u18febbad-01d0-4d4b-802e-d820b0490310"
+                              targetId="p48651af7-7e77-4ede-9c49-26c13c635418"
+                              type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="n3560b4bf-cffb-4057-928f-432741badd1d">
+                     <assignment id="a1h81Hfx8ZkyGfIl77VyoDIH-Assignment6569e0ff-1363-4c11-8e43-e1465d70e16d">
+                        <title>Assignment to approved, approvedBy</title>
+                        <operation source="constant" to="output.approved">False</operation>
+                        <operation source="field" to="output.approvedBy">output.LastApprover</operation>
+                        <link id="w1bfe1dc2-7519-494b-99a5-0660fcc90b11"
+                              targetId="a1h81Hfx8ZkyGfIl77VyoDIH-End760c322c-ff86-44fd-8f20-2245677cd30a"/>
+                     </assignment>
+                     <end id="a1h81Hfx8ZkyGfIl77VyoDIH-End760c322c-ff86-44fd-8f20-2245677cd30a">
+                        <title>End - Task1 Rejected</title>
+                     </end>
+                  </flow>
+                  <link id="tdd3d18d6-1e57-478b-a16c-befa5584fba9"
+                        targetId="pdd09ceef-2666-45ae-8fec-87f49a2e2f0f"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.LastAction}</arg>
+                           <arg name="right">Send back</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="zd0626036-e990-4a20-9465-a038e84244ba"
+                        targetId="ha9bf95c7-001d-423f-99e0-e4b5f9da54fa"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.LastAction}</arg>
+                           <arg name="right">Approve</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="vd9f5d75b-7f55-4b61-92b4-0cce5b61ac85"
+                        targetId="n3560b4bf-cffb-4057-928f-432741badd1d"
+                        type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>h81Hfx8ZkyGfIl77VyoDIH</types1:GUID>
+      <types1:DisplayName>TwoStepApprovalWorkflow</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-06T15:56:45.239Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
