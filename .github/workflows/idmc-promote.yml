@@ -86,7 +86,7 @@ jobs:
           # IDMC stores each asset as Explore/<project>/<folder>/<name>.<TYPE>.<zip|xml|json|...>
           git -c core.quotePath=false diff --name-only --diff-filter=d "$BASE...$HEAD" -- Explore \
             | grep -viE '\.(project|folder)\.json$' \
-            | sed -E 's/\.(vc\.json|zip|xml|json|dat)$//' | sort -u > assets.txt || true
+            | sed -E 's#/\.([^/]+)$#/\1#; s/\.(vc\.json|zip|xml|json|dat)$//' | sort -u > assets.txt || true
           { echo "### IDMC assets in this promotion"
             if [ -s assets.txt ]; then sed 's/^Explore\//- /' assets.txt; else echo "None"; fi
           } >> "$GITHUB_STEP_SUMMARY"
@@ -131,7 +131,7 @@ jobs:
           mkdir package
           git -c core.quotePath=false diff --name-only --diff-filter=d "$BASE...$HEAD" -- Explore \
             | grep -viE '\.(project|folder)\.json$' \
-            | sed -E 's/\.(vc\.json|zip|xml|json|dat)$//' | sort -u > package/assets.txt || true
+            | sed -E 's#/\.([^/]+)$#/\1#; s/\.(vc\.json|zip|xml|json|dat)$//' | sort -u > package/assets.txt || true
           if [ ! -s package/assets.txt ]; then echo "No IDMC assets in this PR." > package/assets.txt; exit 0; fi
 
           login=$(curl -sf -X POST "$IICS_LOGIN_URL/saas/public/core/v3/login" -H 'Content-Type: application/json' \
