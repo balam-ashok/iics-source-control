@@ -1,0 +1,67 @@
+{
+  "objectInfo" : {
+    "id" : "6zNlHP26s4Sja23mJ7pZ2A",
+    "name" : "ManageAsset_singleStep",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "HZCU7uMydx2CGeF-gt-860741-2026-04-27T13:24:49.546Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Manage Asset single Step Process",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T08:34:48.180Z",
+  "objectRefs" : [ {
+    "id" : "2lUjXTO8MXSirF4RyRJ1kG",
+    "name" : "SingleStep_EditUser",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "aaa-gt-865851-2026-04-27T13:24:49.003Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Single Step EditUser HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  }, {
+    "id" : "6dYChPNa5e0dhDdOw4Pw8K",
+    "name" : "SingleStep_Approver",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "57V5x8iaaabbeJO-gt-860707-2026-04-27T13:24:48.916Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Single Step Approver HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

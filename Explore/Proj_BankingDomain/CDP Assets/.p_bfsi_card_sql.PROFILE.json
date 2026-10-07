@@ -1,0 +1,247 @@
+{
+  "objectInfo" : {
+    "id" : "bjQUzZkZra7cYIw2rFHPig",
+    "name" : "p_bfsi_card_sql",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "84f70192-6dec-4ea9-999a-1072861d47a1"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-23T08:34:48.171Z",
+  "objectRefs" : [ {
+    "id" : "hG0xskzudebiJh4QB2f9qz",
+    "name" : "rs_nameOnCard_ColumnTokenDeviation_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hG0xskzudebiJh4QB2f9qz"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of nameOnCard based on Column Token Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "5Qc3mp4nfJnfzfKFvXvZuD",
+    "name" : "rs_lastUpdatedDate_YearDateDistributi_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5Qc3mp4nfJnfzfKFvXvZuD"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of lastUpdatedDate based on Year-Date Distribution insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "e5wVMR0WyiCcJCe7ELLyAE",
+    "name" : "rs_expiryDate",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "e5wVMR0WyiCcJCe7ELLyAE"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Consistency",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "5M9X59233OPj8MaN6FE66F",
+    "name" : "rs_issueDate_DayDateDistribution_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5M9X59233OPj8MaN6FE66F"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Consistency of issueDate",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "3JqwQqZFCqvlIjymCeJuY9",
+    "name" : "rs_status",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3JqwQqZFCqvlIjymCeJuY9"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Accuracy",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "5zNxdhRPxaRdDX8oEh5GcX",
+    "name" : "rs_createdBy_ColumnLengthDeviation_6",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5zNxdhRPxaRdDX8oEh5GcX"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Completeness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "bPnYizB7GSnltLgjnW3ZUp",
+    "name" : "conn-BFSI-SQL",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000001N"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "ecyTiJd3PYogokLbb44dGG",
+    "name" : "rs_cardBalance_ColumnLengthDeviation_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ecyTiJd3PYogokLbb44dGG"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of cardBalance based on Column Length Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "8VELMQw7S9XjBnRA3M8XCR",
+    "name" : "rs_CVV",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8VELMQw7S9XjBnRA3M8XCR"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Completeness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "7Pi314fWUPjf82BRykm4u3",
+    "name" : "rs_cardNo",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "7Pi314fWUPjf82BRykm4u3"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Uniqueness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "hr5sUdbDeInkO825CpCdaU",
+    "name" : "rs_cardNumber_NumberValueDistribution_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hr5sUdbDeInkO825CpCdaU"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of cardNumber based on Number Value Distribution insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

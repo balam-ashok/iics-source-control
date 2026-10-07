@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "6aJmwiATJofgGqiEaTNlyM",
+    "name" : "Verifier_Address",
+    "type" : "VERIFIER",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6aJmwiATJofgGqiEaTNlyM"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-15T10:43:50.217Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

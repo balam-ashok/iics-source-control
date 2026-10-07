@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "6dYChPNa5e0dhDdOw4Pw8K",
+    "name" : "SingleStep_Approver",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "57V5x8iaaabbeJO-gt-860707-2026-04-27T13:24:48.916Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Single Step Approver HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T08:34:48.207Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

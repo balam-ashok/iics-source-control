@@ -1,0 +1,2102 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>kSQciSrZMSPfXBi-gt-401436-2026-06-17T06:10:11.65Z::pd.xml</types1:EntryId>
+      <types1:Name>Get_Investor_By_PartyId</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:12Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="3V6Pgq2l14fcCqVvAVrBUX"
+                  displayName="Get Investor By PartyId"
+                  name="Get_Investor_By_PartyId"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="include"
+                          required="false"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="partyId" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="PersonResponse" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="entityName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">party_investor</option>
+                  </options>
+               </field>
+               <field description="" name="IDS_SESSION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="personDetails" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:investorPersonDetails</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5McdKxD1wVljcKhoA6CSi4</option>
+                  </options>
+               </field>
+               <field description="" name="crossReferenceCheck" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="membersCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="membersArray" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="sourceDetails" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:crossReferences</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4tGKPul23KWkjV8hwtILiI</option>
+                  </options>
+               </field>
+               <field description="" name="createdDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="lastUpdatedDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_addresses" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:addresses_fields</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">05ZYe1DnCNmikT5ZpgvgS5</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_contactMechanisms" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:contactMechanisms</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hrCsqG2KJmMgAEmK9aPlis</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_restrictions" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:restrictions</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8JIom26MB9SeeByql3mnsy</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_roles" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:roles_fields</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1IRfELRCJbelM09KKsCPC7</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="addressCheck" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="sqlQuery" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="contactXref" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:contactMechanismsXref</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">kowqOuWRO0NjswONBWtTO4</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="cmXrefArray" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:contactMechanismsXref</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">kowqOuWRO0NjswONBWtTO4</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="finalCmXrefArray" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+            </extData>
+            <flow id="hee64a88e-3c3d-42c5-842c-d112f68847a5">
+               <start id="p871bb750-3de2-41fc-9483-4a56f1876077">
+                  <link id="z8c615a9c-f656-45d5-8aef-4e72dd534446"
+                        targetId="a15kXJn1K6Vvfdjl7500SM01-Assignment225ea58c-9d8f-48f4-9f57-3bcf5a1b4a2d"/>
+               </start>
+               <assignment id="a15kXJn1K6Vvfdjl7500SM01-Assignment225ea58c-9d8f-48f4-9f57-3bcf5a1b4a2d">
+                  <title>Assignment to IDS_SESSION_ID, crossReferenceCheck, etc,</title>
+                  <operation source="formula" to="temp.IDS_SESSION_ID">
+                     <expression language="XQuery">request:getHeader('IDS-SESSION-ID')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.crossReferenceCheck">
+                     <expression language="XQuery">exists($input.include//list/text()[. = 'CrossReferences'])
+or
+exists($input.include//list/text()[. = 'All'])
+or
+exists($input.include//list/text()[. = 'ContactMechanismCrossReferences'])</expression>
+                  </operation>
+                  <operation source="formula" to="temp.addressCheck">
+                     <expression language="XQuery">exists($input.include//list/text()[. = 'Addresses'])
+or
+exists($input.include//list/text()[. = 'All'])</expression>
+                  </operation>
+                  <link id="i09315068-983a-47eb-916c-31419bae8bd1"
+                        targetId="a15kXJn1K6Vvfdjl7500SM01-Service8f4bcb1c-b9e5-41ce-be1c-08f7b328f14d"/>
+               </assignment>
+               <assignment id="a15kXJn1K6Vvfdjl7500SM01-Assignment72204f65-5a89-4031-b6c2-954758e0c2ba">
+                  <title>Assignment to personDetails, , etc,</title>
+                  <operation source="formula" to="temp.personDetails">
+                     <expression language="XQuery">&lt;personDetails 
+        xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+        m:isArray="true"&gt;
+
+  { let $v := string($output.EntireResponse/personFirstName)
+    return if ($v!='') then &lt;personFirstName&gt;{$v}&lt;/personFirstName&gt; else () }
+
+  { let $v := string($output.EntireResponse/personMiddleName)
+    return if ($v!='') then &lt;personMiddleName&gt;{$v}&lt;/personMiddleName&gt; else () }
+
+  { let $v := string($output.EntireResponse/personLastName)
+    return if ($v!='') then &lt;personLastName&gt;{$v}&lt;/personLastName&gt; else () }
+
+  { let $v := string($output.EntireResponse/personMiddleInitial)
+    return if ($v!='') then &lt;personMiddleInitial&gt;{$v}&lt;/personMiddleInitial&gt; else () }
+
+  { let $v := string($output.EntireResponse/personStandardizedName)
+    return if ($v!='') then &lt;personStandardizedName&gt;{$v}&lt;/personStandardizedName&gt; else () }
+
+  { let $v := string($output.EntireResponse/personNickname)
+    return if ($v!='') then &lt;personNickname&gt;{$v}&lt;/personNickname&gt; else () }
+
+  { let $v := string($output.EntireResponse/repNameOnShareholderAccount)
+    return if ($v!='') then &lt;repNameOnShareholderAccount&gt;{$v}&lt;/repNameOnShareholderAccount&gt; else () }
+
+  {
+    if (string($output.EntireResponse/personGender/Code)!='' or
+        string($output.EntireResponse/personGender/Name)!='')
+    then
+      &lt;personGender&gt;
+        { let $v := string($output.EntireResponse/personGender/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/personGender/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/personGender/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/personGender&gt;
+    else ()
+  }
+
+  { let $v := string($output.EntireResponse/personBirthDate)
+    return if ($v!='') then &lt;personBirthDate&gt;{ concat($v, 'T08:00:00.000Z') }&lt;/personBirthDate&gt; else () }
+
+  {
+    if (string($output.EntireResponse/personHonorific/Code)!='' or
+        string($output.EntireResponse/personHonorific/Name)!='')
+    then
+      &lt;personHonorific&gt;
+        { let $v := string($output.EntireResponse/personHonorific/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/personHonorific/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/personHonorific/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/personHonorific&gt;
+    else ()
+  }
+
+  { let $v := string($output.EntireResponse/personJobTitle)
+    return if ($v!='') then &lt;personJobTitle&gt;{$v}&lt;/personJobTitle&gt; else () }
+
+  {
+    if (string($output.EntireResponse/personNameSuffix/Code)!='' or
+        string($output.EntireResponse/personNameSuffix/Name)!='')
+    then
+      &lt;personNameSuffix&gt;
+        { let $v := string($output.EntireResponse/personNameSuffix/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/personNameSuffix/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/personNameSuffix/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/personNameSuffix&gt;
+    else ()
+  }
+
+  {
+    if (string($output.EntireResponse/partyType/Code)!='' or
+        string($output.EntireResponse/partyType/Name)!='')
+    then
+      &lt;partyType&gt;
+        { let $v := string($output.EntireResponse/partyType/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/partyType/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/partyType/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/partyType&gt;
+    else ()
+  }
+
+  { let $v := string($output.EntireResponse/personDeceasedDate)
+    return if ($v!='') then &lt;personDeceasedDate&gt;{$v}&lt;/personDeceasedDate&gt; else () }
+
+  { let $v := string($output.EntireResponse/personDisabledDate)
+    return if ($v!='') then &lt;personDisabledDate&gt;{$v}&lt;/personDisabledDate&gt; else () }
+
+  { let $v := string($output.EntireResponse/personProfessionalCredentialsText)
+    return if ($v!='') then &lt;personProfessionalCredentialsText&gt;{$v}&lt;/personProfessionalCredentialsText&gt; else () }
+
+  { let $v := string($output.EntireResponse/sgaPrincipalName)
+    return if ($v!='') then &lt;sgaPrincipalName&gt;{$v}&lt;/sgaPrincipalName&gt; else () }
+
+  { let $v := string($output.EntireResponse/survAsstCode)
+    return if ($v!='') then &lt;survAsstCode&gt;{$v}&lt;/survAsstCode&gt; else () }
+
+  { let $v := string($output.EntireResponse/suspendIndicator)
+    return if ($v!='') then &lt;suspendIndicator&gt;{$v}&lt;/suspendIndicator&gt; else () }
+
+  {
+    if (string($output.EntireResponse/taxIdentificationType/Code)!='' or
+        string($output.EntireResponse/taxIdentificationType/Name)!='')
+    then
+      &lt;taxIdentificationType&gt;
+        { let $v := string($output.EntireResponse/taxIdentificationType/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/taxIdentificationType/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/taxIdentificationType/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/taxIdentificationType&gt;
+    else ()
+  }
+
+  { let $v := string($output.EntireResponse/deferredOwnershipIndicator)
+    return if ($v!='') then &lt;deferredOwnershipIndicator&gt;{$v}&lt;/deferredOwnershipIndicator&gt; else () }
+
+  { let $v := string($output.EntireResponse/partyInactivationDate)
+    return if ($v!='') then &lt;partyInactivationDate&gt;{$v}&lt;/partyInactivationDate&gt; else () }
+
+  {
+    if (string($output.EntireResponse/partyInactivationReason/Code)!='' or
+        string($output.EntireResponse/partyInactivationReason/Name)!='')
+    then
+      &lt;partyInactivationReason&gt;
+        { let $v := string($output.EntireResponse/partyInactivationReason/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/partyInactivationReason/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/partyInactivationReason/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/partyInactivationReason&gt;
+    else ()
+  }
+
+  {
+    if (string($output.EntireResponse/partyQualificationLevel/Code)!='' or
+        string($output.EntireResponse/partyQualificationLevel/Name)!='')
+    then
+      &lt;partyQualificationLevel&gt;
+        { let $v := string($output.EntireResponse/partyQualificationLevel/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/partyQualificationLevel/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/partyQualificationLevel/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/partyQualificationLevel&gt;
+    else ()
+  }
+
+  { let $v := string($output.EntireResponse/partyTaxId)
+    return if ($v!='') then &lt;partyTaxId&gt;{$v}&lt;/partyTaxId&gt; else () }
+
+  { let $v := string($output.EntireResponse/partyTaxIdLast4)
+    return if ($v!='') then &lt;partyTaxIdLast4&gt;{$v}&lt;/partyTaxIdLast4&gt; else () }
+
+  { let $v := string($output.EntireResponse/userLastUpdatedBy)
+    return if ($v!='') then &lt;userLastUpdatedBy&gt;{$v}&lt;/userLastUpdatedBy&gt; else () }
+
+  {
+    if (string($output.EntireResponse/suspendReason/Code)!='' or
+        string($output.EntireResponse/suspendReason/Name)!='')
+    then
+      &lt;suspendReason&gt;
+        { let $v := string($output.EntireResponse/suspendReason/Code)
+          return if($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+        { let $v := string($output.EntireResponse/suspendReason/Name)
+          return if($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+        { let $v := string($output.EntireResponse/suspendReason/Code)
+          return if($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/suspendReason&gt;
+    else ()
+  }
+
+{
+  if (string($output.EntireResponse/partystatus/Code) != '' or
+      string($output.EntireResponse/partystatus/Name) != '')
+  then
+    &lt;partystatus&gt;
+      {
+        let $v := string($output.EntireResponse/partystatus/Code)
+        return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/partystatus/Name)
+        return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/partystatus/Code)
+        return if ($v != '') then
+          &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+        else ()
+      }
+    &lt;/partystatus&gt;
+  else ()
+}
+
+{
+  if (string($output.EntireResponse/partyTaxResidenceCode/Code) != '' or
+      string($output.EntireResponse/partyTaxResidenceCode/Name) != '')
+  then
+    &lt;partyTaxResidenceCode&gt;
+      {
+        let $v := string($output.EntireResponse/partyTaxResidenceCode/Code)
+        return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/partyTaxResidenceCode/Name)
+        return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+      }
+            {
+        let $v := string($output.EntireResponse/partyTaxResidenceCode/Code)
+        return if ($v != '') then &lt;taxResidenceCd&gt;{$v}&lt;/taxResidenceCd&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/partyTaxResidenceCode/Code)
+        return if ($v != '') then
+          &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+        else ()
+      }
+    &lt;/partyTaxResidenceCode&gt;
+  else ()
+}
+
+{
+  if (string($output.EntireResponse/personCitizenType/Code) != '' or
+      string($output.EntireResponse/personCitizenType/Name) != '')
+  then
+    &lt;personCitizenType&gt;
+      {
+        let $v := string($output.EntireResponse/personCitizenType/Name)
+        return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/personCitizenType/Code)
+        return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/personCitizenType/Code)
+        return if ($v != '') then
+          &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+        else ()
+      }
+    &lt;/personCitizenType&gt;
+  else ()
+}
+
+{
+  if (string($output.EntireResponse/personMaritalStatus/Code) != '' or
+      string($output.EntireResponse/personMaritalStatus/Name) != '')
+  then
+    &lt;personMaritalStatus&gt;
+      {
+        let $v := string($output.EntireResponse/personMaritalStatus/Name)
+        return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/personMaritalStatus/Code)
+        return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+      }
+      {
+        let $v := string($output.EntireResponse/personMaritalStatus/Code)
+        return if ($v != '') then
+          &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+        else ()
+      }
+    &lt;/personMaritalStatus&gt;
+  else ()
+}
+
+
+  { let $v := string($output.EntireResponse/lastUpdatedBy)
+    return if ($v != '') then &lt;lastUpdatedBy&gt;{$v}&lt;/lastUpdatedBy&gt; else () }
+
+  { let $v := string($output.EntireResponse/createdBy)
+    return if ($v != '') then &lt;createdBy&gt;{$v}&lt;/createdBy&gt; else () }
+
+  {
+  let $epoch-ms := data($output.EntireResponse/createDate)
+  return
+    if (exists($output.EntireResponse/createDate))
+    then
+      &lt;createdDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/createdDate&gt;
+    else ()
+}
+
+{
+  let $epoch-ms := data($output.EntireResponse/lastUpdateDate)
+  return
+    if (exists($output.EntireResponse/lastUpdateDate))
+    then
+      &lt;lastUpdatedDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/lastUpdatedDate&gt;
+    else ()
+}
+
+  { let $v := string($output.EntireResponse/_meta/id)
+    return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+
+{
+  let $v := fn:normalize-space( fn:upper-case( (string($output.EntireResponse/rootSourceSystem))))
+  return
+    if ($v != '')
+    then &lt;systemLastUpdatedBy&gt;{$v}&lt;/systemLastUpdatedBy&gt;
+    else ()
+}
+
+  { let $v := string($output.EntireResponse/_meta/id)
+    return if ($v != '') then &lt;partyId&gt;{$v}&lt;/partyId&gt; else () }
+
+&lt;/personDetails&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="input.include">
+                     <expression language="XQuery">let $include := $input.include
+
+(: Always ensure PartyDetails is included :)
+let $final-include :=
+  distinct-values( ("PersonDetails", $include) )
+
+return
+
+$final-include</expression>
+                  </operation>
+                  <operation source="formula" to="temp.t_addresses">
+                     <expression language="XQuery">let $addresses :=
+  for $addr in $output.EntireResponse/addresses
+  return
+    &lt;addresses_fields&gt;
+
+      { let $v := string($addr/addressVerificationResult/text())
+        return if ($v!='') then &lt;addressVerificationResult&gt;{$v}&lt;/addressVerificationResult&gt; else () }
+
+      { let $v := string($addr/addressValidationErrorMessage/text())
+        return if ($v!='') then &lt;addressValidationErrorMessage&gt;{$v}&lt;/addressValidationErrorMessage&gt; else () }
+
+      { let $v := string($addr/addressMatchCode/text())
+        return if ($v!='') then &lt;addressMatchCode&gt;{$v}&lt;/addressMatchCode&gt; else () }
+
+      { let $v := string($addr/city/text())
+        return if ($v!='') then &lt;city&gt;{$v}&lt;/city&gt; else () }
+
+      { let $v := string($addr/country2/text())
+        return if ($v!='') then &lt;country2&gt;{$v}&lt;/country2&gt; else () }
+
+      {
+        if (string($addr/country/Code/text())!='' or string($addr/country/Name/text())!='')
+        then
+          &lt;country&gt;
+		     &lt;isoCode&gt;&lt;/isoCode&gt; 
+			 
+              &lt;iso3Code&gt;&lt;/iso3Code&gt;
+            { let $v := string($addr/country/Name/text())
+              return if ($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+            { let $v := string($addr/country/Code/text())
+              return if ($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+            { let $v := string($addr/country/Code/text())
+              return if ($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+          &lt;/country&gt;
+        else ()
+      }
+
+      {
+        if (string($addr/countrySubdivision/Code/text())!='' or string($addr/countrySubdivision/Name/text())!='')
+        then
+          &lt;countrySubDivision&gt;
+		  &lt;isoCode&gt;&lt;/isoCode&gt;
+		 &lt;alpha2code&gt;&lt;/alpha2code&gt;
+            { let $v := string($addr/countrySubdivision/Name/text())
+              return if ($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+            { let $v := string($addr/countrySubdivision/Code/text())
+              return if ($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+            { let $v := string($addr/countrySubdivision/Code/text())
+              return if ($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+          &lt;/countrySubDivision&gt;
+        else ()
+      }
+
+      { let $v := string($addr/deferredOwnershipIndicator/text())
+        return if ($v!='') then &lt;deferredOwnershipIndicator&gt;{$v}&lt;/deferredOwnershipIndicator&gt; else () }
+
+      { let $v := string($addr/formattedAddressLine1/text())
+        return if ($v!='') then &lt;formattedAddressLine1&gt;{$v}&lt;/formattedAddressLine1&gt; else () }
+
+      { let $v := string($addr/formattedAddressLine2/text())
+        return if ($v!='') then &lt;formattedAddressLine2&gt;{$v}&lt;/formattedAddressLine2&gt; else () }
+
+      { let $v := string($addr/formattedAddressLine3/text())
+        return if ($v!='') then &lt;formattedAddressLine3&gt;{$v}&lt;/formattedAddressLine3&gt; else () }
+
+      { let $v := string($addr/formattedAddressLine4/text())
+        return if ($v!='') then &lt;formattedAddressLine4&gt;{$v}&lt;/formattedAddressLine4&gt; else () }
+
+      { let $v := string($addr/geoAccuracyCode/text())
+        return if ($v!='') then &lt;geoAccuracyCode&gt;{$v}&lt;/geoAccuracyCode&gt; else () }
+
+      { let $v := string($addr/latitude/text())
+        return if ($v!='') then &lt;latitude&gt;{$v}&lt;/latitude&gt; else () }
+
+      { let $v := string($addr/latitudeLongitudeUnit/text())
+        return if ($v!='') then &lt;latitudeLongitudeUnit&gt;{$v}&lt;/latitudeLongitudeUnit&gt; else () }
+
+      { let $v := string($addr/localityPreferredName/text())
+        return if ($v!='') then &lt;localityPreferredName&gt;{$v}&lt;/localityPreferredName&gt; else () }
+
+      { let $v := string($addr/longitude/text())
+        return if ($v!='') then &lt;longitude&gt;{$v}&lt;/longitude&gt; else () }
+
+      { let $v := string($addr/mailabilityScore/text())
+        return if ($v!='') then &lt;mailabilityScore&gt;{$v}&lt;/mailabilityScore&gt; else () }
+
+      { let $v := string($addr/originalAddressLine1/text())
+        return if ($v!='') then &lt;originalAddressLine1&gt;{$v}&lt;/originalAddressLine1&gt; else () }
+
+      { let $v := string($addr/originalAddressLine2/text())
+        return if ($v!='') then &lt;originalAddressLine2&gt;{$v}&lt;/originalAddressLine2&gt; else () }
+
+      { let $v := string($addr/originalAddressLine3/text())
+        return if ($v!='') then &lt;originalAddressLine3&gt;{$v}&lt;/originalAddressLine3&gt; else () }
+
+      { let $v := string($addr/originalAddressLine4/text())
+        return if ($v!='') then &lt;originalAddressLine4&gt;{$v}&lt;/originalAddressLine4&gt; else () }
+
+      { let $v := string($addr/originalCity/text())
+        return if ($v!='') then &lt;originalCity&gt;{$v}&lt;/originalCity&gt; else () }
+
+      { let $v := string($addr/originalCountry/text())
+        return if ($v!='') then &lt;originalCountry&gt;{$v}&lt;/originalCountry&gt; else () }
+
+      { let $v := string($addr/originalPostalCode/text())
+        return if ($v!='') then &lt;originalPostalCode&gt;{$v}&lt;/originalPostalCode&gt; else () }
+
+      { let $v := string($addr/originalState/text())
+        return if ($v!='') then &lt;originalState&gt;{$v}&lt;/originalState&gt; else () }
+
+      { let $v := string($addr/postalCode/text())
+        return if ($v!='') then &lt;postalCode&gt;{$v}&lt;/postalCode&gt; else () }
+
+      { let $v := string($addr/postalCode5Digit/text())
+        return if ($v!='') then &lt;postalCode5Digit&gt;{$v}&lt;/postalCode5Digit&gt; else () }
+
+      { let $v := string($addr/postalCodeExtension/text())
+        return if ($v!='') then &lt;postalCodeExtension&gt;{$v}&lt;/postalCodeExtension&gt; else () }
+
+      { let $v := string($addr/postalPhraseComplete/text())
+        return if ($v!='') then &lt;postalPhraseComplete&gt;{$v}&lt;/postalPhraseComplete&gt; else () }
+
+      { let $v := string($addr/redundantData1/text())
+        return if ($v!='') then &lt;redundantData1&gt;{$v}&lt;/redundantData1&gt; else () }
+
+      { let $v := string($addr/redundantData2/text())
+        return if ($v!='') then &lt;redundantData2&gt;{$v}&lt;/redundantData2&gt; else () }
+
+      { let $v := string($addr/state2/text())
+        return if ($v!='') then &lt;state2&gt;{$v}&lt;/state2&gt; else () }
+
+      { let $v := string($addr/streetCompleteWithNumber1/text())
+        return if ($v!='') then &lt;streetCompleteWithNumber1&gt;{$v}&lt;/streetCompleteWithNumber1&gt; else () }
+
+      { let $v := string($addr/streetCompleteWithNumber2/text())
+        return if ($v!='') then &lt;streetCompleteWithNumber2&gt;{$v}&lt;/streetCompleteWithNumber2&gt; else () }
+
+      { let $v := string($addr/streetLine1/text())
+        return if ($v!='') then &lt;streetLine1&gt;{$v}&lt;/streetLine1&gt; else () }
+
+      { let $v := string($addr/streetLine2/text())
+        return if ($v!='') then &lt;streetLine2&gt;{$v}&lt;/streetLine2&gt; else () }
+
+      { let $v := string($addr/streetLine3/text())
+        return if ($v!='') then &lt;streetLine3&gt;{$v}&lt;/streetLine3&gt; else () }
+
+      { let $v := string($addr/streetLine4/text())
+        return if ($v!='') then &lt;streetLine4&gt;{$v}&lt;/streetLine4&gt; else () }
+
+      { let $v := string($addr/subBuildingComplete1/text())
+        return if ($v!='') then &lt;subBuildingComplete1&gt;{$v}&lt;/subBuildingComplete1&gt; else () }
+
+      { let $v := string($addr/subBuildingComplete2/text())
+        return if ($v!='') then &lt;subBuildingComplete2&gt;{$v}&lt;/subBuildingComplete2&gt; else () }
+
+      { let $v := string($addr/unitDesignator/text())
+        return if ($v!='') then &lt;unitDesignator&gt;{$v}&lt;/unitDesignator&gt; else () }
+
+      { let $v := string($addr/userLastUpdateBy/text())
+        return if ($v!='') then &lt;userLastUpdateBy&gt;{$v}&lt;/userLastUpdateBy&gt; else () }
+
+      { let $v := string($addr/validIndicator/text())
+        return if ($v!='') then &lt;validIndicator&gt;{$v}&lt;/validIndicator&gt; else () }
+
+      { let $v := string($addr/addressRecipientOrgName/text())
+        return if ($v!='') then &lt;addressRecipientOrgName&gt;{$v}&lt;/addressRecipientOrgName&gt; else () }
+
+      {
+        if (string($addr/purposeId/Code/text())!='' or string($addr/purposeId/Name/text())!='')
+        then
+          &lt;purposeId&gt;
+            { let $v := string($addr/purposeId/Name/text())
+              return if ($v!='') then &lt;name&gt;{$v}&lt;/name&gt; else () }
+            { let $v := string($addr/purposeId/Code/text())
+              return if ($v!='') then &lt;code&gt;{$v}&lt;/code&gt; else () }
+            { let $v := string($addr/purposeId/Code/text())
+              return if ($v!='') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+          &lt;/purposeId&gt;
+        else ()
+      }
+	  
+  { let $v := string($addr/lastUpdatedBy)
+    return if ($v != '') then &lt;lastUpdatedBy&gt;{$v}&lt;/lastUpdatedBy&gt; else () }
+
+  { let $v := string($addr/createdBy)
+    return if ($v != '') then &lt;createdBy&gt;{$v}&lt;/createdBy&gt; else () }
+
+{
+  let $epoch-ms := data($addr/createDate)
+  return
+    if (exists($addr/createDate))
+    then
+      &lt;createdDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/createdDate&gt;
+    else ()
+}
+
+{
+  let $epoch-ms := data($addr/lastUpdateDate)
+  return
+    if (exists($addr/lastUpdateDate))
+    then
+      &lt;lastUpdatedDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/lastUpdatedDate&gt;
+    else ()
+}
+
+  { let $v := fn:normalize-space( string($addr/addressSequenceId))
+    return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+
+  { let $v := fn:normalize-space( fn:upper-case(string($addr/addressSourceSystem)))
+    return if ($v != '') then &lt;systemLastUpdatedBy&gt;{$v}&lt;/systemLastUpdatedBy&gt; else () }
+
+  { let $v := fn:normalize-space(string($addr/addressSequenceId))
+    return if ($v != '') then &lt;id&gt;{$v}&lt;/id&gt; else () }
+
+    &lt;/addresses_fields&gt;
+
+return
+  $addresses</expression>
+                  </operation>
+                  <operation source="formula" to="temp.t_contactMechanisms">
+                     <expression language="XQuery">let $contactMechanisms :=
+  for $cm in $output.EntireResponse/contact_mechanisms
+  return
+    &lt;contactMechanisms 
+        xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+        m:isArray="true"&gt;
+
+      {
+        let $v := string($cm/contactMechanismValue)
+        return if ($v != '') then &lt;contactMechanismValue&gt;{$v}&lt;/contactMechanismValue&gt; else ()
+      }
+
+      {
+        if (string($cm/contactMechanismType/Code) != '' or string($cm/contactMechanismType/Name) != '')
+        then
+          &lt;contactMechanismType&gt;
+            {
+              let $v := string($cm/contactMechanismType/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($cm/contactMechanismType/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($cm/contactMechanismType/Code)
+              return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else ()
+            }
+          &lt;/contactMechanismType&gt;
+        else ()
+      }
+
+      {
+        if (string($cm/purpose/Code) != '' or string($cm/purpose/Name) != '')
+        then
+          &lt;purpose&gt;
+            {
+              let $v := string($cm/purpose/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($cm/purpose/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($cm/purpose/Code)
+              return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else ()
+            }
+          &lt;/purpose&gt;
+        else ()
+      }
+
+      {
+        if (string($cm/contactMechanismSubType/Code) != '' or string($cm/contactMechanismSubType/Name) != '')
+        then
+          &lt;contactMechanismSubType&gt;
+            {
+              let $v := string($cm/contactMechanismSubType/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($cm/contactMechanismSubType/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($cm/contactMechanismSubType/Code)
+              return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else ()
+            }
+          &lt;/contactMechanismSubType&gt;
+        else ()
+      }
+
+      {
+        let $v := string($cm/contactMechanismStatusInd)
+        return if ($v != '') then &lt;contactMechanismStatusInd&gt;{$v}&lt;/contactMechanismStatusInd&gt; else ()
+      }
+
+      {
+        let $v := string($cm/deferredOwnershipIndicator)
+        return if ($v != '') then &lt;deferredOwnershipIndicator&gt;{$v}&lt;/deferredOwnershipIndicator&gt; else ()
+      }
+
+      {
+        if (string($cm/inactivationReasonType/Code) != '' or string($cm/inactivationReasonType/Name) != '')
+        then
+          &lt;inactivationReasonType&gt;
+            {
+              let $v := string($cm/inactivationReasonType/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($cm/inactivationReasonType/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($cm/inactivationReasonType/Code)
+              return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else ()
+            }
+          &lt;/inactivationReasonType&gt;
+        else ()
+      }
+
+      {
+        let $v := string($cm/originalValue)
+        return if ($v != '') then &lt;originalValue&gt;{$v}&lt;/originalValue&gt; else ()
+      }
+
+      {
+        if (string($cm/partyRoleType/Code) != '' or string($cm/partyRoleType/Name) != '')
+        then
+          &lt;partyRoleType&gt;
+            {
+              let $v := string($cm/partyRoleType/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($cm/partyRoleType/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($cm/partyRoleType/Code)
+              return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else ()
+            }
+          &lt;/partyRoleType&gt;
+        else ()
+      }
+
+      {
+        let $v := string($cm/phoneNumberExtension)
+        return if ($v != '') then &lt;phoneNumberExtension&gt;{$v}&lt;/phoneNumberExtension&gt; else ()
+      }
+
+      {
+        let $v := string($cm/primaryIndicator)
+        return if ($v != '') then &lt;primaryIndicator&gt;{$v}&lt;/primaryIndicator&gt; else ()
+      }
+
+      {
+        let $v := string($cm/survAsstCode)
+        return if ($v != '') then &lt;survAsstCode&gt;{$v}&lt;/survAsstCode&gt; else ()
+      }
+
+      {
+        let $v := string($cm/userLastUpdateBy)
+        return if ($v != '') then &lt;userLastUpdateBy&gt;{$v}&lt;/userLastUpdateBy&gt; else ()
+      }
+
+      {
+        let $v := string($cm/validIndicator)
+        return if ($v != '') then &lt;validIndicator&gt;{$v}&lt;/validIndicator&gt; else ()
+      }
+
+      {
+        let $v := string($cm/verifiedForPartyDate)
+        return if ($v != '') then &lt;verifiedForPartyDate&gt;{$v}&lt;/verifiedForPartyDate&gt; else ()
+      }
+
+      {
+        let $v := string($cm/verifiedForPartyIndicator)
+        return if ($v != '') then &lt;verifiedForPartyIndicator&gt;{$v}&lt;/verifiedForPartyIndicator&gt; else ()
+      }
+
+      {
+        let $v := fn:normalize-space( string($cm/phoneCountryCode))
+        return if ($v != '') then &lt;phoneCountryCode&gt;{$v}&lt;/phoneCountryCode&gt; else ()
+      }
+
+      {
+        let $v := string($cm/customMatchCriteria)
+        return if ($v != '') then &lt;customMatchCriteria&gt;{$v}&lt;/customMatchCriteria&gt; else ()
+      }
+	  
+  { let $v := string($cm/lastUpdatedBy)
+    return if ($v != '') then &lt;lastUpdatedBy&gt;{$v}&lt;/lastUpdatedBy&gt; else () }
+
+  { let $v := string($cm/createdBy)
+    return if ($v != '') then &lt;createdBy&gt;{$v}&lt;/createdBy&gt; else () }
+
+  {
+  let $epoch-ms := data($cm/createDate)
+  return
+    if (exists($cm/createDate))
+    then
+      &lt;createdDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/createdDate&gt;
+    else ()
+}
+
+{
+  let $epoch-ms := data($cm/lastUpdateDate)
+  return
+    if (exists($cm/lastUpdateDate))
+    then
+      &lt;lastUpdatedDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/lastUpdatedDate&gt;
+    else ()
+}
+
+  { let $v := fn:normalize-space(string($cm/contactMechanismSequenceId))
+    return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+
+  { let $v := fn:normalize-space( fn:upper-case(string($cm/contactMechanismSourceSystem)))
+    return if ($v != '') then &lt;systemLastUpdatedBy&gt;{$v}&lt;/systemLastUpdatedBy&gt; else () }
+
+  { let $v := fn:normalize-space(string($cm/contactMechanismSequenceId))
+    return if ($v != '') then &lt;id&gt;{$v}&lt;/id&gt; else () }
+
+
+    &lt;/contactMechanisms&gt;
+
+return
+  $contactMechanisms</expression>
+                  </operation>
+                  <operation source="formula" to="temp.t_restrictions">
+                     <expression language="XQuery">let $restrictions :=
+  for $res in $output.EntireResponse/restrictions
+  return
+    &lt;restrictions 
+        xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+        m:isArray="true"&gt;
+
+      {
+        let $v := string($res/deferredOwnershipIndicator)
+        return if ($v != '') then &lt;deferredOwnershipIndicator&gt;{$v}&lt;/deferredOwnershipIndicator&gt; else ()
+      }
+
+      {
+        if (string($res/interactionChannel/Code) != '' or
+            string($res/interactionChannel/Name) != '')
+        then
+          &lt;interactionChannel&gt;
+            {
+              let $v := string($res/interactionChannel/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($res/interactionChannel/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($res/interactionChannel/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/interactionChannel&gt;
+        else ()
+      }
+
+      {
+        let $v := string($res/partyRestrictionStatusInd)
+        return if ($v != '') then &lt;partyRestrictionStatusInd&gt;{$v}&lt;/partyRestrictionStatusInd&gt; else ()
+      }
+
+      {
+        if (string($res/reason/Code) != '' or
+            string($res/reason/Name) != '')
+        then
+          &lt;reason&gt;
+            {
+              let $v := string($res/reason/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($res/reason/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($res/reason/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/reason&gt;
+        else ()
+      }
+
+      {
+        if (string($res/restrictionType/Code) != '' or
+            string($res/restrictionType/Name) != '')
+        then
+          &lt;restrictionType&gt;
+            {
+              let $v := string($res/restrictionType/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($res/restrictionType/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($res/restrictionType/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/restrictionType&gt;
+        else ()
+      }
+
+      {
+        if (string($res/restrictionValue/Code) != '' or
+            string($res/restrictionValue/Name) != '')
+        then
+          &lt;restrictionValue&gt;
+            {
+              let $v := string($res/restrictionValue/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($res/restrictionValue/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($res/restrictionValue/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/restrictionValue&gt;
+        else ()
+      }
+
+      {
+        let $v := string($res/restrictionValueText)
+        return if ($v != '') then &lt;restrictionValueText&gt;{$v}&lt;/restrictionValueText&gt; else ()
+      }
+
+      {
+        let $v := string($res/userLastUpdatedBy)
+        return if ($v != '') then &lt;userLastUpdatedBy&gt;{$v}&lt;/userLastUpdatedBy&gt; else ()
+      }
+	  
+	    { let $v := string($res/lastUpdatedBy)
+    return if ($v != '') then &lt;lastUpdatedBy&gt;{$v}&lt;/lastUpdatedBy&gt; else () }
+
+  { let $v := string($res/createdBy)
+    return if ($v != '') then &lt;createdBy&gt;{$v}&lt;/createdBy&gt; else () }
+
+	  {
+  let $epoch-ms := data($res/createDate)
+  return
+    if (exists($res/createDate))
+    then
+      &lt;createdDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/createdDate&gt;
+    else ()
+}
+
+{
+  let $epoch-ms := data($res/lastUpdateDate)
+  return
+    if (exists($res/lastUpdateDate))
+    then
+      &lt;lastUpdatedDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/lastUpdatedDate&gt;
+    else ()
+}
+
+  { let $v := fn:normalize-space(string($res/restrictionsSequenceId))
+    return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+
+  { let $v := fn:normalize-space( fn:upper-case(string($res/restrictionSourceSystem)))
+    return if ($v != '') then &lt;systemLastUpdatedBy&gt;{$v}&lt;/systemLastUpdatedBy&gt; else () }
+
+  { let $v := fn:normalize-space(string($res/restrictionsSequenceId))
+    return if ($v != '') then &lt;id&gt;{$v}&lt;/id&gt; else () }
+
+    &lt;/restrictions&gt;
+
+return
+  $restrictions
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.t_roles">
+                     <expression language="XQuery">let $roles :=
+  for $role in $output.EntireResponse/roles
+  return
+    &lt;roles 
+        xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+        m:isArray="true"&gt;
+
+      {
+        let $v := string($role/cgPersonInitials)
+        return if ($v != '') then &lt;cgPersonInitials&gt;{$v}&lt;/cgPersonInitials&gt; else ()
+      }
+
+      {
+        let $v := string($role/confirmationOfDeceasedDate)
+        return if ($v != '') then &lt;confirmationOfDeceasedDate&gt;{$v}&lt;/confirmationOfDeceasedDate&gt; else ()
+      }
+
+      {
+        let $v := string($role/deferredOwnershipIndicator)
+        return if ($v != '') then &lt;deferredOwnershipIndicator&gt;{$v}&lt;/deferredOwnershipIndicator&gt; else ()
+      }
+
+      {
+        let $v := string($role/duallyRegisteredIndicator)
+        return if ($v != '') then &lt;duallyRegisteredIndicator&gt;{$v}&lt;/duallyRegisteredIndicator&gt; else ()
+      }
+
+      {
+        let $v := string($role/brokerReferralIndicator)
+        return if ($v != '') then &lt;brokerReferralIndicator&gt;{$v}&lt;/brokerReferralIndicator&gt; else ()
+      }
+
+      {
+        let $v := string($role/groupPrimaryRepId)
+        return if ($v != '') then &lt;groupPrimaryRepId&gt;{$v}&lt;/groupPrimaryRepId&gt; else ()
+      }
+
+      {
+        let $v := string($role/holdCheckIndicator)
+        return if ($v != '') then &lt;holdCheckIndicator&gt;{$v}&lt;/holdCheckIndicator&gt; else ()
+      }
+
+      {
+        let $v := string($role/homeBranchOfficeNum)
+        return if ($v != '') then &lt;homeBranchOfficeNum&gt;{$v}&lt;/homeBranchOfficeNum&gt; else ()
+      }
+
+      {
+        let $v := string($role/inactivationDate)
+        return if ($v != '') then &lt;inactivationDate&gt;{$v}&lt;/inactivationDate&gt; else ()
+      }
+
+      {
+        if (string($role/inactivationReasonType/Code) != '' or
+            string($role/inactivationReasonType/Name) != '')
+        then
+          &lt;inactivationReasonType&gt;
+            {
+              let $v := string($role/inactivationReasonType/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($role/inactivationReasonType/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($role/inactivationReasonType/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/inactivationReasonType&gt;
+        else ()
+      }
+
+      {
+        let $v := string($role/indicationOfDeceasedDate)
+        return if ($v != '') then &lt;indicationOfDeceasedDate&gt;{$v}&lt;/indicationOfDeceasedDate&gt; else ()
+      }
+
+      {
+        let $v := string($role/nasdTerminationDate)
+        return if ($v != '') then &lt;nasdTerminationDate&gt;{$v}&lt;/nasdTerminationDate&gt; else ()
+      }
+
+      {
+        let $v := string($role/primaryIndicator)
+        return if ($v != '') then &lt;primaryIndicator&gt;{$v}&lt;/primaryIndicator&gt; else ()
+      }
+
+      {
+        let $v := string($role/userLastUpdatedBy)
+        return if ($v != '') then &lt;userLastUpdatedBy&gt;{$v}&lt;/userLastUpdatedBy&gt; else ()
+      }
+
+      {
+        let $v := string($role/survAsstCode)
+        return if ($v != '') then &lt;survAsstCode&gt;{$v}&lt;/survAsstCode&gt; else ()
+      }
+
+      {
+        if (string($role/roleTypeId/Code) != '' or
+            string($role/roleTypeId/Name) != '')
+        then
+          &lt;roleTypeId&gt;
+            {
+              let $v := string($role/roleTypeId/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($role/roleTypeId/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($role/roleTypeId/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/roleTypeId&gt;
+        else ()
+      }
+
+      {
+        if (string($role/statusId/Code) != '' or
+            string($role/statusId/Name) != '')
+        then
+          &lt;statusId&gt;
+            {
+              let $v := string($role/statusId/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($role/statusId/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($role/statusId/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/statusId&gt;
+        else ()
+      }
+
+      {
+        if (string($role/eligibleBrokerReferralReason/Code) != '' or
+            string($role/eligibleBrokerReferralReason/Name) != '')
+        then
+          &lt;eligibleBrokerReferralReason&gt;
+            {
+              let $v := string($role/eligibleBrokerReferralReason/Name)
+              return if ($v != '') then &lt;name&gt;{$v}&lt;/name&gt; else ()
+            }
+            {
+              let $v := string($role/eligibleBrokerReferralReason/Code)
+              return if ($v != '') then &lt;code&gt;{$v}&lt;/code&gt; else ()
+            }
+            {
+              let $v := string($role/eligibleBrokerReferralReason/Code)
+              return if ($v != '') then
+                &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt;
+              else ()
+            }
+          &lt;/eligibleBrokerReferralReason&gt;
+        else ()
+      }
+	    { let $v := string($role/lastUpdatedBy)
+    return if ($v != '') then &lt;lastUpdatedBy&gt;{$v}&lt;/lastUpdatedBy&gt; else () }
+
+  { let $v := string($role/createdBy)
+    return if ($v != '') then &lt;createdBy&gt;{$v}&lt;/createdBy&gt; else () }
+
+	  {
+  let $epoch-ms := data($role/createDate)
+  return
+    if (exists($role/createDate))
+    then
+      &lt;createdDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/createdDate&gt;
+    else ()
+}
+
+{
+  let $epoch-ms := data($role/lastUpdateDate)
+  return
+    if (exists($role/lastUpdateDate))
+    then
+      &lt;lastUpdatedDate&gt;
+        {
+          date:addToDate(
+            xs:dateTime('1970-01-01T00:00:00'),
+            'SS',
+            xs:integer(floor($epoch-ms div 1000))
+          )
+        }
+      &lt;/lastUpdatedDate&gt;
+    else ()
+}
+
+  { let $v := fn:normalize-space( string($role/rolesSequenceId))
+    return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else () }
+
+  { let $v := fn:normalize-space( fn:upper-case(string($role/rolesSourceSystem)))
+    return if ($v != '') then &lt;systemLastUpdatedBy&gt;{$v}&lt;/systemLastUpdatedBy&gt; else () }
+
+  { let $v := fn:normalize-space(string($role/rolesSequenceId))
+    return if ($v != '') then &lt;id&gt;{$v}&lt;/id&gt; else () }
+
+    &lt;/roles&gt;
+
+return
+  $roles</expression>
+                  </operation>
+                  <operation source="formula" to="temp.finalCmXrefArray">
+                     <expression language="XQuery">for $cm in $temp.t_contactMechanisms
+return
+  &lt;contactMechanisms 
+        xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+        m:isArray="true"&gt;
+    { $cm/* }
+
+    {
+      for $xref in $temp.cmXrefArray
+      where $xref/contactMechanismValue = $cm/contactMechanismValue
+      return
+        &lt;partyContactMechanismCrossReferences
+          xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+          m:isArray="true"&gt;
+          { $xref/* }
+        &lt;/partyContactMechanismCrossReferences&gt;
+    }
+
+  &lt;/contactMechanisms&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="output.PersonResponse">
+                     <expression language="XQuery">let $contactMechanisms := $temp.t_contactMechanisms
+let $addresses := $temp.t_addresses
+let $restrictions := $temp.t_restrictions
+let $roles := $temp.t_roles
+let $personDetails := $temp.personDetails 
+let $crossReferences :=
+  for $cr in $temp.membersArray
+  return
+    &lt;partyCrossReferences 
+        xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+        m:isArray="true"&gt;
+      { $cr/* }
+    &lt;/partyCrossReferences&gt;
+
+(:let $cmXref :=
+  for $cm in $temp.finalCmXrefArray
+  return
+    &lt;partyContactMechanismCrossReference&gt;
+      { $temp.finalCmXrefArray }
+    &lt;/partyContactMechanismCrossReference&gt;:)
+
+let $addresses :=
+  for $addresses in $temp.t_addresses 
+  return
+    &lt;addresses 
+        xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"
+        m:isArray="true"&gt;
+      { $addresses/* }
+    &lt;/addresses&gt;
+    
+return
+&lt;PersonResponse&gt;
+{
+  let $map :=
+    &lt;map&gt;
+      &lt;entry key="PersonDetails"&gt;
+        { $personDetails }
+      &lt;/entry&gt;
+
+      &lt;entry key="Addresses"&gt;
+        { $addresses }
+      &lt;/entry&gt;
+
+      &lt;entry key="ContactMechanisms"&gt;
+        { $contactMechanisms }
+      &lt;/entry&gt;
+
+      &lt;entry key="Restrictions"&gt;
+        { $restrictions }
+      &lt;/entry&gt;
+
+      &lt;entry key="Roles"&gt;
+        { $roles }
+      &lt;/entry&gt;
+
+      &lt;entry key="CrossReferences"&gt;
+        { $crossReferences }
+      &lt;/entry&gt;
+
+      &lt;entry key="ContactMechanismCrossReferences"&gt;
+       { $temp.finalCmXrefArray }
+      &lt;/entry&gt;
+
+      &lt;!-- NEW: All key --&gt;
+      &lt;entry key="All"&gt;
+        { $addresses }
+        { $restrictions }
+        { $roles }
+        { $crossReferences }
+        { $temp.finalCmXrefArray }
+      &lt;/entry&gt;
+    &lt;/map&gt;
+
+  return
+    for $details in $input.include
+    return
+      $map/entry[@key = $details]/node()
+}
+&lt;/PersonResponse&gt;
+</expression>
+                  </operation>
+                  <link id="qcdf5ac14-de88-4e29-ab6d-45b6ba79fc15"
+                        targetId="a15kXJn1K6Vvfdjl7500SM01-end-gcec3ebb2-6dd2-4517-a28a-df07503b609b"/>
+               </assignment>
+               <eventContainer id="a15kXJn1K6Vvfdjl7500SM01-Service8f4bcb1c-b9e5-41ce-be1c-08f7b328f14d">
+                  <service id="md0607b2f-28b1-4fd4-aab2-27f07416d607">
+                     <title>Get Investor Person Details</title>
+                     <serviceName>ap-investor-operations-v2:Get Investor Person Details</serviceName>
+                     <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                     <serviceInput>
+                        <parameter name="i_sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                        <parameter name="businessId" source="field">input.partyId</parameter>
+                        <parameter name="entityName" source="field">temp.entityName</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l4ae7ad16-7ed8-4fe0-9326-ec0a33b02225">
+                     <link id="se52fb7ef-8c75-4e90-9441-ddc3a0b6ceab"
+                           targetId="a15kXJn1K6Vvfdjl7500SM01-Service8f4bcb1c-b9e5-41ce-be1c-08f7b328f14d"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="uf37fa85d-4de4-4efc-a078-c77da383f73e">
+                     <container id="a15kXJn1K6Vvfdjl7500SM01-Decision47b580ed-43d3-47de-bac2-89ca546049e3"
+                                type="exclusive">
+                        <title>code 1</title>
+                        <flow id="xfa65d22a-8166-438f-b1bd-73209b069fc5">
+                           <end id="a15kXJn1K6Vvfdjl7500SM01-End6380e665-5d83-4606-af06-99d5979d3eef">
+                              <title>End 4</title>
+                              <httpStatus>404</httpStatus>
+                              <operation source="formula" to="header.Code">
+                                 <expression language="XQuery">'HTTP_404'</expression>
+                              </operation>
+                              <operation source="formula" to="header.Reason">
+                                 <expression language="XQuery">'requested resource not found'</expression>
+                              </operation>
+                           </end>
+                        </flow>
+                        <flow id="yf456840f-8c9a-41fd-aeaf-c6ee799a24c1">
+                           <end id="a15kXJn1K6Vvfdjl7500SM01-End7578d8d8-d2cb-4241-8471-7d1a05a3350a">
+                              <title>End 2 1</title>
+                              <httpStatus>401</httpStatus>
+                           </end>
+                        </flow>
+                        <link id="le03f6685-f2d8-47f4-b208-d78b0c37a7f9"
+                              targetId="xfa65d22a-8166-438f-b1bd-73209b069fc5"
+                              type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.faultInfo_getParty[1]/code}</arg>
+                                 <arg name="right">HTTP_404</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="zc698fa61-6161-47dd-8c71-96c7c741a565"
+                              targetId="yf456840f-8c9a-41fd-aeaf-c6ee799a24c1"
+                              type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="we2c2cfb0-f555-49f7-b67b-67cf20bad4d8"
+                        targetId="l4ae7ad16-7ed8-4fe0-9326-ec0a33b02225"
+                        type="containerLink"/>
+                  <link id="q2075b936-ee80-4a1d-82e1-6ff93ce9ab81"
+                        targetId="a15kXJn1K6Vvfdjl7500SM01-Decision6ad4fc75-78b5-4c2e-98cb-88adab758ad3"/>
+                  <events>
+                     <catch faultField="faultInfo_getParty"
+                            id="mebf8673c-2ffe-4601-a46a-af864892e6e9"
+                            interrupting="true">
+                        <link id="c7f50a87a-1753-47ed-a8a5-c81ccf3a10b9"
+                              targetId="uf37fa85d-4de4-4efc-a078-c77da383f73e"
+                              type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="a15kXJn1K6Vvfdjl7500SM01-Decision6ad4fc75-78b5-4c2e-98cb-88adab758ad3"
+                          type="exclusive">
+                  <title>crossReferenceCheck</title>
+                  <flow id="b04b10df1-cf10-4bbf-9d58-e0f1018b5062">
+                     <eventContainer id="a15kXJn1K6Vvfdjl7500SM01-Servicea5331b72-70b6-4f7e-8893-aa4892d17cc6">
+                        <service id="vfce88a8c-f024-460a-a565-efc4c25eb2a3">
+                           <title>Get Investor Source Members</title>
+                           <serviceName>ap-investor-operations-v2:Get Investor Source Members</serviceName>
+                           <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                           <serviceInput>
+                              <parameter name="businessId" source="field">input.partyId</parameter>
+                              <parameter name="sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                              <parameter name="entityName" source="field">temp.entityName</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="o6a600227-47ee-44a1-a20f-17a4a8ad806a">
+                           <link id="x6eee07d9-2c26-476b-8b0b-07e479af94e3"
+                                 targetId="a15kXJn1K6Vvfdjl7500SM01-Servicea5331b72-70b6-4f7e-8893-aa4892d17cc6"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="e018f9c09-9905-4509-9ba3-72c624110c95">
+                           <container id="a15kXJn1K6Vvfdjl7500SM01-Decision58f20dc0-139b-4f2d-b908-562be0324221"
+                                      type="exclusive">
+                              <title>code 2</title>
+                              <flow id="l4974d3f0-a1a1-422c-ab3a-c511175b4421">
+                                 <end id="a15kXJn1K6Vvfdjl7500SM01-Endbb9d537b-1888-4b41-91cf-4e2895161d79">
+                                    <title>End 1</title>
+                                    <httpStatus>404</httpStatus>
+                                    <operation source="formula" to="header.Code">
+                                       <expression language="XQuery">'HTTP_404'</expression>
+                                    </operation>
+                                    <operation source="formula" to="header.Reason">
+                                       <expression language="XQuery">'requested resource not found'</expression>
+                                    </operation>
+                                 </end>
+                              </flow>
+                              <flow id="w7fae02fb-5e59-48d6-9700-ed43a0de7981">
+                                 <end id="a15kXJn1K6Vvfdjl7500SM01-Enda2b0ef3c-0b79-4942-8d85-7583b01c5530">
+                                    <title>End 2 2</title>
+                                    <httpStatus>401</httpStatus>
+                                 </end>
+                              </flow>
+                              <link id="i19ed116c-0980-4de3-9845-d83b0e936661"
+                                    targetId="l4974d3f0-a1a1-422c-ab3a-c511175b4421"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.faultInfo_getParty[1]/code}</arg>
+                                       <arg name="right">HTTP_404</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="fd3c7fa8c-f6d5-47bf-8a76-b874113fef7f"
+                                    targetId="w7fae02fb-5e59-48d6-9700-ed43a0de7981"
+                                    type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="a89cf98d8-c6a1-4601-9684-8b3d2beb7db8"
+                              targetId="o6a600227-47ee-44a1-a20f-17a4a8ad806a"
+                              type="containerLink"/>
+                        <link id="jfc2ac2c5-4cb3-4050-a7af-1009db223926"
+                              targetId="a15kXJn1K6Vvfdjl7500SM01-Assignment317e6f40-31b6-40e2-92b4-b6669f81dcda"/>
+                        <events>
+                           <catch faultField="faultInfo"
+                                  id="q3e776e3c-2b94-4e69-91b6-463384c2a93d"
+                                  interrupting="true">
+                              <link id="hce7da26b-ba7e-4b69-87f6-220066545e2c"
+                                    targetId="e018f9c09-9905-4509-9ba3-72c624110c95"
+                                    type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="a15kXJn1K6Vvfdjl7500SM01-Assignment317e6f40-31b6-40e2-92b4-b6669f81dcda">
+                        <title>Assignment to membersCount</title>
+                        <operation source="formula" to="temp.membersCount">
+                           <expression language="XQuery">count($output.membersEntireResponse//content)</expression>
+                        </operation>
+                        <link id="sb3f98745-c55a-4768-8b24-aacd1c168cf1"
+                              targetId="a15kXJn1K6Vvfdjl7500SM01-Loope3cfcfad-02db-49c8-989a-644052523eb8"/>
+                     </assignment>
+                     <repeat id="a15kXJn1K6Vvfdjl7500SM01-Loope3cfcfad-02db-49c8-989a-644052523eb8"
+                             title="Loop 1"
+                             type="Until">
+                        <condition source="formula">
+                           <expression language="XQuery">$temp.membersCount =0</expression>
+                        </condition>
+                        <flow id="adeb4abf7-44a9-4d8c-b961-a7c1d8568cbb">
+                           <eventContainer id="a15kXJn1K6Vvfdjl7500SM01-Serviceeb6f242b-1355-411f-bb15-d2b1edcafc0f">
+                              <service id="vfdd2f2bd-f586-43db-b24b-140832f9263e">
+                                 <title>Get Investor Details By Source</title>
+                                 <serviceName>ap-investor-operations-v2:Get Investor Details By Source</serviceName>
+                                 <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="i_sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                                    <parameter name="entityName" source="field">temp.entityName</parameter>
+                                    <parameter name="sourceSystem" source="formula">
+                                       <expression language="XQuery">$output.membersEntireResponse/content[ $temp.membersCount ]/sourceSystem/text()</expression>
+                                    </parameter>
+                                    <parameter name="sourceId" source="formula">
+                                       <expression language="XQuery">$output.membersEntireResponse/content[ $temp.membersCount ]/sourcePKey/text()</expression>
+                                    </parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="vcfd9ee78-20b8-4abd-8093-774c5ef599c7">
+                                 <link id="p532b665c-22e1-4c3d-8dee-78bd19c02161"
+                                       targetId="a15kXJn1K6Vvfdjl7500SM01-Serviceeb6f242b-1355-411f-bb15-d2b1edcafc0f"
+                                       type="containerLink"/>
+                              </flow>
+                              <flow id="vb5bc032b-5fad-4f5a-8ee0-ad23b095038a">
+                                 <container id="a15kXJn1K6Vvfdjl7500SM01-Decision0d8a7e23-9787-4f34-bff3-56a979fac465"
+                                            type="exclusive">
+                                    <title>code</title>
+                                    <flow id="sa2ea850f-9dd8-4a5f-9cb4-cad924fbba37">
+                                       <end id="a15kXJn1K6Vvfdjl7500SM01-End9fc24626-4933-4ae9-b793-105d7a8862fa">
+                                          <title>End</title>
+                                          <httpStatus>404</httpStatus>
+                                          <operation source="formula" to="header.Code">
+                                             <expression language="XQuery">'HTTP_404'</expression>
+                                          </operation>
+                                          <operation source="formula" to="header.Reason">
+                                             <expression language="XQuery">'requested resource not found'</expression>
+                                          </operation>
+                                       </end>
+                                    </flow>
+                                    <flow id="e30b0670b-a3d9-42f5-840a-ce7343a28d5b">
+                                       <end id="a15kXJn1K6Vvfdjl7500SM01-Endb1ab9b64-7ff3-4585-b4e5-b97f981b87aa">
+                                          <title>End 2</title>
+                                          <httpStatus>401</httpStatus>
+                                       </end>
+                                    </flow>
+                                    <link id="p5b9796f4-ca3b-4e5f-a274-2b5d3d0cd702"
+                                          targetId="sa2ea850f-9dd8-4a5f-9cb4-cad924fbba37"
+                                          type="containerLink">
+                                       <condition source="formula">
+                                          <function name="contains">
+                                             <arg name="left">{$output.faultInfo_getParty[1]/code}</arg>
+                                             <arg name="right">HTTP_404</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="w3de3744e-9b53-49b5-953d-b512e9686b11"
+                                          targetId="e30b0670b-a3d9-42f5-840a-ce7343a28d5b"
+                                          type="containerLink"/>
+                                 </container>
+                              </flow>
+                              <link id="bd57e1d7d-951e-47c8-9c99-c7a08c8830a6"
+                                    targetId="vcfd9ee78-20b8-4abd-8093-774c5ef599c7"
+                                    type="containerLink"/>
+                              <link id="y149e3506-e9a5-4fb0-8207-290469b8150a"
+                                    targetId="a15kXJn1K6Vvfdjl7500SM01-Assignment8693a8a9-1289-4d3a-b959-645610a9c3ab"/>
+                              <events>
+                                 <catch faultField="faultInfo"
+                                        id="j06b9232f-4e9d-4d91-9b80-5f5063800ef9"
+                                        interrupting="true">
+                                    <link id="i559eaec6-0ce2-42cc-abca-0eea2667a3cc"
+                                          targetId="vb5bc032b-5fad-4f5a-8ee0-ad23b095038a"
+                                          type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <assignment id="a15kXJn1K6Vvfdjl7500SM01-Assignment8693a8a9-1289-4d3a-b959-645610a9c3ab">
+                              <title>Assignment to sourceDetails, , etc,</title>
+                              <operation source="formula" to="temp.sourceDetails">
+                                 <expression language="XQuery">&lt;crossReferences&gt;
+{
+  let $v := upper-case(string(($output.sourceEntireResponse//_meta/sourceSystem)[1]))
+  return
+    if ($v != '')
+    then &lt;rowidSystem&gt;{$v}&lt;/rowidSystem&gt;
+    else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//personFirstName)[1])
+  return if ($v != '') then &lt;personFirstName&gt;{$v}&lt;/personFirstName&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//personLastName)[1])
+  return if ($v != '') then &lt;personLastName&gt;{$v}&lt;/personLastName&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//partystatus/Code)[1])
+  return if ($v != '') then &lt;partyStatusCode&gt;{$v}&lt;/partyStatusCode&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//deferredOwnershipIndicator)[1])
+  return if ($v != '') then
+    &lt;deferredOwnershipIndicator&gt;{$v}&lt;/deferredOwnershipIndicator&gt;
+  else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//_meta/sourcePrimaryKey)[1])
+  return if ($v != '') then &lt;pkeySourceObject&gt;{$v}&lt;/pkeySourceObject&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//personBirthDate)[1])
+  return if ($v != '') then &lt;personBirthDate&gt;{$v}&lt;/personBirthDate&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//updatedBy)[1])
+  return if ($v != '') then &lt;lastUpdatedBy&gt;{$v}&lt;/lastUpdatedBy&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//createdBy)[1])
+  return if ($v != '') then &lt;createdBy&gt;{$v}&lt;/createdBy&gt; else ()
+}
+{
+  let $v := string( $output.sourceEntireResponse//createdDate )
+  return if ($v != '') then &lt;createdDate&gt;{$v}&lt;/createdDate&gt; else ()
+}
+{
+  let $v := string( $output.sourceEntireResponse//lastUpdatedDate )
+  return if ($v != '') then &lt;lastUpdatedDate&gt;{$v}&lt;/lastUpdatedDate&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//_meta/id)[1])
+  return if ($v != '') then &lt;id&gt;{$v}&lt;/id&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//_meta/id)[1])
+  return if ($v != '') then &lt;effectiveReferenceId&gt;{$v}&lt;/effectiveReferenceId&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//personMiddleInitial)[1])
+  return if ($v != '') then &lt;personMiddleInitial&gt;{$v}&lt;/personMiddleInitial&gt; else ()
+}
+{
+  let $v := string(($output.sourceEntireResponse//personMiddleName)[1])
+  return if ($v != '') then &lt;personMiddleName&gt;{$v}&lt;/personMiddleName&gt; else ()
+}
+&lt;/crossReferences&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.membersArray">
+                                 <expression language="XQuery">list:append( $temp.sourceDetails ,  $temp.membersArray )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.contactXref">
+                                 <expression language="XQuery">
+if (exists($output.sourceEntireResponse/contact_mechanisms)) then
+(
+
+for $cm in $output.sourceEntireResponse/contact_mechanisms
+return
+
+
+&lt;contactMechanismsXref&gt;
+
+{
+  let $v := fn:upper-case( string($output.membersEntireResponse/content[ $temp.membersCount ]/sourceSystem/text()))
+  return if ($v != '') then &lt;rowidSystem&gt;{$v}&lt;/rowidSystem&gt; else ()
+}
+
+{
+  let $v := string(($cm/_id)[1])
+  return if ($v != '') then &lt;pkeySourceObject&gt;{$v}&lt;/pkeySourceObject&gt; else ()
+}
+
+{
+  let $v := string(($cm/contactMechanismStatusInd)[1])
+  return if ($v != '') then
+    &lt;contactMechanismStatusInd&gt;{$v}&lt;/contactMechanismStatusInd&gt;
+  else ()
+}
+
+{
+  let $name := string(($cm/contactMechanismType/Name)[1])
+  let $code := string(($cm/contactMechanismType/Code)[1])
+  return
+    if ($name != '' or $code != '') then
+      &lt;contactMechanismType&gt;
+        { if ($name != '') then &lt;name&gt;{$name}&lt;/name&gt; else () }
+        { if ($code != '') then &lt;code&gt;{$code}&lt;/code&gt; else () }
+        { if ($code != '') then &lt;effectiveReferenceId&gt;{$code}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/contactMechanismType&gt;
+    else ()
+}
+
+{
+  let $v := string(($cm/contactMechanismValue)[1])
+  return if ($v != '') then &lt;contactMechanismValue&gt;{$v}&lt;/contactMechanismValue&gt; else ()
+}
+
+{
+  let $v := string(($cm/deferredOwnershipIndicator)[1])
+  return if ($v != '') then &lt;deferredOwnershipIndicator&gt;{$v}&lt;/deferredOwnershipIndicator&gt; else ()
+}
+
+{
+  let $name := string(($cm/inactivationReasonType/Name)[1])
+  let $code := string(($cm/inactivationReasonType/Code)[1])
+  return
+    if ($name != '' or $code != '') then
+      &lt;inactivationReasonType&gt;
+        { if ($name != '') then &lt;name&gt;{$name}&lt;/name&gt; else () }
+        { if ($code != '') then &lt;code&gt;{$code}&lt;/code&gt; else () }
+        { if ($code != '') then &lt;effectiveReferenceId&gt;{$code}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/inactivationReasonType&gt;
+    else ()
+}
+
+{
+  let $v := string(($cm/originalValue)[1])
+  return if ($v != '') then &lt;originalValue&gt;{$v}&lt;/originalValue&gt; else ()
+}
+
+{
+  let $name := string(($cm/partyRoleType/Name)[1])
+  let $code := string(($cm/partyRoleType/Code)[1])
+  return
+    if ($name != '' or $code != '') then
+      &lt;partyRoleType&gt;
+        { if ($name != '') then &lt;name&gt;{$name}&lt;/name&gt; else () }
+        { if ($code != '') then &lt;code&gt;{$code}&lt;/code&gt; else () }
+        { if ($code != '') then &lt;effectiveReferenceId&gt;{$code}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/partyRoleType&gt;
+    else ()
+}
+
+{
+  let $v := fn:normalize-space(string(($cm/phoneNumberExtension)[1]))
+  return if ($v != '') then &lt;phoneNumberExtension&gt;{$v}&lt;/phoneNumberExtension&gt; else ()
+}
+
+{
+  let $v := string(($cm/primaryIndicator)[1])
+  return if ($v != '') then &lt;primaryIndicator&gt;{$v}&lt;/primaryIndicator&gt; else ()
+}
+
+{
+  let $name := string(($cm/purpose/Name)[1])
+  let $code := string(($cm/purpose/Code)[1])
+  return
+    if ($name != '' or $code != '') then
+      &lt;purpose&gt;
+        { if ($name != '') then &lt;name&gt;{$name}&lt;/name&gt; else () }
+        { if ($code != '') then &lt;code&gt;{$code}&lt;/code&gt; else () }
+        { if ($code != '') then &lt;effectiveReferenceId&gt;{$code}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/purpose&gt;
+    else ()
+}
+
+{
+  let $v := string(($cm/survAsstCode)[1])
+  return if ($v != '') then &lt;survAsstCode&gt;{$v}&lt;/survAsstCode&gt; else ()
+}
+
+{
+  let $v := string(($cm/userLastUpdateBy)[1])
+  return if ($v != '') then &lt;userLastUpdateBy&gt;{$v}&lt;/userLastUpdateBy&gt; else ()
+}
+
+{
+  let $v := string(($cm/validIndicator)[1])
+  return if ($v != '') then &lt;validIndicator&gt;{$v}&lt;/validIndicator&gt; else ()
+}
+
+{
+  let $v := string(($cm/verifiedForPartyDate)[1])
+  return if ($v != '') then &lt;verifiedForPartyDate&gt;{$v}&lt;/verifiedForPartyDate&gt; else ()
+}
+
+{
+  let $v := string(($cm/verifiedForPartyIndicator)[1])
+  return if ($v != '') then &lt;verifiedForPartyIndicator&gt;{$v}&lt;/verifiedForPartyIndicator&gt; else ()
+}
+
+{
+  let $v := fn:normalize-space(string(($cm/phoneCountryCode)[1]))
+  return if ($v != '') then &lt;phoneCountryCode&gt;{$v}&lt;/phoneCountryCode&gt; else ()
+}
+
+{
+  let $name := string(($cm/contactMechanismSubType/Name)[1])
+  let $code := string(($cm/contactMechanismSubType/Code)[1])
+  return
+    if ($name != '' or $code != '') then
+      &lt;contactMechanismSubType&gt;
+        { if ($name != '') then &lt;name&gt;{$name}&lt;/name&gt; else () }
+        { if ($code != '') then &lt;code&gt;{$code}&lt;/code&gt; else () }
+        { if ($code != '') then &lt;effectiveReferenceId&gt;{$code}&lt;/effectiveReferenceId&gt; else () }
+      &lt;/contactMechanismSubType&gt;
+    else ()
+}
+
+{
+  let $v := string(($cm/customMatchCriteria)[1])
+  return if ($v != '') then &lt;customMatchCriteria&gt;{$v}&lt;/customMatchCriteria&gt; else ()
+}
+
+{
+  let $v := fn:normalize-space(string(($cm/contactMechanismSequenceId)[1]))
+  return if ($v != '') then &lt;contactMechanismSequenceId&gt;{$v}&lt;/contactMechanismSequenceId&gt; else ()
+}
+
+{
+  let $v := string(($cm/createdBy)[1])
+  return if ($v != '') then &lt;createdBy&gt;{$v}&lt;/createdBy&gt; else ()
+}
+
+{
+  let $v := string(($cm/createDate)[1])
+  return if ($v != '') then &lt;createDate&gt;{$v}&lt;/createDate&gt; else ()
+}
+
+{
+  let $v := string(($cm/lastUpdatedBy)[1])
+  return if ($v != '') then &lt;lastUpdatedBy&gt;{$v}&lt;/lastUpdatedBy&gt; else ()
+}
+
+{
+  let $v := string(($cm/lastUpdateDate)[1])
+  return if ($v != '') then &lt;lastUpdateDate&gt;{$v}&lt;/lastUpdateDate&gt; else ()
+}
+
+{
+  let $v := fn:normalize-space(string(($cm/_id)[1]))
+  return if ($v != '') then &lt;id&gt;{$v}&lt;/id&gt; else ()
+}
+
+{
+  let $v := fn:normalize-space(string(($cm/_id)[1]))
+  return if ($v != '') then &lt;effectveReferenceId&gt;{$v}&lt;/effectveReferenceId&gt; else ()
+}
+
+&lt;/contactMechanismsXref&gt;
+
+
+)
+else ()
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.cmXrefArray">
+                                 <expression language="XQuery">list:append( $temp.contactXref ,  $temp.cmXrefArray )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.membersCount">
+                                 <expression language="XQuery">$temp.membersCount -1</expression>
+                              </operation>
+                           </assignment>
+                        </flow>
+                        <link id="vc7190023-a975-4dc2-93f5-6ad7fdfb6685"
+                              targetId="adeb4abf7-44a9-4d8c-b961-a7c1d8568cbb"
+                              type="containerLink"/>
+                     </repeat>
+                     <link id="mc60b6974-4a30-417f-903a-659ba53f25ac"
+                           targetId="a15kXJn1K6Vvfdjl7500SM01-Decision6ad4fc75-78b5-4c2e-98cb-88adab758ad3"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="w4efa6462-ef50-47d8-8001-2e1d1d6f5212">
+                     <link id="t3e51ac4c-4a67-417e-a28a-cf187e0b8b16"
+                           targetId="a15kXJn1K6Vvfdjl7500SM01-Decision6ad4fc75-78b5-4c2e-98cb-88adab758ad3"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="d4a0ac2a8-588e-487f-9772-62c4262e0fef"
+                        targetId="b04b10df1-cf10-4bbf-9d58-e0f1018b5062"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with">
+                           <arg name="left">{$temp.crossReferenceCheck}</arg>
+                           <arg name="right">true</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="b28fb4f97-1872-4112-b442-bdec7e24eb35"
+                        targetId="w4efa6462-ef50-47d8-8001-2e1d1d6f5212"
+                        type="containerLink"/>
+                  <link id="eb3fe3572-3e2c-402e-8cdd-94da21c15f7c"
+                        targetId="a15kXJn1K6Vvfdjl7500SM01-Assignment72204f65-5a89-4031-b6c2-954758e0c2ba"/>
+               </container>
+               <end id="a15kXJn1K6Vvfdjl7500SM01-end-gcec3ebb2-6dd2-4517-a28a-df07503b609b">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0c3e4b67-52c3-4523-b6d1-001561866e63</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>balam_ashok</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-17T06:10:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>balam_ashok</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-17T06:10:12Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "partyId": "1000053887"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3V6Pgq2l14fcCqVvAVrBUX</types1:GUID>
+      <types1:DisplayName>Get Investor By PartyId</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:35.104Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

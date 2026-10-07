@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "1AjXJXYNU1gc2STIPHaRkY",
+    "name" : "Pf_Test2",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "454de332-c0c5-41fe-8995-744e2d78d068"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-15T10:43:50.218Z",
+  "objectRefs" : [ {
+    "id" : "bh02HZQOEMgdDsqW9A4KGd",
+    "name" : "orcl_cdam_practice",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000004A"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

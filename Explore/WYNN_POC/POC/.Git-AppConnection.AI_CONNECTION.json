@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "17iNQg0gYq2i4WrXRkOUc2",
+    "name" : "Git-AppConnection",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "GyJFfYLnzYLnzYL-gt-3876538-2026-09-23T04:43:19.523Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "INVALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T09:02:14.984Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

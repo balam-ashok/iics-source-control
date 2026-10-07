@@ -1,0 +1,1448 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Map_dummy3_BFSI",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Expression -> Target1"
+      },
+      {
+        "link" : "Expression2 -> Expression1"
+      },
+      {
+        "link" : "Source2 -> Expression2"
+      },
+      {
+        "link" : "Expression1 -> RuleSpecification",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "RuleSpecification -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-08T04:50:37.055Z",
+        "name" : "Expression1",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SYSDATE"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_age",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert New_dateOfBirth to date format.\n-- 2. Get the current date using Systimestamp().\n-- 3. Calculate the difference in years between current date and New_dateOfBirth.\n\nTRUNC(Date_Diff(Systimestamp(), New_dateOfBirth, 'YYYY'))"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_annaualIncome",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert the annualIncome field from STRING to INTEGER.\nTO_INTEGER(annualIncome)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_avgmonthly_balance",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert avgMonthlyBalance from string to decimal.\n-- 2. Convert the decimal value to integer.\n\nTO_INTEGER(TO_DECIMAL(avgMonthlyBalance))"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-08T04:42:24.130Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_source_field",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'crm'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-08T06:19:19.012Z",
+        "name" : "Expression2",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_dateOfBirth",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert dateOfBirth from STRING to DATE using TO_DATE function.\nTO_DATE(dateOfBirth, 'DD/MM/YYYY')"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-08T06:28:04.296Z",
+        "name" : "RuleSpecification",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@8hZfAGvCkmGbxKjMmOUbmF",
+        "ruleId" : "@8hZfAGvCkmGbxKjMmOUbmF",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "gender_PL_",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "NewInput1"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "NewInput1",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-08T04:39:49.856Z",
+        "name" : "Source2",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "customerId"
+            },
+            "name" : "customerId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "firstName"
+            },
+            "name" : "firstName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "middleName"
+            },
+            "name" : "middleName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastName"
+            },
+            "name" : "lastName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "fullName"
+            },
+            "name" : "fullName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "dateOfBirth"
+            },
+            "name" : "dateOfBirth",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "age"
+            },
+            "name" : "age",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "gender_PL_"
+            },
+            "name" : "gender_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "maritalStatus_PL_"
+            },
+            "name" : "maritalStatus_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "customerType_PL_"
+            },
+            "name" : "customerType_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PAN"
+            },
+            "name" : "PAN",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "kycStatus_PL_"
+            },
+            "name" : "kycStatus_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "retaild"
+            },
+            "name" : "retaild",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "occupation"
+            },
+            "name" : "occupation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "annualIncome"
+            },
+            "name" : "annualIncome",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "salaryAccount_Boolean_"
+            },
+            "name" : "salaryAccount_Boolean_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "netBanking_Boolean_"
+            },
+            "name" : "netBanking_Boolean_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mobileBanking_Boolean_"
+            },
+            "name" : "mobileBanking_Boolean_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "employmentType"
+            },
+            "name" : "employmentType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "incomeSource"
+            },
+            "name" : "incomeSource",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creditEligibility_PL_"
+            },
+            "name" : "creditEligibility_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "avgMonthlyBalance"
+            },
+            "name" : "avgMonthlyBalance",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "relationshipSince"
+            },
+            "name" : "relationshipSince",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdDate"
+            },
+            "name" : "createdDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedBy"
+            },
+            "name" : "lastUpdatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedDate"
+            },
+            "name" : "lastUpdatedDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@fUQ1KUqwZycgrADnxIy128",
+          "connectionName" : "Conn-BM-FlatFile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "BFSI_Customer_Flatfile.csv",
+            "label" : "BFSI_Customer_Flatfile.csv",
+            "objectName" : "BFSI_Customer_Flatfile.csv",
+            "path" : "BFSI_Customer_Flatfile.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "customerId",
+                "fieldType" : "CONNECTOR",
+                "label" : "customerId",
+                "nativeName" : "customerId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "firstName",
+                "fieldType" : "CONNECTOR",
+                "label" : "firstName",
+                "nativeName" : "firstName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "middleName",
+                "fieldType" : "CONNECTOR",
+                "label" : "middleName",
+                "nativeName" : "middleName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastName",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastName",
+                "nativeName" : "lastName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "fullName",
+                "fieldType" : "CONNECTOR",
+                "label" : "fullName",
+                "nativeName" : "fullName",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "dateOfBirth",
+                "fieldType" : "CONNECTOR",
+                "label" : "dateOfBirth",
+                "nativeName" : "dateOfBirth",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "age",
+                "fieldType" : "CONNECTOR",
+                "label" : "age",
+                "nativeName" : "age",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "gender_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "gender(PL)",
+                "nativeName" : "gender(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "maritalStatus_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "maritalStatus(PL)",
+                "nativeName" : "maritalStatus(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "customerType_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "customerType(PL)",
+                "nativeName" : "customerType(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "PAN",
+                "fieldType" : "CONNECTOR",
+                "label" : "PAN",
+                "nativeName" : "PAN",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "kycStatus_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "kycStatus(PL)",
+                "nativeName" : "kycStatus(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "retaild",
+                "fieldType" : "CONNECTOR",
+                "label" : "retaild",
+                "nativeName" : "retaild",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "occupation",
+                "fieldType" : "CONNECTOR",
+                "label" : "occupation",
+                "nativeName" : "occupation",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "annualIncome",
+                "fieldType" : "CONNECTOR",
+                "label" : "annualIncome",
+                "nativeName" : "annualIncome",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "salaryAccount_Boolean_",
+                "fieldType" : "CONNECTOR",
+                "label" : "salaryAccount(Boolean)",
+                "nativeName" : "salaryAccount(Boolean)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "netBanking_Boolean_",
+                "fieldType" : "CONNECTOR",
+                "label" : "netBanking(Boolean)",
+                "nativeName" : "netBanking(Boolean)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "mobileBanking_Boolean_",
+                "fieldType" : "CONNECTOR",
+                "label" : "mobileBanking(Boolean)",
+                "nativeName" : "mobileBanking(Boolean)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "employmentType",
+                "fieldType" : "CONNECTOR",
+                "label" : "employmentType",
+                "nativeName" : "employmentType",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "incomeSource",
+                "fieldType" : "CONNECTOR",
+                "label" : "incomeSource",
+                "nativeName" : "incomeSource",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "creditEligibility_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "creditEligibility(PL)",
+                "nativeName" : "creditEligibility(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "avgMonthlyBalance",
+                "fieldType" : "CONNECTOR",
+                "label" : "avgMonthlyBalance",
+                "nativeName" : "avgMonthlyBalance",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "relationshipSince",
+                "fieldType" : "CONNECTOR",
+                "label" : "relationshipSince",
+                "nativeName" : "relationshipSince",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdDate",
+                "nativeName" : "createdDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedBy",
+                "nativeName" : "lastUpdatedBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedDate",
+                "nativeName" : "lastUpdatedDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Customer_Flatfile.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-08T04:39:49.856Z",
+        "name" : "Target1",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI Customer(id=bfsi_customer)",
+            "label" : "Home/Custom Assets/Business Entities/BFSI Customer(id=bfsi_customer)",
+            "objectName" : "BFSI Customer(id=bfsi_customer)",
+            "path" : "Home/Custom Assets/Business Entities/BFSI Customer(id=bfsi_customer)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Expression",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "o_source_field",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:sourceSystem"
+                },
+                {
+                  "name" : "customerId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:sourcePKey"
+                },
+                {
+                  "name" : "firstName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:firstName"
+                },
+                {
+                  "name" : "customerId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:customerId"
+                },
+                {
+                  "name" : "middleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:middleName"
+                },
+                {
+                  "name" : "lastName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:lastName"
+                },
+                {
+                  "name" : "fullName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:fullName"
+                },
+                {
+                  "name" : "gender_PL_",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:gender"
+                },
+                {
+                  "name" : "customerType_PL_",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:customerType"
+                },
+                {
+                  "name" : "PAN",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:pan"
+                },
+                {
+                  "name" : "kycStatus_PL_",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:kycStatus"
+                },
+                {
+                  "name" : "retaild",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:retailId"
+                },
+                {
+                  "name" : "occupation",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:occupation"
+                },
+                {
+                  "name" : "salaryAccount_Boolean_",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:salaryAccount"
+                },
+                {
+                  "name" : "netBanking_Boolean_",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:netBanking"
+                },
+                {
+                  "name" : "mobileBanking_Boolean_",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:mobileBanking"
+                },
+                {
+                  "name" : "employmentType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:employmentType"
+                },
+                {
+                  "name" : "incomeSource",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:incomeSource"
+                },
+                {
+                  "name" : "creditEligibility_PL_",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:creditEligibility"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:createdBy"
+                },
+                {
+                  "name" : "lastUpdatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "New_Date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:relationshipSince"
+                },
+                {
+                  "name" : "New_age",
+                  "platformType" : {
+                    "name" : "integer"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:age"
+                },
+                {
+                  "name" : "New_dateOfBirth",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:dateOfBirth"
+                },
+                {
+                  "name" : "New_annaualIncome",
+                  "platformType" : {
+                    "name" : "integer"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:annualIncome"
+                },
+                {
+                  "name" : "New_avgmonthly_balance",
+                  "platformType" : {
+                    "name" : "integer"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:averageMonthlyBalance"
+                },
+                {
+                  "name" : "PrimaryRuleSet",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Customer_id_bfsi_customer_/json:BFSI_Customer/json:maritalStatus"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 10,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:16:16 PDT"
+}

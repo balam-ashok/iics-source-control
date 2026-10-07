@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "ksSPj4cktSJcGrNZ8VRu0q",
+    "name" : "Cleanse_Sentence_case",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ksSPj4cktSJcGrNZ8VRu0q"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-15T10:43:50.219Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

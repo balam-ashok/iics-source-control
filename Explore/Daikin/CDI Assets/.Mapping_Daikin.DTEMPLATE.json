@@ -1,0 +1,170 @@
+{
+  "objectInfo" : {
+    "id" : "79dKJR5oYmwiu1xyJa7Sib",
+    "name" : "Mapping_Daikin",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM170000000000EE"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2026-10-05T13:27:09.746Z",
+  "objectRefs" : [ {
+    "id" : "4h7TtbhALB4b7MTgsp9joF",
+    "name" : "Deduplicate_Serial_no",
+    "type" : "DEDUPLICATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "4h7TtbhALB4b7MTgsp9joF"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Daikin/CDQ Assets"
+  }, {
+    "id" : "9qzzgpDxkumg9uVapqNiK3",
+    "name" : "Deduplicate_phone_no",
+    "type" : "DEDUPLICATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9qzzgpDxkumg9uVapqNiK3"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Daikin/CDQ Assets"
+  }, {
+    "id" : "kp33dntmecbbYvtj4EM7eH",
+    "name" : "ABN_Null_Check",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "kp33dntmecbbYvtj4EM7eH"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Daikin/CDQ Assets"
+  }, {
+    "id" : "8MJEgmkBTBTjfMo5Mai2MJ",
+    "name" : "Deduplicate_ABN",
+    "type" : "DEDUPLICATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8MJEgmkBTBTjfMo5Mai2MJ"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Daikin/CDQ Assets"
+  }, {
+    "id" : "4E7M4fY8g7WfRXST1gJWi0",
+    "name" : "Cleanse_Star_Ratings",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "4E7M4fY8g7WfRXST1gJWi0"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Daikin/CDQ Assets"
+  }, {
+    "id" : "avwYbV2FjAgdVoLrQ9iu8k",
+    "name" : "Daikin-sql",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000006H"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "579N9xet3xjjgzdQKWxDQk",
+    "name" : "Parse_email",
+    "type" : "PARSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "579N9xet3xjjgzdQKWxDQk"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Daikin/CDQ Assets"
+  } ],
+  "readableFileExtension" : "json",
+  "readableFilePresent" : true
+}

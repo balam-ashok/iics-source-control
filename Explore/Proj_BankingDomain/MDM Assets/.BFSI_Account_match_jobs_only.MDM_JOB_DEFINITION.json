@@ -1,0 +1,113 @@
+{
+  "objectInfo" : {
+    "id" : "kurialUbvKIcmpTbnoWng3",
+    "name" : "BFSI_Account_match_jobs_only",
+    "type" : "MDM_JOB_DEFINITION",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : { },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "bfsi_account_match_jobs_only"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2026-09-17T11:41:42.775Z",
+  "objectRefs" : [ {
+    "id" : "fQXG1lrNdY5l7L0Fe0EF4Z",
+    "name" : "MDMMatchMerge",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "VeNif6A1vyoY2G7-gt-1769003-2025-11-10T22:17:22.762Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Business360"
+  }, {
+    "id" : "2XEtGNyDYi9h9DUZtSiGOA",
+    "name" : "BFSI_Account",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : { },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "bfsi_account"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/MDM Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

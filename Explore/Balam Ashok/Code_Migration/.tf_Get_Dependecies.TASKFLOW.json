@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "43pnmzuOeFdhFj38dONMK6",
+    "name" : "tf_Get_Dependecies",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "tlI20hELlBWlD2p-gt-466357-2026-09-30T09:21:11.319Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:57:52.178Z",
+  "objectRefs" : [ {
+    "id" : "7Aq8A2myWYyiYL8nLFHA8M",
+    "name" : "mt_Get_Dependecies",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z0000000000ER"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "this mapping task is to get the dependent values",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,2598 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_dummy_customer_master",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Expression -> Target"
+      },
+      {
+        "link" : "Source -> Lookup"
+      },
+      {
+        "link" : "Lookup -> Expression"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-06-18T05:09:57.193Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creationDate"
+            },
+            "name" : "creationDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdateDate"
+            },
+            "name" : "lastUpdateDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "updatedBy"
+            },
+            "name" : "updatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "originalBusinessId"
+            },
+            "name" : "originalBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mergedBusinessId"
+            },
+            "name" : "mergedBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 30000,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "validationStatus"
+            },
+            "name" : "validationStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "populationName"
+            },
+            "name" : "populationName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "notReadyForMatch"
+            },
+            "name" : "notReadyForMatch",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "matchMergeState"
+            },
+            "name" : "matchMergeState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "states_validation"
+            },
+            "name" : "states_validation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_customer_id"
+            },
+            "name" : "Dummy_Customer_customer_id",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_first_name"
+            },
+            "name" : "Dummy_Customer_first_name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_last_name"
+            },
+            "name" : "Dummy_Customer_last_name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_email"
+            },
+            "name" : "Dummy_Customer_email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_phone"
+            },
+            "name" : "Dummy_Customer_phone",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer__cm_sourceLastUpdateDate"
+            },
+            "name" : "Dummy_Customer__cm_sourceLastUpdateDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@9fJk4HsgbFHipWi4hQgocI",
+          "connectionName" : "conn-BM-Business FEP",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/Dummy_Customer(id=dummy_customer)/dummy_customer",
+            "label" : "Home/Custom Assets/Business Entities/Dummy_Customer(id=dummy_customer)/dummy_customer",
+            "objectName" : "dummy_customer",
+            "objectType" : "flatmdmentity",
+            "path" : "Home/Custom Assets/Business Entities/Dummy_Customer(id=dummy_customer)/dummy_customer",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourcePKey"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_businessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourceSystem"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "creationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "creationDate",
+                "nativeName" : "creationDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_creationDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdateDate",
+                "nativeName" : "lastUpdateDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_lastUpdateDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_state"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_createdBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "updatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "updatedBy",
+                "nativeName" : "updatedBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_updatedBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "originalBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "originalBusinessId",
+                "nativeName" : "originalBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_originalBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "mergedBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "mergedBusinessId",
+                "nativeName" : "mergedBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 30000,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_mergedBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "validationStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "validationStatus",
+                "nativeName" : "validationStatus",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_validationStatus"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "populationName",
+                "fieldType" : "CONNECTOR",
+                "label" : "populationName",
+                "nativeName" : "populationName",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_populationName"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "notReadyForMatch",
+                "fieldType" : "CONNECTOR",
+                "label" : "notReadyForMatch",
+                "nativeName" : "notReadyForMatch",
+                "nativeType" : "boolean",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_notReadyForMatch"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "matchMergeState",
+                "fieldType" : "CONNECTOR",
+                "label" : "matchMergeState",
+                "nativeName" : "matchMergeState",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_matchMergeState"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "states_validation",
+                "fieldType" : "CONNECTOR",
+                "label" : "states.validation",
+                "nativeName" : "states.validation",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "validation"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "states"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_customer_id",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer.customer_id",
+                "nativeName" : "Dummy_Customer.customer_id",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "customer_id"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Dummy_Customer"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_first_name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer.first_name",
+                "nativeName" : "Dummy_Customer.first_name",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "first_name"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Dummy_Customer"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_last_name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer.last_name",
+                "nativeName" : "Dummy_Customer.last_name",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "last_name"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Dummy_Customer"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_email",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer.email",
+                "nativeName" : "Dummy_Customer.email",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "email"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Dummy_Customer"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer.phone",
+                "nativeName" : "Dummy_Customer.phone",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "phone"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "0"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Dummy_Customer"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer__cm_sourceLastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer._cm.sourceLastUpdateDate",
+                "nativeName" : "Dummy_Customer._cm.sourceLastUpdateDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "sourceLastUpdateDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Dummy_Customer.Dummy_Customer._cm"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "allowMany",
+                "value" : "false"
+              },
+              {
+                "name" : "recordType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "dataType",
+                "value" : "Object"
+              },
+              {
+                "name" : "solutionName",
+                "value" : "CUSTOM"
+              },
+              {
+                "name" : "storageType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "guid",
+                "value" : "dummy_customer"
+              },
+              {
+                "name" : "metaFields",
+                "value" : "{}"
+              },
+              {
+                "name" : "storage",
+                "value" : "ent"
+              },
+              {
+                "name" : "fepGuid",
+                "value" : "dummy_customer"
+              },
+              {
+                "name" : "sharded",
+                "value" : "true"
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-06-18T05:09:57.197Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : [
+          "businessId"
+        ],
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creationDate"
+            },
+            "name" : "creationDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdateDate"
+            },
+            "name" : "lastUpdateDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "updatedBy"
+            },
+            "name" : "updatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "originalBusinessId"
+            },
+            "name" : "originalBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mergedBusinessId"
+            },
+            "name" : "mergedBusinessId",
+            "platformType" : {
+              "name" : "text"
+            },
+            "precision" : 32000,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "validationStatus"
+            },
+            "name" : "validationStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "populationName"
+            },
+            "name" : "populationName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "notReadyForMatch"
+            },
+            "name" : "notReadyForMatch",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "matchMergeState"
+            },
+            "name" : "matchMergeState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "states_validation"
+            },
+            "name" : "states_validation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_customer_id"
+            },
+            "name" : "Dummy_Customer_customer_id",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_first_name"
+            },
+            "name" : "Dummy_Customer_first_name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_last_name"
+            },
+            "name" : "Dummy_Customer_last_name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_email"
+            },
+            "name" : "Dummy_Customer_email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_phone"
+            },
+            "name" : "Dummy_Customer_phone",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer__cm_sourceLastUpdateDate"
+            },
+            "name" : "Dummy_Customer__cm_sourceLastUpdateDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "statusFlag"
+            },
+            "name" : "statusFlag",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@iPMQECmMsiajJC4UvdOPIV",
+          "connectionName" : "Conn-BM-SQLServer-Pharma",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "dummy_customer_master",
+            "label" : "dummy_customer_master",
+            "objectName" : "dummy_customer_master",
+            "path" : "dummy_customer_master",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "creationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "creationDate",
+                "nativeName" : "creationDate",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdateDate",
+                "nativeName" : "lastUpdateDate",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "updatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "updatedBy",
+                "nativeName" : "updatedBy",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "originalBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "originalBusinessId",
+                "nativeName" : "originalBusinessId",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "mergedBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "mergedBusinessId",
+                "nativeName" : "mergedBusinessId",
+                "nativeType" : "ntext",
+                "original" : "false",
+                "precision" : 32000,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "validationStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "validationStatus",
+                "nativeName" : "validationStatus",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "populationName",
+                "fieldType" : "CONNECTOR",
+                "label" : "populationName",
+                "nativeName" : "populationName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "notReadyForMatch",
+                "fieldType" : "CONNECTOR",
+                "label" : "notReadyForMatch",
+                "nativeName" : "notReadyForMatch",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "matchMergeState",
+                "fieldType" : "CONNECTOR",
+                "label" : "matchMergeState",
+                "nativeName" : "matchMergeState",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "states_validation",
+                "fieldType" : "CONNECTOR",
+                "label" : "states_validation",
+                "nativeName" : "states_validation",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_customer_id",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_customer_id",
+                "nativeName" : "Dummy_Customer_customer_id",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_first_name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_first_name",
+                "nativeName" : "Dummy_Customer_first_name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_last_name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_last_name",
+                "nativeName" : "Dummy_Customer_last_name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_email",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_email",
+                "nativeName" : "Dummy_Customer_email",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_phone",
+                "nativeName" : "Dummy_Customer_phone",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer__cm_sourceLastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer__cm_sourceLastUpdateDate",
+                "nativeName" : "Dummy_Customer__cm_sourceLastUpdateDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              },
+              {
+                "name" : "statusFlag",
+                "fieldType" : "CONNECTOR",
+                "label" : "statusFlag",
+                "nativeName" : "statusFlag",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_master"
+                  }
+                ]
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Upsert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "src_sourcePKey",
+              "toField" : {
+                "name" : "sourcePKey"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_businessId",
+              "toField" : {
+                "name" : "businessId"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_sourceSystem",
+              "toField" : {
+                "name" : "sourceSystem"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_creationDate",
+              "toField" : {
+                "name" : "creationDate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_lastUpdateDate",
+              "toField" : {
+                "name" : "lastUpdateDate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_state",
+              "toField" : {
+                "name" : "state"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_createdBy",
+              "toField" : {
+                "name" : "createdBy"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_updatedBy",
+              "toField" : {
+                "name" : "updatedBy"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_originalBusinessId",
+              "toField" : {
+                "name" : "originalBusinessId"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_mergedBusinessId",
+              "toField" : {
+                "name" : "mergedBusinessId"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_validationStatus",
+              "toField" : {
+                "name" : "validationStatus"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_populationName",
+              "toField" : {
+                "name" : "populationName"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_notReadyForMatch",
+              "toField" : {
+                "name" : "notReadyForMatch"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_matchMergeState",
+              "toField" : {
+                "name" : "matchMergeState"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_states_validation",
+              "toField" : {
+                "name" : "states_validation"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_Dummy_Customer_customer_id",
+              "toField" : {
+                "name" : "Dummy_Customer_customer_id"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_Dummy_Customer_first_name",
+              "toField" : {
+                "name" : "Dummy_Customer_first_name"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_Dummy_Customer_last_name",
+              "toField" : {
+                "name" : "Dummy_Customer_last_name"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_Dummy_Customer_email",
+              "toField" : {
+                "name" : "Dummy_Customer_email"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_Dummy_Customer_phone",
+              "toField" : {
+                "name" : "Dummy_Customer_phone"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src_Dummy_Customer__cm_sourceLastUpdateDate",
+              "toField" : {
+                "name" : "Dummy_Customer__cm_sourceLastUpdateDate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "statusFlag",
+              "toField" : {
+                "name" : "statusFlag"
+              },
+              "fromFieldNames" : null
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-06-18T05:12:14.162Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "statusFlag",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "iif(src_businessId<>mergedBusinessId,'Active','Inactive')"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-06-18T05:25:24.562Z",
+        "name" : "Lookup",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Lookup caching enabled",
+            "value" : "true"
+          },
+          {
+            "name" : "Lookup cache directory name",
+            "value" : "$PMCacheDir"
+          },
+          {
+            "name" : "Lookup cache persistent",
+            "value" : "false"
+          },
+          {
+            "name" : "Re-cache from lookup source",
+            "value" : "false"
+          },
+          {
+            "name" : "Lookup Data Cache Size",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Lookup Index Cache Size",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Dynamic Lookup Cache",
+            "value" : "false"
+          },
+          {
+            "name" : "Update Dynamic Cache Condition",
+            "value" : "TRUE"
+          },
+          {
+            "name" : "Output Old Value On Update",
+            "value" : "false"
+          },
+          {
+            "name" : "Synchronize dynamic cache",
+            "value" : "false"
+          },
+          {
+            "name" : "Insert Else Update",
+            "value" : "false"
+          },
+          {
+            "name" : "Lookup source is static",
+            "value" : "false"
+          },
+          {
+            "name" : "Pre-build lookup cache",
+            "value" : "AUTO"
+          },
+          {
+            "name" : "Subsecond Precision",
+            "value" : "6"
+          },
+          {
+            "name" : "Optional",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "conflictResolutions" : [
+              {
+                "precedingGroupName" : "DefaultGroup",
+                "precedingTxName" : "Source",
+                "rule" : {
+                  "bulkRename" : "true",
+                  "include" : "true",
+                  "bulkRenameOption" : {
+                    "literal" : "src_",
+                    "suffix" : "false"
+                  }
+                }
+              }
+            ],
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "multipleMatchPolicy" : "Use Any Value",
+        "unconnected" : "false",
+        "useLabels" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creationDate"
+            },
+            "name" : "creationDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdateDate"
+            },
+            "name" : "lastUpdateDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "updatedBy"
+            },
+            "name" : "updatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "originalBusinessId"
+            },
+            "name" : "originalBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mergedBusinessId"
+            },
+            "name" : "mergedBusinessId",
+            "platformType" : {
+              "name" : "text"
+            },
+            "precision" : 32000,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "validationStatus"
+            },
+            "name" : "validationStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "populationName"
+            },
+            "name" : "populationName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "notReadyForMatch"
+            },
+            "name" : "notReadyForMatch",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "matchMergeState"
+            },
+            "name" : "matchMergeState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "states_validation"
+            },
+            "name" : "states_validation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_customer_id"
+            },
+            "name" : "Dummy_Customer_customer_id",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_first_name"
+            },
+            "name" : "Dummy_Customer_first_name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_last_name"
+            },
+            "name" : "Dummy_Customer_last_name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_email"
+            },
+            "name" : "Dummy_Customer_email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer_phone"
+            },
+            "name" : "Dummy_Customer_phone",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dummy_Customer__cm_sourceLastUpdateDate"
+            },
+            "name" : "Dummy_Customer__cm_sourceLastUpdateDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "inputPortNames" : null,
+        "lookupConditions" : [
+          {
+            "leftOperand" : "businessId",
+            "operator" : "=",
+            "rightOperand" : "src_businessId"
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@iPMQECmMsiajJC4UvdOPIV",
+          "connectionName" : "Conn-BM-SQLServer-Pharma",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dummy_customer_xref",
+            "label" : "dummy_customer_xref",
+            "objectName" : "dummy_customer_xref",
+            "path" : "dummy_customer_xref",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "creationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "creationDate",
+                "nativeName" : "creationDate",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdateDate",
+                "nativeName" : "lastUpdateDate",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "updatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "updatedBy",
+                "nativeName" : "updatedBy",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "originalBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "originalBusinessId",
+                "nativeName" : "originalBusinessId",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "mergedBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "mergedBusinessId",
+                "nativeName" : "mergedBusinessId",
+                "nativeType" : "ntext",
+                "original" : "false",
+                "precision" : 32000,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "validationStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "validationStatus",
+                "nativeName" : "validationStatus",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "populationName",
+                "fieldType" : "CONNECTOR",
+                "label" : "populationName",
+                "nativeName" : "populationName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "notReadyForMatch",
+                "fieldType" : "CONNECTOR",
+                "label" : "notReadyForMatch",
+                "nativeName" : "notReadyForMatch",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "matchMergeState",
+                "fieldType" : "CONNECTOR",
+                "label" : "matchMergeState",
+                "nativeName" : "matchMergeState",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "states_validation",
+                "fieldType" : "CONNECTOR",
+                "label" : "states_validation",
+                "nativeName" : "states_validation",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_customer_id",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_customer_id",
+                "nativeName" : "Dummy_Customer_customer_id",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_first_name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_first_name",
+                "nativeName" : "Dummy_Customer_first_name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_last_name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_last_name",
+                "nativeName" : "Dummy_Customer_last_name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_email",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_email",
+                "nativeName" : "Dummy_Customer_email",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer_phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer_phone",
+                "nativeName" : "Dummy_Customer_phone",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              },
+              {
+                "name" : "Dummy_Customer__cm_sourceLastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dummy_Customer__cm_sourceLastUpdateDate",
+                "nativeName" : "Dummy_Customer__cm_sourceLastUpdateDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dummy_customer_xref"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 03:52:34 PDT"
+}

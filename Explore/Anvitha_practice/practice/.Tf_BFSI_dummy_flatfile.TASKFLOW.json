@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "8CKhzVHsXpZb4mxLXHFbaD",
+    "name" : "Tf_BFSI_dummy_flatfile",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ynUsNAYvtpeFRqX-gt-1101874-2026-01-08T05:02:43.901Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T08:16:16.707Z",
+  "objectRefs" : [ {
+    "id" : "6Qb8ctAfIu4dabzeQldJg5",
+    "name" : "mt_BFSI_dummy_flatfile",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z00000000000Y"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Anvitha_practice/practice"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

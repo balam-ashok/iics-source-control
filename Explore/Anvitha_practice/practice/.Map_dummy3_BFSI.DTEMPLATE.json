@@ -1,0 +1,90 @@
+{
+  "objectInfo" : {
+    "id" : "eb05hJdJlKvgFGohGLC4AW",
+    "name" : "Map_dummy3_BFSI",
+    "type" : "DTEMPLATE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM17000000000012"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2026-09-23T08:16:16.708Z",
+  "objectRefs" : [ {
+    "id" : "fUQ1KUqwZycgrADnxIy128",
+    "name" : "Conn-BM-FlatFile",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B000000000014"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "kRRFJ7qylGnbjOt4amgpsm",
+    "name" : "conn-BM-Business",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B000000000017"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "8hZfAGvCkmGbxKjMmOUbmF",
+    "name" : "rs_gender_std",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8hZfAGvCkmGbxKjMmOUbmF"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Gender Standardization",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  } ],
+  "readableFileExtension" : "json",
+  "readableFilePresent" : true
+}

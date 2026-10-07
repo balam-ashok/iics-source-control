@@ -1,0 +1,516 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>dr7M75QKtBOAPbd-gt-401332-2026-06-17T06:10:09.053Z::svc.xml</types1:EntryId>
+      <types1:Name>sc-investor-operations-v2</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="sc-investor-operations-v2"
+                            label=""
+                            name="sc-investor-operations-v2"
+                            uuid="03c7d1ce-da46-45c0-be0c-e169f4fd031a">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    label="baseApiUrl"
+                                    masked="false"
+                                    name="baseApiUrl"
+                                    required="false"
+                                    testWith="https://usw3.dm-us.informaticacloud.com/saas"
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    label="mdmApiUrl"
+                                    masked="false"
+                                    name="mdmApiUrl"
+                                    required="false"
+                                    testWith="https://usw3-mdm.dm-us.informaticacloud.com"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Investor Person Details"
+                       maxRedirects="100"
+                       name="Get Investor Person Details"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="i_sessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="eyJraWQiOiIxQ3dEeXFwNnRwOWZxU0xtS29hSWNHIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJyZWxlYXNlX2lkIjoiIiwiY3JfaWQiOiIyRXdlbTJSM1hWNWsyS2MxZG5salFUIiwidXNlcl9uYW1lIjoic2VydmljZWFwaSIsImlzcyI6Imh0dHBzOi8vZG0tdXMuaW5mb3JtYXRpY2FjbG91ZC5jb20vaWRlbnRpdHktc2VydmljZSIsImN1cnJlbnRfb3JnX2lkIjoiM1E1QUNJb1lTaHdobHVXMTFHYWFDbyIsImRlcGxveW1lbnRHcm91cElkIjoiNUd1N2d3c3laRFNjTWFwZHNHcjlpcyIsInV0eXBlIjowLCJjbGllbnRfaWQiOiJpZG1jX2FwcCIsInVzZXJfb3JnX2lkIjoiM1E1QUNJb1lTaHdobHVXMTFHYWFDbyIsInVzdCI6MSwiY29udGV4dF90eXBlIjoidXNlci13ZWItYXBwIiwiZXhwIjoxNzc2NzcyNzc2LCJvcmdfbmFtZSI6IkNETV9TYWFTX0RldiIsInRpbWVfem9uZV9pZCI6IkFtZXJpY2EvTG9zX0FuZ2VsZXMiLCJpYXQiOjE3NzY3NjkxNzYsImp0aSI6IjhsWFBySTE3bVcxZ2t1U2VIdXRna28iLCJlZmZlY3RpdmVfcHJpdmlsZWdlc19sdyI6ImUvUGN2MzF1ZTUvT1BqVDM3ZG4rejUyLzNUeS94TDNOOXM3aW42MDdmdnIvZTN3KzRQLy9mMEQvLy84UC92Ly8vLy8vLy8veC94LysvLy8vLy85dlBEd0hBRC9nNGs4UUFBRDQ3Ly8vSFAvL1BNL3pQTS96UDg4UCt2OEgvdi8vLy8vLy96OEFBQUFBQUFBQUFBQUFBQUFBQVBCL25oL3cvLzhmeVAvLy8vMy8vSWZzQi96L2gvLy9mM3llNTNuTy8vMy8vMzhBQU1ELy8zK1ZnUHYvLy8vLy8vMC9JQT09IiwiZWZmZWN0aXZlX3JvbGVzX2FwaSI6Ii9wb2RsaW5rL2FwaS92MS9qd3Qvcm9sZXMiLCJjdXJyZW50X29yZ19uYW1lIjoiQ0RNX1NhYVNfRGV2IiwidW5pcXVlX2lkIjoiJDJhJDEwJEt0VVBFVm54YzZxUFBIcWFlYWJxNy4uS2RLQXBmNHBUUlA4RU56VDFnc3VLdWdlVE92ZVFTIiwidXNlcl9mbmFtZSI6InNlcnZpY2UiLCJub25jZSI6IjFYNDhrX2lZMzhFTmtQekY0RTQxZnciLCJ1c2VyX2xuYW1lIjoiYXBpIiwiZ3JvdXBzX2FwaSI6Ii9wb2RsaW5rL2FwaS92MS9qd3QvZ3JvdXBzIiwiYXVkIjoiaWRtY19hcHAiLCJ1c2VyX2lkIjoiMUpZVVRUYzJ5d3poWFJ6ckNDUHBHbCIsIm9yZ19pZCI6IjNRNUFDSW9ZU2h3aGx1VzExR2FhQ28iLCJzc19hdHIiOnt9LCJwYXJlbnRfb3JnX2lkIjoiNTJaU1RCMElESzZkWHhhRVFMVWFRdSJ9.R72KEGrXvbmT8My-pmShdilnWLFpKiBIjG4UDUTyAfXlzP2bD5LZuKgd8vJGbKAS7-TtLym32o6sLKAFYVjuRQ"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="businessId"
+                                nogen="true"
+                                required="false"
+                                testWith="1000070159"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="entityName"
+                                nogen="true"
+                                required="false"
+                                testWith="party_investor"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$mdmApiUrl ||'/business-entity/public/api/v1/entity/'||$entityName||'/'|| $businessId}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam inheritance="" name="_showContentMeta">false</otherParam>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="IDS-SESSION-ID">{$i_sessionId}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="EntireResponse"
+                            type="objectlist">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Investor Related Records"
+                       maxRedirects="100"
+                       name="Get Investor Related Records"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="i_sessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="1sOqtdugBUciRxF5QzePcs"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="businessId"
+                                nogen="true"
+                                required="false"
+                                testWith="11440296"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="entityNames"
+                                nogen="true"
+                                required="false"
+                                testWith="&#34;party_person&#34;,&#34;party_organization&#34;,&#34;party_office&#34;"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="relationshipName"
+                                nogen="true"
+                                required="false"
+                                testWith="&#34;is_affiliated_with_organization&#34;,&#34;person_investment_advice_at_office&#34;,&#34;person_member_of_group&#34;,&#34;person_affiliated_with_organization&#34;,&#34;person_works_out_of_office&#34;"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$mdmApiUrl||'/business-entity/public/api/v1/related-entities/'|| $businessId}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="IDS-SESSION-ID">{$i_sessionId}</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+  "_page":0,
+  "_size":50,
+  "_anchorBusinessEntity":[{$entityNames}],
+  "_relationship":{{
+    "type":[{ $relationshipName }]
+  }}
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="Rel_EntireResponse"
+                            type="objectlist">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Investor Details By Seach Match"
+                       maxRedirects="100"
+                       name="Get Investor Details By Seach Match"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="eyJraWQiOiIxQ3dEeXFwNnRwOWZxU0xtS29hSWNHIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJyZWxlYXNlX2lkIjoiIiwiY3JfaWQiOiI5MGdjUG9qN2pjNmV4azVLdHRRSW9XIiwidXNlcl9uYW1lIjoic2VydmljZWFwaV9kZXYiLCJpc3MiOiJodHRwczovL2RtLXVzLmluZm9ybWF0aWNhY2xvdWQuY29tL2lkZW50aXR5LXNlcnZpY2UiLCJjdXJyZW50X29yZ19pZCI6ImFnRWhIMzJ1N2xFanM3SDZBb1pzNGkiLCJkZXBsb3ltZW50R3JvdXBJZCI6IjVHdTdnd3N5WkRTY01hcGRzR3I5aXMiLCJ1dHlwZSI6MCwiY2xpZW50X2lkIjoiaWRtY19hcHAiLCJ1c2VyX29yZ19pZCI6ImFnRWhIMzJ1N2xFanM3SDZBb1pzNGkiLCJ1c3QiOjEsImNvbnRleHRfdHlwZSI6InVzZXItd2ViLWFwcCIsImV4cCI6MTc4MDk0MjUxMywib3JnX25hbWUiOiJDRE1fREVWX0NNS19PUkciLCJ0aW1lX3pvbmVfaWQiOiJBbWVyaWNhL0xvc19BbmdlbGVzIiwiaWF0IjoxNzgwOTM1MzEzLCJqdGkiOiJnUzlacFV6cHBNeWxCaDZxSEZNdTR1IiwiZWZmZWN0aXZlX3ByaXZpbGVnZXNfbHciOiJlL1BjdjMxdWU1L09QalQzN2RuK3o1Mi8zVHkveEwzTjlzN2luNjA3ZnZyL2Uzdys0UC8vZjBEKy8vOFAvdi8vLy8vLy8vL3gvdy8rLy8vLy8vOXZQRHdIQUQvZzRrOFFBQUJvSlAvL0hQLy9QTS96UE0velA4OFArdWNEL3YvLy8vLy8vejhBQUFBQUFBQUFBQUFBQUFBQUFQQi9uaC93LzRjZnlQLy8vLzMvQklEc0Ivei9oLy8vQVh5ZTUzbk9mLzMvL3c4QUFJRC8vMytWZ1B2Ly8vLy9QL3crSUE9PSIsImVmZmVjdGl2ZV9yb2xlcyI6eyJDdXN0b21lciAzNjAgTWFuYWdlciI6ImtJcmFiWTlLTmVFbGNaZnc2aVVINkEiLCJBZG1pbiI6IjlnZWRCRG9ZUW9RaWJOTW9oZjVLQ2gifSwiY3VycmVudF9vcmdfbmFtZSI6IkNETV9ERVZfQ01LX09SRyIsInVuaXF1ZV9pZCI6IiQyYSQxMCRSOGN5anNwZHFxUm9IME03Y1M1WFV1dVdGeGlUaXBtZXNxL1MxZUxXNmRZMDVGbHhCbUhIVyIsInVzZXJfZm5hbWUiOiJTZXJ2aWNlYXBpIiwiZ3JvdXBzIjp7fSwibm9uY2UiOiJGQVp2QmIyeGoxNTh6aU0tVUJYZExBIiwidXNlcl9sbmFtZSI6ImRldiIsImF1ZCI6ImlkbWNfYXBwIiwidXNlcl9pZCI6Ijl0MGJFTkxSU0R0ZU5VdGtweW1QQ2ciLCJvcmdfaWQiOiJhZ0VoSDMydTdsRWpzN0g2QW9aczRpIiwic3NfYXRyIjp7fSwicGFyZW50X29yZ19pZCI6IjUyWlNUQjBJREs2ZFh4YUVRTFVhUXUifQ.sWAon2pV38SwaFdtWaiEvLxvlu7hQP8LbnDcWSa8i4XIMATIVbHFMRMjk7bnOhSnffFJD6TYzVlerQqW7XQOfQ"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="matchModelId"
+                                required="true"
+                                testWith="7d2ed73b-9512-4b58-89b4-8ba502f350c8"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="version"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="entityName"
+                                nogen="true"
+                                required="true"
+                                testWith="party_investor"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="requestBody"
+                                nogen="true"
+                                required="true"
+                                testWith="{&#xA;  &#34;data&#34;: {&#xA;    &#34;searchRecord&#34;: {&#xA;      &#34;partyType&#34;: {&#xA;        &#34;Name&#34;: &#34;Person&#34;,&#xA;        &#34;Code&#34;: 2102&#xA;      },&#xA;      &#34;addresses&#34;: [&#xA;        {&#xA;          &#34;formattedAddressLine1&#34;: &#34;&#34;,&#xA;          &#34;formattedAddressLine2&#34;: &#34;&#34;,&#xA;          &#34;city&#34;: &#34;&#34;,&#xA;          &#34;country&#34;: {&#xA;            &#34;Name&#34;: &#34;&#34;,&#xA;            &#34;Code&#34;: &#34;&#34;&#xA;          },&#xA;          &#34;postalCode&#34;: &#34;&#34;&#xA;        }&#xA;      ],&#xA;      &#34;personStandardizedName&#34;: &#34;MEGHANCOOPER&#34;,&#xA;      &#34;taxIdentificationType&#34;: {&#xA;        &#34;Name&#34;: &#34;S&#34;,&#xA;        &#34;Code&#34;: 16003&#xA;      },&#xA;      &#34;personBirthDate&#34;: &#34;&#34;,&#xA;      &#34;contact_mechanisms&#34;: [&#xA;        {&#xA;          &#34;contactMechanismType&#34;: {&#xA;            &#34;Name&#34;: &#34;&#34;,&#xA;            &#34;Code&#34;: &#34;&#34;&#xA;          },&#xA;          &#34;contactMechanismValue&#34;: &#34;&#34;&#xA;        }&#xA;      ],&#xA;      &#34;partyTaxIdLast4&#34;: &#34;7687&#34;&#xA;    }&#xA;  },&#xA;  &#34;searchControls&#34;: {&#xA;    &#34;maxRecordsToReturn&#34;: 100,&#xA;    &#34;fileRecordLimit&#34;: 10000,&#xA;    &#34;searchLevel&#34;: &#34;Typical&#34;&#xA;  }&#xA;}&#xA;"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$mdmApiUrl||'/match-ng-pair-gen/public/api/v2/searchmatch/'||$entityName||'?matchmodel='|| $matchModelId}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam inheritance="" name="matchmodel">{$matchModelId}</otherParam>
+                           <otherParam inheritance="" name="version">{$version}</otherParam>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="IDS-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                        <body>{$requestBody}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="entireResponse"
+                            type="objectlist">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Investor Details By Exact Search"
+                       maxRedirects="100"
+                       name="Get Investor Details By Exact Search"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="eyJraWQiOiIxQ3dEeXFwNnRwOWZxU0xtS29hSWNHIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJyZWxlYXNlX2lkIjoiIiwiY3JfaWQiOiI5MGdjUG9qN2pjNmV4azVLdHRRSW9XIiwidXNlcl9uYW1lIjoic2VydmljZWFwaV9kZXYiLCJpc3MiOiJodHRwczovL2RtLXVzLmluZm9ybWF0aWNhY2xvdWQuY29tL2lkZW50aXR5LXNlcnZpY2UiLCJjdXJyZW50X29yZ19pZCI6ImFnRWhIMzJ1N2xFanM3SDZBb1pzNGkiLCJkZXBsb3ltZW50R3JvdXBJZCI6IjVHdTdnd3N5WkRTY01hcGRzR3I5aXMiLCJ1dHlwZSI6MCwiY2xpZW50X2lkIjoiaWRtY19hcHAiLCJ1c2VyX29yZ19pZCI6ImFnRWhIMzJ1N2xFanM3SDZBb1pzNGkiLCJ1c3QiOjEsImNvbnRleHRfdHlwZSI6InVzZXItd2ViLWFwcCIsImV4cCI6MTc4MDk0MjUxMywib3JnX25hbWUiOiJDRE1fREVWX0NNS19PUkciLCJ0aW1lX3pvbmVfaWQiOiJBbWVyaWNhL0xvc19BbmdlbGVzIiwiaWF0IjoxNzgwOTM1MzEzLCJqdGkiOiJnUzlacFV6cHBNeWxCaDZxSEZNdTR1IiwiZWZmZWN0aXZlX3ByaXZpbGVnZXNfbHciOiJlL1BjdjMxdWU1L09QalQzN2RuK3o1Mi8zVHkveEwzTjlzN2luNjA3ZnZyL2Uzdys0UC8vZjBEKy8vOFAvdi8vLy8vLy8vL3gvdy8rLy8vLy8vOXZQRHdIQUQvZzRrOFFBQUJvSlAvL0hQLy9QTS96UE0velA4OFArdWNEL3YvLy8vLy8vejhBQUFBQUFBQUFBQUFBQUFBQUFQQi9uaC93LzRjZnlQLy8vLzMvQklEc0Ivei9oLy8vQVh5ZTUzbk9mLzMvL3c4QUFJRC8vMytWZ1B2Ly8vLy9QL3crSUE9PSIsImVmZmVjdGl2ZV9yb2xlcyI6eyJDdXN0b21lciAzNjAgTWFuYWdlciI6ImtJcmFiWTlLTmVFbGNaZnc2aVVINkEiLCJBZG1pbiI6IjlnZWRCRG9ZUW9RaWJOTW9oZjVLQ2gifSwiY3VycmVudF9vcmdfbmFtZSI6IkNETV9ERVZfQ01LX09SRyIsInVuaXF1ZV9pZCI6IiQyYSQxMCRSOGN5anNwZHFxUm9IME03Y1M1WFV1dVdGeGlUaXBtZXNxL1MxZUxXNmRZMDVGbHhCbUhIVyIsInVzZXJfZm5hbWUiOiJTZXJ2aWNlYXBpIiwiZ3JvdXBzIjp7fSwibm9uY2UiOiJGQVp2QmIyeGoxNTh6aU0tVUJYZExBIiwidXNlcl9sbmFtZSI6ImRldiIsImF1ZCI6ImlkbWNfYXBwIiwidXNlcl9pZCI6Ijl0MGJFTkxSU0R0ZU5VdGtweW1QQ2ciLCJvcmdfaWQiOiJhZ0VoSDMydTdsRWpzN0g2QW9aczRpIiwic3NfYXRyIjp7fSwicGFyZW50X29yZ19pZCI6IjUyWlNUQjBJREs2ZFh4YUVRTFVhUXUifQ.sWAon2pV38SwaFdtWaiEvLxvlu7hQP8LbnDcWSa8i4XIMATIVbHFMRMjk7bnOhSnffFJD6TYzVlerQqW7XQOfQ"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="requestBody"
+                                nogen="true"
+                                required="true"
+                                testWith="{&#xA;  &#34;entityType&#34;: &#34;party_investor&#34;,&#xA;  &#34;search&#34;: &#34;*&#34;,&#xA;  &#34;pageSize&#34;: 1000,&#xA;  &#34;filters&#34;: {&#xA;    &#34;filter&#34;: [&#xA;      {&#xA;&#x9;&#x9;  &#34;comparator&#34;: &#34;EQUALS&#34;,&#xA;        &#34;fieldName&#34;: &#34;party_investor.contact_mechanisms.contactMechanismValue&#34;,&#xA;        &#34;fieldValue&#34;: &#34;test@capgroup.com&#34;&#xA;      },&#xA;&#x9;  {&#xA;&#x9;&#x9;&#34;comparator&#34;: &#34;EQUALS&#34;,&#xA;        &#34;fieldName&#34;: &#34;party_investor.contact_mechanisms.contactMechanismType.Code&#34;,&#xA;        &#34;fieldValue&#34;: &#34;301&#34;&#xA;      }&#xA;    ]&#xA;  }&#xA;}"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$mdmApiUrl||'/search/public/api/v1/search'}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="IDS-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                        <body>{$requestBody}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="EntireResponse"
+                            type="xml"/>
+                     <field description="" name="businessId" type="string">
+                        <xquery>&lt;businessIds&gt;
+{
+  for $rec in $EntireResponse/searchResult/records
+  return
+    &lt;businessId&gt;{ $rec/_meta/id/text() }&lt;/businessId&gt;
+}
+&lt;/businessIds&gt;</xquery>
+                     </field>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Investor Details By Source"
+                       maxRedirects="100"
+                       name="Get Investor Details By Source"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="i_sessionId"
+                                nogen="true"
+                                required="false"
+                                testWith="eyJraWQiOiIxQ3dEeXFwNnRwOWZxU0xtS29hSWNHIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJjcl9pZCI6IjlhcFcyeWx6eGFDZzVnOU92Z0p0d0IiLCJ1c2VyX25hbWUiOiJzZXJ2aWNlYXBpIiwiaXNzIjoiaHR0cHM6Ly9kbS11cy5pbmZvcm1hdGljYWNsb3VkLmNvbS9pZGVudGl0eS1zZXJ2aWNlIiwiY3VycmVudF9vcmdfaWQiOiIzUTVBQ0lvWVNod2hsdVcxMUdhYUNvIiwiZGVwbG95bWVudEdyb3VwSWQiOiI1R3U3Z3dzeVpEU2NNYXBkc0dyOWlzIiwidXR5cGUiOjAsImNsaWVudF9pZCI6ImlkbWNfYXBwIiwidXNlcl9vcmdfaWQiOiIzUTVBQ0lvWVNod2hsdVcxMUdhYUNvIiwidXN0IjoxLCJleHAiOjE3NzE5MjE4NzcsIm9yZ19uYW1lIjoiQ0RNX1NhYVNfRGV2IiwidGltZV96b25lX2lkIjoiQW1lcmljYS9Mb3NfQW5nZWxlcyIsImlhdCI6MTc3MTkxODI3NywianRpIjoia3YyVDFmUnpaZ3NnUG9mRHJ2ZGRPQSIsImVmZmVjdGl2ZV9wcml2aWxlZ2VzX2x3IjoiZS9QY3YzMXVlNS9PUGpUMzdkbit6NTIvM1R5L3hMM045czdpbjYwN2Z2ci9lM3crNFAvL2YwRC8vLzhQL3YvLy8vLy8vLy94L3gvKy8vLy8vLzl2UER3SEFEL2c0azhRQUFENDcvLy9IUC8vUE0velBNL3pQODhQK3Y4SC92Ly8vLy8vL3o4QUFBQUFBQUFBQUFBQUFBQUFBUEIvbmgvdy8vOGZ5UC8vLy8zLy9JZnNCL3ovaC8vL2YzeWU1M25PLy8zLy8zOEFBTUQvLzMrVmdQdi8vLy8vLy8wUCIsImVmZmVjdGl2ZV9yb2xlc19hcGkiOiIvcG9kbGluay9hcGkvdjEvand0L3JvbGVzIiwiY3VycmVudF9vcmdfbmFtZSI6IkNETV9TYWFTX0RldiIsInVuaXF1ZV9pZCI6IiQyYSQwNyRsejc0bW8zcFpEa2huY2ZuSUNqZ2Eua3lZeVIxdExycktJWVE0bXRkaUl4TGdvSHhJR0tVRyIsInVzZXJfZm5hbWUiOiJzZXJ2aWNlIiwibm9uY2UiOiIwbmZqbnplU09UbVNnVGZfNUh5SVNRIiwidXNlcl9sbmFtZSI6ImFwaSIsImdyb3Vwc19hcGkiOiIvcG9kbGluay9hcGkvdjEvand0L2dyb3VwcyIsImF1ZCI6ImlkbWNfYXBwIiwidXNlcl9pZCI6IjFKWVVUVGMyeXd6aFhSenJDQ1BwR2wiLCJvcmdfaWQiOiIzUTVBQ0lvWVNod2hsdVcxMUdhYUNvIiwic3NfYXRyIjp7fSwicGFyZW50X29yZ19pZCI6IjUyWlNUQjBJREs2ZFh4YUVRTFVhUXUifQ.8RXd9eWKUiSAHEY-HM8L_WornpaRY51803fNKy-NObKKHSGMm5biPThG5Ipb1udC8uljdCpvd-xaNbD3zqHZoQ"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="entityName"
+                                nogen="true"
+                                required="false"
+                                testWith="party_investor"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="sourceSystem"
+                                nogen="true"
+                                required="false"
+                                testWith="ta2000"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="sourceId"
+                                nogen="true"
+                                required="false"
+                                testWith="PER_1082779172_2560910889"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$mdmApiUrl||'/business-entity/public/api/v1/entity-xref/'|| $entityName||'/'|| $sourceSystem||'/'|| $sourceId}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="IDS-SESSION-ID">{$i_sessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="businessId" type="string">
+                        <xquery>{/root/_meta/businessId/text()}</xquery>
+                     </field>
+                     <field description=""
+                            entireResponse="true"
+                            name="sourceEntireResponse"
+                            type="objectlist">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Update Investor Details"
+                       maxRedirects="100"
+                       name="Update Investor Details"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="entityName"
+                                required="false"
+                                testWith="party_investor"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="sourceId"
+                                required="false"
+                                testWith="105001100121924"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="sourceSystem"
+                                required="false"
+                                testWith="ei"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                required="false"
+                                testWith="eyJraWQiOiIxQ3dEeXFwNnRwOWZxU0xtS29hSWNHIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJyZWxlYXNlX2lkIjoiIiwiY3JfaWQiOiI4MzZhczVlZEJpcWw5MjdtUDBRbTZkIiwidXNlcl9uYW1lIjoic2VydmljZWFwaV9kZXYiLCJpc3MiOiJodHRwczovL2RtLXVzLmluZm9ybWF0aWNhY2xvdWQuY29tL2lkZW50aXR5LXNlcnZpY2UiLCJjdXJyZW50X29yZ19pZCI6ImFnRWhIMzJ1N2xFanM3SDZBb1pzNGkiLCJkZXBsb3ltZW50R3JvdXBJZCI6IjVHdTdnd3N5WkRTY01hcGRzR3I5aXMiLCJ1dHlwZSI6MCwiY2xpZW50X2lkIjoiaWRtY19hcHAiLCJ1c2VyX29yZ19pZCI6ImFnRWhIMzJ1N2xFanM3SDZBb1pzNGkiLCJ1c3QiOjEsImNvbnRleHRfdHlwZSI6InVzZXItd2ViLWFwcCIsImV4cCI6MTc3OTg4MTA1Miwib3JnX25hbWUiOiJDRE1fREVWX0NNS19PUkciLCJ0aW1lX3pvbmVfaWQiOiJBbWVyaWNhL0xvc19BbmdlbGVzIiwiaWF0IjoxNzc5ODczODUyLCJqdGkiOiIxRHhaS3hqY2FxV2NvOElMbjkxS01XIiwiZWZmZWN0aXZlX3ByaXZpbGVnZXNfbHciOiJlL1BjdjMxdWU1L09QalQzN2RuK3o1Mi8zVHkveEwzTjlzN2luNjA3ZnZyL2Uzdys0UC8vZjBEKy8vOFAvdi8vLy8vLy8vL3gvdy8rLy8vLy8vOXZQRHdIQUQvZzRrOFFBQUJvSlAvL0hQLy9QTS96UE0velA4OFArdWNEL3YvLy8vLy8vejhBQUFBQUFBQUFBQUFBQUFBQUFQQi9uaC93LzRjZnlQLy8vLzMvQklEc0Ivei9oLy8vQVh5ZTUzbk9mLzMvL3c4QUFJRC8vMytWZ1B2Ly8vLy9QL3crSUE9PSIsImVmZmVjdGl2ZV9yb2xlcyI6eyJDdXN0b21lciAzNjAgTWFuYWdlciI6ImtJcmFiWTlLTmVFbGNaZnc2aVVINkEiLCJBZG1pbiI6IjlnZWRCRG9ZUW9RaWJOTW9oZjVLQ2gifSwiY3VycmVudF9vcmdfbmFtZSI6IkNETV9ERVZfQ01LX09SRyIsInVuaXF1ZV9pZCI6IiQyYSQxMCRCNDlHRUdwTGNicGp3VHNPQm9nN1R1NlUubnZxV09YVVJ2STZhSTVnNTlSVHFxdGVhcEJNaSIsInVzZXJfZm5hbWUiOiJTZXJ2aWNlYXBpIiwiZ3JvdXBzIjp7fSwibm9uY2UiOiJWd1ZST0Y5VDdUVFUwcU56UWw1aXNnIiwidXNlcl9sbmFtZSI6ImRldiIsImF1ZCI6ImlkbWNfYXBwIiwidXNlcl9pZCI6Ijl0MGJFTkxSU0R0ZU5VdGtweW1QQ2ciLCJvcmdfaWQiOiJhZ0VoSDMydTdsRWpzN0g2QW9aczRpIiwic3NfYXRyIjp7fSwicGFyZW50X29yZ19pZCI6IjUyWlNUQjBJREs2ZFh4YUVRTFVhUXUifQ.4k4jP78qiLmJYRdmdVQ7FVqZc93xZ2ARWZxFqtYfc8v7oIlkkQ82Ytdw6-N3rFvbn2AM7rOqfKW5Bs7LeCUCEw"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="reqBody"
+                                required="false"
+                                testWith="[&#xA;  {&#xA;    &#34;op&#34;: &#34;replace&#34;,&#xA;    &#34;path&#34;: &#34;contact_mechanisms[PER_EI_11100_1101|EMAIL|3].source_keys[PER_EI_11100_1101|EMAIL|3].x_source_name&#34;,&#xA;    &#34;value&#34;: &#34;ei&#34;&#xA;    &#xA;  },&#xA;   {&#xA;    &#34;op&#34;: &#34;replace&#34;,&#xA;    &#34;path&#34;: &#34;contact_mechanisms[PER_EI_11100_1101|EMAIL|3].source_keys[PER_EI_11100_1101|EMAIL|3].x_source_key&#34;,&#xA;    &#34;value&#34;: &#34;PER_EI_11100_1101|EMAIL|3&#34;&#xA;    &#xA;  },&#xA;  {&#xA;    &#34;op&#34;: &#34;replace&#34;,&#xA;    &#34;path&#34;: &#34;contact_mechanisms[PER_EI_11100_1101|EMAIL|3].source_keys[PER_EI_11100_1101|EMAIL|3].lastUpdateDate&#34;,&#xA;    &#34;value&#34;: 1778675505000&#xA;    &#xA;  },&#xA;  {&#xA;    &#34;op&#34;: &#34;replace&#34;,&#xA;    &#34;path&#34;: &#34;contact_mechanisms[PER_EI_11100_1101|EMAIL|3].source_keys[PER_EI_11100_1101|EMAIL|3].lastUpdatedBy&#34;,&#xA;    &#34;value&#34;: &#34;test&#34;&#xA;    &#xA;  }&#xA;]"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$mdmApiUrl ||'/business-entity/public/api/v1/entity-xref/'|| $entityName ||'/'|| $sourceSystem ||'/'|| $sourceId }"
+                                        verb="PATCH">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="IDS-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                        <body>{$reqBody}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get Investor Source Members"
+                       maxRedirects="100"
+                       name="Get Investor Source Members"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description=""
+                                label=""
+                                name="businessId"
+                                nogen="true"
+                                required="true"
+                                testWith="1000002001"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="sessionId"
+                                nogen="true"
+                                required="true"
+                                testWith="eyJraWQiOiIxQ3dEeXFwNnRwOWZxU0xtS29hSWNHIiwidHlwIjoiSldUIiwiYWxnIjoiRVMyNTYifQ.eyJyZWxlYXNlX2lkIjoiIiwiY3JfaWQiOiJnMFdpZ2lSOUEwRWxydlhVbUt1eWtOIiwidXNlcl9uYW1lIjoic2VydmljZWFwaSIsImlzcyI6Imh0dHBzOi8vZG0tdXMuaW5mb3JtYXRpY2FjbG91ZC5jb20vaWRlbnRpdHktc2VydmljZSIsImN1cnJlbnRfb3JnX2lkIjoiM1E1QUNJb1lTaHdobHVXMTFHYWFDbyIsImRlcGxveW1lbnRHcm91cElkIjoiNUd1N2d3c3laRFNjTWFwZHNHcjlpcyIsInV0eXBlIjowLCJjbGllbnRfaWQiOiJpZG1jX2FwcCIsInVzZXJfb3JnX2lkIjoiM1E1QUNJb1lTaHdobHVXMTFHYWFDbyIsInVzdCI6MSwiY29udGV4dF90eXBlIjoidXNlci13ZWItYXBwIiwiZXhwIjoxNzc2MzQzNTc3LCJvcmdfbmFtZSI6IkNETV9TYWFTX0RldiIsInRpbWVfem9uZV9pZCI6IkFtZXJpY2EvTG9zX0FuZ2VsZXMiLCJpYXQiOjE3NzYzMzk5NzcsImp0aSI6IjhlcU9FT1RDYXczakRiQ2k2TzlSV1UiLCJlZmZlY3RpdmVfcHJpdmlsZWdlc19sdyI6ImUvUGN2MzF1ZTUvT1BqVDM3ZG4rejUyLzNUeS94TDNOOXM3aW42MDdmdnIvZTN3KzRQLy9mMEQvLy84UC92Ly8vLy8vLy8veC94LysvLy8vLy85dlBEd0hBRC9nNGs4UUFBRDQ3Ly8vSFAvL1BNL3pQTS96UDg4UCt2OEgvdi8vLy8vLy96OEFBQUFBQUFBQUFBQUFBQUFBQVBCL25oL3cvLzhmeVAvLy8vMy8vSWZzQi96L2gvLy9mM3llNTNuTy8vMy8vMzhBQU1ELy8zK1ZnUHYvLy8vLy8vMC9JQT09IiwiZWZmZWN0aXZlX3JvbGVzX2FwaSI6Ii9wb2RsaW5rL2FwaS92MS9qd3Qvcm9sZXMiLCJjdXJyZW50X29yZ19uYW1lIjoiQ0RNX1NhYVNfRGV2IiwidW5pcXVlX2lkIjoiJDJhJDEwJGIuQTFYS1hRMkZPSWpkL2NHSm10U3VpRlBVVThjenlHOHZ0TWdZQzFYVFY4WkNocDZoZXFhIiwidXNlcl9mbmFtZSI6InNlcnZpY2UiLCJub25jZSI6IlVCVndCcDE0RGw4cl9RNW94Yjc3SUEiLCJ1c2VyX2xuYW1lIjoiYXBpIiwiZ3JvdXBzX2FwaSI6Ii9wb2RsaW5rL2FwaS92MS9qd3QvZ3JvdXBzIiwiYXVkIjoiaWRtY19hcHAiLCJ1c2VyX2lkIjoiMUpZVVRUYzJ5d3poWFJ6ckNDUHBHbCIsIm9yZ19pZCI6IjNRNUFDSW9ZU2h3aGx1VzExR2FhQ28iLCJzc19hdHIiOnt9LCJwYXJlbnRfb3JnX2lkIjoiNTJaU1RCMElESzZkWHhhRVFMVWFRdSJ9.jjqCywXIQUe3kyYEM4bF39CLRZkVDjxQj6dz5gtZhPOFkeNtVjWobW0EtIbsHHYEkvQLKi8Ea_h4Xv9qocjgPg"
+                                type="string"/>
+                     <parameter description=""
+                                label=""
+                                name="entityName"
+                                nogen="true"
+                                required="true"
+                                testWith="party_investor"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$mdmApiUrl ||'/business-entity/public/api/v1/entity-member/'||$entityName||'/'|| $businessId}"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="IDS-SESSION-ID">{$sessionId}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="membersEntireResponse"
+                            type="objectlist">
+                        <options>
+                           <option name="relationshipName">Child</option>
+                           <option name="referenceTo">$po:$any</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                  </output>
+                  <responseProcessing enableMultipartParsing="false" processingType="AUTO"/>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>52agsFUYCyBfCrmGzdQiwu</types1:GUID>
+      <types1:DisplayName>sc-investor-operations-v2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.286Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

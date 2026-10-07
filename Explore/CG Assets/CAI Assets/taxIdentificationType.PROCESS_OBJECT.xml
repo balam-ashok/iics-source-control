@@ -1,0 +1,47 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>xiggor3rp3yD7ty-gt-396321-2026-06-17T06:10:08.376Z::po.xml</types1:EntryId>
+      <types1:Name>taxIdentificationType</types1:Name>
+      <types1:ParentFlowIds>21GRvDINciZBpDU-gt-401412-2026-06-17T06:10:10.865Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:08Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="taxIdentificationType"
+                        isByCopy="true"
+                        name="taxIdentificationType">
+            <description/>
+            <tags/>
+            <detail>
+               <field label=""
+                      name="code"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="name"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>2E1FpBLSzGacZ1tGsl0uAI</types1:GUID>
+      <types1:DisplayName>taxIdentificationType</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.236Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

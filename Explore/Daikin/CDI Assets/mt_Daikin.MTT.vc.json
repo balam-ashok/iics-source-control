@@ -1,0 +1,145 @@
+{
+  "name" : "mt_Daikin",
+  "runtimeEnvironmentId" : "@a5Ov5a2wiculgnFfINaha8",
+  "runtimeEnvironmentName" : "DESKTOP-K4B9BJF",
+  "maxLogs" : 10,
+  "parameters" : [
+    {
+      "name" : "$Source$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "Source",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "Source"
+      },
+      "sourceConnectionId" : "@avwYbV2FjAgdVoLrQ9iu8k",
+      "connectionName" : "Daikin-sql",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "Daikin_Source",
+          "label" : "Daikin_Source",
+          "metadataUpdated" : false
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "Daikin_Source",
+            "label" : "Daikin_Source",
+            "metadataUpdated" : false
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "fetchMode" : "ORIGINAL",
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$Target$",
+      "type" : "TARGET",
+      "label" : "Target",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "supportApplyDDLChanges" : "true",
+        "originalPath" : "Target"
+      },
+      "targetConnectionId" : "@avwYbV2FjAgdVoLrQ9iu8k",
+      "connectionName" : "Daikin-sql",
+      "targetObject" : "Daikin_Target",
+      "targetObjectLabel" : "Daikin_Target",
+      "newFlatFile" : false,
+      "newObject" : true,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "newObjectName" : "Daikin_Target",
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "operationType" : "Insert",
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "singleMode" : true
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "Daikin_Target",
+      "objectLabel" : "Daikin_Target",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "fetchMode" : "ORIGINAL",
+      "targetSchemaMode" : "DONT_APPLY_CHANGES",
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    }
+  ],
+  "verbose" : false,
+  "mappingId" : "@79dKJR5oYmwiu1xyJa7Sib",
+  "mappingTemplateName" : "Mapping_Daikin",
+  "sessionPropertiesList" : [
+    {
+      "name" : "Pushdown Optimization",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Context",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Fallback Option",
+      "value" : "Partial PDO"
+    }
+  ],
+  "hidden" : false,
+  "enableCrossSchemaPushdown" : true,
+  "enableParallelRun" : false,
+  "autoTunedApplied" : false,
+  "autoTunedAppliedType" : "NONE",
+  "paramFileType" : "PARAM_FILE_LOCAL",
+  "schemaMode" : "async",
+  "valid" : true,
+  "optimizationPlan" : "NONE",
+  "allowMaxFieldLength" : false,
+  "specialCharacterSupport" : false,
+  "midstreamPreview" : false,
+  "vcsExportTime" : "2026-10-05 06:26:21 PDT"
+}

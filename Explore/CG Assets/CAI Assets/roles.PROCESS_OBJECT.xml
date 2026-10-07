@@ -1,0 +1,56 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>uVFSJsJGD4ARW8U-gt-396355-2026-06-17T06:10:09.328Z::po.xml</types1:EntryId>
+      <types1:Name>roles</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="roles"
+                        isByCopy="true"
+                        name="roles">
+            <description/>
+            <tags/>
+            <detail>
+               <field label=""
+                      name="roleType"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="status"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>dVC9QXca7Kvc8YSybMhuoQ</types1:GUID>
+      <types1:DisplayName>roles</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.76Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

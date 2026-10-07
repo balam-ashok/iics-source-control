@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "9GFczJJGLerbzlLtwNHB2L",
+    "name" : "RS_X_No placeholder",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9GFczJJGLerbzlLtwNHB2L"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-23T08:16:16.705Z",
+  "objectRefs" : [ {
+    "id" : "6YTgNnC5ea8ktHpn2bZogl",
+    "name" : "Dict_Cust_Tier",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6YTgNnC5ea8ktHpn2bZogl"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "json",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/2209"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,1014 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_egress_BFSI_corporate",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Target",
+        "groupLink" : "root -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-20T05:53:17.045Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "responseXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "root",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "BFSI_Corporate_Error",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "address",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "address_Error",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "contactDetails",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "contactDetails_Error",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI_Corporate(id=bfsi_corporate)",
+            "label" : "Home/Custom Assets/Business Entities/BFSI_Corporate(id=bfsi_corporate)",
+            "objectName" : "BFSI_Corporate(id=bfsi_corporate)",
+            "path" : "Home/Custom Assets/Business Entities/BFSI_Corporate(id=bfsi_corporate)",
+            "retainMetadata" : "false"
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false",
+            "requestXml" : "dummy"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "root",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "PK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "sourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:sourcePKey"
+                },
+                {
+                  "name" : "businessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:businessId"
+                },
+                {
+                  "name" : "sourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:sourceSystem"
+                },
+                {
+                  "name" : "corporateId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:corporateId"
+                },
+                {
+                  "name" : "customerId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:customerId"
+                },
+                {
+                  "name" : "companyName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:companyName"
+                },
+                {
+                  "name" : "industryType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:industryType"
+                },
+                {
+                  "name" : "organizationType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:organizationType"
+                },
+                {
+                  "name" : "yearOfIncorporation",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:yearOfIncorporation"
+                },
+                {
+                  "name" : "companySize",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:companySize"
+                },
+                {
+                  "name" : "annualTurnover",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:annualTurnover"
+                },
+                {
+                  "name" : "riskRating",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:riskRating"
+                },
+                {
+                  "name" : "gstNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:gstNumber"
+                },
+                {
+                  "name" : "cinNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:cinNumber"
+                },
+                {
+                  "name" : "dunsNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:dunsNumber"
+                },
+                {
+                  "name" : "addressLine1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressLine1"
+                },
+                {
+                  "name" : "addressLine2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressLine2"
+                },
+                {
+                  "name" : "city",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:city"
+                },
+                {
+                  "name" : "state",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:state"
+                },
+                {
+                  "name" : "country",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:country"
+                },
+                {
+                  "name" : "contact",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contact"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:createdBy"
+                },
+                {
+                  "name" : "createdDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:createdDate"
+                },
+                {
+                  "name" : "lastUpdatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "lastUpdatedDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:lastUpdatedDate"
+                },
+                {
+                  "name" : "kycCompletionStatus",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:kycCompletionStatus"
+                },
+                {
+                  "name" : "sourceLastUpdateDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:_cm/json:sourceLastUpdateDate"
+                },
+                {
+                  "name" : "creationDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:creationDate"
+                },
+                {
+                  "name" : "lastUpdateDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:lastUpdateDate"
+                },
+                {
+                  "name" : "state1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:state"
+                }
+              ]
+            },
+            {
+              "groupName" : "BFSI_Corporate_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:BFSI_Corporate_ErrorArray/json:BFSI_Corporate_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:BFSI_Corporate_ErrorArray/json:BFSI_Corporate_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:BFSI_Corporate_ErrorArray/json:BFSI_Corporate_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:BFSI_Corporate_ErrorArray/json:BFSI_Corporate_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:BFSI_Corporate_ErrorArray/json:BFSI_Corporate_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:BFSI_Corporate_ErrorArray/json:BFSI_Corporate_Error/json:errorMessage"
+                }
+              ]
+            },
+            {
+              "groupName" : "address",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address",
+              "xfields" : [
+                {
+                  "name" : "PK_address",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "sourcePKey1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:sourcePKey"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:parentId"
+                },
+                {
+                  "name" : "fieldGroup_State",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:fieldGroup_State"
+                },
+                {
+                  "name" : "addressLine1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:addressLine1"
+                },
+                {
+                  "name" : "addressLine2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:addressLine2"
+                },
+                {
+                  "name" : "addressLine3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:addressLine3"
+                },
+                {
+                  "name" : "city",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:city"
+                },
+                {
+                  "name" : "state",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:state"
+                },
+                {
+                  "name" : "country",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:country"
+                },
+                {
+                  "name" : "postalCode",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:postalCode"
+                }
+              ]
+            },
+            {
+              "groupName" : "address_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:address_ErrorArray/json:address_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_address",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:address_ErrorArray/json:address_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:address_ErrorArray/json:address_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:address_ErrorArray/json:address_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:address_ErrorArray/json:address_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:addressArray/json:address/json:address_ErrorArray/json:address_Error/json:errorMessage"
+                }
+              ]
+            },
+            {
+              "groupName" : "contactDetails",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails",
+              "xfields" : [
+                {
+                  "name" : "PK_contactDetails",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "sourcePKey1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:sourcePKey"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:parentId"
+                },
+                {
+                  "name" : "fieldGroup_State",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:fieldGroup_State"
+                },
+                {
+                  "name" : "contactNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contactNumber"
+                },
+                {
+                  "name" : "email",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:email"
+                },
+                {
+                  "name" : "contact_Number",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contact_Number"
+                },
+                {
+                  "name" : "countryCode",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:countryCode"
+                }
+              ]
+            },
+            {
+              "groupName" : "contactDetails_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contactDetails_ErrorArray/json:contactDetails_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_contactDetails",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contactDetails_ErrorArray/json:contactDetails_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contactDetails_ErrorArray/json:contactDetails_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contactDetails_ErrorArray/json:contactDetails_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contactDetails_ErrorArray/json:contactDetails_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Corporate_id_bfsi_corporate_/json:BFSI_Corporate/json:contactDetailsArray/json:contactDetails/json:contactDetails_ErrorArray/json:contactDetails_Error/json:errorMessage"
+                }
+              ]
+            }
+          ],
+          "packed" : {
+            "packedFields" : null
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-20T05:53:17.045Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@3zwKOJqBumojYelMEmLrgb",
+          "connectionName" : "conn-BM-Flatfile-BFSI-Target",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "BFSI_corporate_source_records.csv",
+            "label" : "BFSI_corporate_source_records.csv",
+            "path" : "BFSI_corporate_source_records.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:34 PDT"
+}

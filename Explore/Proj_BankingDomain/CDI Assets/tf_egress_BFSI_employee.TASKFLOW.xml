@@ -1,0 +1,155 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>RES7FdpOfTRgpDq-gt-14868-2026-02-19T11:42:38.696Z::tf.xml</types1:EntryId>
+      <types1:Name>tf_egress_BFSI_employee</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>pooja</types1:CreatedBy>
+      <types1:CreationDate>2026-02-19T11:42:39Z</types1:CreationDate>
+      <types1:ModifiedBy>pooja</types1:ModifiedBy>
+      <types1:ModificationDate>2026-02-24T10:25:15Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>pooja</types1:PublishedBy>
+      <types1:PublicationDate>2026-02-24T10:25:18Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.tf_egress_BFSI_employee/tf_egress_BFSI_employee.tf.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="tf_egress_BFSI_employee"
+                   name="tf_egress_BFSI_employee"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="jobInstanceId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="Data Task 1" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-egress-BFSI-employee-eoibGpoFRuwk6pYbjkPEq0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">false</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="mlte4jzx" targetId="mlte4k0m"/>
+               </start>
+               <eventContainer id="mlte4k0m">
+                  <service id="mlte4jzw">
+                     <title>Data Task 1</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_egress_BFSI_employee</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">eoibGpoFRuwk6pYbjkPEq0</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-egress-BFSI-employee-eoibGpoFRuwk6pYbjkPEq0">temp.Data Task 1</operation>
+                           <operation source="field"
+                                      to="mt-egress-BFSI-employee-eoibGpoFRuwk6pYbjkPEq0/inout[1]/jobInstanceId">input.jobInstanceId</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Data Task 1/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Data Task 1/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Data Task 1/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Data Task 1/output/FirstErrorCode">First Error Code</operation>
+                        <operation source="field" to="temp.Data Task 1/inout/jobInstanceId">jobInstanceId</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="mlte4jzy" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.Data Task 1/fault"
+                            id="mlte4k0k"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Data Task 1/fault"
+                            id="mlte4k0l"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-egress-BFSI-employee-eoibGpoFRuwk6pYbjkPEq0"
+                              isByCopy="true"
+                              name="mt-egress-BFSI-employee-eoibGpoFRuwk6pYbjkPEq0">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>elrEAQ7P8UzfnxCqwKEDCo</types1:GUID>
+      <types1:DisplayName>tf_egress_BFSI_employee</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-23T08:34:47.231Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

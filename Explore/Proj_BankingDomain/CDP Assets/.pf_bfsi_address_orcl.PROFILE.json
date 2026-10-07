@@ -1,0 +1,127 @@
+{
+  "objectInfo" : {
+    "id" : "ggBgWWlkx45lwTKbFoiusP",
+    "name" : "pf_bfsi_address_orcl",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "c70e7b11-de4e-4bdc-bb5c-0ada76591792"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-23T08:34:48.229Z",
+  "objectRefs" : [ {
+    "id" : "8n8HwlnEhm9bAGQOGR7jec",
+    "name" : "rs_country",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8n8HwlnEhm9bAGQOGR7jec"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Accuracy",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "3DTr8pJr0J4ffW2MSKEgA0",
+    "name" : "rs_addressId",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3DTr8pJr0J4ffW2MSKEgA0"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Uniqueness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "503WgIMobCGlDr2LLvdnqy",
+    "name" : "Conn-BM-Oracle-BFSI",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000001M"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "65Me1PTOCULfvrXCwVlKsD",
+    "name" : "rs_status_PL__CompletenessCheck_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "65Me1PTOCULfvrXCwVlKsD"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Completeness of status_PL_ based on Completeness Check insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "6hQrbOGIZcHlGbdsweHJAt",
+    "name" : "rs_latitude",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6hQrbOGIZcHlGbdsweHJAt"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

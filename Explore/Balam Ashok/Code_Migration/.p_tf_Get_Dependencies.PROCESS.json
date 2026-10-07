@@ -1,0 +1,107 @@
+{
+  "objectInfo" : {
+    "id" : "k32jsVCT28ug9oJhCl666W",
+    "name" : "p_tf_Get_Dependencies",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "t0N0Qqi7EkWoKeE-gt-5371794-2026-09-30T09:21:09.316Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "This process will run CDI taskflow to get the dependencies for objects.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:22:43.418Z",
+  "objectRefs" : [ {
+    "id" : "8I8QQC0F89liJSeFmLBt0c",
+    "name" : "app-email",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hEuHWvJ4rswVYx8-gt-5371782-2026-09-30T09:21:08.122Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection to send email notication",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "eGpU9LNPzCIj5HCzYos4sf",
+    "name" : "AppCon-Login-Source-Org",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "2QX3cjk91pqrzYL-gt-5371728-2026-09-30T09:21:07.864Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Login"
+  }, {
+    "id" : "awH7aPbMEvAh4LCrEoA2iY",
+    "name" : "app-fileWriter",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "2xn2H0Fdw8jIw8j-gt-5371730-2026-09-30T09:21:07.868Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection to write the export file to local system.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "9cdaqXuRDsgeqsvXGZwJ6m",
+    "name" : "AppCon-Get-Dependecies",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "YLieKdv7yjJYKqU-gt-5387024-2026-09-30T09:21:08.822Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection to trigger taskflow in CDI to fetch all the dependent objects.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

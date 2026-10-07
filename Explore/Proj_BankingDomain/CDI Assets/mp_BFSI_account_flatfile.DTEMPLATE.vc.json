@@ -1,0 +1,2138 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_BFSI_account_flatfile",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Expression -> Target"
+      },
+      {
+        "link" : "Source -> Expression"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T11:46:49.968Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "accountId"
+            },
+            "name" : "accountId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "customerId"
+            },
+            "name" : "customerId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "accountNumber"
+            },
+            "name" : "accountNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "accountType_PL_"
+            },
+            "name" : "accountType_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "status_PL_"
+            },
+            "name" : "status_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "balance"
+            },
+            "name" : "balance",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "interestRate"
+            },
+            "name" : "interestRate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "openDate"
+            },
+            "name" : "openDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "closingDate"
+            },
+            "name" : "closingDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "currency_PL_"
+            },
+            "name" : "currency_PL_",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "overdraftLimit"
+            },
+            "name" : "overdraftLimit",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdDate"
+            },
+            "name" : "createdDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedBy"
+            },
+            "name" : "lastUpdatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdatedDate"
+            },
+            "name" : "lastUpdatedDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@6VPVtdr67e6d5JONaJ1ySu",
+          "connectionName" : "conn_BFSI_ Flatfile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "BFSI_Account_Flatfile.csv",
+            "label" : "BFSI_Account_Flatfile.csv",
+            "objectName" : "BFSI_Account_Flatfile.csv",
+            "path" : "BFSI_Account_Flatfile.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "accountId",
+                "fieldType" : "CONNECTOR",
+                "label" : "accountId",
+                "nativeName" : "accountId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "customerId",
+                "fieldType" : "CONNECTOR",
+                "label" : "customerId",
+                "nativeName" : "customerId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "accountNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "accountNumber",
+                "nativeName" : "accountNumber",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "accountType_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "accountType(PL)",
+                "nativeName" : "accountType(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "status_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "status(PL)",
+                "nativeName" : "status(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "balance",
+                "fieldType" : "CONNECTOR",
+                "label" : "balance",
+                "nativeName" : "balance",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "interestRate",
+                "fieldType" : "CONNECTOR",
+                "label" : "interestRate",
+                "nativeName" : "interestRate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "openDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "openDate",
+                "nativeName" : "openDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "closingDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "closingDate",
+                "nativeName" : "closingDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "currency_PL_",
+                "fieldType" : "CONNECTOR",
+                "label" : "currency(PL)",
+                "nativeName" : "currency(PL)",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "overdraftLimit",
+                "fieldType" : "CONNECTOR",
+                "label" : "overdraftLimit",
+                "nativeName" : "overdraftLimit",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "createdDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdDate",
+                "nativeName" : "createdDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedBy",
+                "nativeName" : "lastUpdatedBy",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdatedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdatedDate",
+                "nativeName" : "lastUpdatedDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "BFSI_Account_Flatfile.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T11:46:49.979Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creationDate"
+            },
+            "name" : "creationDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdateDate"
+            },
+            "name" : "lastUpdateDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "updatedBy"
+            },
+            "name" : "updatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "originalBusinessId"
+            },
+            "name" : "originalBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mergedBusinessId"
+            },
+            "name" : "mergedBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 30000,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "validationStatus"
+            },
+            "name" : "validationStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "populationName"
+            },
+            "name" : "populationName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "notReadyForMatch"
+            },
+            "name" : "notReadyForMatch",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "matchMergeState"
+            },
+            "name" : "matchMergeState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "states_validation"
+            },
+            "name" : "states_validation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_accountId"
+            },
+            "name" : "BFSI_Account_accountId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_accountNumber"
+            },
+            "name" : "BFSI_Account_accountNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_accountType"
+            },
+            "name" : "BFSI_Account_accountType",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_accountStatus"
+            },
+            "name" : "BFSI_Account_accountStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_balance"
+            },
+            "name" : "BFSI_Account_balance",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_openDate"
+            },
+            "name" : "BFSI_Account_openDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_closing_date"
+            },
+            "name" : "BFSI_Account_closing_date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_currency"
+            },
+            "name" : "BFSI_Account_currency",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_interestRate"
+            },
+            "name" : "BFSI_Account_interestRate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_overdraftLimit"
+            },
+            "name" : "BFSI_Account_overdraftLimit",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_createdBy"
+            },
+            "name" : "BFSI_Account_createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_createdDate"
+            },
+            "name" : "BFSI_Account_createdDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_lastUpdatedBy"
+            },
+            "name" : "BFSI_Account_lastUpdatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account_lastUpdatedDate"
+            },
+            "name" : "BFSI_Account_lastUpdatedDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BFSI_Account__cm_sourceLastUpdateDate"
+            },
+            "name" : "BFSI_Account__cm_sourceLastUpdateDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@9fJk4HsgbFHipWi4hQgocI",
+          "connectionName" : "conn-BM-Business FEP",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)/bfsi_account",
+            "label" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)/bfsi_account",
+            "objectName" : "bfsi_account",
+            "objectType" : "flatmdmentity",
+            "path" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)/bfsi_account",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourcePKey"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_businessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourceSystem"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "creationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "creationDate",
+                "nativeName" : "creationDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_creationDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdateDate",
+                "nativeName" : "lastUpdateDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_lastUpdateDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_state"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_createdBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "updatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "updatedBy",
+                "nativeName" : "updatedBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_updatedBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "originalBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "originalBusinessId",
+                "nativeName" : "originalBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_originalBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "mergedBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "mergedBusinessId",
+                "nativeName" : "mergedBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 30000,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_mergedBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "validationStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "validationStatus",
+                "nativeName" : "validationStatus",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_validationStatus"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "populationName",
+                "fieldType" : "CONNECTOR",
+                "label" : "populationName",
+                "nativeName" : "populationName",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_populationName"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "notReadyForMatch",
+                "fieldType" : "CONNECTOR",
+                "label" : "notReadyForMatch",
+                "nativeName" : "notReadyForMatch",
+                "nativeType" : "boolean",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_notReadyForMatch"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "matchMergeState",
+                "fieldType" : "CONNECTOR",
+                "label" : "matchMergeState",
+                "nativeName" : "matchMergeState",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_matchMergeState"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "states_validation",
+                "fieldType" : "CONNECTOR",
+                "label" : "states.validation",
+                "nativeName" : "states.validation",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "validation"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "states"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_accountId",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.accountId",
+                "nativeName" : "BFSI_Account.accountId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "accountId"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_accountNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.accountNumber",
+                "nativeName" : "BFSI_Account.accountNumber",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "accountNumber"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_accountType",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.accountType",
+                "nativeName" : "BFSI_Account.accountType",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "accountType"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_accountStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.accountStatus",
+                "nativeName" : "BFSI_Account.accountStatus",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "accountStatus"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_balance",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.balance",
+                "nativeName" : "BFSI_Account.balance",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "balance"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "0"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_openDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.openDate",
+                "nativeName" : "BFSI_Account.openDate",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "openDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_closing_date",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.closing_date",
+                "nativeName" : "BFSI_Account.closing_date",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "closing_date"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_currency",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.currency",
+                "nativeName" : "BFSI_Account.currency",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "currency"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_interestRate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.interestRate",
+                "nativeName" : "BFSI_Account.interestRate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "interestRate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_overdraftLimit",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.overdraftLimit",
+                "nativeName" : "BFSI_Account.overdraftLimit",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "overdraftLimit"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "0"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.createdBy",
+                "nativeName" : "BFSI_Account.createdBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "createdBy"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_createdDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.createdDate",
+                "nativeName" : "BFSI_Account.createdDate",
+                "nativeType" : "date",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "createdDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_lastUpdatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.lastUpdatedBy",
+                "nativeName" : "BFSI_Account.lastUpdatedBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "lastUpdatedBy"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account_lastUpdatedDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account.lastUpdatedDate",
+                "nativeName" : "BFSI_Account.lastUpdatedDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "lastUpdatedDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              },
+              {
+                "name" : "BFSI_Account__cm_sourceLastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "BFSI_Account._cm.sourceLastUpdateDate",
+                "nativeName" : "BFSI_Account._cm.sourceLastUpdateDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "sourceLastUpdateDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "BFSI_Account.BFSI_Account._cm"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "bfsi_account"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "allowMany",
+                "value" : "false"
+              },
+              {
+                "name" : "recordType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "dataType",
+                "value" : "Object"
+              },
+              {
+                "name" : "solutionName",
+                "value" : "CUSTOM"
+              },
+              {
+                "name" : "storageType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "guid",
+                "value" : "bfsi_account"
+              },
+              {
+                "name" : "metaFields",
+                "value" : "{}"
+              },
+              {
+                "name" : "storage",
+                "value" : "ent"
+              },
+              {
+                "name" : "fepGuid",
+                "value" : "bfsi_account"
+              },
+              {
+                "name" : "sharded",
+                "value" : "true"
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "source_system",
+              "toField" : {
+                "name" : "sourceSystem"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "accountId",
+              "toField" : {
+                "name" : "sourcePKey"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "accountId",
+              "toField" : {
+                "name" : "BFSI_Account_accountId"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "accountNumber",
+              "toField" : {
+                "name" : "BFSI_Account_accountNumber"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "accountType_PL_",
+              "toField" : {
+                "name" : "BFSI_Account_accountType"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "status_PL_",
+              "toField" : {
+                "name" : "BFSI_Account_accountStatus"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "interestRate",
+              "toField" : {
+                "name" : "BFSI_Account_interestRate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "currency_PL_",
+              "toField" : {
+                "name" : "BFSI_Account_currency"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "createdBy",
+              "toField" : {
+                "name" : "BFSI_Account_createdBy"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "lastUpdatedBy",
+              "toField" : {
+                "name" : "BFSI_Account_lastUpdatedBy"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "New_BALANCE",
+              "toField" : {
+                "name" : "BFSI_Account_balance"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "New_OpenDate",
+              "toField" : {
+                "name" : "BFSI_Account_openDate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "New_ClosingDate",
+              "toField" : {
+                "name" : "BFSI_Account_closing_date"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "New_OverDraftLimit",
+              "toField" : {
+                "name" : "BFSI_Account_overdraftLimit"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "New_Date",
+              "toField" : {
+                "name" : "BFSI_Account_createdDate"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "New_Date",
+              "toField" : {
+                "name" : "BFSI_Account_lastUpdatedDate"
+              },
+              "fromFieldNames" : null
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-12T12:47:11.955Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "source_system",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'erp'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_BALANCE",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert ACCOUNTbalance (balance field) from STRING to INTEGER.\nTO_INTEGER(balance)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_OpenDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "TO_DATE(openDate, 'YYYY/MM/DD HH24:MI:SS')"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_ClosingDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert the string field 'closingDate' to a date type.\nTO_DATE(closingDate, 'YYYY/MM/DD HH24:MI:SS')"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_OverDraftLimit",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert overdraftLimit from STRING to INTEGER.\nTO_INTEGER(overdraftLimit)"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "New_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "SYSDATE"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:36 PDT"
+}

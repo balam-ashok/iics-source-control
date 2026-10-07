@@ -1,0 +1,5203 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Mapping_Daikin",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "RuleSpecification -> Cleanse",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Source -> Deduplicate_abn",
+        "groupLink" : "DefaultGroup -> Input group:"
+      },
+      {
+        "link" : "Deduplicate_abn -> Deduplicate_phone",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Deduplicate_phone -> Deduplicate_sr_no",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Deduplicate_sr_no -> Parse",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Parse -> RuleSpecification",
+        "groupLink" : "MappletOutputTx_Output -> Input group:"
+      },
+      {
+        "link" : "Cleanse -> Expression",
+        "groupLink" : "MappletOutputTx_Output -> DefaultGroup"
+      },
+      {
+        "link" : "Expression1 -> Target"
+      },
+      {
+        "link" : "Expression -> Expression1"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T07:14:58.118Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "Account_ID"
+            },
+            "name" : "Account_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Customer_ID"
+            },
+            "name" : "Customer_ID",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Account_Name"
+            },
+            "name" : "Account_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Record_Type"
+            },
+            "name" : "Record_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Account_Group"
+            },
+            "name" : "Account_Group",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Account_Type"
+            },
+            "name" : "Account_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dealer_Type"
+            },
+            "name" : "Dealer_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ABN"
+            },
+            "name" : "ABN",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Email"
+            },
+            "name" : "Email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Phone"
+            },
+            "name" : "Phone",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Alternate_Phone"
+            },
+            "name" : "Alternate_Phone",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Address"
+            },
+            "name" : "Address",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Billing_Address"
+            },
+            "name" : "Billing_Address",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Shipping_Address"
+            },
+            "name" : "Shipping_Address",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "City"
+            },
+            "name" : "City",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "State"
+            },
+            "name" : "State",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Pincode"
+            },
+            "name" : "Pincode",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Country"
+            },
+            "name" : "Country",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Preferred_Contact_Mode"
+            },
+            "name" : "Preferred_Contact_Mode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Contact_ID"
+            },
+            "name" : "Contact_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Purchase_Contact_Name"
+            },
+            "name" : "Purchase_Contact_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "First_Name"
+            },
+            "name" : "First_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Middle_Name"
+            },
+            "name" : "Middle_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Last_Name"
+            },
+            "name" : "Last_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Date_of_Birth"
+            },
+            "name" : "Date_of_Birth",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Date_of_Incorporation"
+            },
+            "name" : "Date_of_Incorporation",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claimant_ID"
+            },
+            "name" : "Warranty_Claimant_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claimant_Name"
+            },
+            "name" : "Warranty_Claimant_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claimant_Phone"
+            },
+            "name" : "Warranty_Claimant_Phone",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claimant_Email"
+            },
+            "name" : "Warranty_Claimant_Email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claimant_Address"
+            },
+            "name" : "Warranty_Claimant_Address",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claimant_Relationship_To_Purchaser"
+            },
+            "name" : "Warranty_Claimant_Relationship_To_Purchaser",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claim_Date"
+            },
+            "name" : "Warranty_Claim_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Asset_ID"
+            },
+            "name" : "Asset_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Product_ID"
+            },
+            "name" : "Product_ID",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Serial_Number"
+            },
+            "name" : "Serial_Number",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Brand"
+            },
+            "name" : "Brand",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Item_Name"
+            },
+            "name" : "Item_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Item_Group"
+            },
+            "name" : "Item_Group",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Category"
+            },
+            "name" : "Category",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Series"
+            },
+            "name" : "Series",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Model_Number"
+            },
+            "name" : "Model_Number",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Technology_Type"
+            },
+            "name" : "Technology_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Star_Rating"
+            },
+            "name" : "Star_Rating",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Cooling_Capacity_kW"
+            },
+            "name" : "Cooling_Capacity_kW",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Tonnage_TR"
+            },
+            "name" : "Tonnage_TR",
+            "platformType" : {
+              "name" : "double"
+            },
+            "precision" : 15,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Refrigerant_Type"
+            },
+            "name" : "Refrigerant_Type",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 19,
+            "scale" : 4
+          },
+          {
+            "adapterField" : {
+              "name" : "Installation_Date"
+            },
+            "name" : "Installation_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Installation_City"
+            },
+            "name" : "Installation_City",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Transaction_ID"
+            },
+            "name" : "Transaction_ID",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Invoice_Number"
+            },
+            "name" : "Invoice_Number",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Purchase_Date"
+            },
+            "name" : "Purchase_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Quantity"
+            },
+            "name" : "Quantity",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Unit_Price"
+            },
+            "name" : "Unit_Price",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Discount_Amount"
+            },
+            "name" : "Discount_Amount",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Tax_Amount"
+            },
+            "name" : "Tax_Amount",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Total_Amount"
+            },
+            "name" : "Total_Amount",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Sales_Channel"
+            },
+            "name" : "Sales_Channel",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dealer_Name"
+            },
+            "name" : "Dealer_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Payment_Mode"
+            },
+            "name" : "Payment_Mode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Transaction_Status"
+            },
+            "name" : "Transaction_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_ID"
+            },
+            "name" : "Warranty_ID",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claim_ID"
+            },
+            "name" : "Warranty_Claim_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Purchaser_Contact_ID"
+            },
+            "name" : "Purchaser_Contact_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Claimant_Contact_ID"
+            },
+            "name" : "Warranty_Claimant_Contact_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Claim_ID"
+            },
+            "name" : "Claim_ID",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Coverage_Type"
+            },
+            "name" : "Coverage_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Coverage_Start_Date"
+            },
+            "name" : "Coverage_Start_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Coverage_End_Date"
+            },
+            "name" : "Coverage_End_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Compressor_Warranty_Years"
+            },
+            "name" : "Compressor_Warranty_Years",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PCB_Warranty_Years"
+            },
+            "name" : "PCB_Warranty_Years",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Coverage_Registration_Date"
+            },
+            "name" : "Coverage_Registration_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Registration_Status"
+            },
+            "name" : "Registration_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Coverage_Details"
+            },
+            "name" : "Coverage_Details",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Coverage_Remarks"
+            },
+            "name" : "Coverage_Remarks",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Warranty_Coverage_Amount"
+            },
+            "name" : "Warranty_Coverage_Amount",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Amount_To_Pay"
+            },
+            "name" : "Amount_To_Pay",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Request_ID"
+            },
+            "name" : "Service_Request_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Case_ID"
+            },
+            "name" : "Service_Case_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Work_Order_ID"
+            },
+            "name" : "Service_Work_Order_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Account_ID"
+            },
+            "name" : "Service_Account_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Contact_ID"
+            },
+            "name" : "Service_Contact_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Asset_ID"
+            },
+            "name" : "Service_Asset_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Date"
+            },
+            "name" : "Service_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Issue_Type"
+            },
+            "name" : "Issue_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Issue_Description"
+            },
+            "name" : "Issue_Description",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Status"
+            },
+            "name" : "Service_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Service_Center"
+            },
+            "name" : "Service_Center",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Technician_ID"
+            },
+            "name" : "Technician_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Inspection_Date"
+            },
+            "name" : "Inspection_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Resolution_Date"
+            },
+            "name" : "Resolution_Date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "Resolution_Type"
+            },
+            "name" : "Resolution_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Replacement_Part"
+            },
+            "name" : "Replacement_Part",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Delivery_Required"
+            },
+            "name" : "Delivery_Required",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Delivery_Contact_Name"
+            },
+            "name" : "Delivery_Contact_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Delivery_Contact_Phone"
+            },
+            "name" : "Delivery_Contact_Phone",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Delivery_Contact_Email"
+            },
+            "name" : "Delivery_Contact_Email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Delivery_Address"
+            },
+            "name" : "Delivery_Address",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 50,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@avwYbV2FjAgdVoLrQ9iu8k",
+          "connectionName" : "Daikin-sql",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Daikin_Source",
+            "label" : "Daikin_Source",
+            "objectName" : "Daikin_Source",
+            "path" : "Daikin_Source",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "Account_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Account_ID",
+                "nativeName" : "Account_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Customer_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Customer_ID",
+                "nativeName" : "Customer_ID",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Account_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Account_Name",
+                "nativeName" : "Account_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Record_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Record_Type",
+                "nativeName" : "Record_Type",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Account_Group",
+                "fieldType" : "CONNECTOR",
+                "label" : "Account_Group",
+                "nativeName" : "Account_Group",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Account_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Account_Type",
+                "nativeName" : "Account_Type",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Dealer_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dealer_Type",
+                "nativeName" : "Dealer_Type",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "ABN",
+                "fieldType" : "CONNECTOR",
+                "label" : "ABN",
+                "nativeName" : "ABN",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Email",
+                "fieldType" : "CONNECTOR",
+                "label" : "Email",
+                "nativeName" : "Email",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Phone",
+                "nativeName" : "Phone",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Alternate_Phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Alternate_Phone",
+                "nativeName" : "Alternate_Phone",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Address",
+                "fieldType" : "CONNECTOR",
+                "label" : "Address",
+                "nativeName" : "Address",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Billing_Address",
+                "fieldType" : "CONNECTOR",
+                "label" : "Billing_Address",
+                "nativeName" : "Billing_Address",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Shipping_Address",
+                "fieldType" : "CONNECTOR",
+                "label" : "Shipping_Address",
+                "nativeName" : "Shipping_Address",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "City",
+                "fieldType" : "CONNECTOR",
+                "label" : "City",
+                "nativeName" : "City",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "State",
+                "fieldType" : "CONNECTOR",
+                "label" : "State",
+                "nativeName" : "State",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Pincode",
+                "fieldType" : "CONNECTOR",
+                "label" : "Pincode",
+                "nativeName" : "Pincode",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Country",
+                "fieldType" : "CONNECTOR",
+                "label" : "Country",
+                "nativeName" : "Country",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Preferred_Contact_Mode",
+                "fieldType" : "CONNECTOR",
+                "label" : "Preferred_Contact_Mode",
+                "nativeName" : "Preferred_Contact_Mode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Contact_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Contact_ID",
+                "nativeName" : "Contact_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Purchase_Contact_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Purchase_Contact_Name",
+                "nativeName" : "Purchase_Contact_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "First_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "First_Name",
+                "nativeName" : "First_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Middle_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Middle_Name",
+                "nativeName" : "Middle_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Last_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Last_Name",
+                "nativeName" : "Last_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Date_of_Birth",
+                "fieldType" : "CONNECTOR",
+                "label" : "Date_of_Birth",
+                "nativeName" : "Date_of_Birth",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Date_of_Incorporation",
+                "fieldType" : "CONNECTOR",
+                "label" : "Date_of_Incorporation",
+                "nativeName" : "Date_of_Incorporation",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claimant_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claimant_ID",
+                "nativeName" : "Warranty_Claimant_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claimant_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claimant_Name",
+                "nativeName" : "Warranty_Claimant_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claimant_Phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claimant_Phone",
+                "nativeName" : "Warranty_Claimant_Phone",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claimant_Email",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claimant_Email",
+                "nativeName" : "Warranty_Claimant_Email",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claimant_Address",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claimant_Address",
+                "nativeName" : "Warranty_Claimant_Address",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claimant_Relationship_To_Purchaser",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claimant_Relationship_To_Purchaser",
+                "nativeName" : "Warranty_Claimant_Relationship_To_Purchaser",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claim_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claim_Date",
+                "nativeName" : "Warranty_Claim_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Asset_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Asset_ID",
+                "nativeName" : "Asset_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Product_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Product_ID",
+                "nativeName" : "Product_ID",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Serial_Number",
+                "fieldType" : "CONNECTOR",
+                "label" : "Serial_Number",
+                "nativeName" : "Serial_Number",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Brand",
+                "fieldType" : "CONNECTOR",
+                "label" : "Brand",
+                "nativeName" : "Brand",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Item_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Item_Name",
+                "nativeName" : "Item_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Item_Group",
+                "fieldType" : "CONNECTOR",
+                "label" : "Item_Group",
+                "nativeName" : "Item_Group",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Category",
+                "fieldType" : "CONNECTOR",
+                "label" : "Category",
+                "nativeName" : "Category",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Series",
+                "fieldType" : "CONNECTOR",
+                "label" : "Series",
+                "nativeName" : "Series",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Model_Number",
+                "fieldType" : "CONNECTOR",
+                "label" : "Model_Number",
+                "nativeName" : "Model_Number",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Technology_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Technology_Type",
+                "nativeName" : "Technology_Type",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Star_Rating",
+                "fieldType" : "CONNECTOR",
+                "label" : "Star_Rating",
+                "nativeName" : "Star_Rating",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Cooling_Capacity_kW",
+                "fieldType" : "CONNECTOR",
+                "label" : "Cooling_Capacity_kW",
+                "nativeName" : "Cooling_Capacity_kW",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Tonnage_TR",
+                "fieldType" : "CONNECTOR",
+                "label" : "Tonnage_TR",
+                "nativeName" : "Tonnage_TR",
+                "nativeType" : "float",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Refrigerant_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Refrigerant_Type",
+                "nativeName" : "Refrigerant_Type",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 19,
+                "scale" : 4,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Installation_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Installation_Date",
+                "nativeName" : "Installation_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Installation_City",
+                "fieldType" : "CONNECTOR",
+                "label" : "Installation_City",
+                "nativeName" : "Installation_City",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Transaction_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Transaction_ID",
+                "nativeName" : "Transaction_ID",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Invoice_Number",
+                "fieldType" : "CONNECTOR",
+                "label" : "Invoice_Number",
+                "nativeName" : "Invoice_Number",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Purchase_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Purchase_Date",
+                "nativeName" : "Purchase_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Quantity",
+                "fieldType" : "CONNECTOR",
+                "label" : "Quantity",
+                "nativeName" : "Quantity",
+                "nativeType" : "tinyint",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Unit_Price",
+                "fieldType" : "CONNECTOR",
+                "label" : "Unit_Price",
+                "nativeName" : "Unit_Price",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Discount_Amount",
+                "fieldType" : "CONNECTOR",
+                "label" : "Discount_Amount",
+                "nativeName" : "Discount_Amount",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Tax_Amount",
+                "fieldType" : "CONNECTOR",
+                "label" : "Tax_Amount",
+                "nativeName" : "Tax_Amount",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Total_Amount",
+                "fieldType" : "CONNECTOR",
+                "label" : "Total_Amount",
+                "nativeName" : "Total_Amount",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Sales_Channel",
+                "fieldType" : "CONNECTOR",
+                "label" : "Sales_Channel",
+                "nativeName" : "Sales_Channel",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Dealer_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dealer_Name",
+                "nativeName" : "Dealer_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Payment_Mode",
+                "fieldType" : "CONNECTOR",
+                "label" : "Payment_Mode",
+                "nativeName" : "Payment_Mode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Transaction_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Transaction_Status",
+                "nativeName" : "Transaction_Status",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_ID",
+                "nativeName" : "Warranty_ID",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claim_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claim_ID",
+                "nativeName" : "Warranty_Claim_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Purchaser_Contact_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Purchaser_Contact_ID",
+                "nativeName" : "Purchaser_Contact_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Claimant_Contact_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Claimant_Contact_ID",
+                "nativeName" : "Warranty_Claimant_Contact_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Claim_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Claim_ID",
+                "nativeName" : "Claim_ID",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Coverage_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Coverage_Type",
+                "nativeName" : "Coverage_Type",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Coverage_Start_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Coverage_Start_Date",
+                "nativeName" : "Coverage_Start_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Coverage_End_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Coverage_End_Date",
+                "nativeName" : "Coverage_End_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Compressor_Warranty_Years",
+                "fieldType" : "CONNECTOR",
+                "label" : "Compressor_Warranty_Years",
+                "nativeName" : "Compressor_Warranty_Years",
+                "nativeType" : "tinyint",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "PCB_Warranty_Years",
+                "fieldType" : "CONNECTOR",
+                "label" : "PCB_Warranty_Years",
+                "nativeName" : "PCB_Warranty_Years",
+                "nativeType" : "tinyint",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Coverage_Registration_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Coverage_Registration_Date",
+                "nativeName" : "Coverage_Registration_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Registration_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Registration_Status",
+                "nativeName" : "Registration_Status",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Coverage_Details",
+                "fieldType" : "CONNECTOR",
+                "label" : "Coverage_Details",
+                "nativeName" : "Coverage_Details",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Coverage_Remarks",
+                "fieldType" : "CONNECTOR",
+                "label" : "Coverage_Remarks",
+                "nativeName" : "Coverage_Remarks",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 100,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Warranty_Coverage_Amount",
+                "fieldType" : "CONNECTOR",
+                "label" : "Warranty_Coverage_Amount",
+                "nativeName" : "Warranty_Coverage_Amount",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Amount_To_Pay",
+                "fieldType" : "CONNECTOR",
+                "label" : "Amount_To_Pay",
+                "nativeName" : "Amount_To_Pay",
+                "nativeType" : "smallint",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Request_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Request_ID",
+                "nativeName" : "Service_Request_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Case_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Case_ID",
+                "nativeName" : "Service_Case_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Work_Order_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Work_Order_ID",
+                "nativeName" : "Service_Work_Order_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Account_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Account_ID",
+                "nativeName" : "Service_Account_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Contact_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Contact_ID",
+                "nativeName" : "Service_Contact_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Asset_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Asset_ID",
+                "nativeName" : "Service_Asset_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Date",
+                "nativeName" : "Service_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Issue_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Issue_Type",
+                "nativeName" : "Issue_Type",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Issue_Description",
+                "fieldType" : "CONNECTOR",
+                "label" : "Issue_Description",
+                "nativeName" : "Issue_Description",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Status",
+                "nativeName" : "Service_Status",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Service_Center",
+                "fieldType" : "CONNECTOR",
+                "label" : "Service_Center",
+                "nativeName" : "Service_Center",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Technician_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Technician_ID",
+                "nativeName" : "Technician_ID",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Inspection_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Inspection_Date",
+                "nativeName" : "Inspection_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Resolution_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Resolution_Date",
+                "nativeName" : "Resolution_Date",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Resolution_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Resolution_Type",
+                "nativeName" : "Resolution_Type",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Replacement_Part",
+                "fieldType" : "CONNECTOR",
+                "label" : "Replacement_Part",
+                "nativeName" : "Replacement_Part",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Delivery_Required",
+                "fieldType" : "CONNECTOR",
+                "label" : "Delivery_Required",
+                "nativeName" : "Delivery_Required",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Delivery_Contact_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Delivery_Contact_Name",
+                "nativeName" : "Delivery_Contact_Name",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Delivery_Contact_Phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Delivery_Contact_Phone",
+                "nativeName" : "Delivery_Contact_Phone",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Delivery_Contact_Email",
+                "fieldType" : "CONNECTOR",
+                "label" : "Delivery_Contact_Email",
+                "nativeName" : "Delivery_Contact_Email",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              },
+              {
+                "name" : "Delivery_Address",
+                "fieldType" : "CONNECTOR",
+                "label" : "Delivery_Address",
+                "nativeName" : "Delivery_Address",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 50,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Daikin_Source"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T07:14:58.118Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@avwYbV2FjAgdVoLrQ9iu8k",
+          "connectionName" : "Daikin-sql",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "Daikin_Target",
+            "label" : "Daikin_Target",
+            "path" : "Daikin_Target",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T07:32:29.964Z",
+        "name" : "RuleSpecification",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "documentId" : "@kp33dntmecbbYvtj4EM7eH",
+        "ruleId" : "@kp33dntmecbbYvtj4EM7eH",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "Record_Type",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "NewInput1"
+                  }
+                },
+                {
+                  "name" : "ABN",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "NewInput2"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "NewInput1",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            },
+            {
+              "name" : "NewInput2",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 50,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "PrimaryRuleSet",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 100,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T07:51:50.274Z",
+        "name" : "Cleanse",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "ABN"
+                  },
+                  {
+                    "inputName" : "abn_clustersize"
+                  },
+                  {
+                    "inputName" : "Account_Group"
+                  },
+                  {
+                    "inputName" : "Account_ID"
+                  },
+                  {
+                    "inputName" : "Account_Name"
+                  },
+                  {
+                    "inputName" : "Account_Type"
+                  },
+                  {
+                    "inputName" : "Address"
+                  },
+                  {
+                    "inputName" : "Alternate_Phone"
+                  },
+                  {
+                    "inputName" : "Amount_To_Pay"
+                  },
+                  {
+                    "inputName" : "Asset_ID"
+                  },
+                  {
+                    "inputName" : "Billing_Address"
+                  },
+                  {
+                    "inputName" : "Brand"
+                  },
+                  {
+                    "inputName" : "Category"
+                  },
+                  {
+                    "inputName" : "City"
+                  },
+                  {
+                    "inputName" : "Claim_ID"
+                  },
+                  {
+                    "inputName" : "Compressor_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "Contact_ID"
+                  },
+                  {
+                    "inputName" : "Cooling_Capacity_kW"
+                  },
+                  {
+                    "inputName" : "Country"
+                  },
+                  {
+                    "inputName" : "Coverage_Details"
+                  },
+                  {
+                    "inputName" : "Coverage_End_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Registration_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Remarks"
+                  },
+                  {
+                    "inputName" : "Coverage_Start_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Type"
+                  },
+                  {
+                    "inputName" : "Customer_ID"
+                  },
+                  {
+                    "inputName" : "Date_of_Birth"
+                  },
+                  {
+                    "inputName" : "Date_of_Incorporation"
+                  },
+                  {
+                    "inputName" : "Dealer_Name"
+                  },
+                  {
+                    "inputName" : "Dealer_Type"
+                  },
+                  {
+                    "inputName" : "Delivery_Address"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Email"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Phone"
+                  },
+                  {
+                    "inputName" : "Delivery_Required"
+                  },
+                  {
+                    "inputName" : "Discount_Amount"
+                  },
+                  {
+                    "inputName" : "Email"
+                  },
+                  {
+                    "inputName" : "First_Name"
+                  },
+                  {
+                    "inputName" : "Inspection_Date"
+                  },
+                  {
+                    "inputName" : "Installation_City"
+                  },
+                  {
+                    "inputName" : "Installation_Date"
+                  },
+                  {
+                    "inputName" : "Invoice_Number"
+                  },
+                  {
+                    "inputName" : "Issue_Description"
+                  },
+                  {
+                    "inputName" : "Issue_Type"
+                  },
+                  {
+                    "inputName" : "Item_Group"
+                  },
+                  {
+                    "inputName" : "Item_Name"
+                  },
+                  {
+                    "inputName" : "Last_Name"
+                  },
+                  {
+                    "inputName" : "Middle_Name"
+                  },
+                  {
+                    "inputName" : "Model_Number"
+                  },
+                  {
+                    "inputName" : "Out_ClusterSize"
+                  },
+                  {
+                    "inputName" : "Payment_Mode"
+                  },
+                  {
+                    "inputName" : "PCB_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "ph_clustersize"
+                  },
+                  {
+                    "inputName" : "Phone"
+                  },
+                  {
+                    "inputName" : "Pincode"
+                  },
+                  {
+                    "inputName" : "Preferred_Contact_Mode"
+                  },
+                  {
+                    "inputName" : "PrimaryRuleSet"
+                  },
+                  {
+                    "inputName" : "Product_ID"
+                  },
+                  {
+                    "inputName" : "Purchase_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Purchase_Date"
+                  },
+                  {
+                    "inputName" : "Purchaser_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Quantity"
+                  },
+                  {
+                    "inputName" : "Record_Type"
+                  },
+                  {
+                    "inputName" : "Refrigerant_Type"
+                  },
+                  {
+                    "inputName" : "Registration_Status"
+                  },
+                  {
+                    "inputName" : "Replacement_Part"
+                  },
+                  {
+                    "inputName" : "Resolution_Date"
+                  },
+                  {
+                    "inputName" : "Resolution_Type"
+                  },
+                  {
+                    "inputName" : "Sales_Channel"
+                  },
+                  {
+                    "inputName" : "Serial_Number"
+                  },
+                  {
+                    "inputName" : "Series"
+                  },
+                  {
+                    "inputName" : "Service_Account_ID"
+                  },
+                  {
+                    "inputName" : "Service_Asset_ID"
+                  },
+                  {
+                    "inputName" : "Service_Case_ID"
+                  },
+                  {
+                    "inputName" : "Service_Center"
+                  },
+                  {
+                    "inputName" : "Service_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Service_Date"
+                  },
+                  {
+                    "inputName" : "Service_Request_ID"
+                  },
+                  {
+                    "inputName" : "Service_Status"
+                  },
+                  {
+                    "inputName" : "Service_Work_Order_ID"
+                  },
+                  {
+                    "inputName" : "Shipping_Address"
+                  },
+                  {
+                    "inputName" : "Star_Rating"
+                  },
+                  {
+                    "inputName" : "State"
+                  },
+                  {
+                    "inputName" : "Tax_Amount"
+                  },
+                  {
+                    "inputName" : "Technician_ID"
+                  },
+                  {
+                    "inputName" : "Technology_Type"
+                  },
+                  {
+                    "inputName" : "Tonnage_TR"
+                  },
+                  {
+                    "inputName" : "Total_Amount"
+                  },
+                  {
+                    "inputName" : "Transaction_ID"
+                  },
+                  {
+                    "inputName" : "Transaction_Status"
+                  },
+                  {
+                    "inputName" : "Unit_Price"
+                  },
+                  {
+                    "inputName" : "Valid_email"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_Date"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Address"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Email"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Name"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Phone"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Relationship_To_Purchaser"
+                  },
+                  {
+                    "inputName" : "Warranty_Coverage_Amount"
+                  },
+                  {
+                    "inputName" : "Warranty_ID"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@4E7M4fY8g7WfRXST1gJWi0",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "Star_Rating",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Star_Rating"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Star_Rating",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Star_Rating_Cleanse",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T09:49:53.257Z",
+        "name" : "Deduplicate_phone",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "ABN"
+                  },
+                  {
+                    "inputName" : "Account_Group"
+                  },
+                  {
+                    "inputName" : "Account_ID"
+                  },
+                  {
+                    "inputName" : "Account_Name"
+                  },
+                  {
+                    "inputName" : "Account_Type"
+                  },
+                  {
+                    "inputName" : "Address"
+                  },
+                  {
+                    "inputName" : "Alternate_Phone"
+                  },
+                  {
+                    "inputName" : "Amount_To_Pay"
+                  },
+                  {
+                    "inputName" : "Asset_ID"
+                  },
+                  {
+                    "inputName" : "Billing_Address"
+                  },
+                  {
+                    "inputName" : "Brand"
+                  },
+                  {
+                    "inputName" : "Category"
+                  },
+                  {
+                    "inputName" : "City"
+                  },
+                  {
+                    "inputName" : "Claim_ID"
+                  },
+                  {
+                    "inputName" : "Compressor_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "Contact_ID"
+                  },
+                  {
+                    "inputName" : "Cooling_Capacity_kW"
+                  },
+                  {
+                    "inputName" : "Country"
+                  },
+                  {
+                    "inputName" : "Coverage_Details"
+                  },
+                  {
+                    "inputName" : "Coverage_End_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Registration_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Remarks"
+                  },
+                  {
+                    "inputName" : "Coverage_Start_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Type"
+                  },
+                  {
+                    "inputName" : "Customer_ID"
+                  },
+                  {
+                    "inputName" : "Date_of_Birth"
+                  },
+                  {
+                    "inputName" : "Date_of_Incorporation"
+                  },
+                  {
+                    "inputName" : "Dealer_Name"
+                  },
+                  {
+                    "inputName" : "Dealer_Type"
+                  },
+                  {
+                    "inputName" : "Delivery_Address"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Email"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Phone"
+                  },
+                  {
+                    "inputName" : "Delivery_Required"
+                  },
+                  {
+                    "inputName" : "Discount_Amount"
+                  },
+                  {
+                    "inputName" : "Email"
+                  },
+                  {
+                    "inputName" : "First_Name"
+                  },
+                  {
+                    "inputName" : "Inspection_Date"
+                  },
+                  {
+                    "inputName" : "Installation_City"
+                  },
+                  {
+                    "inputName" : "Installation_Date"
+                  },
+                  {
+                    "inputName" : "Invoice_Number"
+                  },
+                  {
+                    "inputName" : "Issue_Description"
+                  },
+                  {
+                    "inputName" : "Issue_Type"
+                  },
+                  {
+                    "inputName" : "Item_Group"
+                  },
+                  {
+                    "inputName" : "Item_Name"
+                  },
+                  {
+                    "inputName" : "Last_Name"
+                  },
+                  {
+                    "inputName" : "Middle_Name"
+                  },
+                  {
+                    "inputName" : "Model_Number"
+                  },
+                  {
+                    "inputName" : "Out_ClusterSize",
+                    "outputName" : "abn_clustersize"
+                  },
+                  {
+                    "inputName" : "Payment_Mode"
+                  },
+                  {
+                    "inputName" : "PCB_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "Phone"
+                  },
+                  {
+                    "inputName" : "Pincode"
+                  },
+                  {
+                    "inputName" : "Preferred_Contact_Mode"
+                  },
+                  {
+                    "inputName" : "Product_ID"
+                  },
+                  {
+                    "inputName" : "Purchase_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Purchase_Date"
+                  },
+                  {
+                    "inputName" : "Purchaser_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Quantity"
+                  },
+                  {
+                    "inputName" : "Record_Type"
+                  },
+                  {
+                    "inputName" : "Refrigerant_Type"
+                  },
+                  {
+                    "inputName" : "Registration_Status"
+                  },
+                  {
+                    "inputName" : "Replacement_Part"
+                  },
+                  {
+                    "inputName" : "Resolution_Date"
+                  },
+                  {
+                    "inputName" : "Resolution_Type"
+                  },
+                  {
+                    "inputName" : "Sales_Channel"
+                  },
+                  {
+                    "inputName" : "Serial_Number"
+                  },
+                  {
+                    "inputName" : "Series"
+                  },
+                  {
+                    "inputName" : "Service_Account_ID"
+                  },
+                  {
+                    "inputName" : "Service_Asset_ID"
+                  },
+                  {
+                    "inputName" : "Service_Case_ID"
+                  },
+                  {
+                    "inputName" : "Service_Center"
+                  },
+                  {
+                    "inputName" : "Service_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Service_Date"
+                  },
+                  {
+                    "inputName" : "Service_Request_ID"
+                  },
+                  {
+                    "inputName" : "Service_Status"
+                  },
+                  {
+                    "inputName" : "Service_Work_Order_ID"
+                  },
+                  {
+                    "inputName" : "Shipping_Address"
+                  },
+                  {
+                    "inputName" : "Star_Rating"
+                  },
+                  {
+                    "inputName" : "State"
+                  },
+                  {
+                    "inputName" : "Tax_Amount"
+                  },
+                  {
+                    "inputName" : "Technician_ID"
+                  },
+                  {
+                    "inputName" : "Technology_Type"
+                  },
+                  {
+                    "inputName" : "Tonnage_TR"
+                  },
+                  {
+                    "inputName" : "Total_Amount"
+                  },
+                  {
+                    "inputName" : "Transaction_ID"
+                  },
+                  {
+                    "inputName" : "Transaction_Status"
+                  },
+                  {
+                    "inputName" : "Unit_Price"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_Date"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Address"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Email"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Name"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Phone"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Relationship_To_Purchaser"
+                  },
+                  {
+                    "inputName" : "Warranty_Coverage_Amount"
+                  },
+                  {
+                    "inputName" : "Warranty_ID"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@9qzzgpDxkumg9uVapqNiK3",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "Phone",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "GroupKey"
+                  }
+                },
+                {
+                  "name" : "Phone",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Generic_Field"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "SequenceId",
+              "platformType" : {
+                "name" : "bigint"
+              },
+              "precision" : 19,
+              "scale" : 0,
+              "fieldConstraint" : "OPTIONAL"
+            },
+            {
+              "name" : "GroupKey",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 30,
+              "scale" : 0,
+              "fieldConstraint" : "MANDATORY"
+            },
+            {
+              "name" : "Generic_Field",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0,
+              "fieldConstraint" : "MANDATORY"
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Out_ClusterId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 30,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_ClusterSize",
+              "platformType" : {
+                "name" : "integer"
+              },
+              "precision" : 10,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_RowId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_DriverId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_DriverScore",
+              "platformType" : {
+                "name" : "double"
+              },
+              "precision" : 15,
+              "scale" : 2
+            },
+            {
+              "name" : "Out_LinkId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_LinkScore",
+              "platformType" : {
+                "name" : "double"
+              },
+              "precision" : 15,
+              "scale" : 2
+            },
+            {
+              "name" : "Out_Generic_Field",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T09:53:14.258Z",
+        "name" : "Deduplicate_abn",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "bulkRenameOption" : {
+                  "literal" : "de_abn_",
+                  "suffix" : "false"
+                }
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@8MJEgmkBTBTjfMo5Mai2MJ",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "ABN",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "GroupKey"
+                  }
+                },
+                {
+                  "name" : "ABN",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Generic_Field"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "SequenceId",
+              "platformType" : {
+                "name" : "bigint"
+              },
+              "precision" : 19,
+              "scale" : 0,
+              "fieldConstraint" : "OPTIONAL"
+            },
+            {
+              "name" : "GroupKey",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 30,
+              "scale" : 0,
+              "fieldConstraint" : "MANDATORY"
+            },
+            {
+              "name" : "Generic_Field",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0,
+              "fieldConstraint" : "MANDATORY"
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Out_ClusterId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 30,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_ClusterSize",
+              "platformType" : {
+                "name" : "integer"
+              },
+              "precision" : 10,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_RowId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_DriverId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_DriverScore",
+              "platformType" : {
+                "name" : "double"
+              },
+              "precision" : 15,
+              "scale" : 2
+            },
+            {
+              "name" : "Out_LinkId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_LinkScore",
+              "platformType" : {
+                "name" : "double"
+              },
+              "precision" : 15,
+              "scale" : 2
+            },
+            {
+              "name" : "Out_Generic_Field",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T09:54:49.256Z",
+        "name" : "Deduplicate_sr_no",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "ABN"
+                  },
+                  {
+                    "inputName" : "abn_clustersize"
+                  },
+                  {
+                    "inputName" : "Account_Group"
+                  },
+                  {
+                    "inputName" : "Account_ID"
+                  },
+                  {
+                    "inputName" : "Account_Name"
+                  },
+                  {
+                    "inputName" : "Account_Type"
+                  },
+                  {
+                    "inputName" : "Address"
+                  },
+                  {
+                    "inputName" : "Alternate_Phone"
+                  },
+                  {
+                    "inputName" : "Amount_To_Pay"
+                  },
+                  {
+                    "inputName" : "Asset_ID"
+                  },
+                  {
+                    "inputName" : "Billing_Address"
+                  },
+                  {
+                    "inputName" : "Brand"
+                  },
+                  {
+                    "inputName" : "Category"
+                  },
+                  {
+                    "inputName" : "City"
+                  },
+                  {
+                    "inputName" : "Claim_ID"
+                  },
+                  {
+                    "inputName" : "Compressor_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "Contact_ID"
+                  },
+                  {
+                    "inputName" : "Cooling_Capacity_kW"
+                  },
+                  {
+                    "inputName" : "Country"
+                  },
+                  {
+                    "inputName" : "Coverage_Details"
+                  },
+                  {
+                    "inputName" : "Coverage_End_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Registration_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Remarks"
+                  },
+                  {
+                    "inputName" : "Coverage_Start_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Type"
+                  },
+                  {
+                    "inputName" : "Customer_ID"
+                  },
+                  {
+                    "inputName" : "Date_of_Birth"
+                  },
+                  {
+                    "inputName" : "Date_of_Incorporation"
+                  },
+                  {
+                    "inputName" : "Dealer_Name"
+                  },
+                  {
+                    "inputName" : "Dealer_Type"
+                  },
+                  {
+                    "inputName" : "Delivery_Address"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Email"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Phone"
+                  },
+                  {
+                    "inputName" : "Delivery_Required"
+                  },
+                  {
+                    "inputName" : "Discount_Amount"
+                  },
+                  {
+                    "inputName" : "Email"
+                  },
+                  {
+                    "inputName" : "First_Name"
+                  },
+                  {
+                    "inputName" : "Inspection_Date"
+                  },
+                  {
+                    "inputName" : "Installation_City"
+                  },
+                  {
+                    "inputName" : "Installation_Date"
+                  },
+                  {
+                    "inputName" : "Invoice_Number"
+                  },
+                  {
+                    "inputName" : "Issue_Description"
+                  },
+                  {
+                    "inputName" : "Issue_Type"
+                  },
+                  {
+                    "inputName" : "Item_Group"
+                  },
+                  {
+                    "inputName" : "Item_Name"
+                  },
+                  {
+                    "inputName" : "Last_Name"
+                  },
+                  {
+                    "inputName" : "Middle_Name"
+                  },
+                  {
+                    "inputName" : "Model_Number"
+                  },
+                  {
+                    "inputName" : "Out_ClusterSize",
+                    "outputName" : "ph_clustersize"
+                  },
+                  {
+                    "inputName" : "Payment_Mode"
+                  },
+                  {
+                    "inputName" : "PCB_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "Phone"
+                  },
+                  {
+                    "inputName" : "Pincode"
+                  },
+                  {
+                    "inputName" : "Preferred_Contact_Mode"
+                  },
+                  {
+                    "inputName" : "Product_ID"
+                  },
+                  {
+                    "inputName" : "Purchase_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Purchase_Date"
+                  },
+                  {
+                    "inputName" : "Purchaser_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Quantity"
+                  },
+                  {
+                    "inputName" : "Record_Type"
+                  },
+                  {
+                    "inputName" : "Refrigerant_Type"
+                  },
+                  {
+                    "inputName" : "Registration_Status"
+                  },
+                  {
+                    "inputName" : "Replacement_Part"
+                  },
+                  {
+                    "inputName" : "Resolution_Date"
+                  },
+                  {
+                    "inputName" : "Resolution_Type"
+                  },
+                  {
+                    "inputName" : "Sales_Channel"
+                  },
+                  {
+                    "inputName" : "Serial_Number"
+                  },
+                  {
+                    "inputName" : "Series"
+                  },
+                  {
+                    "inputName" : "Service_Account_ID"
+                  },
+                  {
+                    "inputName" : "Service_Asset_ID"
+                  },
+                  {
+                    "inputName" : "Service_Case_ID"
+                  },
+                  {
+                    "inputName" : "Service_Center"
+                  },
+                  {
+                    "inputName" : "Service_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Service_Date"
+                  },
+                  {
+                    "inputName" : "Service_Request_ID"
+                  },
+                  {
+                    "inputName" : "Service_Status"
+                  },
+                  {
+                    "inputName" : "Service_Work_Order_ID"
+                  },
+                  {
+                    "inputName" : "Shipping_Address"
+                  },
+                  {
+                    "inputName" : "Star_Rating"
+                  },
+                  {
+                    "inputName" : "State"
+                  },
+                  {
+                    "inputName" : "Tax_Amount"
+                  },
+                  {
+                    "inputName" : "Technician_ID"
+                  },
+                  {
+                    "inputName" : "Technology_Type"
+                  },
+                  {
+                    "inputName" : "Tonnage_TR"
+                  },
+                  {
+                    "inputName" : "Total_Amount"
+                  },
+                  {
+                    "inputName" : "Transaction_ID"
+                  },
+                  {
+                    "inputName" : "Transaction_Status"
+                  },
+                  {
+                    "inputName" : "Unit_Price"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_Date"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Address"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Email"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Name"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Phone"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Relationship_To_Purchaser"
+                  },
+                  {
+                    "inputName" : "Warranty_Coverage_Amount"
+                  },
+                  {
+                    "inputName" : "Warranty_ID"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@4h7TtbhALB4b7MTgsp9joF",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "Serial_Number",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "GroupKey"
+                  }
+                },
+                {
+                  "name" : "Serial_Number",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Generic_Field"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "SequenceId",
+              "platformType" : {
+                "name" : "bigint"
+              },
+              "precision" : 19,
+              "scale" : 0,
+              "fieldConstraint" : "OPTIONAL"
+            },
+            {
+              "name" : "GroupKey",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 30,
+              "scale" : 0,
+              "fieldConstraint" : "MANDATORY"
+            },
+            {
+              "name" : "Generic_Field",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0,
+              "fieldConstraint" : "MANDATORY"
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Out_ClusterId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 30,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_ClusterSize",
+              "platformType" : {
+                "name" : "integer"
+              },
+              "precision" : 10,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_RowId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_DriverId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_DriverScore",
+              "platformType" : {
+                "name" : "double"
+              },
+              "precision" : 15,
+              "scale" : 2
+            },
+            {
+              "name" : "Out_LinkId",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 25,
+              "scale" : 0
+            },
+            {
+              "name" : "Out_LinkScore",
+              "platformType" : {
+                "name" : "double"
+              },
+              "precision" : 15,
+              "scale" : 2
+            },
+            {
+              "name" : "Out_Generic_Field",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-25T07:57:02.018Z",
+        "name" : "Parse",
+        "advancedProperties" : [
+          {
+            "name" : "version",
+            "value" : "R37"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "Input group:",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "ABN"
+                  },
+                  {
+                    "inputName" : "abn_clustersize"
+                  },
+                  {
+                    "inputName" : "Account_Group"
+                  },
+                  {
+                    "inputName" : "Account_ID"
+                  },
+                  {
+                    "inputName" : "Account_Name"
+                  },
+                  {
+                    "inputName" : "Account_Type"
+                  },
+                  {
+                    "inputName" : "Address"
+                  },
+                  {
+                    "inputName" : "Alternate_Phone"
+                  },
+                  {
+                    "inputName" : "Amount_To_Pay"
+                  },
+                  {
+                    "inputName" : "Asset_ID"
+                  },
+                  {
+                    "inputName" : "Billing_Address"
+                  },
+                  {
+                    "inputName" : "Brand"
+                  },
+                  {
+                    "inputName" : "Category"
+                  },
+                  {
+                    "inputName" : "City"
+                  },
+                  {
+                    "inputName" : "Claim_ID"
+                  },
+                  {
+                    "inputName" : "Compressor_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "Contact_ID"
+                  },
+                  {
+                    "inputName" : "Cooling_Capacity_kW"
+                  },
+                  {
+                    "inputName" : "Country"
+                  },
+                  {
+                    "inputName" : "Coverage_Details"
+                  },
+                  {
+                    "inputName" : "Coverage_End_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Registration_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Remarks"
+                  },
+                  {
+                    "inputName" : "Coverage_Start_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Type"
+                  },
+                  {
+                    "inputName" : "Customer_ID"
+                  },
+                  {
+                    "inputName" : "Date_of_Birth"
+                  },
+                  {
+                    "inputName" : "Date_of_Incorporation"
+                  },
+                  {
+                    "inputName" : "Dealer_Name"
+                  },
+                  {
+                    "inputName" : "Dealer_Type"
+                  },
+                  {
+                    "inputName" : "Delivery_Address"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Email"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Phone"
+                  },
+                  {
+                    "inputName" : "Delivery_Required"
+                  },
+                  {
+                    "inputName" : "Discount_Amount"
+                  },
+                  {
+                    "inputName" : "Email"
+                  },
+                  {
+                    "inputName" : "First_Name"
+                  },
+                  {
+                    "inputName" : "Inspection_Date"
+                  },
+                  {
+                    "inputName" : "Installation_City"
+                  },
+                  {
+                    "inputName" : "Installation_Date"
+                  },
+                  {
+                    "inputName" : "Invoice_Number"
+                  },
+                  {
+                    "inputName" : "Issue_Description"
+                  },
+                  {
+                    "inputName" : "Issue_Type"
+                  },
+                  {
+                    "inputName" : "Item_Group"
+                  },
+                  {
+                    "inputName" : "Item_Name"
+                  },
+                  {
+                    "inputName" : "Last_Name"
+                  },
+                  {
+                    "inputName" : "Middle_Name"
+                  },
+                  {
+                    "inputName" : "Model_Number"
+                  },
+                  {
+                    "inputName" : "Out_ClusterSize"
+                  },
+                  {
+                    "inputName" : "Payment_Mode"
+                  },
+                  {
+                    "inputName" : "PCB_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "ph_clustersize"
+                  },
+                  {
+                    "inputName" : "Phone"
+                  },
+                  {
+                    "inputName" : "Pincode"
+                  },
+                  {
+                    "inputName" : "Preferred_Contact_Mode"
+                  },
+                  {
+                    "inputName" : "Product_ID"
+                  },
+                  {
+                    "inputName" : "Purchase_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Purchase_Date"
+                  },
+                  {
+                    "inputName" : "Purchaser_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Quantity"
+                  },
+                  {
+                    "inputName" : "Record_Type"
+                  },
+                  {
+                    "inputName" : "Refrigerant_Type"
+                  },
+                  {
+                    "inputName" : "Registration_Status"
+                  },
+                  {
+                    "inputName" : "Replacement_Part"
+                  },
+                  {
+                    "inputName" : "Resolution_Date"
+                  },
+                  {
+                    "inputName" : "Resolution_Type"
+                  },
+                  {
+                    "inputName" : "Sales_Channel"
+                  },
+                  {
+                    "inputName" : "Serial_Number"
+                  },
+                  {
+                    "inputName" : "Series"
+                  },
+                  {
+                    "inputName" : "Service_Account_ID"
+                  },
+                  {
+                    "inputName" : "Service_Asset_ID"
+                  },
+                  {
+                    "inputName" : "Service_Case_ID"
+                  },
+                  {
+                    "inputName" : "Service_Center"
+                  },
+                  {
+                    "inputName" : "Service_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Service_Date"
+                  },
+                  {
+                    "inputName" : "Service_Request_ID"
+                  },
+                  {
+                    "inputName" : "Service_Status"
+                  },
+                  {
+                    "inputName" : "Service_Work_Order_ID"
+                  },
+                  {
+                    "inputName" : "Shipping_Address"
+                  },
+                  {
+                    "inputName" : "Star_Rating"
+                  },
+                  {
+                    "inputName" : "State"
+                  },
+                  {
+                    "inputName" : "Tax_Amount"
+                  },
+                  {
+                    "inputName" : "Technician_ID"
+                  },
+                  {
+                    "inputName" : "Technology_Type"
+                  },
+                  {
+                    "inputName" : "Tonnage_TR"
+                  },
+                  {
+                    "inputName" : "Total_Amount"
+                  },
+                  {
+                    "inputName" : "Transaction_ID"
+                  },
+                  {
+                    "inputName" : "Transaction_Status"
+                  },
+                  {
+                    "inputName" : "Unit_Price"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_Date"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Address"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Email"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Name"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Phone"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Relationship_To_Purchaser"
+                  },
+                  {
+                    "inputName" : "Warranty_Coverage_Amount"
+                  },
+                  {
+                    "inputName" : "Warranty_ID"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "MappletOutputTx_Output",
+            "output" : "true"
+          }
+        ],
+        "assetId" : "@579N9xet3xjjgzdQKWxDQk",
+        "inputGroups" : [
+          {
+            "name" : "Input group:",
+            "fieldMappingMode" : "MANUAL",
+            "fieldMapping" : {
+              "fields" : [
+                {
+                  "name" : "Email",
+                  "precision" : 0,
+                  "scale" : 0,
+                  "txField" : {
+                    "name" : "Parse_email"
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "inputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Parse_email",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        },
+        "outputFields" : {
+          "fieldList" : [
+            {
+              "name" : "Valid_email",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "Overflow",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            },
+            {
+              "name" : "Unparsed",
+              "platformType" : {
+                "name" : "string"
+              },
+              "precision" : 255,
+              "scale" : 0
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-26T18:09:43.767Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Duplicate_phone_no",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Check if ph_clustersize is greater than 1.\n-- 2. If true, return \"Duplicate Accounts-Phone_no\".\n-- 3. If false, return NULL.\n\nIIF(ph_clustersize > 1, 'Duplicate Accounts-Phone_no', NULL)",
+            "userPrompt" : "if ph_cluster_size is greater than 1 the give statement Duplicate Accounts-Phone_no"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Duplicate_ABN",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Check if abn_clustersize is greater than 1.\n-- 2. If true, return \"Duplicate ABN\".\n-- 3. If false, return NULL.\n\nIIF(abn_clustersize > 1, 'Duplicate ABN', NULL)",
+            "userPrompt" : "if abn_clustersize is greater than 1 the give statment Duplicate ABN"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Duplicate_Serial_No",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Check if Out_ClusterSize is greater than 1.\n-- 2. If true, return \"Duplicate Serial Number\".\n-- 3. If false, return an empty string.\n\nIIF(Out_ClusterSize > 1, 'Duplicate Serial Number', '')",
+            "userPrompt" : "if out_clustersize is greater than 1 then give statement saying Duplicate Serial Number"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Formatted_Coverage_start_Date",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert Coverage_Start_Date from DATETIME to STRING.\n-- 2. Use TO_CHAR function for conversion.\n\nTO_CHAR(Coverage_Start_Date)",
+            "userPrompt" : "convert coverage star date which is comin date/time data type to stringn datatype"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Formatted_Coverage_End_Date",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "-- 1. Convert Coverage_End_Date (DATETIME) to string data type.\nTO_CHAR(Coverage_End_Date)",
+            "userPrompt" : "Covert coverage end date to string dtaa type\n"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-27T11:29:41.342Z",
+        "name" : "Expression1",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true",
+                "names" : [
+                  {
+                    "inputName" : "ABN"
+                  },
+                  {
+                    "inputName" : "abn_clustersize"
+                  },
+                  {
+                    "inputName" : "Account_Group"
+                  },
+                  {
+                    "inputName" : "Account_ID"
+                  },
+                  {
+                    "inputName" : "Account_Name"
+                  },
+                  {
+                    "inputName" : "Account_Type"
+                  },
+                  {
+                    "inputName" : "Address"
+                  },
+                  {
+                    "inputName" : "Alternate_Phone"
+                  },
+                  {
+                    "inputName" : "Amount_To_Pay"
+                  },
+                  {
+                    "inputName" : "Asset_ID"
+                  },
+                  {
+                    "inputName" : "Billing_Address"
+                  },
+                  {
+                    "inputName" : "Brand"
+                  },
+                  {
+                    "inputName" : "Category"
+                  },
+                  {
+                    "inputName" : "City"
+                  },
+                  {
+                    "inputName" : "Claim_ID"
+                  },
+                  {
+                    "inputName" : "Compressor_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "Contact_ID"
+                  },
+                  {
+                    "inputName" : "Cooling_Capacity_kW"
+                  },
+                  {
+                    "inputName" : "Country"
+                  },
+                  {
+                    "inputName" : "Coverage_Details"
+                  },
+                  {
+                    "inputName" : "Coverage_Registration_Date"
+                  },
+                  {
+                    "inputName" : "Coverage_Remarks"
+                  },
+                  {
+                    "inputName" : "Coverage_Type"
+                  },
+                  {
+                    "inputName" : "Customer_ID"
+                  },
+                  {
+                    "inputName" : "Date_of_Birth"
+                  },
+                  {
+                    "inputName" : "Date_of_Incorporation"
+                  },
+                  {
+                    "inputName" : "Dealer_Name"
+                  },
+                  {
+                    "inputName" : "Dealer_Type"
+                  },
+                  {
+                    "inputName" : "Delivery_Address"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Email"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Delivery_Contact_Phone"
+                  },
+                  {
+                    "inputName" : "Delivery_Required"
+                  },
+                  {
+                    "inputName" : "Discount_Amount"
+                  },
+                  {
+                    "inputName" : "Duplicate_ABN"
+                  },
+                  {
+                    "inputName" : "Duplicate_phone_no"
+                  },
+                  {
+                    "inputName" : "Duplicate_Serial_No"
+                  },
+                  {
+                    "inputName" : "Email"
+                  },
+                  {
+                    "inputName" : "First_Name"
+                  },
+                  {
+                    "inputName" : "Formatted_Coverage_End_Date"
+                  },
+                  {
+                    "inputName" : "Formatted_Coverage_start_Date"
+                  },
+                  {
+                    "inputName" : "Inspection_Date"
+                  },
+                  {
+                    "inputName" : "Installation_City"
+                  },
+                  {
+                    "inputName" : "Installation_Date"
+                  },
+                  {
+                    "inputName" : "Invoice_Number"
+                  },
+                  {
+                    "inputName" : "Issue_Description"
+                  },
+                  {
+                    "inputName" : "Issue_Type"
+                  },
+                  {
+                    "inputName" : "Item_Group"
+                  },
+                  {
+                    "inputName" : "Item_Name"
+                  },
+                  {
+                    "inputName" : "Last_Name"
+                  },
+                  {
+                    "inputName" : "Middle_Name"
+                  },
+                  {
+                    "inputName" : "Model_Number"
+                  },
+                  {
+                    "inputName" : "Out_ClusterSize"
+                  },
+                  {
+                    "inputName" : "Payment_Mode"
+                  },
+                  {
+                    "inputName" : "PCB_Warranty_Years"
+                  },
+                  {
+                    "inputName" : "ph_clustersize"
+                  },
+                  {
+                    "inputName" : "Phone"
+                  },
+                  {
+                    "inputName" : "Pincode"
+                  },
+                  {
+                    "inputName" : "Preferred_Contact_Mode"
+                  },
+                  {
+                    "inputName" : "PrimaryRuleSet"
+                  },
+                  {
+                    "inputName" : "Product_ID"
+                  },
+                  {
+                    "inputName" : "Purchase_Contact_Name"
+                  },
+                  {
+                    "inputName" : "Purchase_Date"
+                  },
+                  {
+                    "inputName" : "Purchaser_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Quantity"
+                  },
+                  {
+                    "inputName" : "Record_Type"
+                  },
+                  {
+                    "inputName" : "Refrigerant_Type"
+                  },
+                  {
+                    "inputName" : "Registration_Status"
+                  },
+                  {
+                    "inputName" : "Replacement_Part"
+                  },
+                  {
+                    "inputName" : "Resolution_Date"
+                  },
+                  {
+                    "inputName" : "Resolution_Type"
+                  },
+                  {
+                    "inputName" : "Sales_Channel"
+                  },
+                  {
+                    "inputName" : "Serial_Number"
+                  },
+                  {
+                    "inputName" : "Series"
+                  },
+                  {
+                    "inputName" : "Service_Account_ID"
+                  },
+                  {
+                    "inputName" : "Service_Asset_ID"
+                  },
+                  {
+                    "inputName" : "Service_Case_ID"
+                  },
+                  {
+                    "inputName" : "Service_Center"
+                  },
+                  {
+                    "inputName" : "Service_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Service_Date"
+                  },
+                  {
+                    "inputName" : "Service_Request_ID"
+                  },
+                  {
+                    "inputName" : "Service_Status"
+                  },
+                  {
+                    "inputName" : "Service_Work_Order_ID"
+                  },
+                  {
+                    "inputName" : "Shipping_Address"
+                  },
+                  {
+                    "inputName" : "Star_Rating"
+                  },
+                  {
+                    "inputName" : "Star_Rating_Cleanse"
+                  },
+                  {
+                    "inputName" : "State"
+                  },
+                  {
+                    "inputName" : "Tax_Amount"
+                  },
+                  {
+                    "inputName" : "Technician_ID"
+                  },
+                  {
+                    "inputName" : "Technology_Type"
+                  },
+                  {
+                    "inputName" : "Tonnage_TR"
+                  },
+                  {
+                    "inputName" : "Total_Amount"
+                  },
+                  {
+                    "inputName" : "Transaction_ID"
+                  },
+                  {
+                    "inputName" : "Transaction_Status"
+                  },
+                  {
+                    "inputName" : "Unit_Price"
+                  },
+                  {
+                    "inputName" : "Valid_email"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_Date"
+                  },
+                  {
+                    "inputName" : "Warranty_Claim_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Address"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Contact_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Email"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_ID"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Name"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Phone"
+                  },
+                  {
+                    "inputName" : "Warranty_Claimant_Relationship_To_Purchaser"
+                  },
+                  {
+                    "inputName" : "Warranty_Coverage_Amount"
+                  },
+                  {
+                    "inputName" : "Warranty_ID"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Coverage_period_month",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "TO_CHAR(\n    (\n        TO_INTEGER(SUBSTR(Formatted_Coverage_End_Date, 7, 4))\n        -\n        TO_INTEGER(SUBSTR(Formatted_Coverage_start_Date, 7, 4))\n    ) * 12\n    +\n    (\n        TO_INTEGER(SUBSTR(Formatted_Coverage_End_Date, 1, 2))\n        -\n        TO_INTEGER(SUBSTR(Formatted_Coverage_start_Date, 1, 2))\n    )\n)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-10-05 06:27:09 PDT"
+}

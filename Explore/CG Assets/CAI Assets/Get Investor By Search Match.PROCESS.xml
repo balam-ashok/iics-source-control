@@ -1,0 +1,729 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>21GRvDINciZBpDU-gt-401412-2026-06-17T06:10:10.865Z::pd.xml</types1:EntryId>
+      <types1:Name>Get_Investor_By_Search_Match</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="0K4YZvDUPOScFDEgnyxlYp"
+                  displayName="Get Investor By Search Match"
+                  name="Get_Investor_By_Search_Match"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="personDob" required="false" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="partyTaxIdLast4"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="addresses"
+                          required="false"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:address-1</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iHIgkFnZXoOdSbWshMXIcK</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="contactMechanisms"
+                          required="false"
+                          type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:contactMechanismSearchMatch</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">lFVJu0jR585ipnXbd0keaZ</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="personFirstName"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="personLastName"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="personMiddleName"
+                          required="false"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="taxIdType"
+                          required="false"
+                          type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:taxIdentificationType</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2E1FpBLSzGacZ1tGsl0uAI</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Entire Response" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="searchResponse" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:searchMatchRes</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">628cl7GSufXkTlKOGnabaR</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="matchModelDecision" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="IDS_SESSION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_matchModelId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="listOfBusinessId" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="countOfBusinessId" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="searchResult" type="objectlist">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:searchMatchRes</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">628cl7GSufXkTlKOGnabaR</option>
+                     <option hide="true" name="multiSelect">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_payload" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_expectedResult" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_matchModelName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="taxIdCheck" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="bf076a15b-1c1a-4528-9994-ef5708e60a8d">
+               <start id="j836d46ff-b044-43be-ba82-7e5a802a4565">
+                  <link id="va236638d-c11a-47ce-aff7-ec23b2365f83"
+                        targetId="a103gltocwwq5izoh7HVfASg-Assignment794f9f1e-a910-490d-9485-454ec615b1e9"/>
+               </start>
+               <assignment id="a103gltocwwq5izoh7HVfASg-Assignment794f9f1e-a910-490d-9485-454ec615b1e9">
+                  <title>Assignment to taxIdCheck</title>
+                  <operation source="formula" to="temp.taxIdCheck">
+                     <expression language="XQuery">if (
+    (empty($input.taxIdType[1]/code) or $input.taxIdType[1]/code = '16003')
+    and
+    (empty($input.taxIdType[1]/name) or $input.taxIdType[1]/name = 'S')
+)
+then 'true'
+else 'false'
+</expression>
+                  </operation>
+                  <link id="c60fb75b5-6cc9-4a15-845e-b124c71a8e65"
+                        targetId="a103gltocwwq5izoh7HVfASg-Decision5301ca52-1f42-41e5-92b0-70fba913e810"/>
+               </assignment>
+               <container id="a103gltocwwq5izoh7HVfASg-Decision5301ca52-1f42-41e5-92b0-70fba913e810"
+                          type="exclusive">
+                  <title>taxIdCheck</title>
+                  <flow id="racc99b84-e18e-4a60-9d92-a92c74b2158b">
+                     <assignment id="a103gltocwwq5izoh7HVfASg-Assignment144deed6-7639-4b3c-aa3b-037269ca44ea">
+                        <title>Assignment to response</title>
+                        <operation source="formula" to="temp.IDS_SESSION_ID">
+                           <expression language="XQuery">request:getHeader('IDS-SESSION-ID')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_matchModelId">
+                           <expression language="XQuery">let $PARTY_MATCH_RULE_SEARCHMATCH_1 :='b6512f0e-6f82-41eb-bcb0-37ccd6341887'
+let $PARTY_MATCH_RULE_SEARCHMATCH_2 :='d2e6977a-ca54-4129-ace6-0fe4808d61a5'
+let $PARTY_MATCH_RULE_SEARCHMATCH_3 :='2641bb39-b771-4a14-a088-6f3e3fa5cefc'
+let $PARTY_MATCH_RULE_SEARCHMATCH_4 :='7d2ed73b-9512-4b58-89b4-8ba502f350c8'
+let $PARTY_MATCH_RULE_SEARCHMATCH_5 :='8dd67ddd-11cd-40d4-9e1d-695b25818bb8'
+
+(: Scalars :)
+let $hasDob := normalize-space(string($input.personDob)) != ''
+let $hasTax := normalize-space(string($input.partyTaxIdLast4)) != ''
+
+(: Address :)
+let $hasAddress :=
+  exists($input.addresses/*[normalize-space(string(.)) != ''])
+
+(: CAI array items :)
+let $cms := $input.contactMechanisms
+
+(: Email: code = 301 :)
+let $hasEmail :=
+  exists(
+    $cms[
+      normalize-space(string(contactMechanismValue)) != '' and
+      normalize-space(string(contactMechanismType/code)) = '301'
+    ]
+  )
+
+(: Phone: code = 303 or 306 :)
+let $hasPhone :=
+  exists(
+    $cms[
+      normalize-space(string(contactMechanismValue)) != '' and
+      (
+        normalize-space(string(contactMechanismType/code)) = '303' or
+        normalize-space(string(contactMechanismType/code)) = '306'
+      )
+    ]
+  )
+
+(: Score :)
+let $score :=
+  (if ($hasDob) then 1 else 0) +
+  (if ($hasTax) then 1 else 0) +
+  (if ($hasAddress) then 1 else 0) +
+  (if ($hasEmail) then 1 else 0) +
+  (if ($hasPhone) then 1 else 0)
+
+let $rule :=
+  if ($score &gt;= 5) then 'PARTY_MATCH_RULE_SEARCHMATCH_5'
+  else if ($score = 4) then 'PARTY_MATCH_RULE_SEARCHMATCH_1'
+  else if ($score = 3) then 'PARTY_MATCH_RULE_SEARCHMATCH_2'
+  else if ($score = 2) then 'PARTY_MATCH_RULE_SEARCHMATCH_3'
+  else 'PARTY_MATCH_RULE_SEARCHMATCH_4'
+
+
+let $rule :=
+  if ($score &gt;= 5) then $PARTY_MATCH_RULE_SEARCHMATCH_5
+  else if ($score = 4) then $PARTY_MATCH_RULE_SEARCHMATCH_1
+  else if ($score = 3) then $PARTY_MATCH_RULE_SEARCHMATCH_2
+  else if ($score = 2) then $PARTY_MATCH_RULE_SEARCHMATCH_3
+  else $PARTY_MATCH_RULE_SEARCHMATCH_4
+
+return $rule</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_matchModelName">
+                           <expression language="XQuery">(: Scalars :)
+let $hasDob := normalize-space(string($input.personDob)) != ''
+let $hasTax := normalize-space(string($input.partyTaxIdLast4)) != ''
+
+(: Address :)
+let $hasAddress :=
+  exists($input.addresses/*[normalize-space(string(.)) != ''])
+
+(: CAI array items :)
+let $cms := $input.contactMechanisms
+
+(: Email: code = 301 :)
+let $hasEmail :=
+  exists(
+    $cms[
+      normalize-space(string(contactMechanismValue)) != '' and
+      normalize-space(string(contactMechanismType/code)) = '301'
+    ]
+  )
+
+(: Phone: code = 303 or 306 :)
+let $hasPhone :=
+  exists(
+    $cms[
+      normalize-space(string(contactMechanismValue)) != '' and
+      (
+        normalize-space(string(contactMechanismType/code)) = '303' or
+        normalize-space(string(contactMechanismType/code)) = '306'
+      )
+    ]
+  )
+
+(: Score :)
+let $score :=
+  (if ($hasDob) then 1 else 0) +
+  (if ($hasTax) then 1 else 0) +
+  (if ($hasAddress) then 1 else 0) +
+  (if ($hasEmail) then 1 else 0) +
+  (if ($hasPhone) then 1 else 0)
+
+let $rule :=
+  if ($score &gt;= 5) then 'Investor_Search_MatchRuleSet5_RealTime
+'
+  else if ($score = 4) then 'Investor_Search_MatchRuleSet1_RealTime
+'
+  else if ($score = 3) then 'Investor_Search_MatchRuleSet2_RealTime
+'
+  else if ($score = 2) then 'Investor_Search_MatchRuleSet3_RealTime
+'
+  else 'Investor_Search_MatchRuleSet4_RealTime
+'
+
+return $rule</expression>
+                        </operation>
+                        <link id="r989953fb-8914-43a2-be17-bda3d296d85a"
+                              targetId="a103gltocwwq5izoh7HVfASg-Assignment1e43b653-4388-4278-9d34-ac0cb8fcc619"/>
+                     </assignment>
+                     <assignment id="a103gltocwwq5izoh7HVfASg-Assignment1e43b653-4388-4278-9d34-ac0cb8fcc619">
+                        <title>Assignment to payload</title>
+                        <operation source="formula" to="temp.t_payload">
+                           <expression language="XQuery">(
+  (: ------------------- Normalize scalar fields safely ------------------- :)
+  let $personName :=
+    string-join(
+      (
+        normalize-space($input.personFirstName)[. != ''],
+        normalize-space($input.personLastName)[. != '']
+      ),
+      ' '
+    )
+
+  let $person_standardized := normalize-space(string($personName))
+  let $dob                 := normalize-space(string($input.personDob))
+  let $tax_last4           := normalize-space(string($input.partyTaxIdLast4))
+  let $taxIdTypeName       := normalize-space(string($input.taxIdType/name))
+  let $taxIdTypeCode       := normalize-space(string($input.taxIdType/code))
+
+  (: ------------------- Address fields ------------------- :)
+  let $addr1                   := normalize-space(string($input.addresses/streetLine1))
+  let $addr2                   := normalize-space(string($input.addresses/streetLine2))
+  let $postal                  := normalize-space(string($input.addresses/postalCode))
+  let $city                    := normalize-space(string($input.addresses/city))
+  let $country_name            := normalize-space(string($input.addresses/country/name))
+  let $country_code            := normalize-space(string($input.addresses/country/code))
+  let $countrySubdivision_name := normalize-space(string($input.addresses/countrySubDivision/name))
+  let $countrySubdivision_code := normalize-space(string($input.addresses/countrySubDivision/code))
+  let $state                   := normalize-space(string($input.addresses/state))
+
+  (: ------------------- Contact mechanisms ------------------- :)
+  let $cms := $input.contactMechanisms
+
+  (: ------------------- Code → Name mapping ------------------- :)
+  let $code_to_name :=
+    function($c as xs:string) as xs:string {
+      let $cc := normalize-space($c)
+      return
+        if ($cc = "301") then "Email Address"
+        else if ($cc = "303") then "Phone Number"
+        else if ($cc = "306") then "Mobile Phone Number"
+        else ""
+    }
+
+  (: ------------------- Build contact_mechanisms array ------------------- :)
+  let $contact_mechanisms :=
+    if (exists($cms)) then
+      array {
+        for $cm in $cms
+        let $code  := normalize-space(string($cm/contactMechanismType/code))
+        let $value := normalize-space(string($cm/contactMechanismValue))
+        return
+          map {
+            "contactMechanismType": map {
+              "Name": $code_to_name($code),
+              "Code": if ($code != "") then $code else ""
+            },
+            "contactMechanismValue": if ($value != "") then $value else ""
+          }
+      }
+    else
+      array {
+        map {
+          "contactMechanismType": map { "Name": "", "Code": "" },
+          "contactMechanismValue": ""
+        }
+      }
+
+  (: ------------------- Build addresses array ------------------- :)
+  let $addresses :=
+    array {
+      map {
+        "streetLine1": if ($addr1 != "") then $addr1 else "",
+        "streetLine2": if ($addr2 != "") then $addr2 else "",
+		  "formattedAddressLine1":"",
+		  "formattedAddressLine2":"",        
+        "postalCode":            if ($postal != "") then $postal else "",
+        "country": map {
+          "Name": if ($country_name != "") then $country_name else "",
+          "Code": if ($country_code != "") then $country_code else ""
+        },
+        "city": if ($city != "") then $city else "",
+        "countrySubdivision": map {
+          "Name": if ($countrySubdivision_name != "") then $countrySubdivision_name else "",
+          "Code": if ($countrySubdivision_code != "") then $countrySubdivision_code else ""
+        },
+        "state2":   if ($state != "") then $state else "",
+        "country2": ""  (: Added as requested :)
+      }
+    }
+
+  (: ------------------- Final payload ------------------- :)
+  let $payload :=
+    map {
+      "searchControls": map {
+        "maxRecordsToReturn": 100,
+        "searchLevel": "Typical",
+        "fileRecordLimit": 10000
+      },
+      "data": map {
+        "searchRecord": map {
+          "partyType": map { "Name": "Person", "Code": 2102 },
+
+          "personStandardizedName": if ($person_standardized != "") then $person_standardized else "",
+          "personBirthDate":        if ($dob != "") then $dob else "",
+
+          "taxIdentificationType": map {
+            "Name": if ($taxIdTypeName != "") then $taxIdTypeName else "",
+            "Code": if ($taxIdTypeCode != "") then $taxIdTypeCode else ""
+          },
+
+          "partyTaxIdLast4": if ($tax_last4 != "") then $tax_last4 else "",
+          		  "personFirstName": "",
+          "personMiddleName": "",
+          "personMiddleInitial": "",
+          "personLastName": "",
+          "rootSourceSystem": "",
+          "suspendIndicator":"",
+          "suspendReason": map {"Name":"","Code":""},
+          "partyTaxResidenceCode": map {"Name":"","Code":""},
+          "addresses":       $addresses,
+          "contact_mechanisms": $contact_mechanisms
+        }
+      }
+    }
+
+  return serialize($payload, map { "method": "json", "indent": false() })
+)</expression>
+                        </operation>
+                        <link id="c07780a99-00eb-4e6b-88e0-872ee92c735c"
+                              targetId="a103gltocwwq5izoh7HVfASg-Service93621377-1cca-46b3-9d49-e9e1ac26bab7"/>
+                     </assignment>
+                     <eventContainer id="a103gltocwwq5izoh7HVfASg-Service93621377-1cca-46b3-9d49-e9e1ac26bab7">
+                        <service id="kd1202b4b-e159-42f3-b4de-de627b6ffcd5">
+                           <title>Get Investor Details By Seach Match</title>
+                           <serviceName>ap-investor-operations-v2:Get Investor Details By Seach Match</serviceName>
+                           <serviceGUID>3b9aOeg4GAGh4jrQo3ONMd</serviceGUID>
+                           <serviceInput>
+                              <parameter name="sessionId" source="field">temp.IDS_SESSION_ID</parameter>
+                              <parameter name="matchModelId" source="field">temp.t_matchModelId</parameter>
+                              <parameter name="entityName" source="constant">party_investor</parameter>
+                              <parameter name="requestBody" source="field">temp.t_payload</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="sac65e5bb-9435-4e5c-a510-604e03a965fc">
+                           <assignment id="a103gltocwwq5izoh7HVfASg-Assignment396ff8db-dcc0-417c-99ef-0dd4586bcf5c">
+                              <title>Assignment to , searchResponse</title>
+                              <operation source="formula" to="temp.t_expectedResult">
+                                 <expression language="XQuery">let $records := $output.entireResponse/searchResult/records
+
+let $bestRank := min($records/_meta/rank)
+let $bestScore :=
+  max(
+    $records[_meta/rank = $bestRank]/_meta/score
+  )
+
+let $survivors :=
+  $records[
+    _meta/rank = $bestRank
+    and _meta/score = $bestScore
+  ]
+
+return
+&lt;root&gt;
+  &lt;searchResult&gt;
+    { $survivors }
+  &lt;/searchResult&gt;
+&lt;/root&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="output.searchResponse">
+                                 <expression language="XQuery">for $rec in $temp.t_expectedResult/searchResult/records
+return
+&lt;searchMatchRes&gt;
+    &lt;persons&gt;
+        &lt;personFirstName&gt;
+            { $rec/data/personFirstName/text() }
+        &lt;/personFirstName&gt;
+
+        &lt;personLastName&gt;
+            { $rec/data/personLastName/text() }
+        &lt;/personLastName&gt;
+
+        &lt;suspendInd&gt;{ $rec/data/suspendIndicator/text() }&lt;/suspendInd&gt;
+
+        &lt;!-- FIXED: Only first suspensionReason --&gt;
+        &lt;suspensionReason&gt;
+            &lt;name&gt;{ $rec/data/suspendReason[1]/Name/text() }&lt;/name&gt;
+            &lt;code&gt;{ $rec/data/suspendReason[1]/Code/text() }&lt;/code&gt;
+            &lt;effectiveReferenceId&gt;{ $rec/data/suspendReason[1]/Code/text() }&lt;/effectiveReferenceId&gt;
+        &lt;/suspensionReason&gt;
+
+        &lt;effectiveReferenceId&gt;
+            { $rec/_meta/businessId/text() }
+        &lt;/effectiveReferenceId&gt;
+
+        &lt;systemLastUpdatedBy&gt;
+            { fn:upper-case($rec/data/rootSourceSystem/text()) }
+        &lt;/systemLastUpdatedBy&gt;
+
+        &lt;partyId&gt;
+            { $rec/_meta/businessId/text() }
+        &lt;/partyId&gt;
+
+        &lt;!-- FIXED: Only first partyTaxResidenceCode --&gt;
+        &lt;partyTaxResidenceCode&gt;
+            &lt;code&gt;
+                { $rec/data/partyTaxResidenceCode[1]/Code/text() }
+            &lt;/code&gt;
+            &lt;name&gt;
+                { $rec/data/partyTaxResidenceCode[1]/Name/text() }
+            &lt;/name&gt;
+            &lt;taxResidenceCd&gt;
+                { $rec/data/partyTaxResidenceCode[1]/Code/text() }
+            &lt;/taxResidenceCd&gt;
+            &lt;effectiveReferenceId&gt;
+                { $rec/data/partyTaxResidenceCode[1]/Code/text() }
+            &lt;/effectiveReferenceId&gt;
+        &lt;/partyTaxResidenceCode&gt;
+
+    &lt;/persons&gt;
+
+    &lt;rulesetName&gt;
+        { $temp.t_matchModelName }
+    &lt;/rulesetName&gt;
+
+    &lt;ruleNumber&gt;
+        { $rec/_meta/rank/text() }
+    &lt;/ruleNumber&gt;
+
+    &lt;matchScore&gt;
+        { $rec/_meta/score/text() }
+    &lt;/matchScore&gt;
+&lt;/searchMatchRes&gt;</expression>
+                              </operation>
+                           </assignment>
+                           <link id="d5adb8625-49e9-4944-a2f5-24dc34b6dad8"
+                                 targetId="a103gltocwwq5izoh7HVfASg-Service93621377-1cca-46b3-9d49-e9e1ac26bab7"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="pd341503f-96bc-4595-a097-accb9601ad83">
+                           <container id="a103gltocwwq5izoh7HVfASg-Decision71beb865-da9f-4025-9b9f-5978e03efce2"
+                                      type="exclusive">
+                              <title>code</title>
+                              <flow id="r9c1f8d2e-d01d-46ea-bb2d-32b5b5e3247c">
+                                 <end id="a103gltocwwq5izoh7HVfASg-End228f7668-ae2e-4587-8945-7a273997f988">
+                                    <title>End 1</title>
+                                    <httpStatus>404</httpStatus>
+                                 </end>
+                              </flow>
+                              <flow id="o0e4fce47-6639-48b4-be39-47075f86718b">
+                                 <end id="a103gltocwwq5izoh7HVfASg-End6b067634-567f-401f-af85-5828f9f8d336">
+                                    <title>End 3</title>
+                                    <httpStatus>401</httpStatus>
+                                 </end>
+                              </flow>
+                              <flow id="rded9200f-28ae-4279-a71b-776dd71582ea">
+                                 <end id="a103gltocwwq5izoh7HVfASg-End65a58e7a-1dd1-4554-a7b9-88a3b5a1e4e2">
+                                    <title>End 2</title>
+                                    <httpStatus>400</httpStatus>
+                                 </end>
+                              </flow>
+                              <link id="dd1c79773-04b9-4b89-a1e1-54b37573e814"
+                                    targetId="r9c1f8d2e-d01d-46ea-bb2d-32b5b5e3247c"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                       <arg name="right">HTTP_404</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="mb376c58c-5c27-49e9-a860-328bb741435e"
+                                    targetId="o0e4fce47-6639-48b4-be39-47075f86718b"
+                                    type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                       <arg name="right">HTTP_401</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="u26eba861-11af-4426-8f66-2db3d552007a"
+                                    targetId="rded9200f-28ae-4279-a71b-776dd71582ea"
+                                    type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="t81fd38cb-29b2-44e9-aadc-0268dccc1105"
+                              targetId="sac65e5bb-9435-4e5c-a510-604e03a965fc"
+                              type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo"
+                                  id="hed00e31d-32c9-4ae2-bbc5-509910d09088"
+                                  interrupting="true">
+                              <link id="i5edef7a8-dcbf-4fe5-8598-f1f7ad02ff22"
+                                    targetId="pd341503f-96bc-4595-a097-accb9601ad83"
+                                    type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="oc14d33ae-9b6a-460c-8a8b-01ba1ea76a5d"
+                           targetId="a103gltocwwq5izoh7HVfASg-Decision5301ca52-1f42-41e5-92b0-70fba913e810"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="q3b2270ed-11fd-4a57-bd70-75677bf573e9">
+                     <end id="a103gltocwwq5izoh7HVfASg-Endf58eefb0-4d99-4ab9-b96a-146eaf9f4c3e">
+                        <title>End 4</title>
+                        <httpStatus>400</httpStatus>
+                     </end>
+                  </flow>
+                  <link id="wf9405a92-5434-464c-b7f2-633728da3321"
+                        targetId="racc99b84-e18e-4a60-9d92-a92c74b2158b"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.taxIdCheck}</arg>
+                           <arg name="right">true</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="q113785bc-9933-417c-aee0-e22207ee6867"
+                        targetId="q3b2270ed-11fd-4a57-bd70-75677bf573e9"
+                        type="containerLink"/>
+                  <link id="k6444664b-26ec-4455-8a65-c15e893a2a4b"
+                        targetId="a103gltocwwq5izoh7HVfASg-end-d6470ef78-93a6-43f5-ac7d-e94a9007bd28"/>
+               </container>
+               <end id="a103gltocwwq5izoh7HVfASg-end-d6470ef78-93a6-43f5-ac7d-e94a9007bd28">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>8dd1dd5e-46ca-4c29-aa42-65d779a7b84d</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>balam_ashok</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-17T06:10:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>balam_ashok</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-17T06:10:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "contactMechanisms": [
+        {
+            "contactMechanismValue": "9988776655",
+            "contactMechanismType": [
+                {
+                    "code": "303"
+                }
+            ]
+        }
+    ],
+    "personFirstName": "JOHNNO",
+    "personLastName": "RODRIGUEZ"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9f2d120b-4803-4987-b0d6-0b5e1b7ee1c4</ns1:Id>
+               <ns1:Name>test3</ns1:Name>
+               <ns1:CreatedBy>balam_ashok</ns1:CreatedBy>
+               <ns1:CreationDate>2026-06-17T06:10:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>balam_ashok</ns1:ModifiedBy>
+               <ns1:ModificationDate>2026-06-17T06:10:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+    "contactMechanisms": [
+        {
+            "contactMechanismValue": "9988776655",
+            "contactMechanismType": [
+                {
+                    "code": "303"
+                }
+            ]
+        }
+    ],
+    "personFirstName": "JOHNNO",
+    "personLastName": "RODRIGUEZ"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0K4YZvDUPOScFDEgnyxlYp</types1:GUID>
+      <types1:DisplayName>Get Investor By Search Match</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:35.025Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

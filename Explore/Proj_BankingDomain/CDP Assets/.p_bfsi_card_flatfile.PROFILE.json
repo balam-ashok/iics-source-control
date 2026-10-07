@@ -1,0 +1,167 @@
+{
+  "objectInfo" : {
+    "id" : "6jQcaqRj4iGbKQLECMYCqg",
+    "name" : "p_bfsi_card_flatfile",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8501c60e-8ac4-4a9a-86fb-06d629e05752"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-23T08:34:48.172Z",
+  "objectRefs" : [ {
+    "id" : "eL3qdFHLbITlOYa3tpf6Yw",
+    "name" : "rs_lastUpdatedDate",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eL3qdFHLbITlOYa3tpf6Yw"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Timeliness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "0CCmddIWBNZhWW7Cv8Ntuu",
+    "name" : "rs_createdDate",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0CCmddIWBNZhWW7Cv8Ntuu"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Consistency",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "3JqwQqZFCqvlIjymCeJuY9",
+    "name" : "rs_status",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3JqwQqZFCqvlIjymCeJuY9"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Accuracy",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "egOq71vaScbfz46RGOkKEX",
+    "name" : "rs_nameOnCard_ColumnLengthDeviation_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "egOq71vaScbfz46RGOkKEX"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of nameOnCard based on Column Length Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "7Pi314fWUPjf82BRykm4u3",
+    "name" : "rs_cardNo",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "7Pi314fWUPjf82BRykm4u3"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Uniqueness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "8VELMQw7S9XjBnRA3M8XCR",
+    "name" : "rs_CVV",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8VELMQw7S9XjBnRA3M8XCR"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Completeness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "6VPVtdr67e6d5JONaJ1ySu",
+    "name" : "conn_BFSI_ Flatfile",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000001X"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Flatfile connection for BFSI",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

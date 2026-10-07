@@ -1,0 +1,287 @@
+{
+  "objectInfo" : {
+    "id" : "1phab9dxyZ9c8xwiFhVzwk",
+    "name" : "p_bfsi_insurance_sql",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "bd8afad8-90ce-4d1e-8d61-7a5f97a43cfa"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-23T08:34:48.194Z",
+  "objectRefs" : [ {
+    "id" : "4wJ0p8GH483ch0lsF0QaEV",
+    "name" : "rs_sumAssured",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "4wJ0p8GH483ch0lsF0QaEV"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Accuracy",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "gB4LWodwTA6krpuYy6kquI",
+    "name" : "rs_createdBy",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "gB4LWodwTA6krpuYy6kquI"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Consistency",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "gvXGI9seaIOexqdQ5jfz2M",
+    "name" : "rs_policyRenewalDat_DayDateDistributi_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "gvXGI9seaIOexqdQ5jfz2M"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of policyRenewalDate based on Day-Date Distribution insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "khjgTmzOlmVcn52QwTaaK2",
+    "name" : "rs_createdBy_ColumnLengthDeviation_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "khjgTmzOlmVcn52QwTaaK2"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of createdBy based on Column Length Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "l25bM4FkpIsjjaJOFGJ6ur",
+    "name" : "rs_policyRenewalDat_DayDateDistributi_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "l25bM4FkpIsjjaJOFGJ6ur"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of policyRenewalDate based on Day-Date Distribution insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "72imriWGeqMkzT86isud4t",
+    "name" : "rs_policyStartDate_DayDateDistributio_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "72imriWGeqMkzT86isud4t"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of policyStartDate based on Day-Date Distribution insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "crhovLg9QW2el4wfh5z5Wa",
+    "name" : "rs_premiumDueDate_DayDateDistribution_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "crhovLg9QW2el4wfh5z5Wa"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of premiumDueDate based on Day-Date Distribution insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "bPnYizB7GSnltLgjnW3ZUp",
+    "name" : "conn-BFSI-SQL",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000001N"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "aMdKQzsliQdghjsm66NSiS",
+    "name" : "rs_policyId",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "aMdKQzsliQdghjsm66NSiS"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Uniqueness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "h8zYtUOIYmoiiZt6gWlSOs",
+    "name" : "rs_NmineeName_ColumnTokenDeviation_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "h8zYtUOIYmoiiZt6gWlSOs"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of NmineeName based on Column Token Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "csPra9OLTsXjeDu3JKG78t",
+    "name" : "rs_createdDate_DayDateDistribution_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "csPra9OLTsXjeDu3JKG78t"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of createdDate based on Day-Date Distribution insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "1467zCO9LSGfuW3T89t7u6",
+    "name" : "rs_policyStartDate",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "1467zCO9LSGfuW3T89t7u6"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Timeliness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "8djkKjfyZT3i7Y4oZEoSU9",
+    "name" : "rs_lastUpdatedBy",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8djkKjfyZT3i7Y4oZEoSU9"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Completeness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

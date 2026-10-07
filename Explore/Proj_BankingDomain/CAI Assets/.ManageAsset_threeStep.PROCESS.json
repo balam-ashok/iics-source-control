@@ -1,0 +1,107 @@
+{
+  "objectInfo" : {
+    "id" : "1hgjDUewgU0bAGWcEiE1QT",
+    "name" : "ManageAsset_threeStep",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "QPSFCAGE7pppppp-gt-860751-2026-04-27T13:24:49.683Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Manage Asset three Step Process",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T08:34:48.181Z",
+  "objectRefs" : [ {
+    "id" : "id3uxgSktGDjbUMm2NgDae",
+    "name" : "ThreeStep_EditUser",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5bfOC2XZPnE29Em-gt-865835-2026-04-27T13:24:48.911Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Three Step EditUser HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  }, {
+    "id" : "h1VplB4NLWXhS5DoJQyrI0",
+    "name" : "ThreeStep_SecondApprover",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8ANM30nYNmumf6S-gt-865843-2026-04-27T13:24:48.956Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Three Step Second Approver HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  }, {
+    "id" : "gvri7kKiG4Kj6a1AuClxGq",
+    "name" : "ThreeStep_FinalApprover",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "2QX3cjk91pqrzYL-gt-865827-2026-04-27T13:24:48.864Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Three Step Final Approve HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  }, {
+    "id" : "cNuSWYvohMalPNvmzhxjMg",
+    "name" : "ThreeStep_FirstApprover",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8vHWOMzeHbcjqbd-gt-860715-2026-04-27T13:24:48.966Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Three Step First Approver HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CAI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

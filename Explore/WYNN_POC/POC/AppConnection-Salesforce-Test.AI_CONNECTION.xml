@@ -1,0 +1,68 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Mci9zhFtybduaa-gt-314227-2026-10-01T10:48:06.462Z::conn.xml</types1:EntryId>
+      <types1:Name>AppConnection-Salesforce-Test</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-10-01T10:48:06Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     GUID="1EdmqkHtcSAdJFddTipTMH"
+                     displayName="AppConnection-Salesforce-Test"
+                     label="AppConnection-Salesforce-Test"
+                     name="AppConnection-Salesforce-Test">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute name="objectFilter" value=""/>
+            </attributes>
+            <soaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                          connectorPath="project:/com.activevos.cumulus.cloud.extend.playbook.configuration/config/sfConnector.xml"
+                          name="Salesforce"
+                          supportsConnectionTest="true"
+                          supportsOData="true"
+                          supportsPublishSkipMetadataRefresh="true"
+                          uuid="05fc48f1-e6e1-441b-b700-bac396ca2ed1">
+               <description>Salesforce.com SOA based data connector.</description>
+            </soaConnector>
+            <authentication type="$infa_oauth2-authorization_code">
+               <attributes>
+                  <attribute encrypted="false" name="grantType" value="authorization_code"/>
+                  <attribute encrypted="false" name="authProviderName" value="Salesforce"/>
+                  <attribute encrypted="false"
+                             name="authUrl"
+                             value="https://login.salesforce.com/services/oauth2/authorize"/>
+                  <attribute encrypted="false"
+                             name="tokenUrl"
+                             value="https://login.salesforce.com/services/oauth2/token"/>
+                  <attribute encrypted="false"
+                             name="clientId"
+                             value="3MVG9xOCXq4ID1uGLcy3DpgY477aDNaEoBicuOmIXFK5e3RLtboke4OmR0RanYBcnnFTUbV4iEJ7BW9PdXODd"/>
+                  <attribute encrypted="true" name="clientSecret" value=""/>
+                  <attribute encrypted="false"
+                             name="redirectUri"
+                             value="https://oauthcallback.rt.informaticacloud.com/oauthcallback/"/>
+                  <attribute encrypted="false" name="responseType" value="code"/>
+                  <attribute encrypted="false"
+                             name="otherParameters"
+                             value="display=popup; prompt=login consent"/>
+                  <attribute encrypted="false" name="sessionDuration" value="60"/>
+               </attributes>
+            </authentication>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>1EdmqkHtcSAdJFddTipTMH</types1:GUID>
+      <types1:DisplayName>AppConnection-Salesforce-Test</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-01T10:48:29.193Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

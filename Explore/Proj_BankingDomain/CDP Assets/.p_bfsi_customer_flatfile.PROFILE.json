@@ -1,0 +1,187 @@
+{
+  "objectInfo" : {
+    "id" : "aCma0usARdEceUpIOhrcaF",
+    "name" : "p_bfsi_customer_flatfile",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "d8f2c834-8014-4340-8cad-809b057dbfd5"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-23T08:34:48.224Z",
+  "objectRefs" : [ {
+    "id" : "7Bthfhmc3kBbqbwQIEvS6U",
+    "name" : "rs_fullName",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "7Bthfhmc3kBbqbwQIEvS6U"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Completeness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "eL3qdFHLbITlOYa3tpf6Yw",
+    "name" : "rs_lastUpdatedDate",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eL3qdFHLbITlOYa3tpf6Yw"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Timeliness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "1iZTrU8xLsheHMdyCAdk2h",
+    "name" : "rs_createdBy_ColumnLengthDeviation_9",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "1iZTrU8xLsheHMdyCAdk2h"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Completeness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_HelathCareDomain/CDQ Assets"
+  }, {
+    "id" : "6LvxHssVMsreOIrQgSkNAO",
+    "name" : "rs_pan_cust",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6LvxHssVMsreOIrQgSkNAO"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Accuracy",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "8qBAS47LqVig8dkgIpopyN",
+    "name" : "rs_customerId",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "8qBAS47LqVig8dkgIpopyN"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Uniqueness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "6VPVtdr67e6d5JONaJ1ySu",
+    "name" : "conn_BFSI_ Flatfile",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000001X"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Flatfile connection for BFSI",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "0vdmEBSDYrGjXHNsi9pbCF",
+    "name" : "rs_fullname",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0vdmEBSDYrGjXHNsi9pbCF"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Consistency of firstName based on Column Length Deviation insight ",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_HelathCareDomain/CDP Assets"
+  }, {
+    "id" : "dajYwEBAAEThrTrGMTMwSH",
+    "name" : "rs_status_PL",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "dajYwEBAAEThrTrGMTMwSH"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

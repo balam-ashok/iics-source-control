@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "id3uxgSktGDjbUMm2NgDae",
+    "name" : "ThreeStep_EditUser",
+    "type" : "HUMAN_TASK",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5bfOC2XZPnE29Em-gt-865835-2026-04-27T13:24:48.911Z::ht.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Three Step EditUser HT Desc",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T08:34:48.200Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "1Z545d5eGKSkXReoejrDQK",
+    "name" : "Taskflow10",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ZV31abck0Kn7wpo-gt-1107106-2026-01-08T06:34:24.829Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T05:49:28.948Z",
+  "objectRefs" : [ {
+    "id" : "b8KmkpbleGYkZ251IWHTGn",
+    "name" : "MappingTask10",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z000000000011"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Anvitha_practice/practice"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

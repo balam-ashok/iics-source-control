@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "ij87FVZxQghgk62PLw56Ww",
+    "name" : "ac-migration",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "KGXShOeCFk4Adyp-gt-5266711-2026-09-29T08:02:58.76Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:48:38.461Z",
+  "objectRefs" : [ {
+    "id" : "5LoNLJ9N4rJhfGVApeVU6Q",
+    "name" : "sc-migration",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "RN7Y3AxtPk7HNCn-gt-5266520-2026-09-29T07:59:39.704Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/ASMO/CAI_Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

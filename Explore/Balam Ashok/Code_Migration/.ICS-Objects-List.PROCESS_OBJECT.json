@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "aaeit6XmiakjR9wsthVVAa",
+    "name" : "ICS-Objects-List",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "aa-gt-5371758-2026-09-30T09:21:08.002Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "IICS Objects List",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:22:43.417Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

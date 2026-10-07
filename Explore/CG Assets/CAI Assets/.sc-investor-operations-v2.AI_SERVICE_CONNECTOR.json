@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "52agsFUYCyBfCrmGzdQiwu",
+    "name" : "sc-investor-operations-v2",
+    "type" : "AI_SERVICE_CONNECTOR",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "dr7M75QKtBOAPbd-gt-401332-2026-06-17T06:10:09.053Z::svc.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-15T10:52:36.135Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,160 @@
+{
+  "name" : "mt_Ingress_MSG_hierarchy2",
+  "runtimeEnvironmentId" : "@a5Ov5a2wiculgnFfINaha8",
+  "runtimeEnvironmentName" : "DESKTOP-K4B9BJF",
+  "maxLogs" : 10,
+  "parameters" : [
+    {
+      "name" : "$Ingress_MSG_Hierarchy$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "Ingress_MSG_Hierarchy",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "originalPath" : "Ingress_MSG_Hierarchy"
+      },
+      "sourceConnectionId" : "@0PTUCywWvhpksMrtLZzBOY",
+      "connectionName" : "conn_flat_file_bm_asmo",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "srcFFAttrs" : {
+        "delimiter" : ",",
+        "textQualifier" : "\"",
+        "headerLineNo" : 1,
+        "firstDataRow" : 2,
+        "rowDelimiter" : 0,
+        "consecutiveDelimiter" : false,
+        "multiDelimitersAsAnd" : true,
+        "firstDataRowAsHeader" : false,
+        "headerAndDataDelimiter" : 0
+      },
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "Asmo/Hierarchy.csv",
+          "label" : "Asmo/Hierarchy.csv",
+          "metadataUpdated" : false
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "Asmo/Hierarchy.csv",
+            "label" : "Asmo/Hierarchy.csv",
+            "metadataUpdated" : false
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$Target$",
+      "type" : "H_TARGET",
+      "label" : "Target",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "supportApplyDDLChanges" : "false",
+        "originalPath" : "Target"
+      },
+      "targetConnectionId" : "@kRRFJ7qylGnbjOt4amgpsm",
+      "connectionName" : "conn-BM-Business",
+      "targetObject" : "Home/Custom Assets/Hierarchies/MSG Hierarchy(id=asmo_msg_hierarchy_hierarchy)",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "singleMode" : true
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "Home/Custom Assets/Hierarchies/MSG Hierarchy(id=asmo_msg_hierarchy_hierarchy)",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "metadataVersion" : "0",
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    }
+  ],
+  "verbose" : false,
+  "lastRunTime" : 1785913458000,
+  "mappingId" : "@4THc1CgpXa7i1hl9wQe1KD",
+  "mappingTemplateName" : "Map_ingress_MSG_Hierarchy2",
+  "sessionPropertiesList" : [
+    {
+      "name" : "Pushdown Optimization",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Context",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Fallback Option",
+      "value" : "Partial PDO"
+    }
+  ],
+  "inOutParameters" : [
+    {
+      "name" : "jobInstanceId",
+      "datatype" : "STRING",
+      "precision" : "100",
+      "scale" : "0",
+      "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+      "aggregationType" : "MAX",
+      "currentValue" : "1269551451521208320"
+    }
+  ],
+  "hidden" : false,
+  "enableCrossSchemaPushdown" : true,
+  "enableParallelRun" : false,
+  "autoTunedApplied" : false,
+  "autoTunedAppliedType" : "NONE",
+  "paramFileType" : "PARAM_FILE_LOCAL",
+  "schemaMode" : "async",
+  "valid" : true,
+  "optimizationPlan" : "NONE",
+  "allowMaxFieldLength" : false,
+  "specialCharacterSupport" : false,
+  "midstreamPreview" : false,
+  "vcsExportTime" : "2026-10-05 02:54:27 PDT"
+}

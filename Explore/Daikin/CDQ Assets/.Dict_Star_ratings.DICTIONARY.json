@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "eyVzB4Fwp27eh2BHxAXtgy",
+    "name" : "Dict_Star_ratings",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eyVzB4Fwp27eh2BHxAXtgy"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-10-05T13:27:09.746Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

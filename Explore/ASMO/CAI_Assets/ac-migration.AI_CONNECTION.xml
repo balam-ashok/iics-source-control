@@ -1,0 +1,49 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>KGXShOeCFk4Adyp-gt-5266711-2026-09-29T08:02:58.76Z::conn.xml</types1:EntryId>
+      <types1:Name>ac-migration</types1:Name>
+      <types1:ParentFlowIds>VuslqAOclkZ2sBs-gt-5252424-2026-09-29T08:04:07.703Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>pooja</types1:CreatedBy>
+      <types1:CreationDate>2026-09-29T08:02:59Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>pooja</types1:PublishedBy>
+      <types1:PublicationDate>2026-09-29T10:06:54Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/ac-migration/ac-migration.conn.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     GUID="ij87FVZxQghgk62PLw56Ww"
+                     displayName="ac-migration"
+                     label="ac-migration"
+                     name="ac-migration">
+            <description/>
+            <tags/>
+            <agent/>
+            <attributes>
+               <attribute encrypted="false" name="username" value="Pooja"/>
+               <attribute encrypted="true" name="password" value=""/>
+            </attributes>
+            <businessConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                               agentOnly="false"
+                               connectorPath="project:/rt.connector/sc_migration/sc_migration_svcDef.xml"
+                               guid="5LoNLJ9N4rJhfGVApeVU6Q"
+                               name="sc-migration"
+                               supportsConnectionTest="false"
+                               uuid="973e535f-bd6b-4717-97c4-39d2ec022ce5">
+               <description/>
+            </businessConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>ij87FVZxQghgk62PLw56Ww</types1:GUID>
+      <types1:DisplayName>ac-migration</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:48:38.359Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

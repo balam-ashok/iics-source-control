@@ -1,0 +1,207 @@
+{
+  "objectInfo" : {
+    "id" : "6C8nwba1K2ikAIfGNwwVcR",
+    "name" : "p_BFSI_corporate_target",
+    "type" : "PROFILE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "84ef4ea8-dbbd-4384-9993-7cc5cacabd9f"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-09-23T08:34:48.195Z",
+  "objectRefs" : [ {
+    "id" : "0CCmddIWBNZhWW7Cv8Ntuu",
+    "name" : "rs_createdDate",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "0CCmddIWBNZhWW7Cv8Ntuu"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Consistency",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "eL3qdFHLbITlOYa3tpf6Yw",
+    "name" : "rs_lastUpdatedDate",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eL3qdFHLbITlOYa3tpf6Yw"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Timeliness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDQ Assets"
+  }, {
+    "id" : "bAeDO94xCCUcOxCw5b3zIH",
+    "name" : "rs_createdBy_ColumnLengthDeviation_3",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "bAeDO94xCCUcOxCw5b3zIH"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of createdBy based on Column Length Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "6beP5CnxFMAkb1VBXjEeoy",
+    "name" : "rs_industryType_ColumnTokenDeviation_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6beP5CnxFMAkb1VBXjEeoy"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of industryType based on Column Token Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "7xQUZhYvLoXhI0XjAaDUe2",
+    "name" : "rs_accountNumber_ColumnLengthDeviatio_2",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "7xQUZhYvLoXhI0XjAaDUe2"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Uniqueness",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "3VbeLJqw30ThlpPVMVTWkV",
+    "name" : "rs_lastUpdatedBy_SpellingAnalysis_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "3VbeLJqw30ThlpPVMVTWkV"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of lastUpdatedBy based on Spelling Analysis insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "3zwKOJqBumojYelMEmLrgb",
+    "name" : "conn-BM-Flatfile-BFSI-Target",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000002J"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  }, {
+    "id" : "ai8gTgICQKdjM3l5lDqJue",
+    "name" : "rs_companyName_ColumnTokenDeviation_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "ai8gTgICQKdjM3l5lDqJue"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of companyName based on Column Token Deviation insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  }, {
+    "id" : "6q9sSVSHc2KfU4AWKjdukH",
+    "name" : "rs_annualTurnover_DateLocaleCheck_1",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "6q9sSVSHc2KfU4AWKjdukH"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Validity of annualTurnover based on Date-Locale Check insight (recommended by CLAIRE)",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDP Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

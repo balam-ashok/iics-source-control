@@ -1,0 +1,1807 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_type1",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> HierarchyParser",
+        "groupLink" : "DefaultGroup -> DefaultGroup"
+      },
+      {
+        "link" : "Expression -> Target"
+      },
+      {
+        "link" : "HierarchyParser -> Expression",
+        "groupLink" : "root -> DefaultGroup"
+      },
+      {
+        "link" : "HierarchyParser -> Expression1",
+        "groupLink" : "secondary_identifiers -> DefaultGroup"
+      },
+      {
+        "link" : "Expression1 -> Target1"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-08T13:10:30.314Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "path"
+            },
+            "name" : "path",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 500,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@6VPVtdr67e6d5JONaJ1ySu",
+          "connectionName" : "conn_BFSI_ Flatfile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "typeJsonFileLoc.txt",
+            "label" : "typeJsonFileLoc.txt",
+            "objectName" : "typeJsonFileLoc.txt",
+            "path" : "typeJsonFileLoc.txt",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "path",
+                "fieldType" : "CONNECTOR",
+                "label" : "path",
+                "nativeName" : "path",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 500,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "typeJsonFileLoc.txt"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-08T13:10:30.314Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "businessId"
+            },
+            "name" : "businessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "creationDate"
+            },
+            "name" : "creationDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "lastUpdateDate"
+            },
+            "name" : "lastUpdateDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "state"
+            },
+            "name" : "state",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "createdBy"
+            },
+            "name" : "createdBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "updatedBy"
+            },
+            "name" : "updatedBy",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "originalBusinessId"
+            },
+            "name" : "originalBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "mergedBusinessId"
+            },
+            "name" : "mergedBusinessId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 30000,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "validationStatus"
+            },
+            "name" : "validationStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "populationName"
+            },
+            "name" : "populationName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "notReadyForMatch"
+            },
+            "name" : "notReadyForMatch",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "matchMergeState"
+            },
+            "name" : "matchMergeState",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "states_validation"
+            },
+            "name" : "states_validation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Wynn_poc_identifier"
+            },
+            "name" : "Wynn_poc_identifier",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Wynn_poc_id_type"
+            },
+            "name" : "Wynn_poc_id_type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Wynn_poc_name"
+            },
+            "name" : "Wynn_poc_name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Wynn_poc__cm_sourceLastUpdateDate"
+            },
+            "name" : "Wynn_poc__cm_sourceLastUpdateDate",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@9fJk4HsgbFHipWi4hQgocI",
+          "connectionName" : "conn-BM-Business FEP",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/Wynn_poc(id=wynn_poc)/wynn_poc",
+            "label" : "Home/Custom Assets/Business Entities/Wynn_poc(id=wynn_poc)/wynn_poc",
+            "objectName" : "wynn_poc",
+            "objectType" : "flatmdmentity",
+            "path" : "Home/Custom Assets/Business Entities/Wynn_poc(id=wynn_poc)/wynn_poc",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourcePKey"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "businessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "businessId",
+                "nativeName" : "businessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_businessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_sourceSystem"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "creationDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "creationDate",
+                "nativeName" : "creationDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_creationDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "lastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "lastUpdateDate",
+                "nativeName" : "lastUpdateDate",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_lastUpdateDate"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "state",
+                "fieldType" : "CONNECTOR",
+                "label" : "state",
+                "nativeName" : "state",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_state"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "createdBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "createdBy",
+                "nativeName" : "createdBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_createdBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "updatedBy",
+                "fieldType" : "CONNECTOR",
+                "label" : "updatedBy",
+                "nativeName" : "updatedBy",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_updatedBy"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "originalBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "originalBusinessId",
+                "nativeName" : "originalBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_originalBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "mergedBusinessId",
+                "fieldType" : "CONNECTOR",
+                "label" : "mergedBusinessId",
+                "nativeName" : "mergedBusinessId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 30000,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_mergedBusinessId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "validationStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "validationStatus",
+                "nativeName" : "validationStatus",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_validationStatus"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "populationName",
+                "fieldType" : "CONNECTOR",
+                "label" : "populationName",
+                "nativeName" : "populationName",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_populationName"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "notReadyForMatch",
+                "fieldType" : "CONNECTOR",
+                "label" : "notReadyForMatch",
+                "nativeName" : "notReadyForMatch",
+                "nativeType" : "boolean",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_notReadyForMatch"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "matchMergeState",
+                "fieldType" : "CONNECTOR",
+                "label" : "matchMergeState",
+                "nativeName" : "matchMergeState",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "systemFieldsIdentifier_matchMergeState"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "states_validation",
+                "fieldType" : "CONNECTOR",
+                "label" : "states.validation",
+                "nativeName" : "states.validation",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "validation"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "states"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "Wynn_poc_identifier",
+                "fieldType" : "CONNECTOR",
+                "label" : "Wynn_poc.identifier",
+                "nativeName" : "Wynn_poc.identifier",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "identifier"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Wynn_poc"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "Wynn_poc_id_type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Wynn_poc.id_type",
+                "nativeName" : "Wynn_poc.id_type",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "id_type"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Wynn_poc"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "Wynn_poc_name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Wynn_poc.name",
+                "nativeName" : "Wynn_poc.name",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "name"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Wynn_poc"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              },
+              {
+                "name" : "Wynn_poc__cm_sourceLastUpdateDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "Wynn_poc._cm.sourceLastUpdateDate",
+                "nativeName" : "Wynn_poc._cm.sourceLastUpdateDate",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "sourceLastUpdateDate"
+                  },
+                  {
+                    "name" : "fieldGroupName",
+                    "value" : "Wynn_poc.Wynn_poc._cm"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "true"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "allowMany",
+                "value" : "false"
+              },
+              {
+                "name" : "recordType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "dataType",
+                "value" : "Object"
+              },
+              {
+                "name" : "solutionName",
+                "value" : "CUSTOM"
+              },
+              {
+                "name" : "storageType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "guid",
+                "value" : "wynn_poc"
+              },
+              {
+                "name" : "metaFields",
+                "value" : "{}"
+              },
+              {
+                "name" : "storage",
+                "value" : "ent"
+              },
+              {
+                "name" : "fepGuid",
+                "value" : "wynn_poc"
+              },
+              {
+                "name" : "sharded",
+                "value" : "true"
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "src",
+              "toField" : {
+                "name" : "sourceSystem"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "identifier",
+              "toField" : {
+                "name" : "Wynn_poc_identifier"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "id_type",
+              "toField" : {
+                "name" : "Wynn_poc_id_type"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "name",
+              "toField" : {
+                "name" : "Wynn_poc_name"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "identifier",
+              "toField" : {
+                "name" : "sourcePKey"
+              },
+              "fromFieldNames" : null
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-08T13:12:16.527Z",
+        "name" : "HierarchyParser",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          },
+          {
+            "input" : "false",
+            "name" : "root",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "secondary_identifiers",
+            "output" : "true"
+          }
+        ],
+        "enablePassthrough" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "hschemaLastModified" : "2026-09-08T13:20:00Z",
+        "inputType" : "FILE",
+        "performanceMode" : "true",
+        "schemaId" : "@d7t9eU4J4gGiRz5SPJ33Kv",
+        "schemaName" : "HS_json_to_rel",
+        "useLabels" : "false",
+        "dataAdapter" : {
+          "adapterInputField" : {
+            "name" : "Input",
+            "fieldType" : "CONNECTOR",
+            "label" : "Default_Input",
+            "nativeName" : "Input",
+            "nativeType" : "string",
+            "original" : "false",
+            "precision" : 32768,
+            "scale" : 0
+          }
+        },
+        "fieldMapping" : {
+          "fields" : [
+            {
+              "adapterField" : {
+                "name" : "Input"
+              },
+              "name" : "path",
+              "precision" : 0,
+              "scale" : 0
+            }
+          ]
+        },
+        "inputField" : {
+          "name" : "Input",
+          "platformType" : {
+            "name" : "string"
+          },
+          "precision" : 32768,
+          "scale" : 0
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "root",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "PK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:name"
+                },
+                {
+                  "name" : "identifier",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:identifier"
+                },
+                {
+                  "name" : "id_type",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:id_type"
+                }
+              ]
+            },
+            {
+              "groupName" : "secondary_identifiers",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:secondary_identifiersArray/json:secondary_identifiers",
+              "xfields" : [
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "identifier",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:secondary_identifiersArray/json:secondary_identifiers/json:identifier"
+                },
+                {
+                  "name" : "id_type",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:secondary_identifiersArray/json:secondary_identifiers/json:id_type"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-08T13:42:33.794Z",
+        "name" : "Target1",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : [
+          "sourcePKey",
+          "identifiers_parentId"
+        ],
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "sourcePKey"
+            },
+            "name" : "sourcePKey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "fieldGroup_State"
+            },
+            "name" : "fieldGroup_State",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "identifier"
+            },
+            "name" : "identifier",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "id_type"
+            },
+            "name" : "id_type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "primary"
+            },
+            "name" : "primary",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "sourceSystem"
+            },
+            "name" : "sourceSystem",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "identifiers_parentId"
+            },
+            "name" : "identifiers_parentId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@9fJk4HsgbFHipWi4hQgocI",
+          "connectionName" : "conn-BM-Business FEP",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/Wynn_poc(id=wynn_poc)/wynn_poc.identifiers",
+            "label" : "Home/Custom Assets/Business Entities/Wynn_poc(id=wynn_poc)/wynn_poc.identifiers",
+            "objectName" : "wynn_poc.identifiers",
+            "objectType" : "flatmdmentity",
+            "path" : "Home/Custom Assets/Business Entities/Wynn_poc(id=wynn_poc)/wynn_poc.identifiers",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "sourcePKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourcePKey",
+                "nativeName" : "sourcePKey",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "sourcePKey"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc.identifiers"
+                  }
+                ]
+              },
+              {
+                "name" : "fieldGroup_State",
+                "fieldType" : "CONNECTOR",
+                "label" : "fieldGroup_State",
+                "nativeName" : "fieldGroup_State",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "fieldGroup_State"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc.identifiers"
+                  }
+                ]
+              },
+              {
+                "name" : "identifier",
+                "fieldType" : "CONNECTOR",
+                "label" : "identifier",
+                "nativeName" : "identifier",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "identifier"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc.identifiers"
+                  }
+                ]
+              },
+              {
+                "name" : "id_type",
+                "fieldType" : "CONNECTOR",
+                "label" : "id_type",
+                "nativeName" : "id_type",
+                "nativeType" : "reference",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "id_type"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc.identifiers"
+                  }
+                ]
+              },
+              {
+                "name" : "primary",
+                "fieldType" : "CONNECTOR",
+                "label" : "primary",
+                "nativeName" : "primary",
+                "nativeType" : "boolean",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "primary"
+                  },
+                  {
+                    "name" : "defaultValue",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc.identifiers"
+                  }
+                ]
+              },
+              {
+                "name" : "sourceSystem",
+                "fieldType" : "CONNECTOR",
+                "label" : "sourceSystem",
+                "nativeName" : "sourceSystem",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "sourceSystem"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc.identifiers"
+                  }
+                ]
+              },
+              {
+                "name" : "identifiers_parentId",
+                "fieldType" : "CONNECTOR",
+                "label" : "identifiers.parentId",
+                "nativeName" : "identifiers.parentId",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "fieldName",
+                    "value" : "identifiers.parentId"
+                  },
+                  {
+                    "name" : "isFieldGroupField",
+                    "value" : "false"
+                  },
+                  {
+                    "name" : "isFieldGroupAllowMany",
+                    "value" : "false"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "wynn_poc.identifiers"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "allowMany",
+                "value" : "true"
+              },
+              {
+                "name" : "recordType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "dataType",
+                "value" : "Object"
+              },
+              {
+                "name" : "solutionName",
+                "value" : "CUSTOM"
+              },
+              {
+                "name" : "storageType",
+                "value" : "BusinessEntity"
+              },
+              {
+                "name" : "guid",
+                "value" : "wynn_poc"
+              },
+              {
+                "name" : "metaFields",
+                "value" : "{}"
+              },
+              {
+                "name" : "storage",
+                "value" : "ent"
+              },
+              {
+                "name" : "fepGuid",
+                "value" : "wynn_poc.identifiers"
+              },
+              {
+                "name" : "sharded",
+                "value" : "true"
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Update"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "manualMappings" : {
+          "mappingList" : [
+            {
+              "fromFieldName" : "identifier",
+              "toField" : {
+                "name" : "identifier"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "id_type",
+              "toField" : {
+                "name" : "id_type"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "src1",
+              "toField" : {
+                "name" : "sourceSystem"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "identifier",
+              "toField" : {
+                "name" : "sourcePKey"
+              },
+              "fromFieldNames" : null
+            },
+            {
+              "fromFieldName" : "o_pkey",
+              "toField" : {
+                "name" : "identifiers_parentId"
+              },
+              "fromFieldNames" : null
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-08T13:50:10.955Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "src",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'crm'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-08T13:50:24.995Z",
+        "name" : "Expression1",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "src1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'crm'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_pkey",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'123'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-16 02:57:03 PDT"
+}

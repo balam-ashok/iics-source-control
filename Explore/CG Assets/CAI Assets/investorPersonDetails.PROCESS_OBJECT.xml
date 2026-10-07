@@ -1,0 +1,364 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>NEOvlp6oIuQaaab-gt-396395-2026-06-17T06:10:09.644Z::po.xml</types1:EntryId>
+      <types1:Name>investorPersonDetails</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-06-17T06:10:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="investorPersonDetails"
+                        isByCopy="true"
+                        name="investorPersonDetails">
+            <description/>
+            <tags/>
+            <detail>
+               <field label=""
+                      name="personFirstName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personMiddleName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personLastName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personMiddleInitial"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personStandardizedName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personNickname"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="repNameOnShareholderAccount"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personGender"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="personBirthDate"
+                      nullable="true"
+                      required="false"
+                      type="date">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personHonorific"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="personJobTitle"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personNameSuffix"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="partyType"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="personDeceasedDate"
+                      nullable="true"
+                      required="false"
+                      type="date">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personDisabledDate"
+                      nullable="true"
+                      required="false"
+                      type="date">
+                  <options/>
+               </field>
+               <field label=""
+                      name="personProfessionalCredentialsText"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="sgaPrincipalName"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="survAsstCode"
+                      nullable="true"
+                      required="false"
+                      type="int">
+                  <options/>
+               </field>
+               <field label=""
+                      name="suspendIndicator"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="taxIdentificationType"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="deferredOwnershipIndicator"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="partyInactivationDate"
+                      nullable="true"
+                      required="false"
+                      type="date">
+                  <options/>
+               </field>
+               <field label=""
+                      name="partyInactivationReason"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="partyQualificationLevel"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="partyTaxId"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="partyTaxIdLast4"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="userLastUpdatedBy"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="suspendReason"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="partystatus"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="partyTaxResidenceCode"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="personCitizenType"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="personMaritalStatus"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:pickList</option>
+                     <option name="guid">advZeFtXsKqbqze452Ig4i</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field label=""
+                      name="lastUpdatedBy"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="createdBy"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="createdDate"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="lastUpdatedDate"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="effectiveReferenceId"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="systemLastUpdatedBy"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label=""
+                      name="partyId"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>5McdKxD1wVljcKhoA6CSi4</types1:GUID>
+      <types1:DisplayName>investorPersonDetails</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-15T10:52:34.853Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

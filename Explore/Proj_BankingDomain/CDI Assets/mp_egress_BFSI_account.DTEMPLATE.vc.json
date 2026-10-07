@@ -1,0 +1,583 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "mp_egress_BFSI_account",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Target",
+        "groupLink" : "root -> DefaultGroup"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T11:13:41.991Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "responseXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "root",
+            "output" : "true"
+          },
+          {
+            "input" : "false",
+            "name" : "BFSI_Account_Error",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)",
+            "label" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)",
+            "objectName" : "BFSI_Account(id=bfsi_account)",
+            "path" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)",
+            "retainMetadata" : "false"
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false",
+            "requestXml" : "dummy"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "root",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "PK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "true"
+                },
+                {
+                  "name" : "sourcePKey",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:sourcePKey"
+                },
+                {
+                  "name" : "businessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:businessId"
+                },
+                {
+                  "name" : "sourceSystem",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:sourceSystem"
+                },
+                {
+                  "name" : "creationDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:creationDate"
+                },
+                {
+                  "name" : "lastUpdateDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:lastUpdateDate"
+                },
+                {
+                  "name" : "state",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:state"
+                },
+                {
+                  "name" : "createdBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:createdBy"
+                },
+                {
+                  "name" : "updatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:updatedBy"
+                },
+                {
+                  "name" : "originalBusinessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:originalBusinessId"
+                },
+                {
+                  "name" : "mergedBusinessId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:mergedBusinessId"
+                },
+                {
+                  "name" : "validationStatus",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:validationStatus"
+                },
+                {
+                  "name" : "accountId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:accountId"
+                },
+                {
+                  "name" : "accountNumber",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:accountNumber"
+                },
+                {
+                  "name" : "accountType",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:accountType"
+                },
+                {
+                  "name" : "accountStatus",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:accountStatus"
+                },
+                {
+                  "name" : "balance",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:balance"
+                },
+                {
+                  "name" : "openDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:openDate"
+                },
+                {
+                  "name" : "closing_date",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:closing_date"
+                },
+                {
+                  "name" : "currency",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:currency"
+                },
+                {
+                  "name" : "interestRate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:interestRate"
+                },
+                {
+                  "name" : "overdraftLimit",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:overdraftLimit"
+                },
+                {
+                  "name" : "createdBy1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:createdBy"
+                },
+                {
+                  "name" : "createdDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:createdDate"
+                },
+                {
+                  "name" : "lastUpdatedBy",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:lastUpdatedBy"
+                },
+                {
+                  "name" : "lastUpdatedDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:lastUpdatedDate"
+                },
+                {
+                  "name" : "sourceLastUpdateDate",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:_cm/json:sourceLastUpdateDate"
+                }
+              ]
+            },
+            {
+              "groupName" : "BFSI_Account_Error",
+              "isRoot" : "false",
+              "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:BFSI_Account_ErrorArray/json:BFSI_Account_Error",
+              "xfields" : [
+                {
+                  "name" : "FK_root",
+                  "platformType" : {
+                    "name" : "bigint"
+                  },
+                  "precision" : 19,
+                  "scale" : 0,
+                  "foreignKey" : "true",
+                  "primaryKey" : "false"
+                },
+                {
+                  "name" : "parentId",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:BFSI_Account_ErrorArray/json:BFSI_Account_Error/json:parentId"
+                },
+                {
+                  "name" : "errorColumn",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:BFSI_Account_ErrorArray/json:BFSI_Account_Error/json:errorColumn"
+                },
+                {
+                  "name" : "errorSeverity",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:BFSI_Account_ErrorArray/json:BFSI_Account_Error/json:errorSeverity"
+                },
+                {
+                  "name" : "ruleName",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:BFSI_Account_ErrorArray/json:BFSI_Account_Error/json:ruleName"
+                },
+                {
+                  "name" : "errorMessage",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_Account_id_bfsi_account_/json:BFSI_Account/json:BFSI_Account_ErrorArray/json:BFSI_Account_Error/json:errorMessage"
+                }
+              ]
+            }
+          ],
+          "packed" : {
+            "packedFields" : null
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-19T11:13:41.998Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@3zwKOJqBumojYelMEmLrgb",
+          "connectionName" : "conn-BM-Flatfile-BFSI-Target",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "bfsi_account_source_records.csv",
+            "label" : "bfsi_account_source_records.csv",
+            "path" : "bfsi_account_source_records.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "NEVER",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-23 01:34:34 PDT"
+}

@@ -1,0 +1,680 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Vf4VQT53nQciSrZ-gt-5371828-2026-09-30T09:21:09.762Z::pd.xml</types1:EntryId>
+      <types1:Name>p_DeployObjects</types1:Name>
+      <types1:ParentFlowIds>FHEJRxZsEi4tciS-gt-5371848-2026-09-30T09:21:10.515Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>process to export and import the objects listed in the csv file</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-09-30T09:21:10Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="38bNC9mBF0VeqpJjIIhnEa"
+                  displayName="p_DeployObjects"
+                  name="p_DeployObjects"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>process to export and import the objects listed in the csv file</description>
+            <tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="i_File_Path" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="outObjects" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="outPutMessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_Fault_DeployObject" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                     <option name="initialvalue">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmpObjList" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-DEPLOY-LISTOBJS</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bRP84Vkvwg0fZrrtf4j0gQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmpFileWriter" type="objectlist">
+                  <options>
+                     <option name="referenceTo">app-fileWriter:FileWriteTask</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">awH7aPbMEvAh4LCrEoA2iY</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_ExportName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_ExportJobName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fileExists" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_json_data_converted" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="json_data_converted" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_email" type="reference">
+                  <options>
+                     <option name="referenceTo">app-email:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8I8QQC0F89liJSeFmLBt0c</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>TAKM_INWPF35GT5G-AAD</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lnn1ub5s" targetId="lnn1ub5r"/>
+               </start>
+               <assignment id="lnn1ub5r">
+                  <title>Assignment to File_path, fileExists</title>
+                  <operation source="formula" to="temp.File_path">
+                     <expression language="XQuery">'file:///'||$input.i_File_Path ||"/IICS_Object_Migration_List_Complete.csv"</expression>
+                  </operation>
+                  <operation source="formula" to="temp.fileExists">
+                     <expression language="XQuery">fn:unparsed-text-available($temp.File_path )</expression>
+                  </operation>
+                  <link id="lnn1z6i1" targetId="lnn1z6i0"/>
+               </assignment>
+               <container id="lnn1z6i0" type="exclusive">
+                  <title>fileExists?</title>
+                  <flow id="lnn1z6i4">
+                     <assignment id="lnn1z6jk">
+                        <title>Assignment to File_Content, temp_json_data_converted etc.</title>
+                        <operation source="formula" to="temp.File_Content">
+                           <expression language="XQuery">fn:unparsed-text($temp.File_path)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.temp_json_data_converted">
+                           <expression language="XQuery">let $removeLastCR:=fn:replace($temp.File_Content   , '(\r?\n|\r)$', '')
+let $lines := tokenize($removeLastCR, '\r\n')
+for $line at $counter in $lines
+let $fields := tokenize($line, ',')
+where ($counter!=1)
+return
+   &lt;objects&gt;
+      &lt;path&gt;{$fields[1]}\{$fields[2]}\{$fields[3]}&lt;/path&gt;
+      &lt;type&gt;{$fields[4]}&lt;/type&gt;
+   &lt;/objects&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.json_data_converted">
+                           <expression language="XQuery">fn:replace(fn:replace(fn:replace(util:toJSON(for $x at $j in $temp.temp_json_data_converted  
+return
+&lt;objects xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data" m:isArray="true"&gt;
+&lt;path&gt;{$x/path/text()}&lt;/path&gt;
+&lt;type&gt;{$x/type/text()}&lt;/type&gt;
+&lt;/objects&gt;), "\\\\", "/"),"//","/"),'/"','')</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lnn1z6i5" targetId="lnn1z6i0" type="containerLink"/>
+                  </flow>
+                  <flow id="lnn1z6i7">
+                     <jumpTo id="lnvob0j8">
+                        <link id="lnvob0j9" targetId="lnvob0g8"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lnn1z6i3" targetId="lnn1z6i4" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnn1z6i6" targetId="lnn1z6i7" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnn1z6i2" targetId="lnvob0fs"/>
+               </container>
+               <container id="ko288qz4" type="exclusive">
+                  <title>objects</title>
+                  <flow id="ko288qz8">
+                     <assignment id="lnep5d40">
+                        <title>Export Job Name</title>
+                        <operation source="formula" to="temp.Tmp_ExportName">
+                           <expression language="XQuery">let $dateTime := fn:current-dateTime()
+let $dayZero := xs:dateTime('1970-01-01T00:00:00-00:00')
+return ($dateTime - $dayZero) div xs:dayTimeDuration('PT1S')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Tmp_ExportJobName">
+                           <expression language="XQuery">fn:concat('Export-', fn:substring($temp.Tmp_ExportName , 0, 5),fn:substring-after($temp.Tmp_ExportName, '.'))</expression>
+                        </operation>
+                        <link id="lnep5d41" targetId="ku02pd4a"/>
+                     </assignment>
+                     <assignment id="ku02pd4a">
+                        <title>AssignObjects</title>
+                        <operation source="formula" to="temp.tmpObjList">
+                           <expression language="XQuery">$output.ICSObjects </expression>
+                        </operation>
+                        <link id="ku0tk086" targetId="lny8vkwa"/>
+                     </assignment>
+                     <assignment id="ku0qm14x">
+                        <title>Assignment to Content Format, File name</title>
+                        <operation source="constant" to="temp.tmpFileWriter[1]/format">Attachment</operation>
+                        <operation source="formula" to="temp.tmpFileWriter[1]/fileName">
+                           <expression language="XQuery">$temp.Tmp_ExportJobName ||'.zip'</expression>
+                        </operation>
+                        <link id="lnep5d80" targetId="lnep5d7z"/>
+                     </assignment>
+                     <assignment id="kuusdyio">
+                        <title>Assignment to outPutMessage</title>
+                        <operation source="constant" to="output.outPutMessage">{$output.importStatus}</operation>
+                     </assignment>
+                     <eventContainer id="lny8vkwa">
+                        <service id="ku0tk085">
+                           <title>ExportObjects</title>
+                           <serviceName>APP-ICS-REST-DEPLOY:ExportObjects</serviceName>
+                           <serviceGUID>gRf28AlwvkdlM7SRlFgHUs</serviceGUID>
+                           <serviceInput>
+                              <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                              <parameter name="objects" source="field" updatable="true">output.ICSObjects</parameter>
+                              <parameter name="name" source="field" updatable="true">temp.Tmp_ExportJobName</parameter>
+                              <parameter name="serverUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lny8vkwc">
+                           <link id="lny8vkwd" targetId="lny8vkwa" type="containerLink"/>
+                        </flow>
+                        <flow id="lny8vkwf">
+                           <jumpTo id="lny8vkwv">
+                              <link id="lny8vkww" targetId="lnvob0g8"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lny8vkwb" targetId="lny8vkwc" type="containerLink"/>
+                        <link id="ku0tk08v" targetId="ku0tk08u"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lny8vkw9" interrupting="true">
+                              <link id="lny8vkwe" targetId="lny8vkwf" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="lnvob0k6">
+                        <service id="kvk68579">
+                           <title>Login</title>
+                           <serviceName>AppCon-Login-Target-Org:Login</serviceName>
+                           <serviceGUID>49pDFaqH4sVc9QHW5O7UYp</serviceGUID>
+                           <serviceInput/>
+                        </service>
+                        <flow id="lnvob0k8">
+                           <link id="lnvob0k9" targetId="lnvob0k6" type="containerLink"/>
+                        </flow>
+                        <flow id="lnvob0kb">
+                           <jumpTo id="lnvob0kn">
+                              <link id="lnvob0ko" targetId="lnvob0g8"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lnvob0k7" targetId="lnvob0k8" type="containerLink"/>
+                        <link id="kvk6857b" targetId="lny8vl0p"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lnvob0k5" interrupting="true">
+                              <link id="lnvob0ka" targetId="lnvob0kb" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="lny8vl0p">
+                        <service id="kuusdyb5">
+                           <title>UploadObjects</title>
+                           <serviceName>APP-ICS-REST-DEPLOY:UploadObjects</serviceName>
+                           <serviceGUID>gRf28AlwvkdlM7SRlFgHUs</serviceGUID>
+                           <serviceInput>
+                              <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                              <parameter name="package" source="formula">
+                                 <expression language="XQuery">$output.DownloadPackage </expression>
+                              </parameter>
+                              <parameter name="serverUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lny8vl0r">
+                           <link id="lny8vl0s" targetId="lny8vl0p" type="containerLink"/>
+                        </flow>
+                        <flow id="lny8vl0u">
+                           <jumpTo id="lny8vl1d">
+                              <link id="lny8vl1e" targetId="lnvob0g8"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lny8vl0q" targetId="lny8vl0r" type="containerLink"/>
+                        <link id="kuusdycn" targetId="kuusdycm"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lny8vl0o" interrupting="true">
+                              <link id="lny8vl0t" targetId="lny8vl0u" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="lny8vl2e">
+                        <service id="kuusdyc2">
+                           <title>ImportObjects</title>
+                           <serviceName>APP-ICS-REST-DEPLOY:ImportObjects</serviceName>
+                           <serviceGUID>gRf28AlwvkdlM7SRlFgHUs</serviceGUID>
+                           <serviceInput>
+                              <parameter name="importName" source="field" updatable="true">temp.Tmp_ExportJobName</parameter>
+                              <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                              <parameter name="ConflictResolution" source="constant">OVERWRITE</parameter>
+                              <parameter name="jobId" source="constant">{$output.UpLoadJobId}</parameter>
+                              <parameter name="serverUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lny8vl2g">
+                           <link id="lny8vl2h" targetId="lny8vl2e" type="containerLink"/>
+                        </flow>
+                        <flow id="lny8vl2j">
+                           <jumpTo id="lny8vl33">
+                              <link id="lny8vl34" targetId="lnvob0g8"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lny8vl2f" targetId="lny8vl2g" type="containerLink"/>
+                        <link id="kuusdye6" targetId="kuusdye5"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lny8vl2d" interrupting="true">
+                              <link id="lny8vl2i" targetId="lny8vl2j" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="lny8vl44">
+                        <service id="kuusdyfc">
+                           <title>GetImportStatus</title>
+                           <serviceName>APP-ICS-REST-DEPLOY:GetImportStatus</serviceName>
+                           <serviceGUID>gRf28AlwvkdlM7SRlFgHUs</serviceGUID>
+                           <serviceInput>
+                              <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                              <parameter name="importId" source="constant">{$output.importId}</parameter>
+                              <parameter name="serverUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lny8vl46">
+                           <link id="lny8vl47" targetId="lny8vl44" type="containerLink"/>
+                        </flow>
+                        <flow id="lny8vl49">
+                           <jumpTo id="lny8vl4u">
+                              <link id="lny8vl4v" targetId="lnvob0g8"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lny8vl45" targetId="lny8vl46" type="containerLink"/>
+                        <link id="kuusdyfe" targetId="kuusdyec"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lny8vl43" interrupting="true">
+                              <link id="lny8vl48" targetId="lny8vl49" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="ku0tk08u" type="exclusive">
+                        <title>HttpStatus</title>
+                        <flow id="ku0tk08y">
+                           <eventContainer id="lny8vkxo">
+                              <service id="ku0tk09o">
+                                 <title>GetExportStatus</title>
+                                 <serviceName>APP-ICS-REST-DEPLOY:GetExportStatus</serviceName>
+                                 <serviceGUID>gRf28AlwvkdlM7SRlFgHUs</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                                    <parameter name="exportId" source="constant">{$output.exportId}</parameter>
+                                    <parameter name="serverUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="lny8vkxq">
+                                 <link id="lny8vkxr" targetId="lny8vkxo" type="containerLink"/>
+                              </flow>
+                              <flow id="lny8vkxt">
+                                 <jumpTo id="lny8vkya">
+                                    <link id="lny8vkyb" targetId="lnvob0g8"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="lny8vkxp" targetId="lny8vkxq" type="containerLink"/>
+                              <link id="ku0tk0al" targetId="ku0tk0ak"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="lny8vkxn" interrupting="true">
+                                    <link id="lny8vkxs" targetId="lny8vkxt" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <wait id="ku0tk0ak">
+                              <title>Wait 1</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">1</arg>
+                                    <arg name="scale">S</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                           </wait>
+                           <link id="ku0tk08z" targetId="ku0tk08u" type="containerLink"/>
+                        </flow>
+                        <flow id="ku0tk091">
+                           <jumpTo id="lnvob0jp">
+                              <link id="lnvob0jq" targetId="lnvob0g8"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="ku0tk08x" targetId="ku0tk08y" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.HttpStatus}</arg>
+                                 <arg name="right">200</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ku0tk090" targetId="ku0tk091" type="containerLink"/>
+                        <link id="ku0tk0az" targetId="ku0tk0ay"/>
+                     </container>
+                     <container id="ku0tk0ay" type="exclusive">
+                        <title>exportStatus</title>
+                        <flow id="ku0tk0b2">
+                           <eventContainer id="lny8vkz5">
+                              <service id="ku0tk0c7">
+                                 <title>DownLoadPackage</title>
+                                 <serviceName>APP-ICS-REST-DEPLOY:DownLoadPackage</serviceName>
+                                 <serviceGUID>gRf28AlwvkdlM7SRlFgHUs</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="sessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                                    <parameter name="exportId" source="constant">{$output.exportId}</parameter>
+                                    <parameter name="serverUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="lny8vkz7">
+                                 <link id="lny8vkz8" targetId="lny8vkz5" type="containerLink"/>
+                              </flow>
+                              <flow id="lny8vkza">
+                                 <jumpTo id="lny8vkzs">
+                                    <link id="lny8vkzt" targetId="lnvob0g8"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="lny8vkz6" targetId="lny8vkz7" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="lny8vkz4" interrupting="true">
+                                    <link id="lny8vkz9" targetId="lny8vkza" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="ku0tk0b3" targetId="ku0tk0ay" type="containerLink"/>
+                        </flow>
+                        <flow id="ku0tk0b5">
+                           <jumpTo id="ku0tk0be">
+                              <link id="ku0tk0bf" targetId="lny8vkxo"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="ku0tk0b1" targetId="ku0tk0b2" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.exportStatus}</arg>
+                                 <arg name="right">SUCCESS</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ku0tk0b4" targetId="ku0tk0b5" type="containerLink"/>
+                        <link id="ku0tk0b0" targetId="ku0qm14x"/>
+                     </container>
+                     <container id="kuusdyec" type="exclusive">
+                        <title>importStatus</title>
+                        <flow id="kuusdyef">
+                           <link id="kuusdyeg" targetId="kuusdyec" type="containerLink"/>
+                        </flow>
+                        <flow id="kuusdyei">
+                           <jumpTo id="kuusdyhi">
+                              <link id="kuusdyhj" targetId="kuusdye5"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="kuusdyh0">
+                           <assignment id="lnvob0g8">
+                              <title>Assignment to Recipient Addresses, Subject etc.</title>
+                              <operation source="field" to="temp.temp_email[1]/to">output.ICS User Email</operation>
+                              <operation source="constant" to="temp.temp_email[1]/subject">p_DeployObjects Process Failed During Code Migration</operation>
+                              <operation source="constant" to="temp.temp_email[1]/body">Code Deployment has failed during current migration. Please verify.
+
+{$output.faultInfo[1]/code}:{$output.faultInfo[1]/detail} </operation>
+                              <operation source="constant" to="output.o_Fault_DeployObject">true</operation>
+                              <link id="lnvob0gk" targetId="lnx68x0g"/>
+                           </assignment>
+                           <eventContainer id="lnx68x0g">
+                              <service id="lnvob0gj">
+                                 <title>sendEmailService</title>
+                                 <serviceName>app-email:sendEmailService</serviceName>
+                                 <serviceGUID>8I8QQC0F89liJSeFmLBt0c</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="emailTaskInput" source="field" updatable="true">temp.temp_email</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="lnx68x0i">
+                                 <link id="lnx68x0j" targetId="lnx68x0g" type="containerLink"/>
+                              </flow>
+                              <flow id="lnx68x0l">
+                                 <link id="lnx68x0m" targetId="lnx68x0g" type="containerLink"/>
+                              </flow>
+                              <link id="lnx68x0h" targetId="lnx68x0i" type="containerLink"/>
+                              <link id="lnvob0gl" targetId="kuusdyha"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="lnx68x0f" interrupting="true">
+                                    <link id="lnx68x0k" targetId="lnx68x0l" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <end id="kuusdyha">
+                              <title>End 4</title>
+                              <httpStatus>400</httpStatus>
+                           </end>
+                        </flow>
+                        <link id="kuusdyee" targetId="kuusdyef" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.importStatus}</arg>
+                                 <arg name="right">SUCCESS</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kuusdyeh" targetId="kuusdyei" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.importStatus}</arg>
+                                 <arg name="right">PROGRESS</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kuusdygz" targetId="kuusdyh0" type="containerLink"/>
+                        <link id="kuusdyip" targetId="kuusdyio"/>
+                     </container>
+                     <service id="lnep5d7z">
+                        <title>FileWriter</title>
+                        <serviceName>app-fileWriter:FileWriter</serviceName>
+                        <serviceGUID>awH7aPbMEvAh4LCrEoA2iY</serviceGUID>
+                        <serviceInput>
+                           <parameter name="fileWriteTask" source="field" updatable="true">temp.tmpFileWriter</parameter>
+                           <parameter name="attachment" source="field" updatable="true">output.DownloadPackage</parameter>
+                        </serviceInput>
+                        <link id="lnep5d81" targetId="kvk6856y"/>
+                     </service>
+                     <service id="kvk6856y">
+                        <title>Logout</title>
+                        <serviceName>AppCon-Login-Source-Org:Logout</serviceName>
+                        <serviceGUID>eGpU9LNPzCIj5HCzYos4sf</serviceGUID>
+                        <serviceInput>
+                           <parameter name="icsSessionUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                           <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                        </serviceInput>
+                        <link id="kvk6857a" targetId="lnvob0k6"/>
+                     </service>
+                     <wait id="kuusdycm">
+                        <title>Wait 2</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">30</arg>
+                              <arg name="scale">S</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="kuusdyco" targetId="lny8vl2e"/>
+                     </wait>
+                     <wait id="kuusdye5">
+                        <title>Wait 3</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">30</arg>
+                              <arg name="scale">S</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="kuusdyfd" targetId="lny8vl44"/>
+                     </wait>
+                     <link id="ko288qz9" targetId="ko288qz4" type="containerLink"/>
+                  </flow>
+                  <flow id="ko288qzb">
+                     <assignment id="ko288qzj">
+                        <title>Assignment to outPutMessage</title>
+                        <operation source="constant" to="output.outPutMessage">No Objects Retrieved from Tag Specified</operation>
+                        <link id="ko288r2r" targetId="ko288r2q"/>
+                     </assignment>
+                     <end id="ko288r2q">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="ko288qz7" targetId="ko288qz8" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ko288qza" targetId="ko288qzb" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kvk6854e" targetId="kvk6854d"/>
+               </container>
+               <eventContainer id="lnvob0fs">
+                  <service id="knewx5rx">
+                     <title>LogintoIICS</title>
+                     <serviceName>AppCon-Login-Source-Org:Login</serviceName>
+                     <serviceGUID>eGpU9LNPzCIj5HCzYos4sf</serviceGUID>
+                     <serviceInput/>
+                  </service>
+                  <flow id="lnvob0fu">
+                     <link id="lnvob0fv" targetId="lnvob0fs" type="containerLink"/>
+                  </flow>
+                  <flow id="lnvob0fx">
+                     <jumpTo id="lnvob0is">
+                        <link id="lnvob0it" targetId="lnvob0g8"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lnvob0ft" targetId="lnvob0fu" type="containerLink"/>
+                  <link id="knewx5rz" targetId="lny8vkuv"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lnvob0fr" interrupting="true">
+                        <link id="lnvob0fw" targetId="lnvob0fx" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <eventContainer id="lny8vkuv">
+                  <service id="knewx5rm">
+                     <title>GetObjectsID</title>
+                     <serviceName>APP-ICS-REST-DEPLOY:GetObjectsID</serviceName>
+                     <serviceGUID>gRf28AlwvkdlM7SRlFgHUs</serviceGUID>
+                     <serviceInput>
+                        <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                        <parameter name="serverUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                        <parameter name="payload" source="field" updatable="true">temp.json_data_converted</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="lny8vkux">
+                     <link id="lny8vkuy" targetId="lny8vkuv" type="containerLink"/>
+                  </flow>
+                  <flow id="lny8vkv0">
+                     <jumpTo id="lny8vkvf">
+                        <link id="lny8vkvg" targetId="lnvob0g8"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lny8vkuw" targetId="lny8vkux" type="containerLink"/>
+                  <link id="ko288r0t" targetId="ko288qz4"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lny8vkuu" interrupting="true">
+                        <link id="lny8vkuz" targetId="lny8vkv0" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <service id="kvk6854d">
+                  <title>Logout</title>
+                  <serviceName>AppCon-Login-Target-Org:Logout</serviceName>
+                  <serviceGUID>49pDFaqH4sVc9QHW5O7UYp</serviceGUID>
+                  <serviceInput>
+                     <parameter name="icsSessionUrl" source="field" updatable="true">output.ICS Server URL</parameter>
+                     <parameter name="icSessionId" source="field" updatable="true">output.ICS Session ID</parameter>
+                  </serviceInput>
+                  <link id="kvk6854f" targetId="ku02pd7z"/>
+               </service>
+               <end id="ku02pd7z">
+                  <title>End 2</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>38bNC9mBF0VeqpJjIIhnEa</types1:GUID>
+      <types1:DisplayName>p_DeployObjects</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:22:43.255Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

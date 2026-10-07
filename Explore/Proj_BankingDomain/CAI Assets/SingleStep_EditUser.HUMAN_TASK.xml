@@ -1,0 +1,77 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>aaa-gt-865851-2026-04-27T13:24:49.003Z::ht.xml</types1:EntryId>
+      <types1:Name>SingleStep_EditUser</types1:Name>
+      <types1:MimeType>application/xml+humantask</types1:MimeType>
+      <types1:Description>Single Step EditUser HT Desc</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ishita.j</types1:CreatedBy>
+      <types1:CreationDate>2026-04-27T13:24:49Z</types1:CreationDate>
+      <types1:ModifiedBy>ishita.j</types1:ModifiedBy>
+      <types1:ModificationDate>2026-04-27T13:27:07Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <HumanTask xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskAsset.xsd"
+                    xmlns:core="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                    xmlns:htc="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                    displayName="SingleStep_EditUser"
+                    name="SingleStep_EditUser">
+            <description>Single Step EditUser HT Desc</description>
+            <priority source="constant">1</priority>
+            <skippable source="constant">false</skippable>
+            <origin source="constant"/>
+            <interface>
+               <input>
+                  <field name="AssetName" required="true" type="string">
+                     <description>AssetName desc</description>
+                  </field>
+               </input>
+               <outcomes>
+                  <outcome>
+                     <id>outcomes-1697119943740</id>
+                     <value>Discard</value>
+                     <label/>
+                     <description>Discard Task </description>
+                  </outcome>
+                  <outcome>
+                     <id>outcomes-1697120023720</id>
+                     <value>Resubmit</value>
+                     <label/>
+                     <description>Resubmit Task</description>
+                  </outcome>
+               </outcomes>
+            </interface>
+            <presentation>
+               <displayName source="constant">Single Step EditUser Task</displayName>
+               <subject source="constant">EditUser | {$AssetName}</subject>
+               <description source="constant">Single Step EditUser HT Desc</description>
+            </presentation>
+            <assignments>
+               <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                canOverwrite="true">
+                  <include/>
+                  <exclude/>
+               </potentialOwners>
+               <administrators xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                               canOverwrite="true"
+                               source="constant">
+                  <user>ishita.j</user>
+                  <role>Customer Data Steward</role>
+                  <role>Customer_Governance Administrator</role>
+               </administrators>
+               <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                             canOverwrite="true"
+                             source="constant"/>
+            </assignments>
+         </HumanTask>
+      </types1:Entry>
+      <types1:GUID>2lUjXTO8MXSirF4RyRJ1kG</types1:GUID>
+      <types1:DisplayName>SingleStep_EditUser</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-23T08:34:34.259Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

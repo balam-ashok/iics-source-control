@@ -1,0 +1,1058 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "Test0",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Expression -> Target"
+      },
+      {
+        "link" : "Source -> Expression"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-07-29T10:19:22.184Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "CUSTOMER_ID"
+            },
+            "name" : "CUSTOMER_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "FIRST_NAME"
+            },
+            "name" : "FIRST_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LAST_NAME"
+            },
+            "name" : "LAST_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DOB"
+            },
+            "name" : "DOB",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "AGE"
+            },
+            "name" : "AGE",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "GENDER"
+            },
+            "name" : "GENDER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EMAIL"
+            },
+            "name" : "EMAIL",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 128,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PHONE_NUMBER"
+            },
+            "name" : "PHONE_NUMBER",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESS_LINE_1"
+            },
+            "name" : "ADDRESS_LINE_1",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESS_LINE_2"
+            },
+            "name" : "ADDRESS_LINE_2",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ADDRESS_LINE_3"
+            },
+            "name" : "ADDRESS_LINE_3",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CITY"
+            },
+            "name" : "CITY",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "STATE"
+            },
+            "name" : "STATE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "POSTAL_CODE"
+            },
+            "name" : "POSTAL_CODE",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PAN_NUMBER"
+            },
+            "name" : "PAN_NUMBER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AADHAAR_NUMBER"
+            },
+            "name" : "AADHAAR_NUMBER",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ACCOUNT_NUMBER"
+            },
+            "name" : "ACCOUNT_NUMBER",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "IFSC_CODE"
+            },
+            "name" : "IFSC_CODE",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BRANCH_NAME"
+            },
+            "name" : "BRANCH_NAME",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BALANCE"
+            },
+            "name" : "BALANCE",
+            "platformType" : {
+              "name" : "double"
+            },
+            "precision" : 15,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "KYC_STATUS"
+            },
+            "name" : "KYC_STATUS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ACCOUNT_STATUS"
+            },
+            "name" : "ACCOUNT_STATUS",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 26,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "LAST_UPDATE_DATE"
+            },
+            "name" : "LAST_UPDATE_DATE",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@bh02HZQOEMgdDsqW9A4KGd",
+          "connectionName" : "orcl_cdam_practice",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "Oracle",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "TEST0",
+            "label" : "TEST0",
+            "objectName" : "TEST0",
+            "path" : "TEST0",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "CUSTOMER_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "CUSTOMER_ID",
+                "nativeName" : "CUSTOMER_ID",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "FIRST_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "FIRST_NAME",
+                "nativeName" : "FIRST_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "LAST_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "LAST_NAME",
+                "nativeName" : "LAST_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "DOB",
+                "fieldType" : "CONNECTOR",
+                "label" : "DOB",
+                "nativeName" : "DOB",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "AGE",
+                "fieldType" : "CONNECTOR",
+                "label" : "AGE",
+                "nativeName" : "AGE",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "GENDER",
+                "fieldType" : "CONNECTOR",
+                "label" : "GENDER",
+                "nativeName" : "GENDER",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "EMAIL",
+                "fieldType" : "CONNECTOR",
+                "label" : "EMAIL",
+                "nativeName" : "EMAIL",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 128,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "PHONE_NUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "PHONE_NUMBER",
+                "nativeName" : "PHONE_NUMBER",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESS_LINE_1",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESS_LINE_1",
+                "nativeName" : "ADDRESS_LINE_1",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESS_LINE_2",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESS_LINE_2",
+                "nativeName" : "ADDRESS_LINE_2",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "ADDRESS_LINE_3",
+                "fieldType" : "CONNECTOR",
+                "label" : "ADDRESS_LINE_3",
+                "nativeName" : "ADDRESS_LINE_3",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "CITY",
+                "fieldType" : "CONNECTOR",
+                "label" : "CITY",
+                "nativeName" : "CITY",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "STATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "STATE",
+                "nativeName" : "STATE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "POSTAL_CODE",
+                "fieldType" : "CONNECTOR",
+                "label" : "POSTAL_CODE",
+                "nativeName" : "POSTAL_CODE",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "PAN_NUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "PAN_NUMBER",
+                "nativeName" : "PAN_NUMBER",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "AADHAAR_NUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "AADHAAR_NUMBER",
+                "nativeName" : "AADHAAR_NUMBER",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "ACCOUNT_NUMBER",
+                "fieldType" : "CONNECTOR",
+                "label" : "ACCOUNT_NUMBER",
+                "nativeName" : "ACCOUNT_NUMBER",
+                "nativeType" : "decimal",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "IFSC_CODE",
+                "fieldType" : "CONNECTOR",
+                "label" : "IFSC_CODE",
+                "nativeName" : "IFSC_CODE",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "BRANCH_NAME",
+                "fieldType" : "CONNECTOR",
+                "label" : "BRANCH_NAME",
+                "nativeName" : "BRANCH_NAME",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "BALANCE",
+                "fieldType" : "CONNECTOR",
+                "label" : "BALANCE",
+                "nativeName" : "BALANCE",
+                "nativeType" : "double",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "KYC_STATUS",
+                "fieldType" : "CONNECTOR",
+                "label" : "KYC_STATUS",
+                "nativeName" : "KYC_STATUS",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "ACCOUNT_STATUS",
+                "fieldType" : "CONNECTOR",
+                "label" : "ACCOUNT_STATUS",
+                "nativeName" : "ACCOUNT_STATUS",
+                "nativeType" : "varchar",
+                "original" : "false",
+                "precision" : 26,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              },
+              {
+                "name" : "LAST_UPDATE_DATE",
+                "fieldType" : "CONNECTOR",
+                "label" : "LAST_UPDATE_DATE",
+                "nativeName" : "LAST_UPDATE_DATE",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "TEST0"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-07-29T10:19:22.184Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/BFSI PII(id=bfsipii)",
+            "label" : "Home/Custom Assets/Business Entities/BFSI PII(id=bfsipii)",
+            "objectName" : "BFSI PII(id=bfsipii)",
+            "path" : "Home/Custom Assets/Business Entities/BFSI PII(id=bfsipii)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Expression",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "CUSTOMER_ID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:sourcePKey"
+                },
+                {
+                  "name" : "o_source_system",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:sourceSystem"
+                },
+                {
+                  "name" : "FIRST_NAME",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:lastUpdateDate"
+                },
+                {
+                  "name" : "FIRST_NAME",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:firstName"
+                },
+                {
+                  "name" : "LAST_NAME",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:lastName"
+                },
+                {
+                  "name" : "DOB",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:dob"
+                },
+                {
+                  "name" : "GENDER",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:gender"
+                },
+                {
+                  "name" : "EMAIL",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 128,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:email"
+                },
+                {
+                  "name" : "CUSTOMER_ID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerAddressArray/json:customerAddress/json:sourcePKey"
+                },
+                {
+                  "name" : "CUSTOMER_ID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerAddressArray/json:customerAddress/json:parentId"
+                },
+                {
+                  "name" : "ADDRESS_LINE_1",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerAddressArray/json:customerAddress/json:addressline1"
+                },
+                {
+                  "name" : "ADDRESS_LINE_2",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerAddressArray/json:customerAddress/json:addressline2"
+                },
+                {
+                  "name" : "ADDRESS_LINE_3",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerAddressArray/json:customerAddress/json:addressline3"
+                },
+                {
+                  "name" : "CITY",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerAddressArray/json:customerAddress/json:city"
+                },
+                {
+                  "name" : "STATE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerAddressArray/json:customerAddress/json:state"
+                },
+                {
+                  "name" : "CUSTOMER_ID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerPiiArray/json:customerPii/json:sourcePKey"
+                },
+                {
+                  "name" : "CUSTOMER_ID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerPiiArray/json:customerPii/json:parentId"
+                },
+                {
+                  "name" : "PAN_NUMBER",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerPiiArray/json:customerPii/json:panNumber"
+                },
+                {
+                  "name" : "IFSC_CODE",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerPiiArray/json:customerPii/json:ifscCode"
+                },
+                {
+                  "name" : "BRANCH_NAME",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerPiiArray/json:customerPii/json:branchName"
+                },
+                {
+                  "name" : "ACCOUNT_STATUS",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 26,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:customerPiiArray/json:customerPii/json:accountStatus"
+                },
+                {
+                  "name" : "LAST_UPDATE_DATE",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:BFSI_PII_id_bfsipii_/json:BFSI_PII/json:_cm/json:sourceLastUpdateDate"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-07-29T10:27:02.619Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_source_system",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'emr'"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 03:43:49 PDT"
+}

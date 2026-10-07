@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "0GbzG1EG56ohW09Gy1JgCT",
+    "name" : "tf_testing_input_parameters",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "y3DKYsGuDoWn2sq-gt-172029-2026-06-26T05:03:53.985Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-15T10:52:36.148Z",
+  "objectRefs" : [ {
+    "id" : "eU9IWsPjyOadugSGhTv0Yi",
+    "name" : "mt_testing_input_parameters",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z0000000000CT"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/CG Assets/MDM Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

@@ -1,0 +1,1734 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_varified",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "exp -> tgt_Dantewada_varified_members"
+      },
+      {
+        "link" : "src_Dantewada_rc_members -> exp"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-05-13T09:58:58.459Z",
+        "name" : "src_Dantewada_rc_members",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "File Reader Truncate String Null",
+            "value" : "NO"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "District_Name"
+            },
+            "name" : "District_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "District_Name_En"
+            },
+            "name" : "District_Name_En",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "District_LGD"
+            },
+            "name" : "District_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Block_LGD"
+            },
+            "name" : "Block_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Panchayat_LGD"
+            },
+            "name" : "Panchayat_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Village_LGD"
+            },
+            "name" : "Village_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ID"
+            },
+            "name" : "ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "RC_Number"
+            },
+            "name" : "RC_Number",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_ID"
+            },
+            "name" : "Member_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_Relation_With_Head"
+            },
+            "name" : "Member_Relation_With_Head",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_Name"
+            },
+            "name" : "Member_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "MemberName_Eng"
+            },
+            "name" : "MemberName_Eng",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Aadhar_Name"
+            },
+            "name" : "Aadhar_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateOfBirth"
+            },
+            "name" : "DateOfBirth",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_Age"
+            },
+            "name" : "Member_Age",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Gender"
+            },
+            "name" : "Gender",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Aadhar_Status"
+            },
+            "name" : "Aadhar_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Aadhar_Status_Detail"
+            },
+            "name" : "Aadhar_Status_Detail",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "OldId"
+            },
+            "name" : "OldId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EPICNo"
+            },
+            "name" : "EPICNo",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EncARCNo"
+            },
+            "name" : "EncARCNo",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SocialRegNo"
+            },
+            "name" : "SocialRegNo",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "RC_MemberId"
+            },
+            "name" : "RC_MemberId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Ekyc_Status"
+            },
+            "name" : "Ekyc_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "eKYCDate"
+            },
+            "name" : "eKYCDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Ekyc_Relaxation"
+            },
+            "name" : "Ekyc_Relaxation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ChipsVault"
+            },
+            "name" : "ChipsVault",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@1y3nQcd5aQZhiqOOjhd3qx",
+          "connectionName" : "Conn-CHIPS-Demo",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Dantewada_rc_members.csv",
+            "label" : "Dantewada_rc_members.csv",
+            "objectName" : "Dantewada_rc_members.csv",
+            "path" : "Dantewada_rc_members.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "District_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "District_Name",
+                "nativeName" : "District_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "District_Name_En",
+                "fieldType" : "CONNECTOR",
+                "label" : "District_Name_En",
+                "nativeName" : "District_Name_En",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "District_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "District_LGD",
+                "nativeName" : "District_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Block_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "Block_LGD",
+                "nativeName" : "Block_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Panchayat_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "Panchayat_LGD",
+                "nativeName" : "Panchayat_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Village_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "Village_LGD",
+                "nativeName" : "Village_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "ID",
+                "nativeName" : "ID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "RC_Number",
+                "fieldType" : "CONNECTOR",
+                "label" : "RC_Number",
+                "nativeName" : "RC_Number",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_ID",
+                "nativeName" : "Member_ID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_Relation_With_Head",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_Relation_With_Head",
+                "nativeName" : "Member_Relation_With_Head",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_Name",
+                "nativeName" : "Member_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "MemberName_Eng",
+                "fieldType" : "CONNECTOR",
+                "label" : "MemberName_Eng",
+                "nativeName" : "MemberName_Eng",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Aadhar_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Aadhar_Name",
+                "nativeName" : "Aadhar_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DateOfBirth",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateOfBirth",
+                "nativeName" : "DateOfBirth",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_Age",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_Age",
+                "nativeName" : "Member_Age",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Gender",
+                "fieldType" : "CONNECTOR",
+                "label" : "Gender",
+                "nativeName" : "Gender",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Aadhar_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Aadhar_Status",
+                "nativeName" : "Aadhar_Status",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Aadhar_Status_Detail",
+                "fieldType" : "CONNECTOR",
+                "label" : "Aadhar_Status_Detail",
+                "nativeName" : "Aadhar_Status_Detail",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "OldId",
+                "fieldType" : "CONNECTOR",
+                "label" : "OldId",
+                "nativeName" : "OldId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "EPICNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "EPICNo",
+                "nativeName" : "EPICNo",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "EncARCNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "EncARCNo",
+                "nativeName" : "EncARCNo",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "SocialRegNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "SocialRegNo",
+                "nativeName" : "SocialRegNo",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "RC_MemberId",
+                "fieldType" : "CONNECTOR",
+                "label" : "RC_MemberId",
+                "nativeName" : "RC_MemberId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Ekyc_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Ekyc_Status",
+                "nativeName" : "Ekyc_Status",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "eKYCDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "eKYCDate",
+                "nativeName" : "eKYCDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Ekyc_Relaxation",
+                "fieldType" : "CONNECTOR",
+                "label" : "Ekyc_Relaxation",
+                "nativeName" : "Ekyc_Relaxation",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ChipsVault",
+                "fieldType" : "CONNECTOR",
+                "label" : "ChipsVault",
+                "nativeName" : "ChipsVault",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Dantewada_rc_members.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-05-13T09:58:58.460Z",
+        "name" : "tgt_Dantewada_varified_members",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "District_Name"
+            },
+            "name" : "District_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "District_Name_En"
+            },
+            "name" : "District_Name_En",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "District_LGD"
+            },
+            "name" : "District_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Block_LGD"
+            },
+            "name" : "Block_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Panchayat_LGD"
+            },
+            "name" : "Panchayat_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Village_LGD"
+            },
+            "name" : "Village_LGD",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ID"
+            },
+            "name" : "ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "RC_Number"
+            },
+            "name" : "RC_Number",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_ID"
+            },
+            "name" : "Member_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_Relation_With_Head"
+            },
+            "name" : "Member_Relation_With_Head",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_Name"
+            },
+            "name" : "Member_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "MemberName_Eng"
+            },
+            "name" : "MemberName_Eng",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Aadhar_Name"
+            },
+            "name" : "Aadhar_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateOfBirth"
+            },
+            "name" : "DateOfBirth",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Member_Age"
+            },
+            "name" : "Member_Age",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Gender"
+            },
+            "name" : "Gender",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Aadhar_Status"
+            },
+            "name" : "Aadhar_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Aadhar_Status_Detail"
+            },
+            "name" : "Aadhar_Status_Detail",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "OldId"
+            },
+            "name" : "OldId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EPICNo"
+            },
+            "name" : "EPICNo",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "EncARCNo"
+            },
+            "name" : "EncARCNo",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SocialRegNo"
+            },
+            "name" : "SocialRegNo",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "RC_MemberId"
+            },
+            "name" : "RC_MemberId",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Ekyc_Status"
+            },
+            "name" : "Ekyc_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "eKYCDate"
+            },
+            "name" : "eKYCDate",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Ekyc_Relaxation"
+            },
+            "name" : "Ekyc_Relaxation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ChipsVault"
+            },
+            "name" : "ChipsVault",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Final_Status"
+            },
+            "name" : "Final_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "codePage" : "106",
+          "connectionId" : "saas:@1y3nQcd5aQZhiqOOjhd3qx",
+          "connectionName" : "Conn-CHIPS-Demo",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "tgt_varified_member_1.csv",
+            "label" : "tgt_varified_member_1.csv",
+            "objectName" : "tgt_varified_member_1.csv",
+            "path" : "tgt_varified_member_1.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "District_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "District_Name",
+                "nativeName" : "District_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "District_Name_En",
+                "fieldType" : "CONNECTOR",
+                "label" : "District_Name_En",
+                "nativeName" : "District_Name_En",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "District_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "District_LGD",
+                "nativeName" : "District_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Block_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "Block_LGD",
+                "nativeName" : "Block_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Panchayat_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "Panchayat_LGD",
+                "nativeName" : "Panchayat_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Village_LGD",
+                "fieldType" : "CONNECTOR",
+                "label" : "Village_LGD",
+                "nativeName" : "Village_LGD",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "ID",
+                "nativeName" : "ID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "RC_Number",
+                "fieldType" : "CONNECTOR",
+                "label" : "RC_Number",
+                "nativeName" : "RC_Number",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_ID",
+                "nativeName" : "Member_ID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_Relation_With_Head",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_Relation_With_Head",
+                "nativeName" : "Member_Relation_With_Head",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_Name",
+                "nativeName" : "Member_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "MemberName_Eng",
+                "fieldType" : "CONNECTOR",
+                "label" : "MemberName_Eng",
+                "nativeName" : "MemberName_Eng",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Aadhar_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Aadhar_Name",
+                "nativeName" : "Aadhar_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DateOfBirth",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateOfBirth",
+                "nativeName" : "DateOfBirth",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Member_Age",
+                "fieldType" : "CONNECTOR",
+                "label" : "Member_Age",
+                "nativeName" : "Member_Age",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Gender",
+                "fieldType" : "CONNECTOR",
+                "label" : "Gender",
+                "nativeName" : "Gender",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Aadhar_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Aadhar_Status",
+                "nativeName" : "Aadhar_Status",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Aadhar_Status_Detail",
+                "fieldType" : "CONNECTOR",
+                "label" : "Aadhar_Status_Detail",
+                "nativeName" : "Aadhar_Status_Detail",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "OldId",
+                "fieldType" : "CONNECTOR",
+                "label" : "OldId",
+                "nativeName" : "OldId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "EPICNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "EPICNo",
+                "nativeName" : "EPICNo",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "EncARCNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "EncARCNo",
+                "nativeName" : "EncARCNo",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "SocialRegNo",
+                "fieldType" : "CONNECTOR",
+                "label" : "SocialRegNo",
+                "nativeName" : "SocialRegNo",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "RC_MemberId",
+                "fieldType" : "CONNECTOR",
+                "label" : "RC_MemberId",
+                "nativeName" : "RC_MemberId",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Ekyc_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Ekyc_Status",
+                "nativeName" : "Ekyc_Status",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "eKYCDate",
+                "fieldType" : "CONNECTOR",
+                "label" : "eKYCDate",
+                "nativeName" : "eKYCDate",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Ekyc_Relaxation",
+                "fieldType" : "CONNECTOR",
+                "label" : "Ekyc_Relaxation",
+                "nativeName" : "Ekyc_Relaxation",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "ChipsVault",
+                "fieldType" : "CONNECTOR",
+                "label" : "ChipsVault",
+                "nativeName" : "ChipsVault",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Final_Status",
+                "fieldType" : "CONNECTOR",
+                "label" : "Final_Status",
+                "nativeName" : "Final_Status",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "tgt_varified_member_1.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-05-13T10:00:16.614Z",
+        "name" : "exp",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Final_Status",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "IIF(\n    ISNULL(Aadhar_Status) AND Ekyc_Status <> 'P',\n    'Aadhar and EKYC both are not verified',\nIIF(\n    ISNULL(Ekyc_Status) AND Aadhar_Status = '1',\n    'Aadhar is verified but EKYC is not verified',\nIIF(\n    ISNULL(Ekyc_Status) AND ISNULL(Aadhar_Status),\n    'Aadhar and EKYC both are not verified',\n    IIF(\n        ISNULL(Ekyc_Status) AND Aadhar_Status <> '1',\n        'Aadhar and EKYC both are not verified',\n\n        IIF(\n            Aadhar_Status = '1' AND Ekyc_Status = 'A',\n            'Aadhar is verified but EKYC is not verified',\n            IIF(\n            Aadhar_Status <> '1' AND Ekyc_Status <> 'P',\n            'Aadhar and EKYC both are not verified',\n IIF(\n            Aadhar_Status <> '1' AND Ekyc_Status = 'P',\n            'Aadhar is not verified but EKYC is verified',\n\n            IIF(\n                Aadhar_Status = '1' AND Ekyc_Status <> 'P',\n                'Aadhar is verified but EKYC is not verified',\n                IIF(\n                Aadhar_Status = '1' AND Ekyc_Status = 'P',\n                'Aadhar and EKYC both are verified',\nIIF(\n                        Aadhar_Status = '0' AND Ekyc_Status = 'P',\n                        'Aadhar is not verified but EKYC is verified',\n\n                    IIF(\n                        Aadhar_Status = '0' AND Ekyc_Status <> 'P',\n                        'Aadhar and EKYC both are not verified',\n                        ''\n                    )\n                )\n            )\n        )\n    )\n)\n)\n)\n)\n)\n)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-09-15 04:16:36 PDT"
+}

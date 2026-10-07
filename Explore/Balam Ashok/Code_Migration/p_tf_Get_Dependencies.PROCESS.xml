@@ -1,0 +1,359 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>t0N0Qqi7EkWoKeE-gt-5371794-2026-09-30T09:21:09.316Z::pd.xml</types1:EntryId>
+      <types1:Name>p_tf_Get_Dependencies</types1:Name>
+      <types1:ParentFlowIds>FHEJRxZsEi4tciS-gt-5371848-2026-09-30T09:21:10.515Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This process will run CDI taskflow to get the dependencies for objects.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-09-30T09:21:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="k32jsVCT28ug9oJhCl666W"
+                  displayName="p_tf_Get_Dependencies"
+                  name="p_tf_Get_Dependencies"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>This process will run CDI taskflow to get the dependencies for objects.</description>
+            <tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="i_File_Path" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="o_Fault_Get_Dependencies" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                     <option name="initialvalue">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="File_path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fileExists" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content_Line" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tf_input" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-Get-Dependecies:tf_Get_DependeciesRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9cdaqXuRDsgeqsvXGZwJ6m</option>
+                  </options>
+               </field>
+               <field description="" name="tf_status" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_file_path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_email" type="reference">
+                  <options>
+                     <option name="referenceTo">app-email:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8I8QQC0F89liJSeFmLBt0c</option>
+                  </options>
+               </field>
+               <field description="" name="temp_filewriter" type="reference">
+                  <options>
+                     <option name="referenceTo">app-fileWriter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">awH7aPbMEvAh4LCrEoA2iY</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TAKM_INWPF35GT5G-AAD</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llnsuo01" targetId="llnsuo00"/>
+               </start>
+               <assignment id="llnsuo00">
+                  <title>Assignment to File_path, fileExists etc.</title>
+                  <operation source="formula" to="temp.File_path">
+                     <expression language="XQuery">'file:///'||$input.i_File_Path ||'/IICS_Object_Migration_List_Initial.csv'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.fileExists">
+                     <expression language="XQuery">fn:unparsed-text-available($temp.File_path)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.temp_file_path">
+                     <expression language="XQuery">fn:replace($input.i_File_Path ,"/","\\")</expression>
+                  </operation>
+                  <link id="llnsuo0e" targetId="llnsuo0d"/>
+               </assignment>
+               <container id="llnsuo0d" type="exclusive">
+                  <title>fileExists?</title>
+                  <flow id="llnsuo0h">
+                     <eventContainer id="lnvqxty7">
+                        <service id="lm0iy7z7">
+                           <title>Login</title>
+                           <serviceName>AppCon-Login-Source-Org:Login</serviceName>
+                           <serviceGUID>eGpU9LNPzCIj5HCzYos4sf</serviceGUID>
+                           <serviceInput/>
+                        </service>
+                        <flow id="lnvqxty9">
+                           <assignment id="lo8k2ocj">
+                              <title>Assignment to Content Format, File name etc.</title>
+                              <operation source="constant" to="temp.temp_filewriter[1]/format">PlainText</operation>
+                              <operation source="constant" to="temp.temp_filewriter[1]/fileName">mtt_parm.parm</operation>
+                              <operation source="constant" to="temp.temp_filewriter[1]/content">$file_path={$input.i_File_Path} </operation>
+                              <link id="lo8k2ocu" targetId="locs7ykt"/>
+                           </assignment>
+                           <eventContainer id="locs7ykt">
+                              <service id="lo8k2oct">
+                                 <title>FileWriter</title>
+                                 <serviceName>app-fileWriter:FileWriter</serviceName>
+                                 <serviceGUID>awH7aPbMEvAh4LCrEoA2iY</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="fileWriteTask" source="field" updatable="true">temp.temp_filewriter</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="locs7ykv">
+                                 <link id="locs7ykw" targetId="locs7ykt" type="containerLink"/>
+                              </flow>
+                              <flow id="locs7yky">
+                                 <jumpTo id="locs7ylb">
+                                    <link id="locs7ylc" targetId="lnvqxtwh"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="locs7yku" targetId="locs7ykv" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="locs7yks" interrupting="true">
+                                    <link id="locs7ykx" targetId="locs7yky" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lnvqxtya" targetId="lnvqxty7" type="containerLink"/>
+                        </flow>
+                        <flow id="lnvqxtyc">
+                           <jumpTo id="lnvqxtyl">
+                              <link id="lnvqxtym" targetId="lnvqxtwh"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lnvqxty8" targetId="lnvqxty9" type="containerLink"/>
+                        <link id="ln33s53h" targetId="locs7ylw"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lnvqxty6" interrupting="true">
+                              <link id="lnvqxtyb" targetId="lnvqxtyc" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="locs7ylw">
+                        <service id="ln2zscmb">
+                           <title>tf_Get_DependeciesOperation</title>
+                           <serviceName>AppCon-Get-Dependecies:tf_Get_DependeciesOperation</serviceName>
+                           <serviceGUID>9cdaqXuRDsgeqsvXGZwJ6m</serviceGUID>
+                           <serviceInput>
+                              <parameter name="body" source="formula">
+                                 <expression language="XQuery">&lt;tf_Get_DependeciesRequest&gt;
+   &lt;i_FilePath&gt;{$temp.temp_file_path}&lt;/i_FilePath&gt;
+   &lt;i_session_ID&gt;{$output.ICSSessionID}&lt;/i_session_ID&gt;
+   &lt;i_ParamPath&gt;{$output.fileInfo[1]/dir}&lt;/i_ParamPath&gt;
+&lt;/tf_Get_DependeciesRequest&gt;</expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="locs7yly">
+                           <link id="locs7ylz" targetId="locs7ylw" type="containerLink"/>
+                        </flow>
+                        <flow id="locs7ym1">
+                           <jumpTo id="locs7ymf">
+                              <link id="locs7ymg" targetId="lnvqxtwh"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="locs7ylx" targetId="locs7yly" type="containerLink"/>
+                        <link id="ln4hu14n" targetId="ln4hu14m"/>
+                        <events>
+                           <catch faultField="faultInfo" id="locs7ylv" interrupting="true">
+                              <link id="locs7ym0" targetId="locs7ym1" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="lnvqxtyy">
+                        <service id="ln4hm4e8">
+                           <title>Check_tf_Status</title>
+                           <serviceName>AppCon-Get-Dependecies:Check_tf_Status</serviceName>
+                           <serviceGUID>9cdaqXuRDsgeqsvXGZwJ6m</serviceGUID>
+                           <serviceInput>
+                              <parameter name="id" source="field" updatable="true">output.RunId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lnvqxtz0">
+                           <link id="lnvqxtz1" targetId="lnvqxtyy" type="containerLink"/>
+                        </flow>
+                        <flow id="lnvqxtz3">
+                           <jumpTo id="lnvqxtzd">
+                              <link id="lnvqxtze" targetId="lnvqxtwh"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lnvqxtyz" targetId="lnvqxtz0" type="containerLink"/>
+                        <link id="ln4hu151" targetId="ln4hu150"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lnvqxtyx" interrupting="true">
+                              <link id="lnvqxtz2" targetId="lnvqxtz3" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <wait id="ln4hu14m">
+                        <title>Wait 5</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">2</arg>
+                              <arg name="scale">M</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="ln4hu14o" targetId="lnvqxtyy"/>
+                     </wait>
+                     <container id="ln4hu150" type="exclusive">
+                        <title>status</title>
+                        <flow id="ln4hu153">
+                           <jumpTo id="ln4hu16s">
+                              <link id="ln4hu16t" targetId="ln4hu14m"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="ln4hu156">
+                           <container id="ln4hu166" type="exclusive">
+                              <title>status</title>
+                              <flow id="ln4hu168">
+                                 <link id="ln4hu16d" targetId="ln4hu166" type="containerLink"/>
+                              </flow>
+                              <flow id="ln4hu167">
+                                 <assignment id="lnvqxtwh">
+                                    <title>Assignment to Recipient Addresses, Subject etc.</title>
+                                    <operation source="field" to="temp.temp_email[1]/to">output.ICS User Email</operation>
+                                    <operation source="constant" to="temp.temp_email[1]/subject">p_tf_Get_Dependencies Process Failed During Current Code Migration</operation>
+                                    <operation source="constant" to="temp.temp_email[1]/body">Fetching Dependencies process has failed during current migration. Please verify.
+
+{$output.faultInfo[1]/code}:{$output.faultInfo[1]/detail} </operation>
+                                    <operation source="constant" to="output.o_Fault_Get_Dependencies">true</operation>
+                                    <link id="lnvqxtwp" targetId="lnx5sem9"/>
+                                 </assignment>
+                                 <eventContainer id="lnx5sem9">
+                                    <service id="lnvqxtwo">
+                                       <title>sendEmailService</title>
+                                       <serviceName>app-email:sendEmailService</serviceName>
+                                       <serviceGUID>8I8QQC0F89liJSeFmLBt0c</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="emailTaskInput" source="field" updatable="true">temp.temp_email</parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="lnx5semb">
+                                       <link id="lnx5semc" targetId="lnx5sem9" type="containerLink"/>
+                                    </flow>
+                                    <flow id="lnx5seme">
+                                       <link id="lo5o7wer" targetId="lnx5sem9" type="containerLink"/>
+                                    </flow>
+                                    <link id="lnx5sema" targetId="lnx5semb" type="containerLink"/>
+                                    <link id="lnx5senh" targetId="lnx5seng"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="lnx5sem8" interrupting="true">
+                                          <link id="lnx5semd" targetId="lnx5seme" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <end id="lnx5seng">
+                                    <title>End 1</title>
+                                    <httpStatus>400</httpStatus>
+                                 </end>
+                              </flow>
+                              <link id="ln4hu16a" targetId="ln4hu168" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.status}</arg>
+                                       <arg name="right">SUCCESS</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="ln4hu16b" targetId="ln4hu167" type="containerLink"/>
+                           </container>
+                           <link id="ln4hu157" targetId="ln4hu150" type="containerLink"/>
+                        </flow>
+                        <link id="ln4hu152" targetId="ln4hu153" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.status}</arg>
+                                 <arg name="right">RUNNING</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ln4hu155" targetId="ln4hu156" type="containerLink"/>
+                     </container>
+                     <link id="llnsuo0i" targetId="llnsuo0d" type="containerLink"/>
+                  </flow>
+                  <flow id="llnsuo0k">
+                     <jumpTo id="lnvqxtxw">
+                        <link id="lnvqxtxx" targetId="lnvqxtwh"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="llnsuo0g" targetId="llnsuo0h" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0j" targetId="llnsuo0k" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0x" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>k32jsVCT28ug9oJhCl666W</types1:GUID>
+      <types1:DisplayName>p_tf_Get_Dependencies</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:22:42.958Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "4XaYRnKhWYZeQOjgTB97c1",
+    "name" : "tf_BFSI_corporate_flatfile",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Zrv0CR3aaa-gt-521111-2026-02-12T15:46:43.832Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-23T08:34:48.233Z",
+  "objectRefs" : [ {
+    "id" : "97zZIi3vIA7c25gYKNWUMm",
+    "name" : "mt_BFSI_corporate_flatfile",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z00000000005V"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Proj_BankingDomain/CDI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

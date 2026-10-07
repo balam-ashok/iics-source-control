@@ -1,0 +1,499 @@
+{
+  "name" : "mt_BFSI_customer_SQL",
+  "runtimeEnvironmentId" : "@a5Ov5a2wiculgnFfINaha8",
+  "runtimeEnvironmentName" : "DESKTOP-K4B9BJF",
+  "maxLogs" : 10,
+  "parameters" : [
+    {
+      "name" : "$Customer$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "Customer",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "Customer"
+      },
+      "sourceConnectionId" : "@bPnYizB7GSnltLgjnW3ZUp",
+      "connectionName" : "conn-BFSI-SQL",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "dbo/BFSI_Customer_SQL",
+          "label" : "BFSI_Customer_SQL",
+          "metadataUpdated" : false,
+          "dbSchema" : "dbo"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "dbo/BFSI_Customer_SQL",
+            "label" : "BFSI_Customer_SQL",
+            "metadataUpdated" : false,
+            "dbSchema" : "dbo"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$src_Address_Details$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "src_Address_Details",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "src_Address_Details"
+      },
+      "sourceConnectionId" : "@bPnYizB7GSnltLgjnW3ZUp",
+      "connectionName" : "conn-BFSI-SQL",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "dbo/BFSI_Address_SQL",
+          "label" : "BFSI_Address_SQL",
+          "metadataUpdated" : false,
+          "dbSchema" : "dbo"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "dbo/BFSI_Address_SQL",
+            "label" : "BFSI_Address_SQL",
+            "metadataUpdated" : false,
+            "dbSchema" : "dbo"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$src_Contact_Details$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "src_Contact_Details",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "src_Contact_Details"
+      },
+      "sourceConnectionId" : "@bPnYizB7GSnltLgjnW3ZUp",
+      "connectionName" : "conn-BFSI-SQL",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "dbo/BFSI_Contact_SQL",
+          "label" : "BFSI_Contact_SQL",
+          "metadataUpdated" : false,
+          "dbSchema" : "dbo"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "dbo/BFSI_Contact_SQL",
+            "label" : "BFSI_Contact_SQL",
+            "metadataUpdated" : false,
+            "dbSchema" : "dbo"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$src_Insurance$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "src_Insurance",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "src_Insurance"
+      },
+      "sourceConnectionId" : "@bPnYizB7GSnltLgjnW3ZUp",
+      "connectionName" : "conn-BFSI-SQL",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "dbo/BFSI_Insurance_SQL",
+          "label" : "BFSI_Insurance_SQL",
+          "metadataUpdated" : false,
+          "dbSchema" : "dbo"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "dbo/BFSI_Insurance_SQL",
+            "label" : "BFSI_Insurance_SQL",
+            "metadataUpdated" : false,
+            "dbSchema" : "dbo"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$src_KYC$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "src_KYC",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "src_KYC"
+      },
+      "sourceConnectionId" : "@bPnYizB7GSnltLgjnW3ZUp",
+      "connectionName" : "conn-BFSI-SQL",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "dbo/BFSI_KYC_SQL",
+          "label" : "BFSI_KYC_SQL",
+          "metadataUpdated" : false,
+          "dbSchema" : "dbo"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "dbo/BFSI_KYC_SQL",
+            "label" : "BFSI_KYC_SQL",
+            "metadataUpdated" : false,
+            "dbSchema" : "dbo"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$src_card$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "src_card",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "src_card"
+      },
+      "sourceConnectionId" : "@bPnYizB7GSnltLgjnW3ZUp",
+      "connectionName" : "conn-BFSI-SQL",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "dbo/BFSI_Card_SQL",
+          "label" : "BFSI_Card_SQL",
+          "metadataUpdated" : false,
+          "dbSchema" : "dbo"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "dbo/BFSI_Card_SQL",
+            "label" : "BFSI_Card_SQL",
+            "metadataUpdated" : false,
+            "dbSchema" : "dbo"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$src_loan$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "src_loan",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "src_loan"
+      },
+      "sourceConnectionId" : "@bPnYizB7GSnltLgjnW3ZUp",
+      "connectionName" : "conn-BFSI-SQL",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "dbo/BFSI_Loan_SQL",
+          "label" : "BFSI_Loan_SQL",
+          "metadataUpdated" : false,
+          "dbSchema" : "dbo"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "dbo/BFSI_Loan_SQL",
+            "label" : "BFSI_Loan_SQL",
+            "metadataUpdated" : false,
+            "dbSchema" : "dbo"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    },
+    {
+      "name" : "$Target_B360$",
+      "type" : "H_TARGET",
+      "label" : "Target_B360",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "supportApplyDDLChanges" : "false",
+        "originalPath" : "Target_B360"
+      },
+      "targetConnectionId" : "@kRRFJ7qylGnbjOt4amgpsm",
+      "connectionName" : "conn-BM-Business",
+      "targetObject" : "Home/Custom Assets/Business Entities/BFSI_Customer(id=bfsi_customer)",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "singleMode" : true
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "Home/Custom Assets/Business Entities/BFSI_Customer(id=bfsi_customer)",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "metadataVersion" : "0",
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    }
+  ],
+  "verbose" : false,
+  "lastRunTime" : 1771320581000,
+  "mappingId" : "@2of3gl6IKW5jsFRmUd3bov",
+  "mappingTemplateName" : "mp_BFSI_customer_SQL",
+  "sessionPropertiesList" : [
+    {
+      "name" : "Pushdown Optimization",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Context",
+      "value" : "None"
+    },
+    {
+      "name" : "Pushdown Optimization Fallback Option",
+      "value" : "Partial PDO"
+    }
+  ],
+  "inOutParameters" : [
+    {
+      "name" : "jobInstanceId",
+      "datatype" : "STRING",
+      "precision" : "100",
+      "scale" : "0",
+      "retentionPolicy" : "NEVER",
+      "aggregationType" : "MAX"
+    }
+  ],
+  "hidden" : false,
+  "enableCrossSchemaPushdown" : true,
+  "enableParallelRun" : false,
+  "autoTunedApplied" : false,
+  "autoTunedAppliedType" : "NONE",
+  "paramFileType" : "PARAM_FILE_LOCAL",
+  "schemaMode" : "async",
+  "valid" : true,
+  "optimizationPlan" : "NONE",
+  "allowMaxFieldLength" : false,
+  "specialCharacterSupport" : false,
+  "midstreamPreview" : false,
+  "vcsExportTime" : "2026-09-23 01:34:44 PDT"
+}

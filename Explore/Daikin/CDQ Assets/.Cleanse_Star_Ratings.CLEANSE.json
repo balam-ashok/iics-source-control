@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "4E7M4fY8g7WfRXST1gJWi0",
+    "name" : "Cleanse_Star_Ratings",
+    "type" : "CLEANSE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "4E7M4fY8g7WfRXST1gJWi0"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2026-10-05T13:27:09.748Z",
+  "objectRefs" : [ {
+    "id" : "eyVzB4Fwp27eh2BHxAXtgy",
+    "name" : "Dict_Star_ratings",
+    "type" : "DICTIONARY",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eyVzB4Fwp27eh2BHxAXtgy"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Daikin/CDQ Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

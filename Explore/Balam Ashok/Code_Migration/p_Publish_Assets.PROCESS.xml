@@ -1,0 +1,439 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CHck5qbbfUryzfY-gt-5371806-2026-09-30T09:21:09.464Z::pd.xml</types1:EntryId>
+      <types1:Name>p_Publish_Assets</types1:Name>
+      <types1:ParentFlowIds>FHEJRxZsEi4tciS-gt-5371848-2026-09-30T09:21:10.515Z::gt.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This process is to publish the assets</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-09-30T09:21:09Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="3DwBUZLNAMBboPIgm4qW6n"
+                  displayName="p_Publish_Assets"
+                  name="p_Publish_Assets"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>This process is to publish the assets</description>
+            <tags>.agent:TAKM_INWPF35GT5G-AAD,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="i_File_Path" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="json_data_converted" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_Fault_Publish_Assets" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                     <option name="initialvalue">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="File_path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fileExists" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="File_Content_Line" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_action_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_data" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_checkout_objects" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_single_object" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_end_process" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_email" type="reference">
+                  <options>
+                     <option name="referenceTo">app-email:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8I8QQC0F89liJSeFmLBt0c</option>
+                  </options>
+               </field>
+               <field description="" name="temp_URL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_asset_count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="temp_asset_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">TASKFLOW</option>
+                  </options>
+               </field>
+               <field description="" name="temp_link_status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_URL_cai" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>TAKM_INWPF35GT5G-AAD</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llnsuo01" targetId="llnsuo00"/>
+               </start>
+               <assignment id="llnsuo00">
+                  <title>Assignment to path, fileExists</title>
+                  <operation source="formula" to="temp.File_path">
+                     <expression language="XQuery">'file:///'||$input.i_File_Path ||"/IICS_Object_Migration_List_Complete.csv"</expression>
+                  </operation>
+                  <operation source="formula" to="temp.fileExists">
+                     <expression language="XQuery">fn:unparsed-text-available($temp.File_path )</expression>
+                  </operation>
+                  <link id="llnsuo0e" targetId="llnsuo0d"/>
+               </assignment>
+               <container id="llnsuo0d" type="exclusive">
+                  <title>fileExists?</title>
+                  <flow id="llnsuo0h">
+                     <eventContainer id="lnvo9qna">
+                        <service id="lm0iy7z7">
+                           <title>Login</title>
+                           <serviceName>AppCon-Login-Target-Org:Login</serviceName>
+                           <serviceGUID>49pDFaqH4sVc9QHW5O7UYp</serviceGUID>
+                           <serviceInput/>
+                        </service>
+                        <flow id="lnvo9qnc">
+                           <assignment id="lpjsfmeb">
+                              <title>a_File_Content_Publish</title>
+                              <operation source="formula" to="temp.File_Content">
+                                 <expression language="XQuery">fn:unparsed-text($temp.File_path)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.File_path">
+                                 <expression language="XQuery">$temp.File_path </expression>
+                              </operation>
+                              <operation source="formula" to="temp.File_Content_Line">
+                                 <expression language="XQuery">util:toJSON(let $removeLastCR:=fn:replace($temp.File_Content   , '(\r?\n|\r)$', '')
+let $lines := tokenize($removeLastCR, '\r\n')
+for $line at $counter in $lines
+let $fields := tokenize($line, ',')
+where ($counter!=1 and fn:upper-case($fields[4])=$temp.temp_asset_type )
+return
+&lt;assetPaths xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data" m:isArray="true"&gt;
+Explore/{$fields[1]}/{$fields[2]}/{$fields[3]}.{$temp.temp_asset_type}.xml&lt;/assetPaths&gt;)
+</expression>
+                              </operation>
+                              <operation source="formula" to="output.json_data_converted">
+                                 <expression language="XQuery">fn:replace(fn:replace($temp.File_Content_Line ,'//','/'),'\\','')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_URL_cai">
+                                 <expression language="XQuery">let $temp := tokenize($output.ICSServerURL , '\.')
+let $Ostr := $temp[1]
+let $Nstr := fn:concat($temp[1],'-cai')
+let $out := fn:replace($output.ICSServerURL,$Ostr,$Nstr)
+return 
+$out</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_URL">
+                                 <expression language="XQuery">util:iif($temp.temp_asset_type='TASKFLOW',fn:replace($output.ICSServerURL ,'saas','active-bpel/asset/v1/publish'),fn:replace($temp.temp_URL_cai  ,'saas','active-bpel/asset/v1/publish'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_asset_count">
+                                 <expression language="XQuery">util:iif($output.json_data_converted  ='{}' or $output.json_data_converted  ='', 0, 1)</expression>
+                              </operation>
+                           </assignment>
+                           <link id="lnvo9qnd" targetId="lnvo9qna" type="containerLink"/>
+                        </flow>
+                        <flow id="lnvo9qnf">
+                           <jumpTo id="lnvo9qnv">
+                              <link id="lnvo9qnw" targetId="lpl02u3s"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lnvo9qnb" targetId="lnvo9qnc" type="containerLink"/>
+                        <link id="lpl02uce" targetId="lpl02ucd"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lnvo9qn9" interrupting="true">
+                              <link id="lnvo9qne" targetId="lnvo9qnf" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="lpjsfmf0">
+                        <service id="lpjsfmf4">
+                           <title>Publish_Assets</title>
+                           <serviceName>AppCon-CODE-MIGRATION:Publish_Assets</serviceName>
+                           <serviceGUID>cfhqeXZ4yUSfPzn7mG7Gwp</serviceGUID>
+                           <serviceInput>
+                              <parameter name="session_ID" source="field" updatable="true">output.ICS Session ID</parameter>
+                              <parameter name="payload" source="field" updatable="true">output.json_data_converted</parameter>
+                              <parameter name="URL" source="field" updatable="true">temp.temp_URL</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lpjsfmf1">
+                           <link id="lpjsfmf7" targetId="lpjsfmf0" type="containerLink"/>
+                        </flow>
+                        <flow id="lpjsfmf2">
+                           <jumpTo id="lpjsfmf3">
+                              <link id="lpjsfmf8" targetId="lpl02u3s"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lpjsfmf5" targetId="lpjsfmf1" type="containerLink"/>
+                        <link id="lpl02tz4" targetId="lm4v8cdw"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lm0khyq6" interrupting="true">
+                              <link id="lpjsfmf6" targetId="lpjsfmf2" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="lpl02ucd" type="exclusive">
+                        <title>temp_asset_count</title>
+                        <flow id="lpl02uch">
+                           <link id="lpl02uci" targetId="lpl02ucd" type="containerLink"/>
+                        </flow>
+                        <flow id="lpl02uck">
+                           <jumpTo id="lpux9u1c">
+                              <link id="lpux9u1d" targetId="lpux9txx"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lpl02ucg" targetId="lpl02uch" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.temp_asset_count}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lpl02ucj" targetId="lpl02uck" type="containerLink"/>
+                        <link id="lpl02ucf" targetId="lpjsfmf0"/>
+                     </container>
+                     <container id="lm0khym2" type="exclusive">
+                        <title>temp_publish_status</title>
+                        <flow id="lm0khym5">
+                           <jumpTo id="lm0khymh">
+                              <link id="lm0khymi" targetId="lm4v8cdw"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lm0khym8">
+                           <container id="lm0khyo6" type="exclusive">
+                              <title>status</title>
+                              <flow id="lm0khyo8">
+                                 <container id="lpux9txx" type="exclusive">
+                                    <title>temp_asset_type</title>
+                                    <flow id="lpux9txz">
+                                       <link id="lpux9ty0" targetId="lpux9txx" type="containerLink"/>
+                                    </flow>
+                                    <flow id="lpux9ty2">
+                                       <assignment id="lpux9tzo">
+                                          <title>a_next_asset_type</title>
+                                          <operation source="formula" to="temp.temp_asset_type">
+                                             <expression language="XQuery">util:decode($temp.temp_asset_type,
+'TASKFLOW','AI_SERVICE_CONNECTOR',(
+'AI_SERVICE_CONNECTOR', 'AI_CONNECTION',
+'AI_CONNECTION','PROCESS'),
+'GUIDE')</expression>
+                                          </operation>
+                                          <link id="lpux9tzp" targetId="lpux9tz2"/>
+                                       </assignment>
+                                       <jumpTo id="lpux9tz2">
+                                          <link id="lpux9tz3" targetId="lpjsfmeb"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="lpux9txy" targetId="lpux9txz" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="contains">
+                                             <arg name="left">{$temp.temp_asset_type}</arg>
+                                             <arg name="right">GUIDE</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="lpux9ty1" targetId="lpux9ty2" type="containerLink"/>
+                                 </container>
+                                 <link id="lm0khyo9" targetId="lm0khyo6" type="containerLink"/>
+                              </flow>
+                              <flow id="lm0khyob">
+                                 <assignment id="lpl02u3s">
+                                    <title>Assignment to Recipient Addresses, Subject etc.</title>
+                                    <operation source="field" to="temp.temp_email[1]/to">output.ICS User Email</operation>
+                                    <operation source="constant" to="temp.temp_email[1]/subject">p_Publish_Assets Process Failed.</operation>
+                                    <operation source="constant" to="temp.temp_email[1]/body">Publish Status has failed during current migration. Please verify.
+
+{$output.faultInfo[1]/code}:{$output.faultInfo[1]/detail}:{$output.faultInfo[1]/reason} </operation>
+                                    <operation source="constant" to="output.o_Fault_Publish_Assets">true</operation>
+                                    <link id="lpl02u4o" targetId="lpl02u4g"/>
+                                 </assignment>
+                                 <eventContainer id="lpl02u4g">
+                                    <service id="lpl02u4j">
+                                       <title>sendEmailService</title>
+                                       <serviceName>app-email:sendEmailService</serviceName>
+                                       <serviceGUID>8I8QQC0F89liJSeFmLBt0c</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="emailTaskInput" source="field" updatable="true">temp.temp_email</parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="lpl02u4h">
+                                       <link id="lpl02u4m" targetId="lpl02u4g" type="containerLink"/>
+                                    </flow>
+                                    <flow id="lpl02u4i">
+                                       <link id="lpl02u4n" targetId="lpl02u4g" type="containerLink"/>
+                                    </flow>
+                                    <link id="lpl02u4k" targetId="lpl02u4h" type="containerLink"/>
+                                    <link id="lpl02u5t" targetId="lpl02u5s"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="lnx693gi" interrupting="true">
+                                          <link id="lpl02u4l" targetId="lpl02u4i" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <end id="lpl02u5s">
+                                    <title>End 1</title>
+                                    <httpStatus>400</httpStatus>
+                                 </end>
+                              </flow>
+                              <link id="lm0khyo7" targetId="lm0khyo8" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.status}</arg>
+                                       <arg name="right">SUCCESS</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lm0khyoa" targetId="lm0khyob" type="containerLink"/>
+                           </container>
+                           <link id="lm0khym9" targetId="lm0khym2" type="containerLink"/>
+                        </flow>
+                        <link id="lm0khym4" targetId="lm0khym5" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.status}</arg>
+                                 <arg name="right">IN_PROGRESS</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lm0khym7" targetId="lm0khym8" type="containerLink"/>
+                     </container>
+                     <wait id="lm4v8cdw">
+                        <title>Wait 30sec</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">30</arg>
+                              <arg name="scale">S</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="lpv1kwk8" targetId="lpv1kwk7"/>
+                     </wait>
+                     <assignment id="lpv1kwk7">
+                        <title>a_status_link</title>
+                        <operation source="formula" to="temp.temp_link_status">
+                           <expression language="XQuery">fn:replace($output.links_status  ,'http:','https:')</expression>
+                        </operation>
+                        <link id="lpv1kwk9" targetId="lm0khyj5"/>
+                     </assignment>
+                     <service id="lm0khyj5">
+                        <title>Publish_Status</title>
+                        <serviceName>AppCon-CODE-MIGRATION:Publish_Status</serviceName>
+                        <serviceGUID>cfhqeXZ4yUSfPzn7mG7Gwp</serviceGUID>
+                        <serviceInput>
+                           <parameter name="session_ID" source="field" updatable="true">output.ICS Session ID</parameter>
+                           <parameter name="URL" source="field" updatable="true">temp.temp_link_status</parameter>
+                        </serviceInput>
+                        <link id="lpl02u8r" targetId="lm0khym2"/>
+                     </service>
+                     <link id="llnsuo0i" targetId="llnsuo0d" type="containerLink"/>
+                  </flow>
+                  <flow id="llnsuo0k">
+                     <jumpTo id="lnvo9qml">
+                        <link id="lnvo9qmm" targetId="lpl02u3s"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="llnsuo0g" targetId="llnsuo0h" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0j" targetId="llnsuo0k" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.fileExists}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llnsuo0x" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>3DwBUZLNAMBboPIgm4qW6n</types1:GUID>
+      <types1:DisplayName>p_Publish_Assets</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:22:43.008Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

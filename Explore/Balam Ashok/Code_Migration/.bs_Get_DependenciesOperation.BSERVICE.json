@@ -1,0 +1,53 @@
+{
+  "objectInfo" : {
+    "id" : "8rg6XBlHeyEjcDsWRnX2qG",
+    "name" : "bs_Get_DependenciesOperation",
+    "type" : "BSERVICE",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM27000000000016"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      }, {
+        "name" : "010XDM28000000000038",
+        "value" : "8rg6XBlHeyEjcDsWRnX2qG@p_Get_DependenciesOperation"
+      } ],
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "zip",
+  "updateTime" : "2026-10-02T13:57:52.177Z",
+  "objectRefs" : [ {
+    "id" : "9kkbFErtvk0d6GfQehOIC9",
+    "name" : "conn_rest_Get_Dependencies",
+    "type" : "Connection",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0B00000000006I"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/SYS"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

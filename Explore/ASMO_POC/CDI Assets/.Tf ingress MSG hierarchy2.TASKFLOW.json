@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "cWRW1MYdd2lcDH1etWIL8J",
+    "name" : "Tf ingress MSG hierarchy2",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "4XkgbdoPVm5Y6tM-gt-626131-2026-08-05T06:08:18.877Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-05T10:00:06.529Z",
+  "objectRefs" : [ {
+    "id" : "4UBSggmrFwwjEF3sqhLDK5",
+    "name" : "mt_Ingress_MSG_hierarchy2",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z0000000000DD"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/ASMO_POC/CDI Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

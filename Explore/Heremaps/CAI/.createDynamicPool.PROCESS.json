@@ -1,0 +1,47 @@
+{
+  "objectInfo" : {
+    "id" : "6CEW8o0KO8edRkPIyHzVco",
+    "name" : "createDynamicPool",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "VuslqAOclkZ2sBs-gt-5252424-2026-09-29T08:04:07.703Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:55:56.381Z",
+  "objectRefs" : [ {
+    "id" : "ij87FVZxQghgk62PLw56Ww",
+    "name" : "ac-migration",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "KGXShOeCFk4Adyp-gt-5266711-2026-09-29T08:02:58.76Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/ASMO/CAI_Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

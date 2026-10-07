@@ -1,0 +1,138 @@
+{
+  "name" : "mt_BFSI_account_orcl",
+  "runtimeEnvironmentId" : "@a5Ov5a2wiculgnFfINaha8",
+  "runtimeEnvironmentName" : "DESKTOP-K4B9BJF",
+  "maxLogs" : 10,
+  "parameters" : [
+    {
+      "name" : "$src_Account$",
+      "type" : "EXTENDED_SOURCE",
+      "label" : "src_Account",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "isSelectDistinct" : "false",
+        "isMsrcFilterParameterized" : "false",
+        "isMsrcSortParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "flags" : "SUPPORTS_MULTI_SCHEMA",
+        "originalPath" : "src_Account"
+      },
+      "sourceConnectionId" : "@8XlXThTx3U7jfTIDsWJ9kO",
+      "connectionName" : "conn-BM-customer-orcl",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "object" : {
+          "name" : "BFSI/BFSI_ACCOUNT_ORCL",
+          "label" : "BFSI_ACCOUNT_ORCL",
+          "metadataUpdated" : false,
+          "dbSchema" : "BFSI"
+        },
+        "singleMode" : true,
+        "objects" : [
+          {
+            "name" : "BFSI/BFSI_ACCOUNT_ORCL",
+            "label" : "BFSI_ACCOUNT_ORCL",
+            "metadataUpdated" : false,
+            "dbSchema" : "BFSI"
+          }
+        ]
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "useExactSrcNames" : false,
+      "userUpdated" : false,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : true,
+      "fileList" : false
+    },
+    {
+      "name" : "$Target$",
+      "type" : "TARGET",
+      "label" : "Target",
+      "uiProperties" : {
+        "connectionParameterized" : "false",
+        "objectParameterized" : "false",
+        "visible" : "false",
+        "supportApplyDDLChanges" : "false",
+        "originalPath" : "Target"
+      },
+      "targetConnectionId" : "@9fJk4HsgbFHipWi4hQgocI",
+      "connectionName" : "conn-BM-Business FEP",
+      "targetObject" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)/bfsi_account",
+      "targetObjectLabel" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)/bfsi_account",
+      "newFlatFile" : false,
+      "newObject" : false,
+      "showBusinessNames" : false,
+      "naturalOrder" : true,
+      "truncateTarget" : false,
+      "bulkApiDBTarget" : false,
+      "operationType" : "Insert",
+      "customFuncCfg" : { },
+      "extendedObject" : {
+        "singleMode" : true
+      },
+      "commandType" : 0,
+      "handleSpecialChars" : false,
+      "handleDecimalRoundOff" : false,
+      "frsAsset" : false,
+      "dynamicFileName" : false,
+      "excludeDynamicFileNameField" : false,
+      "currentlyProcessedFileName" : false,
+      "retainFieldMetadata" : false,
+      "objectName" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)/bfsi_account",
+      "objectLabel" : "Home/Custom Assets/Business Entities/BFSI_Account(id=bfsi_account)/bfsi_account",
+      "useExactSrcNames" : false,
+      "userUpdated" : true,
+      "runtimeParameterData" : {
+        "connectionRuntimeParameter" : false,
+        "objectRuntimeParameter" : false
+      },
+      "restmodernSource" : true,
+      "unspecified" : false,
+      "fileList" : false
+    }
+  ],
+  "verbose" : false,
+  "lastRunTime" : 1771487852000,
+  "mappingId" : "@6IbPOPT29EkfraTRKzvmW5",
+  "mappingTemplateName" : "mp_BFSI_account_orcl",
+  "inOutParameters" : [
+    {
+      "name" : "jobInstanceId",
+      "datatype" : "STRING",
+      "precision" : "100",
+      "scale" : "0",
+      "retentionPolicy" : "NEVER",
+      "aggregationType" : "MAX"
+    }
+  ],
+  "hidden" : false,
+  "enableCrossSchemaPushdown" : false,
+  "enableParallelRun" : false,
+  "autoTunedApplied" : false,
+  "autoTunedAppliedType" : "NONE",
+  "schemaMode" : "async",
+  "valid" : true,
+  "optimizationPlan" : "NONE",
+  "allowMaxFieldLength" : false,
+  "specialCharacterSupport" : false,
+  "midstreamPreview" : false,
+  "vcsExportTime" : "2026-09-23 01:34:45 PDT"
+}

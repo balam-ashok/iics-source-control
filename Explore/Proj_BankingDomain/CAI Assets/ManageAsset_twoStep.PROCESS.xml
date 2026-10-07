@@ -1,0 +1,303 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>XSTu0kMVX3cjk91-gt-860761-2026-04-27T13:24:49.798Z::pd.xml</types1:EntryId>
+      <types1:Name>ManageAsset_twoStep</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Manage Asset two Step Process</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>ishita.j</types1:CreatedBy>
+      <types1:CreationDate>2026-04-27T13:24:50Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="hGoenXkRnsOdGLV87scIwL"
+                  displayName="ManageAsset_twoStep"
+                  name="ManageAsset_twoStep"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Manage Asset two Step Process</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="First Approver Input Desc"
+                          name="FirstApprover"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AeHumanTaskAssignment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="Final Approver Input Desc"
+                          name="FinalApprover"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AeHumanTaskAssignment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="Edit User Input Desc"
+                          name="EditUser"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AeHumanTaskAssignment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="Asset Name Input Desc"
+                          name="AssetName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="All Stakeholders Input Desc"
+                          name="AllStakeholders"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:AeHumanTaskAssignment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="locs7qz9" targetId="locs7qz8"/>
+               </start>
+               <milestone id="locs7qz8">
+                  <title>Milestone</title>
+                  <link id="loyg83nc" targetId="loyg83nb"/>
+               </milestone>
+               <humanTask id="loyg83nb">
+                  <title>TwoStep_FirstApprover</title>
+                  <subflowGUID>8qi1T4MG0uXiV8C8kvd1w3</subflowGUID>
+                  <subflowPath>TwoStep_FirstApprover</subflowPath>
+                  <peopleActivityName>TwoStep_FirstApprover</peopleActivityName>
+                  <asset>
+                     <GUID>8qi1T4MG0uXiV8C8kvd1w3</GUID>
+                     <taskName>TwoStep_FirstApprover</taskName>
+                  </asset>
+                  <input>
+                     <field name="AssetName" source="constant" updatable="true">{$input.AssetName}</field>
+                  </input>
+                  <outputDef>
+                     <field name="taskOutcome" type="string"/>
+                  </outputDef>
+                  <overrides>
+                     <assignments>
+                        <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd">
+                           <include source="field">input.FirstApprover</include>
+                        </potentialOwners>
+                        <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                      source="field">input.AllStakeholders</stakeholders>
+                     </assignments>
+                  </overrides>
+                  <config>
+                     <disableOutcomeLinksGeneration>true</disableOutcomeLinksGeneration>
+                  </config>
+                  <link id="loyg83nd" targetId="locs7r01"/>
+               </humanTask>
+               <container id="locs7r01" type="exclusive">
+                  <title>Task Outcome</title>
+                  <flow id="locs7r05">
+                     <humanTask id="loyg83s1">
+                        <title>TwoStep_FinalApprover</title>
+                        <subflowGUID>6NNq422p92djgyNvfX7eEI</subflowGUID>
+                        <subflowPath>TwoStep_FinalApprover</subflowPath>
+                        <peopleActivityName>TwoStep_FinalApprover</peopleActivityName>
+                        <asset>
+                           <GUID>6NNq422p92djgyNvfX7eEI</GUID>
+                           <taskName>TwoStep_FinalApprover</taskName>
+                        </asset>
+                        <input>
+                           <field name="AssetName" source="constant" updatable="true">{$input.AssetName}</field>
+                        </input>
+                        <outputDef>
+                           <field name="taskOutcome" type="string"/>
+                        </outputDef>
+                        <overrides>
+                           <assignments>
+                              <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd">
+                                 <include source="field">input.FinalApprover</include>
+                              </potentialOwners>
+                              <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                            source="field">input.AllStakeholders</stakeholders>
+                           </assignments>
+                        </overrides>
+                        <config>
+                           <disableOutcomeLinksGeneration>true</disableOutcomeLinksGeneration>
+                        </config>
+                        <link id="loyg83s2" targetId="locs7r84"/>
+                     </humanTask>
+                     <container id="locs7r84" type="exclusive">
+                        <title>Task Outcome</title>
+                        <flow id="locs7r85">
+                           <link id="locs7r8e" targetId="locs7r84" type="containerLink"/>
+                        </flow>
+                        <flow id="locs7r86">
+                           <link id="locs7r8f" targetId="locs7r84" type="containerLink"/>
+                        </flow>
+                        <flow id="locs7r87">
+                           <jumpTo id="locs7rb1">
+                              <link id="locs7rb2" targetId="loyg83nb"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="locs7r88">
+                           <link id="locs7r8h" targetId="locs7r84" type="containerLink"/>
+                        </flow>
+                        <link id="locs7r8a" targetId="locs7r85" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.taskOutcome}</arg>
+                                 <arg name="right">Approve</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="locs7r8b" targetId="locs7r86" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.taskOutcome}</arg>
+                                 <arg name="right">Reject</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="locs7r8c" targetId="locs7r87" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.taskOutcome}</arg>
+                                 <arg name="right">Return</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="locs7r8d" targetId="locs7r88" type="containerLink"/>
+                     </container>
+                     <link id="locs7r06" targetId="locs7r01" type="containerLink"/>
+                  </flow>
+                  <flow id="locs7r08">
+                     <link id="locs7r09" targetId="locs7r01" type="containerLink"/>
+                  </flow>
+                  <flow id="locs7r1q">
+                     <humanTask id="loyg83x0">
+                        <title>TwoStep_EditUser</title>
+                        <subflowGUID>fZ0hf2lRzgjdzFaHBV3bIG</subflowGUID>
+                        <subflowPath>TwoStep_EditUser</subflowPath>
+                        <peopleActivityName>TwoStep_EditUser</peopleActivityName>
+                        <asset>
+                           <GUID>fZ0hf2lRzgjdzFaHBV3bIG</GUID>
+                           <taskName>TwoStep_EditUser</taskName>
+                        </asset>
+                        <input>
+                           <field name="AssetName" source="constant" updatable="true">{$input.AssetName}</field>
+                        </input>
+                        <outputDef>
+                           <field name="taskOutcome" type="string"/>
+                        </outputDef>
+                        <overrides>
+                           <assignments>
+                              <potentialOwners xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd">
+                                 <include source="field">input.EditUser</include>
+                              </potentialOwners>
+                              <stakeholders xmlns="http://informatica.com/HumanTask/2022/12/schema/model/humanTaskCommon.xsd"
+                                            source="field">input.AllStakeholders</stakeholders>
+                           </assignments>
+                        </overrides>
+                        <config>
+                           <disableOutcomeLinksGeneration>true</disableOutcomeLinksGeneration>
+                        </config>
+                        <link id="loyg83x1" targetId="locs7rge"/>
+                     </humanTask>
+                     <container id="locs7rge" type="exclusive">
+                        <title>Task Outcome</title>
+                        <flow id="locs7rgh">
+                           <jumpTo id="locs7rir">
+                              <link id="locs7ris" targetId="loyg83nb"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="locs7rgk">
+                           <link id="locs7rgl" targetId="locs7rge" type="containerLink"/>
+                        </flow>
+                        <flow id="locs7ria">
+                           <link id="locs7rib" targetId="locs7rge" type="containerLink"/>
+                        </flow>
+                        <link id="locs7rgg" targetId="locs7rgh" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.taskOutcome}</arg>
+                                 <arg name="right">Resubmit</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="locs7rgj" targetId="locs7rgk" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.taskOutcome}</arg>
+                                 <arg name="right">Discard</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="locs7ri9" targetId="locs7ria" type="containerLink"/>
+                     </container>
+                     <link id="locs7r1r" targetId="locs7r01" type="containerLink"/>
+                  </flow>
+                  <flow id="locs7r1s">
+                     <link id="locs7r1t" targetId="locs7r01" type="containerLink"/>
+                  </flow>
+                  <link id="locs7r04" targetId="locs7r05" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.taskOutcome}</arg>
+                           <arg name="right">Approve</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="locs7r07" targetId="locs7r08" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.taskOutcome}</arg>
+                           <arg name="right">Reject</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="locs7r1o" targetId="locs7r1q" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.taskOutcome}</arg>
+                           <arg name="right">Return</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="locs7r1p" targetId="locs7r1s" type="containerLink"/>
+                  <link id="locs7r03" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>hGoenXkRnsOdGLV87scIwL</types1:GUID>
+      <types1:DisplayName>ManageAsset_twoStep</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-09-23T08:34:44.171Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

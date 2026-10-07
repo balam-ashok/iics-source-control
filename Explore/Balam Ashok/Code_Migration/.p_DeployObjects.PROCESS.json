@@ -1,0 +1,147 @@
+{
+  "objectInfo" : {
+    "id" : "38bNC9mBF0VeqpJjIIhnEa",
+    "name" : "p_DeployObjects",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Vf4VQT53nQciSrZ-gt-5371828-2026-09-30T09:21:09.762Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "process to export and import the objects listed in the csv file",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-02T13:22:43.418Z",
+  "objectRefs" : [ {
+    "id" : "bRP84Vkvwg0fZrrtf4j0gQ",
+    "name" : "PO-DEPLOY-LISTOBJS",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "L5SeE1KoJBUhtyc-gt-5386982-2026-09-30T09:21:08.599Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Objects to be exported from IICS",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "8I8QQC0F89liJSeFmLBt0c",
+    "name" : "app-email",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hEuHWvJ4rswVYx8-gt-5371782-2026-09-30T09:21:08.122Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection to send email notication",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "eGpU9LNPzCIj5HCzYos4sf",
+    "name" : "AppCon-Login-Source-Org",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "2QX3cjk91pqrzYL-gt-5371728-2026-09-30T09:21:07.864Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Login"
+  }, {
+    "id" : "awH7aPbMEvAh4LCrEoA2iY",
+    "name" : "app-fileWriter",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "2xn2H0Fdw8jIw8j-gt-5371730-2026-09-30T09:21:07.868Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Connection to write the export file to local system.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "gRf28AlwvkdlM7SRlFgHUs",
+    "name" : "APP-ICS-REST-DEPLOY",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "TNkSmbduaa-gt-5387004-2026-09-30T09:21:08.739Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Conection to deploy the objects.",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Code_Migration"
+  }, {
+    "id" : "49pDFaqH4sVc9QHW5O7UYp",
+    "name" : "AppCon-Login-Target-Org",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "eJ91pqrzYLnzYLn-gt-5371774-2026-09-30T09:21:08.075Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Balam Ashok/Login"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

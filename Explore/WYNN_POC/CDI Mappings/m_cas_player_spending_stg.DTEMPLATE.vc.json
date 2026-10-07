@@ -1,0 +1,563 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_cas_player_spending_stg",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Target"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-25T07:20:46.784Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "SPENDING_ID"
+            },
+            "name" : "SPENDING_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PLAYER_ID"
+            },
+            "name" : "PLAYER_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "VISIT_ID"
+            },
+            "name" : "VISIT_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "GAMING_TYPE_ID"
+            },
+            "name" : "GAMING_TYPE_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AMOUNT_WAGERED"
+            },
+            "name" : "AMOUNT_WAGERED",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "AMOUNT_WON_LOST"
+            },
+            "name" : "AMOUNT_WON_LOST",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 2
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@46fMACxblA9ccgvOiVGAKF",
+          "connectionName" : "WYNN_DEMO_SNOWFLAKE_RAW_CONN",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "WYNN_RESORT_DWH_DEV/RAW_CASINO/PLAYER_SPENDING",
+            "label" : "WYNN_RESORT_DWH_DEV/RAW_CASINO/PLAYER_SPENDING",
+            "objectName" : "PLAYER_SPENDING",
+            "objectType" : "table",
+            "path" : "WYNN_RESORT_DWH_DEV/RAW_CASINO/PLAYER_SPENDING",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "SPENDING_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "SPENDING_ID",
+                "nativeName" : "SPENDING_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "PLAYER_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "PLAYER_ID",
+                "nativeName" : "PLAYER_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "VISIT_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "VISIT_ID",
+                "nativeName" : "VISIT_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "GAMING_TYPE_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "GAMING_TYPE_ID",
+                "nativeName" : "GAMING_TYPE_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "AMOUNT_WAGERED",
+                "fieldType" : "CONNECTOR",
+                "label" : "AMOUNT_WAGERED",
+                "nativeName" : "AMOUNT_WAGERED",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 2,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "AMOUNT_WON_LOST",
+                "fieldType" : "CONNECTOR",
+                "label" : "AMOUNT_WON_LOST",
+                "nativeName" : "AMOUNT_WON_LOST",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 2,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PLAYER_SPENDING"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "tableType",
+                "value" : "TABLE"
+              },
+              {
+                "name" : "storageSerPol",
+                "value" : "Optimized"
+              },
+              {
+                "name" : "tableFormat",
+                "value" : "Standard Table"
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-02-25T07:20:46.789Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "SPENDING_ID"
+            },
+            "name" : "SPENDING_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "PLAYER_ID"
+            },
+            "name" : "PLAYER_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "VISIT_ID"
+            },
+            "name" : "VISIT_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "GAMING_TYPE_ID"
+            },
+            "name" : "GAMING_TYPE_ID",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AMOUNT_WAGERED"
+            },
+            "name" : "AMOUNT_WAGERED",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "AMOUNT_WON_LOST"
+            },
+            "name" : "AMOUNT_WON_LOST",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 38,
+            "scale" : 2
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@aDZfZ5Hop6BhEHQaCX9iS6",
+          "connectionName" : "WYNN_DEMO_SNOWFLAKE_STG_CONN",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "WYNN_RESORT_DWH_DEV/STG_DATA/CAS_PLAYER_SPENDING",
+            "label" : "WYNN_RESORT_DWH_DEV/STG_DATA/CAS_PLAYER_SPENDING",
+            "path" : "WYNN_RESORT_DWH_DEV/STG_DATA/CAS_PLAYER_SPENDING",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "SPENDING_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "SPENDING_ID",
+                "nativeName" : "SPENDING_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "CAS_PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "PLAYER_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "PLAYER_ID",
+                "nativeName" : "PLAYER_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "CAS_PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "VISIT_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "VISIT_ID",
+                "nativeName" : "VISIT_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "CAS_PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "GAMING_TYPE_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "GAMING_TYPE_ID",
+                "nativeName" : "GAMING_TYPE_ID",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 0,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "CAS_PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "AMOUNT_WAGERED",
+                "fieldType" : "CONNECTOR",
+                "label" : "AMOUNT_WAGERED",
+                "nativeName" : "AMOUNT_WAGERED",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 2,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "CAS_PLAYER_SPENDING"
+                  }
+                ]
+              },
+              {
+                "name" : "AMOUNT_WON_LOST",
+                "fieldType" : "CONNECTOR",
+                "label" : "AMOUNT_WON_LOST",
+                "nativeName" : "AMOUNT_WON_LOST",
+                "nativeType" : "number",
+                "original" : "false",
+                "precision" : 38,
+                "scale" : 2,
+                "metaExtensions" : [
+                  {
+                    "name" : "isNullable",
+                    "value" : "true"
+                  }
+                ],
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "CAS_PLAYER_SPENDING"
+                  }
+                ]
+              }
+            ],
+            "objectAttributes" : [
+              {
+                "name" : "tableFormat",
+                "value" : "Standard Table"
+              },
+              {
+                "name" : "parent",
+                "value" : "WYNN_RESORT_DWH_DEV/STG_DATA"
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false",
+            "tgtObjectAttributes" : [
+              {
+                "name" : "tableFormat",
+                "value" : "Standard Table"
+              },
+              {
+                "name" : "parent",
+                "value" : "WYNN_RESORT_DWH_DEV/STG_DATA"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-10-01 02:15:11 PDT"
+}

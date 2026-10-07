@@ -1,0 +1,207 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>tlI20hELlBWlD2p-gt-466357-2026-09-30T09:21:11.319Z::tf.xml</types1:EntryId>
+      <types1:Name>tf_Get_Dependecies</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-09-30T09:21:11Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>balam_ashok</types1:PublishedBy>
+      <types1:PublicationDate>2026-10-02T13:56:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.tf_Get_Dependecies/tf_Get_Dependecies.tf.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   GUID="43pnmzuOeFdhFj38dONMK6"
+                   displayName="tf_Get_Dependecies"
+                   name="tf_Get_Dependecies"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="i_session_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_FilePath" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_ParamPath" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="rerun" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="mt_Get_Dependecies" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">true</option>
+                     <option name="referenceTo">$po:mt-Get-Dependecies</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="true" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedGroups>
+                     <group>Admin</group>
+                     <group>Administrator</group>
+                     <group>Developer</group>
+                  </allowedGroups>
+                  <allowedUsers>
+                     <user>tanuja.km@iics.com</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ln1ck07j" targetId="ln1ck07i"/>
+               </start>
+               <assignment id="ln1ck07i">
+                  <title>a_retry_rerun</title>
+                  <operation source="constant" to="temp.mt_Get_Dependecies[1]/inout[1]/retry_run">0</operation>
+                  <operation source="field" to="temp.mt_Get_Dependecies[1]/inout[1]/session_id">input.i_session_ID</operation>
+                  <operation source="field" to="temp.mt_Get_Dependecies[1]/inout[1]/file_path">input.i_FilePath</operation>
+                  <operation source="field"
+                             to="temp.mt_Get_Dependecies[1]/taskProperties[1]/parameterFileDir">input.i_ParamPath</operation>
+                  <operation source="constant"
+                             to="temp.mt_Get_Dependecies[1]/taskProperties[1]/parameterFileName">mtt_parm.parm</operation>
+                  <link id="ln1ck07k" targetId="ln0bmg6m"/>
+               </assignment>
+               <eventContainer id="ln0bmg6m">
+                  <service id="ln0bmg5u">
+                     <title>mt_Get_Dependecies</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_Get_Dependecies</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">7Aq8A2myWYyiYL8nLFHA8M</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-Get-Dependecies">temp.mt_Get_Dependecies</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/output/FirstErrorCode">First Error Code</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/inout/session_id">session_id</operation>
+                        <operation source="field" to="temp.mt_Get_Dependecies/inout/retry_run">retry_run</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="ln1ck07q" targetId="ln03cn8o"/>
+                  <events>
+                     <catch faultField="temp.mt_Get_Dependecies/fault"
+                            id="ln0bmg6k"
+                            interrupting="true"
+                            name="error"/>
+                     <catch faultField="temp.mt_Get_Dependecies/fault"
+                            id="ln0bmg6l"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <container id="ln03cn8o" type="exclusive">
+                  <title>d_rerun</title>
+                  <flow id="ln03cn8s">
+                     <jumpTo id="ln03cn92">
+                        <link id="ln03cn93" targetId="ln1ck07i"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="ln03cn8v">
+                     <link id="ln03cn8w" targetId="ln03cn8o" type="containerLink"/>
+                  </flow>
+                  <link id="ln03cn8r" targetId="ln03cn8s" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.mt_Get_Dependecies[1]/inout[1]/retry_run}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ln03cn8u" targetId="ln03cn8v" type="containerLink"/>
+                  <link id="ln03cn8q" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-Get-Dependecies"
+                              isByCopy="true"
+                              name="mt-Get-Dependecies">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>43pnmzuOeFdhFj38dONMK6</types1:GUID>
+      <types1:DisplayName>tf_Get_Dependecies</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-02T13:57:51.69Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

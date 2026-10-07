@@ -1,0 +1,50 @@
+{
+  "objectInfo" : {
+    "id" : "29cgEN6771hlraHrSJ8uA1",
+    "name" : "tf_type1_wynn_poc",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "xNTrKkQIW3Ni7A7-gt-1621386-2026-09-08T14:06:02.382Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-09-16T09:57:04.086Z",
+  "objectRefs" : [ {
+    "id" : "b0NP1iv2uUDf4NWlgBSWMs",
+    "name" : "mp_type1_wynn_poc",
+    "type" : "MTT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 0,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "010XDM0Z0000000000EK"
+      },
+      "contextAttributes" : [ {
+        "name" : "id",
+        "value" : "@1"
+      } ],
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "JSON",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/WYNN_POC/POC"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
