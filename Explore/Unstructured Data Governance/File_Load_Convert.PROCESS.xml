@@ -1,0 +1,576 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>y8NTYglxbdypKwK-gt-302419-2026-02-06T07:47:40.399Z::pd.xml</types1:EntryId>
+      <types1:Name>File_Load_Convert-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>balam_ashok</types1:CreatedBy>
+      <types1:CreationDate>2026-02-06T07:47:40Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  GUID="36UjKF185IXfM5lrf66VYr"
+                  displayName="File_Load_Convert"
+                  name="File_Load_Convert-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="file" required="true" type="attachment">
+                  <options>
+                     <option name="required">false</option>
+                     <option hide="true" name="count">1</option>
+                     <option name="maxsize">5242880</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Output" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="t_data_quality_score" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_consistency_score" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_uniqueness_score" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_accuracy_score" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_completeness_score" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_timeliness_score" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_validity_score" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_recommendations" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_filename" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_file_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_is_classified" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_sentiment" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_summary" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_language" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_encoding" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_ocr_possible" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_spelling_grammar_issues" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_metadata_complete" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_file_size_text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_page_count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_word_count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_line_count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_file_format" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_content_relevance" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_creation_date" type="datetime">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="thirtyMinutesIncrement">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_modification_date" type="datetime">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="thirtyMinutesIncrement">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_md5_hash" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_creator" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_producer" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_number_of_pages" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_encrypted" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_first_two_pages_text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_text_sample_all_pages" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_file_size_formatted" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_file_size_bytes" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_analysis_timestamp" type="datetime">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="thirtyMinutesIncrement">true</option>
+                  </options>
+               </field>
+               <field description="" name="t_Full_Metadata" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AC-FileParser:Document_Quality</option>
+                     <option name="guid">1OsHl0AGIYPiwE0qp8atwl</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+               <nvpair name="treatEmptyStringAsNull">true</nvpair>
+               <nvpair name="treatEmptyObjectListAsNotArray">false</nvpair>
+            </extData>
+            <flow id="x06d39572-b832-4cf3-9612-915e0bb87c19">
+               <start id="w5494cf47-084d-4917-9cbd-84eb809c2a4b">
+                  <link id="db8446d84-98f9-4f16-997c-0cf4d558604b"
+                        targetId="a15lwlpybJQ7wjEzuv7VOqA7-Service07569f71-9337-4110-bf12-6b6600b21910"/>
+               </start>
+               <service id="a15lwlpybJQ7wjEzuv7VOqA7-Service07569f71-9337-4110-bf12-6b6600b21910">
+                  <title>Unstructured_to_Structured</title>
+                  <serviceName>AC-FileParser:Unstructured_to_Structured</serviceName>
+                  <serviceGUID>1OsHl0AGIYPiwE0qp8atwl</serviceGUID>
+                  <serviceInput>
+                     <parameter name="file" source="field">input.file</parameter>
+                  </serviceInput>
+                  <link id="q3eb6d464-79cb-410f-954d-984f8a550d83"
+                        targetId="a15lwlpybJQ7wjEzuv7VOqA7-Decision89e74c9a-961b-4523-abb3-394ae5063973"/>
+               </service>
+               <container id="a15lwlpybJQ7wjEzuv7VOqA7-Decision89e74c9a-961b-4523-abb3-394ae5063973"
+                          type="exclusive">
+                  <title>HttpStatus</title>
+                  <flow id="c36f6468a-5e72-4a19-95fc-b580b19103d9">
+                     <assignment id="a15lwlpybJQ7wjEzuv7VOqA7-Assignmentab72f3e2-24c0-4f8a-914d-612a0efeee68">
+                        <title>Assignment to Output</title>
+                        <operation source="formula" to="temp.t_accuracy_score">
+                           <expression language="XQuery">$output.ExtractedData[1]/accuracy_score/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_analysis_timestamp">
+                           <expression language="XQuery">$output.ExtractedData[1]/analysis_timestamp/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_completeness_score">
+                           <expression language="XQuery">$output.ExtractedData[1]/completeness_score/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_consistency_score">
+                           <expression language="XQuery">$output.ExtractedData[1]/consistency_score/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_content_relevance">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/content_relevance/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_creation_date">
+                           <expression language="XQuery">$output.ExtractedData[1]/creation_date/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_creator">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/creator/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_data_quality_score">
+                           <expression language="XQuery">$output.ExtractedData[1]/data_quality_score/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_encoding">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/encoding/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_encrypted">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/encrypted/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_file_format">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/file_format/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_file_size_bytes">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/file_size_bytes/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_file_size_formatted">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/file_size_formatted/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_file_size_text">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/file_size_text/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_file_type">
+                           <expression language="XQuery">$output.ExtractedData[1]/file_type/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_filename">
+                           <expression language="XQuery">$output.ExtractedData[1]/filename/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_first_two_pages_text">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/first_two_pages_text/text()
+let $cleaned := fn:replace($string, "[^A-Za-z0-9 ]", "")
+return
+    if (fn:string-length(fn:normalize-space($cleaned)) = 0) then "null"
+    else $cleaned
+
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_is_classified">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/is_classified/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_language">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/language/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+
+
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_line_count">
+                           <expression language="XQuery">let $value := $output.ExtractedData[1]/line_count/text()
+return
+    if (fn:string-length(fn:normalize-space($value)) = 0) then 0
+    else $value</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_md5_hash">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/md5_hash/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_metadata_complete">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/metadata_complete/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_modification_date">
+                           <expression language="XQuery">$output.ExtractedData[1]/modification_date/text()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_number_of_pages">
+                           <expression language="XQuery">let $value := $output.ExtractedData[1]/number_of_pages/text()
+return
+    if (fn:string-length(fn:normalize-space($value)) = 0) then 0
+    else $value
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_ocr_possible">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/ocr_possible/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_page_count">
+                           <expression language="XQuery">let $value := $output.ExtractedData[1]/page_count/text()
+return
+  if (fn:string-length(fn:normalize-space($value)) = 0 or fn:upper-case(fn:normalize-space($value)) = "N/A") 
+  then 0 
+  else xs:integer($value)
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_producer">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/producer/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_recommendations">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/recommendations/text()
+
+return
+
+fn:replace($string, "[^A-Za-z0-9 ]", "", "")</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_sentiment">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/sentiment/text()
+let $cleaned := fn:replace($string, "[^A-Za-z0-9 ]", "")
+return
+    if (fn:string-length(fn:normalize-space($cleaned)) = 0) then "null"
+    else $cleaned
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_spelling_grammar_issues">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/spelling_grammar_issues/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_summary">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/summary/text()
+let $cleaned := fn:replace($string, "[^A-Za-z0-9 ]", "")
+return
+    if (fn:string-length(fn:normalize-space($cleaned)) = 0) then "null"
+    else $cleaned
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_text_sample_all_pages">
+                           <expression language="XQuery">let $string := $output.ExtractedData[1]/text_sample_all_pages/text()
+return
+    if (fn:string-length($string) = 0) then "null"
+    else $string
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_timeliness_score">
+                           <expression language="XQuery">let $value := $output.ExtractedData[1]/timeliness_score/text()
+return
+    if (fn:string-length(fn:normalize-space($value)) = 0) then 0
+    else $value</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_uniqueness_score">
+                           <expression language="XQuery">let $value := $output.ExtractedData[1]/uniqueness_score/text()
+return
+    if (fn:string-length(fn:normalize-space($value)) = 0) then 0
+    else $value</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_validity_score">
+                           <expression language="XQuery">let $value := $output.ExtractedData[1]/validity_score/text()
+return
+    if (fn:string-length(fn:normalize-space($value)) = 0) then 0
+    else $value</expression>
+                        </operation>
+                        <operation source="formula" to="temp.t_word_count">
+                           <expression language="XQuery">let $value := $output.ExtractedData[1]/word_count/text()
+return
+    if (fn:string-length(fn:normalize-space($value)) = 0) then 0
+    else $value</expression>
+                        </operation>
+                        <link id="vbb4d8d14-402c-44d8-89bb-6a3cfa792487"
+                              targetId="a15lwlpybJQ7wjEzuv7VOqA7-Service45876185-55cc-4076-881e-f46df7f7eca1"/>
+                     </assignment>
+                     <service id="a15lwlpybJQ7wjEzuv7VOqA7-Service45876185-55cc-4076-881e-f46df7f7eca1">
+                        <title>Insert</title>
+                        <serviceName>AC-DAS-Oracle:Insert</serviceName>
+                        <serviceGUID>1KHzGqTCtolcOqnlaXdRO2</serviceGUID>
+                        <serviceInput>
+                           <parameter name="data_quality_score" source="field">temp.t_data_quality_score</parameter>
+                           <parameter name="uniqueness_score" source="field">temp.t_uniqueness_score</parameter>
+                           <parameter name="consistency_score" source="field">temp.t_consistency_score</parameter>
+                           <parameter name="accuracy_score" source="field">temp.t_accuracy_score</parameter>
+                           <parameter name="completeness_score" source="field">temp.t_completeness_score</parameter>
+                           <parameter name="timeliness_score" source="field">temp.t_timeliness_score</parameter>
+                           <parameter name="validity_score" source="field">temp.t_validity_score</parameter>
+                           <parameter name="recommendations" source="field">temp.t_recommendations</parameter>
+                           <parameter name="filename" source="field">temp.t_filename</parameter>
+                           <parameter name="file_type" source="field">temp.t_file_type</parameter>
+                           <parameter name="is_classified" source="field">temp.t_is_classified</parameter>
+                           <parameter name="sentiment" source="field">temp.t_sentiment</parameter>
+                           <parameter name="summary" source="field">temp.t_summary</parameter>
+                           <parameter name="language" source="field">temp.t_language</parameter>
+                           <parameter name="encoding" source="field">temp.t_encoding</parameter>
+                           <parameter name="ocr_possible" source="field">temp.t_ocr_possible</parameter>
+                           <parameter name="spelling_grammar_issues" source="field">temp.t_spelling_grammar_issues</parameter>
+                           <parameter name="metadata_complete" source="field">temp.t_metadata_complete</parameter>
+                           <parameter name="file_size_text" source="field">temp.t_file_size_text</parameter>
+                           <parameter name="page_count" source="field">temp.t_page_count</parameter>
+                           <parameter name="word_count" source="field">temp.t_word_count</parameter>
+                           <parameter name="line_count" source="field">temp.t_line_count</parameter>
+                           <parameter name="file_format" source="field">temp.t_file_format</parameter>
+                           <parameter name="content_relevance" source="field">temp.t_content_relevance</parameter>
+                           <parameter name="creation_date" source="field">temp.t_creation_date</parameter>
+                           <parameter name="modification_date" source="field">temp.t_modification_date</parameter>
+                           <parameter name="md5_hash" source="field">temp.t_md5_hash</parameter>
+                           <parameter name="creator" source="field">temp.t_creator</parameter>
+                           <parameter name="producer" source="field">temp.t_producer</parameter>
+                           <parameter name="number_of_pages" source="field">temp.t_page_count</parameter>
+                           <parameter name="encrypted" source="field">temp.t_encrypted</parameter>
+                           <parameter name="first_two_pages_text" source="field">temp.t_first_two_pages_text</parameter>
+                           <parameter name="text_sample_all_pages" source="field">temp.t_text_sample_all_pages</parameter>
+                           <parameter name="file_size_formatted" source="field">temp.t_file_size_formatted</parameter>
+                           <parameter name="file_size_bytes" source="field">temp.t_file_size_bytes</parameter>
+                           <parameter name="analysis_timestamp" source="field">temp.t_analysis_timestamp</parameter>
+                        </serviceInput>
+                        <link id="o52ea8d5e-04ac-49bd-9e13-21ae65f91692"
+                              targetId="a15lwlpybJQ7wjEzuv7VOqA7-Ende0ff66d1-f164-46a0-830e-c2441afc6577"/>
+                     </service>
+                     <end id="a15lwlpybJQ7wjEzuv7VOqA7-Ende0ff66d1-f164-46a0-830e-c2441afc6577">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <flow id="e16bbfdc8-7da2-4982-9afe-45f9217b1d62">
+                     <link id="db36367bc-ea5f-4d83-9947-e93ce11c6c00"
+                           targetId="a15lwlpybJQ7wjEzuv7VOqA7-Decision89e74c9a-961b-4523-abb3-394ae5063973"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="hbd1424fc-7284-46b0-ae1c-8708be610029"
+                        targetId="c36f6468a-5e72-4a19-95fc-b580b19103d9"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.HttpStatus}</arg>
+                           <arg name="right">200</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="a11cb6457-b81a-408f-a396-653730445e36"
+                        targetId="e16bbfdc8-7da2-4982-9afe-45f9217b1d62"
+                        type="containerLink"/>
+                  <link id="nbd81b727-07a9-4937-976e-eec1d1587f12"
+                        targetId="a15lwlpybJQ7wjEzuv7VOqA7-end-yf624361a-ee94-4e76-b4d5-8e7621988916"/>
+               </container>
+               <end id="a15lwlpybJQ7wjEzuv7VOqA7-end-yf624361a-ee94-4e76-b4d5-8e7621988916">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>36UjKF185IXfM5lrf66VYr</types1:GUID>
+      <types1:DisplayName>File_Load_Convert</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-10-07T04:56:55.892Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
