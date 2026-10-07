@@ -12,11 +12,11 @@
       <types1:ProcessGroup/>
       <types1:CreatedBy>pooja</types1:CreatedBy>
       <types1:CreationDate>2026-09-29T08:04:08Z</types1:CreationDate>
-      <types1:ModifiedBy>pooja</types1:ModifiedBy>
-      <types1:ModificationDate>2026-09-29T10:08:37Z</types1:ModificationDate>
+      <types1:ModifiedBy>balam_ashok</types1:ModifiedBy>
+      <types1:ModificationDate>2026-10-07T09:07:13Z</types1:ModificationDate>
       <types1:PublicationStatus>published</types1:PublicationStatus>
-      <types1:PublishedBy>pooja</types1:PublishedBy>
-      <types1:PublicationDate>2026-09-29T10:08:41Z</types1:PublicationDate>
+      <types1:PublishedBy>balam_ashok</types1:PublishedBy>
+      <types1:PublicationDate>2026-10-07T09:07:17Z</types1:PublicationDate>
       <types1:PublishedContributionId>project:/spi.createDynamicPool/createDynamicPool.pd.xml</types1:PublishedContributionId>
       <types1:Entry>
          <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
@@ -92,19 +92,18 @@
                </rest>
             </deployment>
             <extData>
-               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
                <nvpair name="treatEmptyObjectListAsArray">true</nvpair>
             </extData>
-            <flow id="gf3343d34-d40e-448c-b058-df36f187072a">
-               <start id="c74d770c5-d612-4942-b74b-efb598a863ab">
-                  <link id="kdcc55010-a76b-4aa9-af33-0280c679d2ec"
+            <flow id="d6971047f-a932-4f7e-a47d-b488e979afa3">
+               <start id="mff4cc51c-4c17-46bd-8e13-81db24c5acdf">
+                  <link id="cb04ab85e-ae3b-4d77-863f-e8d418f83bb8"
                         targetId="a16CEW8o0KO8edRkPIyHzVco-Service1b848af4-02ac-4fc0-a0cf-76d7fd2eb5e2"/>
                </start>
                <service id="a16CEW8o0KO8edRkPIyHzVco-Service1b848af4-02ac-4fc0-a0cf-76d7fd2eb5e2">
                   <title>Connection 1</title>
                   <serviceName>ac-migration:Login</serviceName>
                   <serviceGUID>ij87FVZxQghgk62PLw56Ww</serviceGUID>
-                  <link id="l2dfa98cf-d408-4d53-92db-344e00b82105"
+                  <link id="u0cbde514-6540-4d13-8e82-0a5ea33137e4"
                         targetId="a16CEW8o0KO8edRkPIyHzVco-Service2d1d9f82-dbcb-4809-8428-9d23f566111e"/>
                </service>
                <service id="a16CEW8o0KO8edRkPIyHzVco-Service2d1d9f82-dbcb-4809-8428-9d23f566111e">
@@ -144,7 +143,7 @@ concat(
 )</expression>
                      </parameter>
                   </serviceInput>
-                  <link id="nc5f05fb8-d860-447b-b6e4-5a8959c9fdb5"
+                  <link id="v9a646a38-22da-43c3-b1df-16b7f1171018"
                         targetId="a16CEW8o0KO8edRkPIyHzVco-Service587b37a9-6945-41e7-a97c-89c4b5110959"/>
                </service>
                <service id="a16CEW8o0KO8edRkPIyHzVco-Service587b37a9-6945-41e7-a97c-89c4b5110959">
@@ -236,21 +235,23 @@ concat(
 )</expression>
                      </parameter>
                   </serviceInput>
-                  <link id="n13470a25-3b94-4730-84a2-0655fa4bc40a"
-                        targetId="Assignment2cec3251-3055-47c7-a795-79b8dbc52420"/>
+                  <link id="u5fe72d24-3b56-4fb4-bc6a-d49233ec2420"
+                        targetId="a16CEW8o0KO8edRkPIyHzVco-Assignment2cec3251-3055-47c7-a795-79b8dbc52420"/>
                </service>
-               <assignment id="Assignment2cec3251-3055-47c7-a795-79b8dbc52420">
+               <assignment id="a16CEW8o0KO8edRkPIyHzVco-Assignment2cec3251-3055-47c7-a795-79b8dbc52420">
                   <title>Assignment to changeType, MSG</title>
                   <operation source="field" to="output.changeType">output.Type</operation>
                   <operation source="formula" to="output.MSG">
-                     <expression language="XQuery">if($output.StatusCode = 200)
+                     <expression language="XQuery">
+
+if($output.StatusCode = 200)
 then 
 'SUCCESS'
 else
 'FAILED'
 </expression>
                   </operation>
-                  <link id="w0a86535a-5b80-4322-9ba4-65425f529918"
+                  <link id="s07cbaa1f-f516-4609-9a89-ca670801cfea"
                         targetId="a16CEW8o0KO8edRkPIyHzVco-end-bffd9beb5-8ba8-41c2-8099-6fc035bdf765"/>
                </assignment>
                <end id="a16CEW8o0KO8edRkPIyHzVco-end-bffd9beb5-8ba8-41c2-8099-6fc035bdf765">
@@ -262,5 +263,5 @@ else
       <types1:GUID>6CEW8o0KO8edRkPIyHzVco</types1:GUID>
       <types1:DisplayName>createDynamicPool</types1:DisplayName>
    </types1:Item>
-   <types1:CurrentServerDateTime>2026-10-02T13:55:56.222Z</types1:CurrentServerDateTime>
+   <types1:CurrentServerDateTime>2026-10-07T09:07:44.05Z</types1:CurrentServerDateTime>
 </aetgt:getResponse>
