@@ -1,0 +1,195 @@
+name: IDMC promote
+
+# The one workflow that promotes IDMC assets from QA to Production. It never deploys to Production.
+#
+#   1. open-pr    A check-in to the QA branch opens a PR into the Production branch.
+#   2. validate   Runs on the PR. Lists the IDMC assets in it and fails if any is a connection or schedule.
+#                 Make "validate" a required status check on the Production branch.
+#   3. Approval   A normal PR review. Branch protection on the Production branch requires an approval
+#                 (from the people in .github/CODEOWNERS).
+#   4. package    Runs only after approval. Exports the assets from the QA org, attaches the zip and the
+#                 asset list to the run, tags the commit, labels the PR "Ready to Deploy" and notifies the
+#                 PR author. The developer imports the zip into Production by hand, then merges the PR.
+#
+# Keep this file on the QA branch as well as main: GitHub runs the copy on the branch that was pushed.
+# Secrets (Settings > Secrets and variables > Actions):
+#   IICS_REPO                                GitHub token that may open PRs (GITHUB_TOKEN can't trigger checks)
+#   UAT_IICS_USERNAME / UAT_IICS_PASSWORD    login for the QA org (DemoCentral)
+
+on:
+  push:
+    branches: [Demo-Central-Branch]
+  pull_request:
+    branches: [Dfactory-Branch]
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  contents: read
+
+env:
+  QA_BRANCH: Demo-Central-Branch
+  PROD_BRANCH: Dfactory-Branch
+  READY_LABEL: Ready to Deploy
+  IICS_LOGIN_URL: https://dmp-us.informaticacloud.com
+
+jobs:
+  # 1. Raise the promotion PR, QA branch -> Production branch. Never merges anything.
+  open-pr:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.IICS_REPO }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Open the promotion PR (an open one just picks up this check-in)
+        run: |
+          if [ "$(gh api "repos/$GH_REPO/compare/$PROD_BRANCH...$QA_BRANCH" --jq .ahead_by)" = "0" ]; then
+            echo "Nothing to promote."; exit 0
+          fi
+          if [ -n "$(gh pr list --base "$PROD_BRANCH" --head "$QA_BRANCH" --json number --jq '.[].number')" ]; then
+            echo "The promotion PR is already open."; exit 0
+          fi
+          gh pr create --base "$PROD_BRANCH" --head "$QA_BRANCH" \
+            --title "Promote IDMC assets: QA to Production" \
+            --body "Raised by the IDMC promote workflow. After the checks pass and a reviewer approves, the export package is attached to the run and this PR is labelled \"$READY_LABEL\". Nothing is deployed to Production automatically."
+
+  # 2. Validation checks. Runs on every PR update and again on approval. A failure blocks the PR.
+  validate:
+    if: >-
+      github.event.pull_request.base.ref == 'Dfactory-Branch' &&
+      (github.event_name == 'pull_request' || github.event.review.state == 'approved')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    outputs:
+      approved: ${{ steps.review.outputs.approved }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PR: ${{ github.event.pull_request.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: New commits need a fresh approval, so drop "Ready to Deploy"
+        if: github.event.action == 'synchronize'
+        run: gh pr edit "$PR" --remove-label "$READY_LABEL" || true
+
+      - name: List the IDMC assets and block connections and schedules
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          # IDMC stores each asset as Explore/<project>/<folder>/<name>.<TYPE>.<zip|xml|json|...>
+          git -c core.quotePath=false diff --name-only --diff-filter=d "$BASE...$HEAD" -- Explore \
+            | grep -viE '\.(project|folder)\.json$' \
+            | sed -E 's/\.(vc\.json|zip|xml|json|dat)$//' | sort -u > assets.txt || true
+          { echo "### IDMC assets in this promotion"
+            if [ -s assets.txt ]; then sed 's/^Explore\//- /' assets.txt; else echo "None"; fi
+          } >> "$GITHUB_STEP_SUMMARY"
+          cat assets.txt
+          blocked=$(grep -iE '\.[A-Z_]*(CONNECTION|SCHEDULE)[A-Z_]*$' assets.txt || true)
+          if [ -n "$blocked" ]; then
+            echo "::error::Connections and schedules are not promoted. Remove them from the QA branch: $(echo "$blocked" | paste -sd ',')"
+            exit 1
+          fi
+
+      - name: Has a reviewer approved the PR?
+        id: review
+        run: |
+          decision=$(gh pr view "$PR" --json reviewDecision --jq .reviewDecision)
+          echo "Review decision: ${decision:-none}"
+          echo "approved=$([ "$decision" = "APPROVED" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+  # 3 + 4. Only after approval: build the package for the manual migration. Production is not contacted.
+  package:
+    needs: validate
+    if: github.event_name == 'pull_request_review' && needs.validate.outputs.approved == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write          # create the tag
+      pull-requests: write     # label and comment
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PR: ${{ github.event.pull_request.number }}
+      BASE: ${{ github.event.pull_request.base.sha }}
+      HEAD: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Export the assets from the QA org
+        env:
+          QA_USER: ${{ secrets.UAT_IICS_USERNAME }}
+          QA_PASS: ${{ secrets.UAT_IICS_PASSWORD }}
+        run: |
+          mkdir package
+          git -c core.quotePath=false diff --name-only --diff-filter=d "$BASE...$HEAD" -- Explore \
+            | grep -viE '\.(project|folder)\.json$' \
+            | sed -E 's/\.(vc\.json|zip|xml|json|dat)$//' | sort -u > package/assets.txt || true
+          if [ ! -s package/assets.txt ]; then echo "No IDMC assets in this PR." > package/assets.txt; exit 0; fi
+
+          login=$(curl -sf -X POST "$IICS_LOGIN_URL/saas/public/core/v3/login" -H 'Content-Type: application/json' \
+            -d "$(jq -n --arg u "$QA_USER" --arg p "$QA_PASS" '{username: $u, password: $p}')") \
+            || { echo "::error::Login to the QA org failed"; exit 1; }
+          api="$(jq -r '.products[0].baseApiUrl' <<< "$login")/public/core/v3"
+          session=$(jq -r '.userInfo.sessionId' <<< "$login")
+          call() { curl -sf -H "INFA-SESSION-ID: $session" -H 'Accept: application/json' "$@"; }
+
+          # find the QA object id of each asset (same folder, name and type)
+          ids=()
+          while IFS= read -r asset; do
+            path=${asset#Explore/}; type=${path##*.}; path=${path%.*}
+            id=$(call -G "$api/objects" --data-urlencode "q=location=='${path%/*}'" --data-urlencode "limit=200" \
+              | jq -r --arg p "$path" --arg t "$type" '
+                  def n: ascii_upcase | {MAPPING:"DTEMPLATE", MCT:"MTT", MAPPING_TASK:"MTT", SAAS_BSERVICES:"BSERVICE"}[.] // .;
+                  [.objects[] | select((.path | ltrimstr("/")) == $p)] | (map(select((.type | n) == ($t | n))) + .)[0].id // empty')
+            if [ -z "$id" ]; then echo "::error::$path ($type) is not in the QA org"; exit 1; fi
+            ids+=("$id")
+          done < package/assets.txt
+
+          # export exactly these assets (no dependencies) and download the zip
+          body=$(printf '%s\n' "${ids[@]}" | jq -R . | jq -s --arg n "promotion-pr-$PR" \
+            '{name: $n, objects: map({id: ., includeDependencies: false})}')
+          job=$(call -X POST "$api/export" -H 'Content-Type: application/json' -d "$body" | jq -r .id)
+          for _ in $(seq 120); do
+            state=$(call "$api/export/$job" | jq -r .status.state)
+            [ "$state" = "SUCCESSFUL" ] || [ "$state" = "FAILED" ] && break
+            sleep 5
+          done
+          if [ "$state" != "SUCCESSFUL" ]; then echo "::error::Export ended $state"; call "$api/export/$job/log" || true; exit 1; fi
+          call -H 'Accept: application/zip' "$api/export/$job/package" -o "package/idmc-export-pr$PR.zip"
+
+      - name: Attach the package to this run
+        uses: actions/upload-artifact@v4
+        with:
+          name: promotion-pr-${{ github.event.pull_request.number }}
+          path: package/
+          retention-days: 90
+
+      - name: Tag the commit, label the PR "Ready to Deploy" and notify the author
+        env:
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          tag="promotion/pr-$PR-${HEAD::7}"
+          gh api "repos/$GH_REPO/git/refs" -f ref="refs/tags/$tag" -f sha="$HEAD" > /dev/null || echo "Tag $tag already exists"
+          gh label create "$READY_LABEL" --color 0E8A16 --force
+          gh pr edit "$PR" --add-label "$READY_LABEL"
+          {
+            echo "@$AUTHOR this promotion is approved and **$READY_LABEL**. Nothing was deployed to Production."
+            echo
+            echo "- Package: \`promotion-pr-$PR\` under Artifacts on $RUN_URL"
+            echo "- Commit: \`$HEAD\` (tag \`$tag\`)"
+            echo
+            echo "Assets:"; sed 's/^Explore\//- /' package/assets.txt
+            echo
+            echo "To migrate: download the package, import \`idmc-export-pr$PR.zip\` into the Production org"
+            echo "(Explore > Import), map connections and runtime environments, then merge this PR."
+          } > comment.md
+          gh pr comment "$PR" --body-file comment.md
