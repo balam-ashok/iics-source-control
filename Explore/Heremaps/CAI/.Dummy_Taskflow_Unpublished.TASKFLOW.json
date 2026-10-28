@@ -1,0 +1,30 @@
+{
+  "objectInfo" : {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "8vj7oTJus8CitfFQOD8m4L",
+    "name" : "Dummy_Taskflow_Unpublished",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "HNf4TsrT2htghGZ-gt-57149-2026-10-28T11:51:15.53Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-10-28T11:53:23.112Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
