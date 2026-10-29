@@ -93,25 +93,58 @@ env:
       done
       echo "$s"
     }
-    # name_map <QA|PROD>: reads the repository variables (ALL_VARS) DEV_CONNECTION_<KEY> / DEV_RUNTIME_<KEY> and the
-    # target's <QA|PROD>_CONNECTION_<KEY> / <QA|PROD>_RUNTIME_<KEY>, and writes spec.json: the pull's objectSpecification
-    # renaming each Dev name to the target name. Git always holds the Dev names (developers check in only in Dev), so
-    # the Dev name is the source for both promotions. Fails, naming the variables, when a target name is missing.
+    # name_map <QA|PROD> [<DEV|QA> <connections file> <runtime environments file>]
+    # Reads the repository variables (ALL_VARS) DEV_CONNECTION_<KEY> / DEV_RUNTIME_<KEY> and the target's
+    # <QA|PROD>_CONNECTION_<KEY> / <QA|PROD>_RUNTIME_<KEY>, and writes spec.json: the pull's objectSpecification renaming
+    # each Dev name to the target name. Git always holds the Dev names (developers check in only in Dev), so the Dev name
+    # is the source for both promotions.
+    # With the last three arguments (deploy), only the connections and runtime environments the assets actually use
+    # are renamed: a name in the files matches a KEY by its Dev name or by its name in the source org (<DEV|QA>_...).
+    # If no runtime environment could be detected, every configured runtime environment rename is kept.
+    # Without them (PR check), every configured name is checked, and a missing one is only a warning (the PR check
+    # can't see which connections the assets use). In the deploy, a missing name for a used item stops the deploy.
     name_map() {
-      jq --arg t "$1" '
-        . as $v
+      local filter=false
+      if [ $# -ge 4 ]; then filter=true; fi
+      jq --arg t "$1" --arg s "${2:-DEV}" --argjson filter "$filter" \
+         --rawfile uc "${3:-/dev/null}" --rawfile ur "${4:-/dev/null}" '
+        def trim: gsub("^\\s+|\\s+$"; "");
+        def names($x): $x | split("\n") | map(trim | ascii_downcase) | map(select(length > 0));
+        names($uc) as $usedc | names($ur) as $usedr
+        | . as $v
         | [ to_entries[] | (.key | capture("^DEV_(?<kind>CONNECTION|RUNTIME)_(?<k>.+)$")) as $m
             | ($t + "_" + $m.kind + "_" + $m.k) as $tv
-            | {kind: $m.kind, from: (.value | gsub("^\\s+|\\s+$"; "")), var: $tv,
-               to: (($v[$tv] // "") | gsub("^\\s+|\\s+$"; ""))} ]' <<< "$ALL_VARS" > names.json
+            | (.value | trim) as $from
+            | (($v[$s + "_" + $m.kind + "_" + $m.k] // $from) | trim) as $srcname
+            | (if $m.kind == "CONNECTION" then $usedc else $usedr end) as $used
+            | {kind: $m.kind, from: $from, var: $tv, to: (($v[$tv] // "") | trim),
+               used: (($filter | not)
+                      or ($m.kind == "RUNTIME" and ($usedr | length) == 0)
+                      or ([$from, $srcname] | map(ascii_downcase) | any(.[]; . as $n | ($used | index($n)) != null)))} ]' \
+        <<< "$ALL_VARS" > names.json
       { echo "### Connection and runtime environment names, Dev -> $1"
         if [ "$(jq length names.json)" = "0" ]; then echo "None configured (no DEV_CONNECTION_* / DEV_RUNTIME_* variables)"; fi
-        jq -r '.[] | "- \(if .kind == "CONNECTION" then "Connection" else "Runtime environment" end): \(.from) -> \(if .to == "" then "MISSING (" + .var + ")" else .to end)"' names.json
+        jq -r '.[] | "- \(if .kind == "CONNECTION" then "Connection" else "Runtime environment" end): \(.from) -> \(if .to == "" then "MISSING (" + .var + ")" else .to end)\(if .used then "" else "  (not used by these assets, skipped)" end)"' names.json
       } | tee -a "$GITHUB_STEP_SUMMARY"
+      if [ "$filter" = "true" ]; then
+        # used connections / runtime environments that no name variable covers: they keep their name in the target
+        local unknown
+        unknown=$(jq -rn --slurpfile n names.json --rawfile uc "$3" --rawfile ur "$4" --arg s "$2" --argjson v "$ALL_VARS" '
+          ($n[0] | map(.from | ascii_downcase)) as $known
+          | ($v | to_entries | map(select(.key | startswith($s + "_CONNECTION_") or startswith($s + "_RUNTIME_")) | .value | ascii_downcase)) as $known_src
+          | (($uc + "\n" + $ur) | split("\n") | map(gsub("^\\s+|\\s+$"; "")) | map(select(length > 0)))
+          | map(select((ascii_downcase) as $x | ($known + $known_src | index($x)) == null)) | unique | join(", ")')
+        if [ -n "$unknown" ]; then
+          echo "::warning::No name variables for: $unknown. They are pulled with the same name, so it must exist in the $1 org." | tee -a "$GITHUB_STEP_SUMMARY"
+        fi
+      fi
       local missing
-      missing=$(jq -r '[.[] | select(.to == "") | .var] | join(", ")' names.json)
-      if [ -n "$missing" ]; then echo "::error::Set these repository variables (the names in the $1 org): $missing"; return 1; fi
-      jq '[ .[] | select(.from != .to) | (if .kind == "CONNECTION" then "Connection" else "AgentGroup" end) as $ty
+      missing=$(jq -r '[.[] | select(.used and .to == "") | .var] | join(", ")' names.json)
+      if [ -n "$missing" ]; then
+        if [ "$filter" = "true" ]; then echo "::error::Set these repository variables (the names in the $1 org): $missing"; return 1; fi
+        echo "::warning::Not set yet (needed only when an asset uses them): $missing"
+      fi
+      jq '[ .[] | select(.used and .to != "" and .from != .to) | (if .kind == "CONNECTION" then "Connection" else "AgentGroup" end) as $ty
             | {source: {path: [.from], type: $ty}, target: {path: [.to], type: $ty}} ]' names.json > spec.json
     }
     # the type name Git uses for a type the references API names differently
@@ -371,7 +404,7 @@ jobs:
       - name: Find what the assets use in the source org
         run: |
           eval "$IDMC_FUNCTIONS"
-          : > all.txt; : > deps.txt; : > connections.txt
+          : > all.txt; : > deps.txt; : > connections.txt; : > runtimes.txt
           list_assets "$BASE" "$HEAD" > assets.txt || true
           if [ ! -s assets.txt ]; then echo "No IDMC assets to deploy."; exit 0; fi
           git -c core.quotePath=false ls-tree -r --name-only "$MERGE_SHA" -- Explore > gitfiles.txt
@@ -393,6 +426,8 @@ jobs:
                 t=$(gtype "$rtype")
                 if [[ "$t" == *CONNECTION* && "$t" != AI_* ]]; then
                   echo "${rpath##*/}" >> connections.txt
+                elif [[ "$t" == *AGENT* || "$t" == *RUNTIME* ]]; then
+                  echo "${rpath##*/}" >> runtimes.txt
                 elif grep -Fqi "Explore/$rpath.$t." gitfiles.txt; then
                   echo "Explore/$rpath.$t" >> deps.txt; next+=("$rid")
                 fi
@@ -407,10 +442,13 @@ jobs:
           done
           sort -u assets.txt deps.txt > all.txt
           sort -u -o connections.txt connections.txt
+          sort -u -o runtimes.txt runtimes.txt
 
           { echo "### To deploy"; sed 's/^Explore\//- /' all.txt
             echo "### Connections the assets use in $SRC_NAME (must exist in $DST_NAME, after mapping)"
             if [ -s connections.txt ]; then sed 's/^/- /' connections.txt; else echo "None found"; fi
+            echo "### Runtime environments the assets use in $SRC_NAME"
+            if [ -s runtimes.txt ]; then sed 's/^/- /' runtimes.txt; else echo "None detected"; fi
           } | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Pull the assets into the target org and publish
@@ -431,8 +469,9 @@ jobs:
             done < all.txt | awk '!seen[$0]++'
             sed -E 's#^Explore/##; s#\.([^.]+)$#|\1#' all.txt
           } > pull.txt
-          # rename connections and runtime environments on the way in (Dev name -> target name)
-          name_map "$([ "$HOP" = "dev-qa" ] && echo QA || echo PROD)"
+          # rename the connections and runtime environments these assets use (Dev name -> target name)
+          if [ "$HOP" = "dev-qa" ]; then name_map QA DEV connections.txt runtimes.txt
+          else name_map PROD QA connections.txt runtimes.txt; fi
           body=$(jq -R 'split("|") | {path: (.[0] | split("/")), type: .[1]}' pull.txt \
                  | jq -s --arg c "$MERGE_SHA" --slurpfile spec spec.json \
                      '{commitHash: $c, objects: .} + (if ($spec[0] | length) > 0
