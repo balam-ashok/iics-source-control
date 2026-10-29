@@ -1,0 +1,978 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_bpm_organization",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "Source -> Expression"
+      },
+      {
+        "link" : "Expression -> Filter"
+      },
+      {
+        "link" : "Filter -> Target"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2025-12-02T05:31:45.020Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          },
+          {
+            "name" : "responseXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "Organization_ID"
+            },
+            "name" : "Organization_ID",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Legal_Entity_Name"
+            },
+            "name" : "Legal_Entity_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Legal_Entity_Name_Local"
+            },
+            "name" : "Legal_Entity_Name_Local",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Trade_License_Number"
+            },
+            "name" : "Trade_License_Number",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Trade_License_Issue_Date"
+            },
+            "name" : "Trade_License_Issue_Date",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 29,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Trade_License_Expiry_Date"
+            },
+            "name" : "Trade_License_Expiry_Date",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Business_Type"
+            },
+            "name" : "Business_Type",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Incorporation_Date"
+            },
+            "name" : "Incorporation_Date",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Country_Of_Incorporation"
+            },
+            "name" : "Country_Of_Incorporation",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DUNS_Number"
+            },
+            "name" : "DUNS_Number",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Annual_Turnover"
+            },
+            "name" : "Annual_Turnover",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Number_Of_Employees"
+            },
+            "name" : "Number_Of_Employees",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Primary_Contact_Name"
+            },
+            "name" : "Primary_Contact_Name",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Corporate_Email"
+            },
+            "name" : "Corporate_Email",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Corporate_Phone"
+            },
+            "name" : "Corporate_Phone",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Registered_Address"
+            },
+            "name" : "Registered_Address",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Operating_Address"
+            },
+            "name" : "Operating_Address",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 255,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@fUQ1KUqwZycgrADnxIy128",
+          "connectionName" : "Conn-BM-FlatFile",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Organization_Middle_East.csv",
+            "label" : "Organization_Middle_East.csv",
+            "objectName" : "Organization_Middle_East.csv",
+            "path" : "Organization_Middle_East.csv",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "Organization_ID",
+                "fieldType" : "CONNECTOR",
+                "label" : "Organization_ID",
+                "nativeName" : "Organization_ID",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Legal_Entity_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Legal_Entity_Name",
+                "nativeName" : "Legal_Entity_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Legal_Entity_Name_Local",
+                "fieldType" : "CONNECTOR",
+                "label" : "Legal_Entity_Name_Local",
+                "nativeName" : "Legal_Entity_Name_Local",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Trade_License_Number",
+                "fieldType" : "CONNECTOR",
+                "label" : "Trade_License_Number",
+                "nativeName" : "Trade_License_Number",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Trade_License_Issue_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Trade_License_Issue_Date",
+                "nativeName" : "Trade_License_Issue_Date",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 29,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Trade_License_Expiry_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Trade_License_Expiry_Date",
+                "nativeName" : "Trade_License_Expiry_Date",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Business_Type",
+                "fieldType" : "CONNECTOR",
+                "label" : "Business_Type",
+                "nativeName" : "Business_Type",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Incorporation_Date",
+                "fieldType" : "CONNECTOR",
+                "label" : "Incorporation_Date",
+                "nativeName" : "Incorporation_Date",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Country_Of_Incorporation",
+                "fieldType" : "CONNECTOR",
+                "label" : "Country_Of_Incorporation",
+                "nativeName" : "Country_Of_Incorporation",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "DUNS_Number",
+                "fieldType" : "CONNECTOR",
+                "label" : "DUNS_Number",
+                "nativeName" : "DUNS_Number",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Annual_Turnover",
+                "fieldType" : "CONNECTOR",
+                "label" : "Annual_Turnover",
+                "nativeName" : "Annual_Turnover",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Number_Of_Employees",
+                "fieldType" : "CONNECTOR",
+                "label" : "Number_Of_Employees",
+                "nativeName" : "Number_Of_Employees",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Primary_Contact_Name",
+                "fieldType" : "CONNECTOR",
+                "label" : "Primary_Contact_Name",
+                "nativeName" : "Primary_Contact_Name",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Corporate_Email",
+                "fieldType" : "CONNECTOR",
+                "label" : "Corporate_Email",
+                "nativeName" : "Corporate_Email",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Corporate_Phone",
+                "fieldType" : "CONNECTOR",
+                "label" : "Corporate_Phone",
+                "nativeName" : "Corporate_Phone",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Registered_Address",
+                "fieldType" : "CONNECTOR",
+                "label" : "Registered_Address",
+                "nativeName" : "Registered_Address",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              },
+              {
+                "name" : "Operating_Address",
+                "fieldType" : "CONNECTOR",
+                "label" : "Operating_Address",
+                "nativeName" : "Operating_Address",
+                "nativeType" : "nstring",
+                "original" : "false",
+                "precision" : 255,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "Organization_Middle_East.csv"
+                  }
+                ]
+              }
+            ],
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-12-02T05:31:45.020Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "requestXmlSize",
+            "value" : "1024"
+          },
+          {
+            "name" : "Transformation Scope",
+            "value" : "All Input"
+          },
+          {
+            "name" : "performanceMode",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "MANUAL",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@kRRFJ7qylGnbjOt4amgpsm",
+          "connectionName" : "conn-BM-Business",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "OPERATION",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "Home/Custom Assets/Business Entities/Organization_BE(id=organization)",
+            "label" : "Home/Custom Assets/Business Entities/Organization_BE(id=organization)",
+            "objectName" : "Organization_BE(id=organization)",
+            "path" : "Home/Custom Assets/Business Entities/Organization_BE(id=organization)",
+            "retainMetadata" : "false"
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        },
+        "xFieldMap" : {
+          "denormalized" : "false",
+          "mappings" : [
+            {
+              "groupName" : "Filter",
+              "isRoot" : "false",
+              "xPath" : "/json:root",
+              "xfields" : [
+                {
+                  "name" : "Source_system",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 10,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:sourceSystem"
+                },
+                {
+                  "name" : "Organization_ID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:sourcePKey"
+                },
+                {
+                  "name" : "Legal_Entity_Name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:legal_entity_name"
+                },
+                {
+                  "name" : "Legal_Entity_Name_Local",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:legal_entity_name_local"
+                },
+                {
+                  "name" : "Trade_License_Number",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:trade_license_number"
+                },
+                {
+                  "name" : "Business_Type",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:business_type"
+                },
+                {
+                  "name" : "Country_Of_Incorporation",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:country_of_incorporation"
+                },
+                {
+                  "name" : "DUNS_Number",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:duns_number"
+                },
+                {
+                  "name" : "Annual_Turnover",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:annual_turnover"
+                },
+                {
+                  "name" : "Number_Of_Employees",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:number_of_employees"
+                },
+                {
+                  "name" : "Organization_ID",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:corporate_contact_detailsArray/json:corporate_contact_details/json:parentId"
+                },
+                {
+                  "name" : "Primary_Contact_Name",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:corporate_contact_detailsArray/json:corporate_contact_details/json:primary_contact_name"
+                },
+                {
+                  "name" : "Corporate_Email",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:corporate_contact_detailsArray/json:corporate_contact_details/json:corporate_email"
+                },
+                {
+                  "name" : "Corporate_Phone",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:corporate_contact_detailsArray/json:corporate_contact_details/json:corporate_phone"
+                },
+                {
+                  "name" : "Registered_Address",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:corporate_contact_detailsArray/json:corporate_contact_details/json:registered_address"
+                },
+                {
+                  "name" : "Operating_Address",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 255,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:corporate_contact_detailsArray/json:corporate_contact_details/json:operating_address"
+                },
+                {
+                  "name" : "o_trade_license_issue_date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:trade_license_issue_date"
+                },
+                {
+                  "name" : "o_trade_license_expiry_date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:trade_license_expiry_date"
+                },
+                {
+                  "name" : "o_incorporation_date",
+                  "platformType" : {
+                    "name" : "date/time"
+                  },
+                  "precision" : 29,
+                  "scale" : 9,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:incorporation_date"
+                },
+                {
+                  "name" : "pkey_contact",
+                  "platformType" : {
+                    "name" : "string"
+                  },
+                  "precision" : 100,
+                  "scale" : 0,
+                  "foreignKey" : "false",
+                  "primaryKey" : "false",
+                  "xPath" : "/json:root/json:Organization_BE_id_organization_/json:Organization_BE/json:corporate_contact_detailsArray/json:corporate_contact_details/json:sourcePKey"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-12-02T05:46:01.643Z",
+        "name" : "Expression",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "windowConfigurationEnabled" : "false",
+        "fields" : [
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "Source_system",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 10,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "'bpm'"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_trade_license_issue_date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "TO_DATE(Trade_License_Issue_Date, 'DD-MM-YYYY')"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_trade_license_expiry_date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "TO_DATE(Trade_License_Expiry_Date, 'DD-MM-YYYY')"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "o_incorporation_date",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9,
+            "expFieldType" : "OUTPUT",
+            "expression" : "TO_DATE(Incorporation_Date, 'DD-MM-YYYY')"
+          },
+          {
+            "defaultValue" : "ERROR('transformation error')",
+            "name" : "pkey_contact",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 100,
+            "scale" : 0,
+            "expFieldType" : "OUTPUT",
+            "expression" : "md5(Corporate_Phone||Corporate_Email)"
+          }
+        ],
+        "windowSpec" : {
+          "allRowsFollowing" : "false",
+          "allRowsPreceding" : "false",
+          "endOffset" : 0,
+          "startOffset" : 0,
+          "partitionKeys" : null
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2025-12-02T05:46:07.953Z",
+        "name" : "Filter",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "filterConditions" : [
+          {
+            "fieldName" : "DUNS_Number",
+            "filterValue" : "''",
+            "operator" : "!="
+          }
+        ]
+      }
+    ],
+    "variables" : [
+      {
+        "aggregationType" : "MAX",
+        "expressionVariable" : "false",
+        "name" : "jobInstanceId",
+        "platformType" : {
+          "name" : "string"
+        },
+        "precision" : 100,
+        "retentionPolicy" : "ON_SUCCESS_OR_WARNING",
+        "scale" : 0
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-10-29 03:42:41 PDT"
+}
