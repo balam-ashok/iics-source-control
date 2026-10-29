@@ -1,30 +1,52 @@
 name: IDMC promote
 
-# The one workflow that promotes IDMC assets from QA (DemoCentral) to Production (DFactory Inc DEV).
+# The one workflow that promotes IDMC assets Dev -> QA -> Prod. Each promotion is a pull request:
 #
-#   1. open-pr     A check-in to the QA branch opens a PR into the Production branch.
+#   Dev branch --PR--> QA branch --PR--> Prod branch
+#   (Dev org)          (QA org)          (Prod org)
+#
+# The "route" job works out which promotion an event belongs to:
+#   Dev -> QA    check-in on the Dev branch, or a PR from the Dev branch into the QA branch
+#   QA  -> Prod  merge into the QA branch,  or a PR from the QA branch into the Prod branch
+# Everything else is the same for both promotions:
+#
+#   1. open-pr     A push to the source branch opens a PR into the next branch (or updates the open one).
 #   2. validate    Runs on the PR and lists the IDMC assets in it. Make "validate" a required status check.
-#   3. Approval    A normal PR review. Branch protection on the Production branch requires an approval.
-#      mark-ready  After approval: tags the assets "ready-to-deploy" in QA and labels the PR "Ready to Deploy".
-#   4. Merge       The developer merges the approved PR by hand (customer policy).
+#   3. Approval    A normal PR review. Branch protection on the target branch requires an approval.
+#      mark-ready  After approval: tags the assets in the source org and labels the PR "Ready to Deploy".
+#   4. Merge       The developer merges the approved PR by hand.
 #      deploy      Runs only on that merge:
-#                    - finds what the assets use in QA: other assets, connections, schedules
-#                    - creates the connections and schedules Production doesn't have (existing ones are reused)
-#                    - pulls the assets and the assets they use from Git into Production, publishes CAI assets
-#                    - links the mapping tasks to their schedules
-#                    - re-tags everything in QA "ready-to-deploy" -> "deployed"
+#                    - finds the assets they use (in Git) through the source org
+#                    - pulls the assets and those dependencies from Git into the target org, renaming connections
+#                      and runtime environments on the way in (name variables), then publishes CAI assets
+#                    - re-tags everything in the source org
+#   Connections, runtime environments and schedules are not created: they must already exist in each org.
+#   A merge into the QA branch is also a push to it, so it opens (or updates) the QA -> Prod PR.
 #
-# Keep this file on the QA branch as well as main: GitHub runs the copy on the branch that was pushed.
-# Secrets (Settings > Secrets and variables > Actions):
-#   IICS_REPO                                GitHub token that may open PRs (GITHUB_TOKEN can't trigger checks)
-#   UAT_IICS_USERNAME / UAT_IICS_PASSWORD    login for the QA org (DemoCentral)
-#   IICS_USERNAME / IICS_PASSWORD            login for the Production org (DFactory Inc DEV)
+# Keep this file on the Dev and QA branches as well as main: GitHub runs the copy on the branch that was pushed.
+#
+# Nothing environment-specific is in this file. Settings > Secrets and variables > Actions:
+#   Variables (Variables tab)
+#     IICS_LOGIN_URL                          IDMC pod login URL, e.g. https://dmp-us.informaticacloud.com
+#     DEV_BRANCH / QA_BRANCH / PROD_BRANCH    the three branch names
+#     DEV_TAG_READY / DEV_TAG_DONE            IDMC tags set in the Dev org (on approval / after deploy to QA)
+#     QA_TAG_READY / QA_TAG_DONE              IDMC tags set in the QA org (on approval / after deploy to Prod)
+#     Connection and runtime environment names, one variable per item per environment (<KEY> is any label you
+#     choose, the same in all three; add as many as you need):
+#       DEV_CONNECTION_<KEY> / QA_CONNECTION_<KEY> / PROD_CONNECTION_<KEY>   e.g. DEV_CONNECTION_SNOWFLAKE
+#       DEV_RUNTIME_<KEY>    / QA_RUNTIME_<KEY>    / PROD_RUNTIME_<KEY>      e.g. DEV_RUNTIME_AGENT
+#     The pull renames each Dev name to the target org's name (Git holds the Dev names).
+#   Secrets (Secrets tab)
+#     IICS_REPO                                GitHub token that may open PRs (GITHUB_TOKEN can't trigger checks)
+#     DEV_IICS_USERNAME / DEV_IICS_PASSWORD    login for the Dev org
+#     UAT_IICS_USERNAME / UAT_IICS_PASSWORD    login for the QA org
+#     IICS_USERNAME / IICS_PASSWORD            login for the Prod org
+# GitHub can't read variables in the "on:" triggers, so the workflow starts on every push and PR and the
+# route job ends it at once unless the branches are the ones in the variables.
 
 on:
   push:
-    branches: [Demo-Central-Branch]
   pull_request:
-    branches: [Dfactory-Branch]
     types: [opened, reopened, synchronize, closed]
   pull_request_review:
     types: [submitted]
@@ -33,13 +55,15 @@ permissions:
   contents: read
 
 env:
-  QA_BRANCH: Demo-Central-Branch
-  PROD_BRANCH: Dfactory-Branch
+  IICS_LOGIN_URL: ${{ vars.IICS_LOGIN_URL }}
+  DEV_BRANCH: ${{ vars.DEV_BRANCH }}
+  QA_BRANCH: ${{ vars.QA_BRANCH }}
+  PROD_BRANCH: ${{ vars.PROD_BRANCH }}
+  DEV_TAG_READY: ${{ vars.DEV_TAG_READY }}
+  DEV_TAG_DONE: ${{ vars.DEV_TAG_DONE }}
+  QA_TAG_READY: ${{ vars.QA_TAG_READY }}
+  QA_TAG_DONE: ${{ vars.QA_TAG_DONE }}
   READY_LABEL: Ready to Deploy
-  DEPLOYED_LABEL: Deployed
-  TAG_READY: ready-to-deploy           # IDMC tags in the QA org
-  TAG_DEPLOYED: deployed
-  IICS_LOGIN_URL: https://dmp-us.informaticacloud.com
   # Shell helpers shared by the jobs below (each step loads them with: eval "$IDMC_FUNCTIONS")
   IDMC_FUNCTIONS: |
     # IDMC assets changed between two commits, one per line: Explore/<project>/<folder>/<name>.<TYPE>
@@ -59,9 +83,7 @@ env:
       echo "Logged in to IDMC org $(jq -r '.userInfo.orgName' <<< "$r")"
     }
     call() { curl -sf -H "INFA-SESSION-ID: $session" -H 'Accept: application/json' "$@"; }
-    v2call() { curl -sf -H "icSessionId: $session" -H 'Accept: application/json' "$@"; }
-    uri() { jq -rn --arg v "$1" '$v | @uri'; }
-    # wait_state <status URL>: polls an export, import or pull until it ends and prints its final state
+    # wait_state <status URL>: polls a source control operation (pull) until it ends and prints its final state
     wait_state() {
       local s=""
       for _ in $(seq 180); do
@@ -70,6 +92,27 @@ env:
         sleep 10
       done
       echo "$s"
+    }
+    # name_map <QA|PROD>: reads the repository variables (ALL_VARS) DEV_CONNECTION_<KEY> / DEV_RUNTIME_<KEY> and the
+    # target's <QA|PROD>_CONNECTION_<KEY> / <QA|PROD>_RUNTIME_<KEY>, and writes spec.json: the pull's objectSpecification
+    # renaming each Dev name to the target name. Git always holds the Dev names (developers check in only in Dev), so
+    # the Dev name is the source for both promotions. Fails, naming the variables, when a target name is missing.
+    name_map() {
+      jq --arg t "$1" '
+        . as $v
+        | [ to_entries[] | (.key | capture("^DEV_(?<kind>CONNECTION|RUNTIME)_(?<k>.+)$")) as $m
+            | ($t + "_" + $m.kind + "_" + $m.k) as $tv
+            | {kind: $m.kind, from: (.value | gsub("^\\s+|\\s+$"; "")), var: $tv,
+               to: (($v[$tv] // "") | gsub("^\\s+|\\s+$"; ""))} ]' <<< "$ALL_VARS" > names.json
+      { echo "### Connection and runtime environment names, Dev -> $1"
+        if [ "$(jq length names.json)" = "0" ]; then echo "None configured (no DEV_CONNECTION_* / DEV_RUNTIME_* variables)"; fi
+        jq -r '.[] | "- \(if .kind == "CONNECTION" then "Connection" else "Runtime environment" end): \(.from) -> \(if .to == "" then "MISSING (" + .var + ")" else .to end)"' names.json
+      } | tee -a "$GITHUB_STEP_SUMMARY"
+      local missing
+      missing=$(jq -r '[.[] | select(.to == "") | .var] | join(", ")' names.json)
+      if [ -n "$missing" ]; then echo "::error::Set these repository variables (the names in the $1 org): $missing"; return 1; fi
+      jq '[ .[] | select(.from != .to) | (if .kind == "CONNECTION" then "Connection" else "AgentGroup" end) as $ty
+            | {source: {path: [.from], type: $ty}, target: {path: [.to], type: $ty}} ]' names.json > spec.json
     }
     # the type name Git uses for a type the references API names differently
     gtype() {
@@ -92,7 +135,7 @@ env:
       while IFS= read -r asset; do
         path=${asset#Explore/}
         id=$(find_id "${path%.*}" "${path##*.}")
-        if [ -n "$id" ]; then ids+=("$id"); else echo "::warning::${path} not found in the QA org, not tagged"; fi
+        if [ -n "$id" ]; then ids+=("$id"); else echo "::warning::${path} not found in the source org, not tagged"; fi
       done < "$1"
       [ ${#ids[@]} -gt 0 ] || return 0
       if [ -n "$2" ]; then
@@ -101,35 +144,97 @@ env:
       fi
       printf '%s\n' "${ids[@]}" | jq -R . | jq -s --arg t "$3" 'map({id: ., tags: [$t]})' \
         | call -X POST "$api/TagObjects" -H 'Content-Type: application/json' -d @- > /dev/null \
-        || echo "::warning::Could not add the tag $3 in the QA org"
-      echo "Tagged ${#ids[@]} asset(s) $3 in the QA org"
+        || echo "::warning::Could not add the tag $3 in the source org"
+      echo "Tagged ${#ids[@]} asset(s) $3 in the source org"
     }
 
 jobs:
-  # 1. Raise the promotion PR, QA branch -> Production branch. Never merges anything.
+  # 0. Which promotion is this event part of? Every other job reads its outputs.
+  route:
+    runs-on: ubuntu-latest
+    outputs:
+      hop: ${{ steps.r.outputs.hop }}
+      src_branch: ${{ steps.r.outputs.src_branch }}
+      dst_branch: ${{ steps.r.outputs.dst_branch }}
+      src_name: ${{ steps.r.outputs.src_name }}
+      dst_name: ${{ steps.r.outputs.dst_name }}
+      src_secret: ${{ steps.r.outputs.src_secret }}
+      dst_secret: ${{ steps.r.outputs.dst_secret }}
+      tag_ready: ${{ steps.r.outputs.tag_ready }}
+      tag_done: ${{ steps.r.outputs.tag_done }}
+      deployed_label: ${{ steps.r.outputs.deployed_label }}
+      environment: ${{ steps.r.outputs.environment }}
+    steps:
+      - name: Work out the promotion (Dev -> QA or QA -> Prod)
+        id: r
+        env:
+          EVENT: ${{ github.event_name }}
+          PUSHED: ${{ github.ref_name }}
+          PR_BASE: ${{ github.event.pull_request.base.ref }}
+          PR_HEAD: ${{ github.event.pull_request.head.ref }}
+        run: |
+          # every setting must be filled in under Settings > Secrets and variables > Actions > Variables
+          missing=""
+          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH DEV_TAG_READY DEV_TAG_DONE QA_TAG_READY QA_TAG_DONE; do
+            if [ -z "${!v}" ]; then missing="$missing $v"; fi
+          done
+          if [ -n "$missing" ]; then echo "::error::Repository variables not set:$missing"; exit 1; fi
+
+          if [ "$EVENT" = "push" ]; then from=$PUSHED; else from=$PR_HEAD; fi
+          hop=""
+          if [ "$from" = "$DEV_BRANCH" ]; then hop=dev-qa; fi
+          if [ "$from" = "$QA_BRANCH" ]; then hop=qa-prod; fi
+          # a PR counts only when it goes to the next branch in the chain
+          if [ "$EVENT" != "push" ]; then
+            if [ "$hop" = "dev-qa" ] && [ "$PR_BASE" != "$QA_BRANCH" ]; then hop=""; fi
+            if [ "$hop" = "qa-prod" ] && [ "$PR_BASE" != "$PROD_BRANCH" ]; then hop=""; fi
+          fi
+          case "$hop" in
+            dev-qa)
+              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_READY" "$DEV_TAG_DONE" "Deployed to QA" qa ;;
+            qa-prod)
+              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_READY" "$QA_TAG_DONE" "Deployed to Prod" production ;;
+            *)
+              echo "Not part of a promotion; nothing to do."; echo "hop=" >> "$GITHUB_OUTPUT"; exit 0 ;;
+          esac
+          {
+            echo "hop=$hop"
+            echo "src_branch=$1"; echo "dst_branch=$2"; echo "src_name=$3"; echo "dst_name=$4"
+            echo "src_secret=$5"; echo "dst_secret=$6"; echo "tag_ready=$7"; echo "tag_done=$8"
+            echo "deployed_label=$9"; echo "environment=${10}"
+          } >> "$GITHUB_OUTPUT"
+          echo "Promotion: $3 -> $4 ($1 -> $2)" | tee -a "$GITHUB_STEP_SUMMARY"
+
+  # 1. Raise the promotion PR, source branch -> next branch. Never merges anything.
   open-pr:
-    if: github.event_name == 'push'
+    needs: route
+    if: github.event_name == 'push' && needs.route.outputs.hop != ''
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.IICS_REPO }}
       GH_REPO: ${{ github.repository }}
+      SRC: ${{ needs.route.outputs.src_branch }}
+      DST: ${{ needs.route.outputs.dst_branch }}
+      SRC_NAME: ${{ needs.route.outputs.src_name }}
+      DST_NAME: ${{ needs.route.outputs.dst_name }}
     steps:
-      - name: Open the promotion PR (an open one just picks up this check-in)
+      - name: Open the promotion PR (an open one just picks up this push)
         run: |
-          if [ "$(gh api "repos/$GH_REPO/compare/$PROD_BRANCH...$QA_BRANCH" --jq .ahead_by)" = "0" ]; then
+          if [ "$(gh api "repos/$GH_REPO/compare/$DST...$SRC" --jq .ahead_by)" = "0" ]; then
             echo "Nothing to promote."; exit 0
           fi
-          if [ -n "$(gh pr list --base "$PROD_BRANCH" --head "$QA_BRANCH" --json number --jq '.[].number')" ]; then
-            echo "The promotion PR is already open."; exit 0
+          if [ -n "$(gh pr list --base "$DST" --head "$SRC" --json number --jq '.[].number')" ]; then
+            echo "The $SRC_NAME -> $DST_NAME PR is already open."; exit 0
           fi
-          gh pr create --base "$PROD_BRANCH" --head "$QA_BRANCH" \
-            --title "Promote IDMC assets: QA to Production" \
-            --body "Raised by the IDMC promote workflow. Once the checks pass and a reviewer approves, this PR is labelled \"$READY_LABEL\". Merging it deploys the assets to Production."
+          gh pr create --base "$DST" --head "$SRC" \
+            --title "Promote IDMC assets: $SRC_NAME to $DST_NAME" \
+            --body "Raised by the IDMC promote workflow. Once the checks pass and a reviewer approves, this PR is labelled \"$READY_LABEL\". Merging it deploys the assets to $DST_NAME."
 
   # 2. Validation check on every PR update, and again on approval.
   validate:
+    needs: route
     if: >-
-      github.event.pull_request.base.ref == 'Dfactory-Branch' && github.event.action != 'closed' &&
+      needs.route.outputs.hop != '' && github.event.action != 'closed' &&
       (github.event_name == 'pull_request' || github.event.review.state == 'approved')
     runs-on: ubuntu-latest
     permissions:
@@ -161,6 +266,14 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
           cat assets.txt
 
+      - name: Check the connection and runtime environment names for the target org
+        env:
+          HOP: ${{ needs.route.outputs.hop }}
+          ALL_VARS: ${{ toJSON(vars) }}
+        run: |
+          eval "$IDMC_FUNCTIONS"
+          name_map "$([ "$HOP" = "dev-qa" ] && echo QA || echo PROD)"
+
       - name: Has a reviewer approved the PR?
         id: review
         run: |
@@ -168,9 +281,9 @@ jobs:
           echo "Review decision: ${decision:-none}"
           echo "approved=$([ "$decision" = "APPROVED" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
 
-  # 3. After approval: tag the assets ready-to-deploy in QA, label the PR and tell the developer to merge.
+  # 3. After approval: tag the assets in the source org, label the PR and tell the developer to merge.
   mark-ready:
-    needs: validate
+    needs: [route, validate]
     if: github.event_name == 'pull_request_review' && needs.validate.outputs.approved == 'true'
     runs-on: ubuntu-latest
     permissions:
@@ -182,20 +295,22 @@ jobs:
       PR: ${{ github.event.pull_request.number }}
       BASE: ${{ github.event.pull_request.base.sha }}
       HEAD: ${{ github.event.pull_request.head.sha }}
+      TAG_READY: ${{ needs.route.outputs.tag_ready }}
+      DST_NAME: ${{ needs.route.outputs.dst_name }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Tag the assets "ready-to-deploy" in the QA org
+      - name: Tag the assets in the source org
         env:
-          QA_USER: ${{ secrets.UAT_IICS_USERNAME }}
-          QA_PASS: ${{ secrets.UAT_IICS_PASSWORD }}
+          SRC_USER: ${{ secrets[format('{0}_USERNAME', needs.route.outputs.src_secret)] }}
+          SRC_PASS: ${{ secrets[format('{0}_PASSWORD', needs.route.outputs.src_secret)] }}
         run: |
           eval "$IDMC_FUNCTIONS"
           list_assets "$BASE" "$HEAD" > assets.txt || true
           if [ ! -s assets.txt ]; then echo "No IDMC assets in this PR."; exit 0; fi
-          idmc_login "$QA_USER" "$QA_PASS"
+          idmc_login "$SRC_USER" "$SRC_PASS"
           retag assets.txt "" "$TAG_READY"
 
       - name: Label the PR "Ready to Deploy" and tell the author to merge
@@ -205,19 +320,19 @@ jobs:
           if gh pr view "$PR" --json labels --jq '.labels[].name' | grep -qx "$READY_LABEL"; then exit 0; fi
           gh label create "$READY_LABEL" --color 0E8A16 --force
           gh pr edit "$PR" --add-label "$READY_LABEL"
-          gh pr comment "$PR" --body "@$AUTHOR this promotion is approved and **$READY_LABEL**. Merge this PR to deploy it to Production."
+          gh pr comment "$PR" --body "@$AUTHOR this promotion is approved and **$READY_LABEL**. Merge this PR to deploy it to $DST_NAME."
 
-  # 4. On the developer's merge: deploy to Production and re-tag in QA.
+  # 4. On the developer's merge: deploy to the target org and re-tag in the source org.
   deploy:
+    needs: route
     if: >-
+      needs.route.outputs.hop != '' &&
       github.event_name == 'pull_request' && github.event.action == 'closed' &&
-      github.event.pull_request.merged == true &&
-      github.event.pull_request.base.ref == 'Dfactory-Branch' &&
-      github.event.pull_request.head.ref == 'Demo-Central-Branch'
+      github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    environment: production        # deployment history under Deployments; add protection rules here if needed
+    environment: ${{ needs.route.outputs.environment }}   # deployment history per target; add protection rules here if needed
     concurrency:
-      group: idmc-deploy
+      group: idmc-deploy-${{ needs.route.outputs.hop }}
       cancel-in-progress: false
     permissions:
       contents: read
@@ -229,10 +344,17 @@ jobs:
       BASE: ${{ github.event.pull_request.base.sha }}
       HEAD: ${{ github.event.pull_request.head.sha }}
       MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
-      QA_USER: ${{ secrets.UAT_IICS_USERNAME }}
-      QA_PASS: ${{ secrets.UAT_IICS_PASSWORD }}
-      PROD_USER: ${{ secrets.IICS_USERNAME }}
-      PROD_PASS: ${{ secrets.IICS_PASSWORD }}
+      SRC_NAME: ${{ needs.route.outputs.src_name }}
+      DST_NAME: ${{ needs.route.outputs.dst_name }}
+      TAG_READY: ${{ needs.route.outputs.tag_ready }}
+      TAG_DONE: ${{ needs.route.outputs.tag_done }}
+      DEPLOYED_LABEL: ${{ needs.route.outputs.deployed_label }}
+      HOP: ${{ needs.route.outputs.hop }}
+      ALL_VARS: ${{ toJSON(vars) }}
+      SRC_USER: ${{ secrets[format('{0}_USERNAME', needs.route.outputs.src_secret)] }}
+      SRC_PASS: ${{ secrets[format('{0}_PASSWORD', needs.route.outputs.src_secret)] }}
+      DST_USER: ${{ secrets[format('{0}_USERNAME', needs.route.outputs.dst_secret)] }}
+      DST_PASS: ${{ secrets[format('{0}_PASSWORD', needs.route.outputs.dst_secret)] }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -242,23 +364,24 @@ jobs:
         run: |
           decision=$(gh pr view "$PR" --json reviewDecision --jq .reviewDecision)
           if [ "$decision" != "APPROVED" ]; then echo "::error::PR #$PR was merged without approval; not deploying."; exit 1; fi
+          echo "Deploying $SRC_NAME -> $DST_NAME" | tee -a "$GITHUB_STEP_SUMMARY"
 
-      # all.txt: the assets plus the assets they use that are in Git; connections.tsv: id<TAB>name of the
-      # connections they use; schedules.tsv: mapping task<TAB>its schedule (JSON)
-      - name: Find what the assets use in the QA org
+      # all.txt: the assets plus the assets they use that are in Git. Connections and runtime environments are
+      # not in Git: they must already exist in the target org (named as in the mapping variables).
+      - name: Find what the assets use in the source org
         run: |
           eval "$IDMC_FUNCTIONS"
-          : > all.txt; : > deps.txt; : > connections.tsv; : > schedules.tsv
+          : > all.txt; : > deps.txt; : > connections.txt
           list_assets "$BASE" "$HEAD" > assets.txt || true
           if [ ! -s assets.txt ]; then echo "No IDMC assets to deploy."; exit 0; fi
           git -c core.quotePath=false ls-tree -r --name-only "$MERGE_SHA" -- Explore > gitfiles.txt
-          idmc_login "$QA_USER" "$QA_PASS"
+          idmc_login "$SRC_USER" "$SRC_PASS"
 
           # follow "uses" from the assets, up to 5 levels
           queue=(); seen=" "
           while IFS= read -r a; do
             p=${a#Explore/}; id=$(find_id "${p%.*}" "${p##*.}")
-            if [ -n "$id" ]; then queue+=("$id"); else echo "::warning::$p not found in the QA org"; fi
+            if [ -n "$id" ]; then queue+=("$id"); else echo "::warning::$p not found in the $SRC_NAME org"; fi
           done < assets.txt
           for _ in 1 2 3 4 5; do
             next=()
@@ -269,7 +392,7 @@ jobs:
                 [ -n "$rid" ] || continue
                 t=$(gtype "$rtype")
                 if [[ "$t" == *CONNECTION* && "$t" != AI_* ]]; then
-                  printf '%s\t%s\n' "$rid" "${rpath##*/}" >> connections.tsv
+                  echo "${rpath##*/}" >> connections.txt
                 elif grep -Fqi "Explore/$rpath.$t." gitfiles.txt; then
                   echo "Explore/$rpath.$t" >> deps.txt; next+=("$rid")
                 fi
@@ -283,71 +406,19 @@ jobs:
             queue=("${next[@]}")
           done
           sort -u assets.txt deps.txt > all.txt
-          sort -u -o connections.tsv connections.tsv
-
-          # schedules of the mapping tasks being deployed
-          { grep '\.MTT$' all.txt || true; } | while IFS= read -r a; do
-            p=${a#Explore/}; id=$(find_id "${p%.*}" MTT)
-            [ -n "$id" ] || continue
-            sid=$(v2call "$v2/mttask/frs/$id" | jq -r '.scheduleId // empty' || true)
-            [ -n "$sid" ] || continue
-            s=$(v2call "$v2/schedule/$sid" | jq -c 'del(.id, .orgId, .createTime, .updateTime, .createdBy, .updatedBy)')
-            printf '%s\t%s\n' "$a" "$s" >> schedules.tsv
-          done
+          sort -u -o connections.txt connections.txt
 
           { echo "### To deploy"; sed 's/^Explore\//- /' all.txt
-            echo "### Connections used"; cut -f2 connections.tsv | sed 's/^/- /'
-            echo "### Schedules used"; cut -f2 schedules.tsv | jq -r '"- " + .name' | sort -u
+            echo "### Connections the assets use in $SRC_NAME (must exist in $DST_NAME, after mapping)"
+            if [ -s connections.txt ]; then sed 's/^/- /' connections.txt; else echo "None found"; fi
           } | tee -a "$GITHUB_STEP_SUMMARY"
 
-      - name: Create the connections and schedules Production doesn't have
-        run: |
-          eval "$IDMC_FUNCTIONS"
-          : > created.txt
-          [ -s all.txt ] || exit 0
-          idmc_login "$PROD_USER" "$PROD_PASS"
-
-          # connections: matched by name; an existing Production connection is never changed
-          : > missing.tsv
-          while IFS=$'\t' read -r cid cname; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' -H "icSessionId: $session" "$v2/connection/name/$(uri "$cname")")
-            if [ "$code" = "200" ]; then echo "Connection $cname: exists in Production"; else printf '%s\t%s\n' "$cid" "$cname" >> missing.tsv; fi
-          done < connections.tsv
-
-          # schedules: matched by name; created with the QA settings when missing
-          cut -f2 schedules.tsv | sort -u | while IFS= read -r s; do
-            name=$(jq -r .name <<< "$s")
-            code=$(curl -s -o /dev/null -w '%{http_code}' -H "icSessionId: $session" "$v2/schedule/name/$(uri "$name")")
-            if [ "$code" = "200" ]; then echo "Schedule $name: exists in Production"; continue; fi
-            v2call -X POST "$v2/schedule" -H 'Content-Type: application/json' -d "$s" > /dev/null \
-              || { echo "::error::Could not create the schedule $name in Production"; exit 1; }
-            echo "Schedule created: $name" | tee -a created.txt
-          done
-
-          [ -s missing.tsv ] || exit 0
-          # export the missing connections from QA and import them into Production (REUSE: nothing is overwritten)
-          prod_api=$api; prod_session=$session
-          idmc_login "$QA_USER" "$QA_PASS"
-          body=$(cut -f1 missing.tsv | jq -R . | jq -s --arg n "promote-pr$PR-connections" \
-                 '{name: $n, objects: map({id: ., includeDependencies: false})}')
-          job=$(call -X POST "$api/export" -H 'Content-Type: application/json' -d "$body" | jq -r .id)
-          state=$(wait_state "$api/export/$job")
-          if [ "$state" != "SUCCESSFUL" ]; then echo "::error::Export of connections from QA ended $state"; call "$api/export/$job/log" || true; exit 1; fi
-          call -H 'Accept: application/zip' "$api/export/$job/package" -o connections.zip
-          api=$prod_api; session=$prod_session
-          job=$(curl -sf -H "INFA-SESSION-ID: $session" -F "package=@connections.zip;type=application/zip" "$api/import/package" | jq -r .jobId)
-          call -X POST "$api/import/$job" -H 'Content-Type: application/json' \
-            -d "{\"name\": \"promote-pr$PR-connections\", \"importSpecification\": {\"defaultConflictResolution\": \"REUSE\"}}" > /dev/null
-          state=$(wait_state "$api/import/$job")
-          case "$state" in SUCCESSFUL|SUCCESS) ;; *) echo "::error::Import of connections ended $state"; call "$api/import/$job/log" || true; exit 1 ;; esac
-          cut -f2 missing.tsv | sed 's/^/Connection created (enter its password in Production): /' | tee -a created.txt
-
-      - name: Pull the assets into Production and publish
+      - name: Pull the assets into the target org and publish
         run: |
           eval "$IDMC_FUNCTIONS"
           [ -s all.txt ] || exit 0
           # the project and folders holding them (a pull does not create missing ones), then the assets,
-          # all at the merge commit on the Production branch
+          # all at the merge commit on the target branch
           {
             while IFS= read -r asset; do
               dir=${asset#Explore/}; dir=${dir%/*}; acc=""; kind=Project
@@ -360,20 +431,24 @@ jobs:
             done < all.txt | awk '!seen[$0]++'
             sed -E 's#^Explore/##; s#\.([^.]+)$#|\1#' all.txt
           } > pull.txt
+          # rename connections and runtime environments on the way in (Dev name -> target name)
+          name_map "$([ "$HOP" = "dev-qa" ] && echo QA || echo PROD)"
           body=$(jq -R 'split("|") | {path: (.[0] | split("/")), type: .[1]}' pull.txt \
-                 | jq -s --arg c "$MERGE_SHA" '{commitHash: $c, objects: .}')
+                 | jq -s --arg c "$MERGE_SHA" --slurpfile spec spec.json \
+                     '{commitHash: $c, objects: .} + (if ($spec[0] | length) > 0
+                        then {objectSpecification: $spec[0], relaxObjectSpecificationValidation: true} else {} end)')
 
-          idmc_login "$PROD_USER" "$PROD_PASS"
+          idmc_login "$DST_USER" "$DST_PASS"
           resp=$(curl -s -X POST "$api/pull" -H "INFA-SESSION-ID: $session" -H 'Content-Type: application/json' -d "$body")
           action=$(jq -r '.pullActionId // empty' <<< "$resp" 2> /dev/null || true)
           if [ -z "$action" ]; then echo "::error::IDMC did not start the pull: $resp"; exit 1; fi
           state=$(wait_state "$api/sourceControlAction/$action")
           status=$(call "$api/sourceControlAction/$action?expand=objects")
-          { echo "### Pull into Production: $state"
+          { echo "### Pull into $DST_NAME: $state"
             jq -r '.objects[]? | "- \(.target.status.state // .status.state) \(.target.type // .source.type) \((.target.path // .source.path) | if type == "array" then join("/") else . end) \(.target.status.message // .status.message // "")"' <<< "$status"
           } | tee -a "$GITHUB_STEP_SUMMARY"
           if [ "$state" != "SUCCESSFUL" ]; then
-            echo "::error::Pull into Production ended $state: $(jq -r '.status.message // ""' <<< "$status")"; exit 1
+            echo "::error::Pull into $DST_NAME ended $state: $(jq -r '.status.message // ""' <<< "$status")"; exit 1
           fi
 
           # CAI assets and taskflows have to be published after the pull (connections first)
@@ -388,38 +463,18 @@ jobs:
                      -H 'Accept: application/vnd.api+json' -H 'Content-Type: application/vnd.api+json' -d @- > /dev/null; then
               echo "Publish submitted for: $paths"
             else
-              echo "::warning::Publish failed; publish these in Production by hand: $paths"
+              echo "::warning::Publish failed; publish these in $DST_NAME by hand: $paths"
             fi
           fi
 
-      - name: Link the mapping tasks to their schedules in Production
-        run: |
-          eval "$IDMC_FUNCTIONS"
-          [ -s schedules.tsv ] || exit 0
-          idmc_login "$PROD_USER" "$PROD_PASS"
-          while IFS=$'\t' read -r a s; do
-            p=${a#Explore/}; name=$(jq -r .name <<< "$s")
-            id=$(find_id "${p%.*}" MTT)
-            task=$( [ -n "$id" ] && v2call "$v2/mttask/frs/$id" || true)
-            if [ -z "$task" ]; then echo "::warning::$p not found in Production; link it to the schedule $name by hand"; continue; fi
-            if [ -n "$(jq -r '.scheduleId // empty' <<< "$task")" ]; then echo "$p already has a schedule"; continue; fi
-            sid=$(v2call "$v2/schedule/name/$(uri "$name")" | jq -r '.id // empty' || true)
-            if v2call -X POST "$v2/mttask/$(jq -r .id <<< "$task")" -H 'Content-Type: application/json' -H 'Update-Mode: PARTIAL' \
-                 -d "$(jq -n --arg s "$sid" '{"@type": "mtTask", scheduleId: $s}')" > /dev/null; then
-              echo "$p -> schedule $name"
-            else
-              echo "::warning::Could not link $p to the schedule $name; do it by hand"
-            fi
-          done < schedules.tsv
-
-      - name: Re-tag the assets in the QA org "ready-to-deploy" -> "deployed"
+      - name: Re-tag the assets in the source org
         run: |
           eval "$IDMC_FUNCTIONS"
           [ -s all.txt ] || exit 0
-          idmc_login "$QA_USER" "$QA_PASS"
-          retag all.txt "$TAG_READY" "$TAG_DEPLOYED"
+          idmc_login "$SRC_USER" "$SRC_PASS"
+          retag all.txt "$TAG_READY" "$TAG_DONE"
 
-      - name: Label the PR "Deployed" and report back
+      - name: Label the PR and report back
         if: always()
         env:
           AUTHOR: ${{ github.event.pull_request.user.login }}
@@ -429,10 +484,8 @@ jobs:
           if [ "$RESULT" = "success" ]; then
             gh label create "$DEPLOYED_LABEL" --color 1D76DB --force
             gh pr edit "$PR" --remove-label "$READY_LABEL" --add-label "$DEPLOYED_LABEL" || true
-            { echo "@$AUTHOR deployed to Production and tagged **$TAG_DEPLOYED** in QA. Details: $RUN_URL"
-              if [ -s created.txt ]; then echo; echo "Created in Production:"; sed 's/^/- /' created.txt; fi
-            } > comment.md
+            echo "@$AUTHOR deployed to $DST_NAME and tagged **$TAG_DONE** in $SRC_NAME. Details: $RUN_URL" > comment.md
           else
-            echo "@$AUTHOR the deployment to Production **failed**; the assets keep the **$TAG_READY** tag. See $RUN_URL" > comment.md
+            echo "@$AUTHOR the deployment to $DST_NAME **failed**; the assets keep the **$TAG_READY** tag. See $RUN_URL" > comment.md
           fi
           gh pr comment "$PR" --body-file comment.md
