@@ -96,8 +96,7 @@ env:
     # name_map <QA|PROD> [<DEV|QA> <connections file> <runtime environments file>]
     # Reads the repository variables (ALL_VARS) DEV_CONNECTION_<KEY> / DEV_RUNTIME_<KEY> and the target's
     # <QA|PROD>_CONNECTION_<KEY> / <QA|PROD>_RUNTIME_<KEY>, and writes spec.json: the pull's objectSpecification renaming
-    # each Dev name to the target name. Git always holds the Dev names (developers check in only in Dev), so the Dev name
-    # is the source for both promotions.
+    # each Dev name (and the source org's name, for assets checked in outside Dev) to the target name.
     # With the last three arguments (deploy), only the connections and runtime environments the assets actually use
     # are renamed: a name in the files matches a KEY by its Dev name or by its name in the source org (<DEV|QA>_...).
     # If no runtime environment could be detected, every configured runtime environment rename is kept.
@@ -117,7 +116,7 @@ env:
             | (.value | trim) as $from
             | (($v[$s + "_" + $m.kind + "_" + $m.k] // $from) | trim) as $srcname
             | (if $m.kind == "CONNECTION" then $usedc else $usedr end) as $used
-            | {kind: $m.kind, from: $from, var: $tv, to: (($v[$tv] // "") | trim),
+            | {kind: $m.kind, from: $from, src: $srcname, var: $tv, to: (($v[$tv] // "") | trim),
                used: (($filter | not)
                       or ($m.kind == "RUNTIME" and ($usedr | length) == 0)
                       or ([$from, $srcname] | map(ascii_downcase) | any(.[]; . as $n | ($used | index($n)) != null)))} ]' \
@@ -144,8 +143,12 @@ env:
         if [ "$filter" = "true" ]; then echo "::error::Set these repository variables (the names in the $1 org): $missing"; return 1; fi
         echo "::warning::Not set yet (needed only when an asset uses them): $missing"
       fi
-      jq '[ .[] | select(.used and .to != "" and .from != .to) | (if .kind == "CONNECTION" then "Connection" else "AgentGroup" end) as $ty
-            | {source: {path: [.from], type: $ty}, target: {path: [.to], type: $ty}} ]' names.json > spec.json
+      # Git normally holds the Dev name, but an asset checked in from another org (e.g. QA, before the Dev branch
+      # existed) holds that org's name; offer both as sources. The pull ignores a source the assets don't contain.
+      jq '[ .[] | select(.used and .to != "") | . as $e
+            | (if .kind == "CONNECTION" then "Connection" else "AgentGroup" end) as $ty
+            | ([$e.from, $e.src] | unique | map(select(. != $e.to)))[]
+            | {source: {path: [.], type: $ty}, target: {path: [$e.to], type: $ty}} ] | unique' names.json > spec.json
     }
     # the type name Git uses for a type the references API names differently
     gtype() {
