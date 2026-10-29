@@ -24,18 +24,24 @@ name: IDMC promote
 #   A merge into the QA branch is also a push to it, so it opens (or updates) the QA -> Prod PR.
 #
 # Keep this file on the Dev and QA branches as well as main: GitHub runs the copy on the branch that was pushed.
-# Branch names: here, in the "on:" triggers and in the route job. Tags: in the route job.
-# Secrets (Settings > Secrets and variables > Actions):
-#   IICS_REPO                                GitHub token that may open PRs (GITHUB_TOKEN can't trigger checks)
-#   DEV_IICS_USERNAME / DEV_IICS_PASSWORD    login for the Dev org
-#   UAT_IICS_USERNAME / UAT_IICS_PASSWORD    login for the QA org (DemoCentral)
-#   IICS_USERNAME / IICS_PASSWORD            login for the Prod org (DFactory Inc DEV)
+#
+# Nothing environment-specific is in this file. Settings > Secrets and variables > Actions:
+#   Variables (Variables tab)
+#     IICS_LOGIN_URL                          IDMC pod login URL, e.g. https://dmp-us.informaticacloud.com
+#     DEV_BRANCH / QA_BRANCH / PROD_BRANCH    the three branch names
+#     DEV_TAG_READY / DEV_TAG_DONE            IDMC tags set in the Dev org (on approval / after deploy to QA)
+#     QA_TAG_READY / QA_TAG_DONE              IDMC tags set in the QA org (on approval / after deploy to Prod)
+#   Secrets (Secrets tab)
+#     IICS_REPO                                GitHub token that may open PRs (GITHUB_TOKEN can't trigger checks)
+#     DEV_IICS_USERNAME / DEV_IICS_PASSWORD    login for the Dev org
+#     UAT_IICS_USERNAME / UAT_IICS_PASSWORD    login for the QA org
+#     IICS_USERNAME / IICS_PASSWORD            login for the Prod org
+# GitHub can't read variables in the "on:" triggers, so the workflow starts on every push and PR and the
+# route job ends it at once unless the branches are the ones in the variables.
 
 on:
   push:
-    branches: [Dev-Branch, Demo-Central-Branch]
   pull_request:
-    branches: [Demo-Central-Branch, Dfactory-Branch]
     types: [opened, reopened, synchronize, closed]
   pull_request_review:
     types: [submitted]
@@ -44,11 +50,15 @@ permissions:
   contents: read
 
 env:
-  DEV_BRANCH: Dev-Branch
-  QA_BRANCH: Demo-Central-Branch
-  PROD_BRANCH: Dfactory-Branch
+  IICS_LOGIN_URL: ${{ vars.IICS_LOGIN_URL }}
+  DEV_BRANCH: ${{ vars.DEV_BRANCH }}
+  QA_BRANCH: ${{ vars.QA_BRANCH }}
+  PROD_BRANCH: ${{ vars.PROD_BRANCH }}
+  DEV_TAG_READY: ${{ vars.DEV_TAG_READY }}
+  DEV_TAG_DONE: ${{ vars.DEV_TAG_DONE }}
+  QA_TAG_READY: ${{ vars.QA_TAG_READY }}
+  QA_TAG_DONE: ${{ vars.QA_TAG_DONE }}
   READY_LABEL: Ready to Deploy
-  IICS_LOGIN_URL: https://dmp-us.informaticacloud.com
   # Shell helpers shared by the jobs below (each step loads them with: eval "$IDMC_FUNCTIONS")
   IDMC_FUNCTIONS: |
     # IDMC assets changed between two commits, one per line: Explore/<project>/<folder>/<name>.<TYPE>
@@ -139,6 +149,13 @@ jobs:
           PR_BASE: ${{ github.event.pull_request.base.ref }}
           PR_HEAD: ${{ github.event.pull_request.head.ref }}
         run: |
+          # every setting must be filled in under Settings > Secrets and variables > Actions > Variables
+          missing=""
+          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH DEV_TAG_READY DEV_TAG_DONE QA_TAG_READY QA_TAG_DONE; do
+            if [ -z "${!v}" ]; then missing="$missing $v"; fi
+          done
+          if [ -n "$missing" ]; then echo "::error::Repository variables not set:$missing"; exit 1; fi
+
           if [ "$EVENT" = "push" ]; then from=$PUSHED; else from=$PR_HEAD; fi
           hop=""
           if [ "$from" = "$DEV_BRANCH" ]; then hop=dev-qa; fi
@@ -150,9 +167,9 @@ jobs:
           fi
           case "$hop" in
             dev-qa)
-              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS ready-for-qa in-qa "Deployed to QA" qa ;;
+              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_READY" "$DEV_TAG_DONE" "Deployed to QA" qa ;;
             qa-prod)
-              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS ready-to-deploy deployed "Deployed to Prod" production ;;
+              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_READY" "$QA_TAG_DONE" "Deployed to Prod" production ;;
             *)
               echo "Not part of a promotion; nothing to do."; echo "hop=" >> "$GITHUB_OUTPUT"; exit 0 ;;
           esac
