@@ -16,11 +16,11 @@ name: IDMC promote
 #      mark-ready  After approval: tags the assets in the source org and labels the PR "Ready to Deploy".
 #   4. Merge       The developer merges the approved PR by hand.
 #      deploy      Runs only on that merge:
-#                    - finds what the assets use in the source org: other assets, connections, schedules
-#                    - creates the connections and schedules the target org doesn't have (existing ones are reused)
-#                    - pulls the assets and the assets they use from Git into the target org, publishes CAI assets
-#                    - links the mapping tasks to their schedules
+#                    - finds the assets they use (in Git) through the source org
+#                    - pulls the assets and those dependencies from Git into the target org, renaming connections
+#                      and runtime environments on the way in (name variables), then publishes CAI assets
 #                    - re-tags everything in the source org
+#   Connections, runtime environments and schedules are not created: they must already exist in each org.
 #   A merge into the QA branch is also a push to it, so it opens (or updates) the QA -> Prod PR.
 #
 # Keep this file on the Dev and QA branches as well as main: GitHub runs the copy on the branch that was pushed.
@@ -31,6 +31,11 @@ name: IDMC promote
 #     DEV_BRANCH / QA_BRANCH / PROD_BRANCH    the three branch names
 #     DEV_TAG_READY / DEV_TAG_DONE            IDMC tags set in the Dev org (on approval / after deploy to QA)
 #     QA_TAG_READY / QA_TAG_DONE              IDMC tags set in the QA org (on approval / after deploy to Prod)
+#     Connection and runtime environment names, one variable per item per environment (<KEY> is any label you
+#     choose, the same in all three; add as many as you need):
+#       DEV_CONNECTION_<KEY> / QA_CONNECTION_<KEY> / PROD_CONNECTION_<KEY>   e.g. DEV_CONNECTION_SNOWFLAKE
+#       DEV_RUNTIME_<KEY>    / QA_RUNTIME_<KEY>    / PROD_RUNTIME_<KEY>      e.g. DEV_RUNTIME_AGENT
+#     The pull renames each Dev name to the target org's name (Git holds the Dev names).
 #   Secrets (Secrets tab)
 #     IICS_REPO                                GitHub token that may open PRs (GITHUB_TOKEN can't trigger checks)
 #     DEV_IICS_USERNAME / DEV_IICS_PASSWORD    login for the Dev org
@@ -78,9 +83,7 @@ env:
       echo "Logged in to IDMC org $(jq -r '.userInfo.orgName' <<< "$r")"
     }
     call() { curl -sf -H "INFA-SESSION-ID: $session" -H 'Accept: application/json' "$@"; }
-    v2call() { curl -sf -H "icSessionId: $session" -H 'Accept: application/json' "$@"; }
-    uri() { jq -rn --arg v "$1" '$v | @uri'; }
-    # wait_state <status URL>: polls an export, import or pull until it ends and prints its final state
+    # wait_state <status URL>: polls a source control operation (pull) until it ends and prints its final state
     wait_state() {
       local s=""
       for _ in $(seq 180); do
@@ -89,6 +92,27 @@ env:
         sleep 10
       done
       echo "$s"
+    }
+    # name_map <QA|PROD>: reads the repository variables (ALL_VARS) DEV_CONNECTION_<KEY> / DEV_RUNTIME_<KEY> and the
+    # target's <QA|PROD>_CONNECTION_<KEY> / <QA|PROD>_RUNTIME_<KEY>, and writes spec.json: the pull's objectSpecification
+    # renaming each Dev name to the target name. Git always holds the Dev names (developers check in only in Dev), so
+    # the Dev name is the source for both promotions. Fails, naming the variables, when a target name is missing.
+    name_map() {
+      jq --arg t "$1" '
+        . as $v
+        | [ to_entries[] | (.key | capture("^DEV_(?<kind>CONNECTION|RUNTIME)_(?<k>.+)$")) as $m
+            | ($t + "_" + $m.kind + "_" + $m.k) as $tv
+            | {kind: $m.kind, from: (.value | gsub("^\\s+|\\s+$"; "")), var: $tv,
+               to: (($v[$tv] // "") | gsub("^\\s+|\\s+$"; ""))} ]' <<< "$ALL_VARS" > names.json
+      { echo "### Connection and runtime environment names, Dev -> $1"
+        if [ "$(jq length names.json)" = "0" ]; then echo "None configured (no DEV_CONNECTION_* / DEV_RUNTIME_* variables)"; fi
+        jq -r '.[] | "- \(if .kind == "CONNECTION" then "Connection" else "Runtime environment" end): \(.from) -> \(if .to == "" then "MISSING (" + .var + ")" else .to end)"' names.json
+      } | tee -a "$GITHUB_STEP_SUMMARY"
+      local missing
+      missing=$(jq -r '[.[] | select(.to == "") | .var] | join(", ")' names.json)
+      if [ -n "$missing" ]; then echo "::error::Set these repository variables (the names in the $1 org): $missing"; return 1; fi
+      jq '[ .[] | select(.from != .to) | (if .kind == "CONNECTION" then "Connection" else "AgentGroup" end) as $ty
+            | {source: {path: [.from], type: $ty}, target: {path: [.to], type: $ty}} ]' names.json > spec.json
     }
     # the type name Git uses for a type the references API names differently
     gtype() {
@@ -242,6 +266,14 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
           cat assets.txt
 
+      - name: Check the connection and runtime environment names for the target org
+        env:
+          HOP: ${{ needs.route.outputs.hop }}
+          ALL_VARS: ${{ toJSON(vars) }}
+        run: |
+          eval "$IDMC_FUNCTIONS"
+          name_map "$([ "$HOP" = "dev-qa" ] && echo QA || echo PROD)"
+
       - name: Has a reviewer approved the PR?
         id: review
         run: |
@@ -317,6 +349,8 @@ jobs:
       TAG_READY: ${{ needs.route.outputs.tag_ready }}
       TAG_DONE: ${{ needs.route.outputs.tag_done }}
       DEPLOYED_LABEL: ${{ needs.route.outputs.deployed_label }}
+      HOP: ${{ needs.route.outputs.hop }}
+      ALL_VARS: ${{ toJSON(vars) }}
       SRC_USER: ${{ secrets[format('{0}_USERNAME', needs.route.outputs.src_secret)] }}
       SRC_PASS: ${{ secrets[format('{0}_PASSWORD', needs.route.outputs.src_secret)] }}
       DST_USER: ${{ secrets[format('{0}_USERNAME', needs.route.outputs.dst_secret)] }}
@@ -332,12 +366,12 @@ jobs:
           if [ "$decision" != "APPROVED" ]; then echo "::error::PR #$PR was merged without approval; not deploying."; exit 1; fi
           echo "Deploying $SRC_NAME -> $DST_NAME" | tee -a "$GITHUB_STEP_SUMMARY"
 
-      # all.txt: the assets plus the assets they use that are in Git; connections.tsv: id<TAB>name of the
-      # connections they use; schedules.tsv: mapping task<TAB>its schedule (JSON)
+      # all.txt: the assets plus the assets they use that are in Git. Connections and runtime environments are
+      # not in Git: they must already exist in the target org (named as in the mapping variables).
       - name: Find what the assets use in the source org
         run: |
           eval "$IDMC_FUNCTIONS"
-          : > all.txt; : > deps.txt; : > connections.tsv; : > schedules.tsv
+          : > all.txt; : > deps.txt; : > connections.txt
           list_assets "$BASE" "$HEAD" > assets.txt || true
           if [ ! -s assets.txt ]; then echo "No IDMC assets to deploy."; exit 0; fi
           git -c core.quotePath=false ls-tree -r --name-only "$MERGE_SHA" -- Explore > gitfiles.txt
@@ -358,7 +392,7 @@ jobs:
                 [ -n "$rid" ] || continue
                 t=$(gtype "$rtype")
                 if [[ "$t" == *CONNECTION* && "$t" != AI_* ]]; then
-                  printf '%s\t%s\n' "$rid" "${rpath##*/}" >> connections.tsv
+                  echo "${rpath##*/}" >> connections.txt
                 elif grep -Fqi "Explore/$rpath.$t." gitfiles.txt; then
                   echo "Explore/$rpath.$t" >> deps.txt; next+=("$rid")
                 fi
@@ -372,64 +406,12 @@ jobs:
             queue=("${next[@]}")
           done
           sort -u assets.txt deps.txt > all.txt
-          sort -u -o connections.tsv connections.tsv
-
-          # schedules of the mapping tasks being deployed
-          { grep '\.MTT$' all.txt || true; } | while IFS= read -r a; do
-            p=${a#Explore/}; id=$(find_id "${p%.*}" MTT)
-            [ -n "$id" ] || continue
-            sid=$(v2call "$v2/mttask/frs/$id" | jq -r '.scheduleId // empty' || true)
-            [ -n "$sid" ] || continue
-            s=$(v2call "$v2/schedule/$sid" | jq -c 'del(.id, .orgId, .createTime, .updateTime, .createdBy, .updatedBy)')
-            printf '%s\t%s\n' "$a" "$s" >> schedules.tsv
-          done
+          sort -u -o connections.txt connections.txt
 
           { echo "### To deploy"; sed 's/^Explore\//- /' all.txt
-            echo "### Connections used"; cut -f2 connections.tsv | sed 's/^/- /'
-            echo "### Schedules used"; cut -f2 schedules.tsv | jq -r '"- " + .name' | sort -u
+            echo "### Connections the assets use in $SRC_NAME (must exist in $DST_NAME, after mapping)"
+            if [ -s connections.txt ]; then sed 's/^/- /' connections.txt; else echo "None found"; fi
           } | tee -a "$GITHUB_STEP_SUMMARY"
-
-      - name: Create the connections and schedules the target org doesn't have
-        run: |
-          eval "$IDMC_FUNCTIONS"
-          : > created.txt
-          [ -s all.txt ] || exit 0
-          idmc_login "$DST_USER" "$DST_PASS"
-
-          # connections: matched by name; an existing connection in the target org is never changed
-          : > missing.tsv
-          while IFS=$'\t' read -r cid cname; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' -H "icSessionId: $session" "$v2/connection/name/$(uri "$cname")")
-            if [ "$code" = "200" ]; then echo "Connection $cname: exists in $DST_NAME"; else printf '%s\t%s\n' "$cid" "$cname" >> missing.tsv; fi
-          done < connections.tsv
-
-          # schedules: matched by name; created with the source settings when missing
-          cut -f2 schedules.tsv | sort -u | while IFS= read -r s; do
-            name=$(jq -r .name <<< "$s")
-            code=$(curl -s -o /dev/null -w '%{http_code}' -H "icSessionId: $session" "$v2/schedule/name/$(uri "$name")")
-            if [ "$code" = "200" ]; then echo "Schedule $name: exists in $DST_NAME"; continue; fi
-            v2call -X POST "$v2/schedule" -H 'Content-Type: application/json' -d "$s" > /dev/null \
-              || { echo "::error::Could not create the schedule $name in $DST_NAME"; exit 1; }
-            echo "Schedule created: $name" | tee -a created.txt
-          done
-
-          [ -s missing.tsv ] || exit 0
-          # export the missing connections from the source org and import them (REUSE: nothing is overwritten)
-          dst_api=$api; dst_session=$session
-          idmc_login "$SRC_USER" "$SRC_PASS"
-          body=$(cut -f1 missing.tsv | jq -R . | jq -s --arg n "promote-pr$PR-connections" \
-                 '{name: $n, objects: map({id: ., includeDependencies: false})}')
-          job=$(call -X POST "$api/export" -H 'Content-Type: application/json' -d "$body" | jq -r .id)
-          state=$(wait_state "$api/export/$job")
-          if [ "$state" != "SUCCESSFUL" ]; then echo "::error::Export of connections from $SRC_NAME ended $state"; call "$api/export/$job/log" || true; exit 1; fi
-          call -H 'Accept: application/zip' "$api/export/$job/package" -o connections.zip
-          api=$dst_api; session=$dst_session
-          job=$(curl -sf -H "INFA-SESSION-ID: $session" -F "package=@connections.zip;type=application/zip" "$api/import/package" | jq -r .jobId)
-          call -X POST "$api/import/$job" -H 'Content-Type: application/json' \
-            -d "{\"name\": \"promote-pr$PR-connections\", \"importSpecification\": {\"defaultConflictResolution\": \"REUSE\"}}" > /dev/null
-          state=$(wait_state "$api/import/$job")
-          case "$state" in SUCCESSFUL|SUCCESS) ;; *) echo "::error::Import of connections ended $state"; call "$api/import/$job/log" || true; exit 1 ;; esac
-          cut -f2 missing.tsv | sed "s/^/Connection created (enter its password in $DST_NAME): /" | tee -a created.txt
 
       - name: Pull the assets into the target org and publish
         run: |
@@ -449,8 +431,12 @@ jobs:
             done < all.txt | awk '!seen[$0]++'
             sed -E 's#^Explore/##; s#\.([^.]+)$#|\1#' all.txt
           } > pull.txt
+          # rename connections and runtime environments on the way in (Dev name -> target name)
+          name_map "$([ "$HOP" = "dev-qa" ] && echo QA || echo PROD)"
           body=$(jq -R 'split("|") | {path: (.[0] | split("/")), type: .[1]}' pull.txt \
-                 | jq -s --arg c "$MERGE_SHA" '{commitHash: $c, objects: .}')
+                 | jq -s --arg c "$MERGE_SHA" --slurpfile spec spec.json \
+                     '{commitHash: $c, objects: .} + (if ($spec[0] | length) > 0
+                        then {objectSpecification: $spec[0], relaxObjectSpecificationValidation: true} else {} end)')
 
           idmc_login "$DST_USER" "$DST_PASS"
           resp=$(curl -s -X POST "$api/pull" -H "INFA-SESSION-ID: $session" -H 'Content-Type: application/json' -d "$body")
@@ -481,26 +467,6 @@ jobs:
             fi
           fi
 
-      - name: Link the mapping tasks to their schedules in the target org
-        run: |
-          eval "$IDMC_FUNCTIONS"
-          [ -s schedules.tsv ] || exit 0
-          idmc_login "$DST_USER" "$DST_PASS"
-          while IFS=$'\t' read -r a s; do
-            p=${a#Explore/}; name=$(jq -r .name <<< "$s")
-            id=$(find_id "${p%.*}" MTT)
-            task=$( [ -n "$id" ] && v2call "$v2/mttask/frs/$id" || true)
-            if [ -z "$task" ]; then echo "::warning::$p not found in $DST_NAME; link it to the schedule $name by hand"; continue; fi
-            if [ -n "$(jq -r '.scheduleId // empty' <<< "$task")" ]; then echo "$p already has a schedule"; continue; fi
-            sid=$(v2call "$v2/schedule/name/$(uri "$name")" | jq -r '.id // empty' || true)
-            if v2call -X POST "$v2/mttask/$(jq -r .id <<< "$task")" -H 'Content-Type: application/json' -H 'Update-Mode: PARTIAL' \
-                 -d "$(jq -n --arg s "$sid" '{"@type": "mtTask", scheduleId: $s}')" > /dev/null; then
-              echo "$p -> schedule $name"
-            else
-              echo "::warning::Could not link $p to the schedule $name; do it by hand"
-            fi
-          done < schedules.tsv
-
       - name: Re-tag the assets in the source org
         run: |
           eval "$IDMC_FUNCTIONS"
@@ -518,9 +484,7 @@ jobs:
           if [ "$RESULT" = "success" ]; then
             gh label create "$DEPLOYED_LABEL" --color 1D76DB --force
             gh pr edit "$PR" --remove-label "$READY_LABEL" --add-label "$DEPLOYED_LABEL" || true
-            { echo "@$AUTHOR deployed to $DST_NAME and tagged **$TAG_DONE** in $SRC_NAME. Details: $RUN_URL"
-              if [ -s created.txt ]; then echo; echo "Created in $DST_NAME:"; sed 's/^/- /' created.txt; fi
-            } > comment.md
+            echo "@$AUTHOR deployed to $DST_NAME and tagged **$TAG_DONE** in $SRC_NAME. Details: $RUN_URL" > comment.md
           else
             echo "@$AUTHOR the deployment to $DST_NAME **failed**; the assets keep the **$TAG_READY** tag. See $RUN_URL" > comment.md
           fi
