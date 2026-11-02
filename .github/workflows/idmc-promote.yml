@@ -5,39 +5,41 @@ name: IDMC promote
 #   Dev branch --(tagged assets)--> QA branch --(tagged assets)--> Prod branch
 #   (Dev org)                       (QA org)                       (Prod org)
 #
-# Only assets tagged READY_TAG (e.g. ready-to-deploy) in the source org are promoted. Tag them in IDMC first,
+# Only assets carrying the source org's "ready" tag are promoted: DEV_TAG_READY in the Dev org (Dev -> QA),
+# QA_TAG_READY in the QA org (QA -> Prod), e.g. ready-to-deploy. Tag them in IDMC (Explore > Tags) first,
 # then check them in (or, if they are already checked in, run this workflow by hand: Actions > IDMC promote >
 # Run workflow, and pick the promotion).
 #
-#   1. open-pr     On a check-in to the source branch (or a manual run):
-#                    - lists the assets whose version on the source branch differs from the target branch
-#                    - keeps only those tagged READY_TAG in the source org, plus changed assets they use
-#                    - nothing tagged: the workflow ends, no PR
-#                    - otherwise copies just those files onto the promotion branch (promote/dev-to-qa or
-#                      promote/qa-to-prod, rebuilt from the target branch each time) and opens or updates its PR.
-#                      Untagged check-ins stay on the source branch until they are tagged.
-#   2. validate    Runs on the PR and lists the IDMC assets in it. Make "validate" a required status check.
-#   3. Approval    A normal PR review. Branch protection on the target branch requires an approval.
-#      mark-ready  After approval: labels the PR "Ready to Deploy" and tells the author to merge.
-#   4. Merge       The developer merges the approved PR by hand.
-#      deploy      Runs only on that merge:
-#                    - finds the assets they use (in Git) through the source org
-#                    - pulls the assets and those dependencies from Git into the target org, renaming connections
-#                      and runtime environments on the way in (name variables), then publishes CAI assets
-#                    - in the source org, removes READY_TAG and adds the "done" tag
-#   Connections, runtime environments and schedules are not created: they must already exist in each org.
-#   A merge into the QA branch is also a push to it, so it checks for assets tagged READY_TAG in the QA org.
+# One run per check-in, one run per merge (approving a PR or opening it starts no run):
 #
-# Keep this file on all four branches (main, Dev, QA, Prod): a check-in runs the copy on the branch that was
-# pushed, a PR runs the copy on its target branch, and a manual run uses the copy on the branch you pick.
+#   Run on a check-in to the Dev / QA branch (or a manual run) - open-pr:
+#     - lists the assets whose version on the source branch differs from the target branch
+#     - keeps only those with the ready tag in the source org, plus changed assets they use
+#     - nothing tagged: ends green with "Nothing to promote", no PR
+#     - otherwise copies just those files onto the promotion branch (promote/dev-to-qa or promote/qa-to-prod,
+#       rebuilt from the target branch each time), opens or updates its PR, checks the connection / runtime names
+#       and sets the "validate" status on it (make "validate" a required check; source "Any source").
+#       Untagged check-ins stay on the source branch until they are tagged.
+#   Approval: a normal PR review (branch protection on the target branch requires it). No run.
+#   Merge: the developer merges the approved PR by hand. Nothing is merged automatically.
+#   Run on that merge (the push to the QA / Prod branch) - deploy:
+#     - stops if the PR was not approved
+#     - finds the assets they use (in Git) through the source org
+#     - pulls the assets and those dependencies from Git into the target org, renaming connections and
+#       runtime environments on the way in (name variables), then publishes CAI assets
+#     - in the source org, removes the ready tag and adds the "done" tag; labels the PR
+#   Connections, runtime environments and schedules are not created: they must already exist in each org.
+#   GitHub can't see IDMC tags before a run starts, so a check-in without tagged assets still shows one short run.
+#
+# Keep this file on all four branches (main, Dev, QA, Prod): a push runs the copy on the branch that was pushed,
+# and a manual run uses the copy on the branch you pick.
 #
 # Nothing environment-specific is in this file. Settings > Secrets and variables > Actions:
 #   Variables (Variables tab)
 #     IICS_LOGIN_URL                          IDMC pod login URL, e.g. https://dmp-us.informaticacloud.com
 #     DEV_BRANCH / QA_BRANCH / PROD_BRANCH    the three branch names
-#     READY_TAG                               IDMC tag that marks an asset for promotion (both orgs), e.g. ready-to-deploy
-#     DEV_TAG_DONE                            tag set in the Dev org after the deploy to QA
-#     QA_TAG_DONE                             tag set in the QA org after the deploy to Prod
+#     DEV_TAG_READY / DEV_TAG_DONE            IDMC tags in the Dev org: marks an asset for QA / set after the deploy to QA
+#     QA_TAG_READY / QA_TAG_DONE              IDMC tags in the QA org: marks an asset for Prod / set after the deploy to Prod
 #     Connection and runtime environment names, one variable per item per environment (<KEY> is any label you
 #     choose, the same in all three; add as many as you need):
 #       DEV_CONNECTION_<KEY> / QA_CONNECTION_<KEY> / PROD_CONNECTION_<KEY>   e.g. DEV_CONNECTION_SNOWFLAKE
@@ -45,20 +47,15 @@ name: IDMC promote
 #     The pull renames each Dev name to the target org's name (Git holds the Dev names).
 #   Secrets (Secrets tab)
 #     IICS_REPO                                GitHub token that may push the promotion branches and open PRs
-#                                              (GITHUB_TOKEN can't trigger checks)
 #     DEV_IICS_USERNAME / DEV_IICS_PASSWORD    login for the Dev org
 #     UAT_IICS_USERNAME / UAT_IICS_PASSWORD    login for the QA org
 #     IICS_USERNAME / IICS_PASSWORD            login for the Prod org
-# GitHub can't read variables in the "on:" triggers, so the workflow starts on every push and PR and the
-# route job ends it at once unless the branches are the ones in the variables.
+# GitHub can't read variables in the "on:" triggers, so the workflow starts on every push and the route job
+# ends it at once unless the branch is one in the variables.
 
 on:
   push:
     branches-ignore: ['promote/**']   # the promotion branches are pushed by this workflow
-  pull_request:
-    types: [opened, reopened, synchronize, closed]
-  pull_request_review:
-    types: [submitted]
   workflow_dispatch:
     inputs:
       promotion:
@@ -75,10 +72,10 @@ env:
   DEV_BRANCH: ${{ vars.DEV_BRANCH }}
   QA_BRANCH: ${{ vars.QA_BRANCH }}
   PROD_BRANCH: ${{ vars.PROD_BRANCH }}
-  READY_TAG: ${{ vars.READY_TAG }}
+  DEV_TAG_READY: ${{ vars.DEV_TAG_READY }}
   DEV_TAG_DONE: ${{ vars.DEV_TAG_DONE }}
+  QA_TAG_READY: ${{ vars.QA_TAG_READY }}
   QA_TAG_DONE: ${{ vars.QA_TAG_DONE }}
-  READY_LABEL: Ready to Deploy
   # Shell helpers shared by the jobs below (each step loads them with: eval "$IDMC_FUNCTIONS")
   IDMC_FUNCTIONS: |
     # file names (stdin) -> IDMC assets, one per line: Explore/<project>/<folder>/<name>.<TYPE>
@@ -254,11 +251,17 @@ env:
       echo "Tagged ${#ids[@]} asset(s) $3 in the source org"
     }
 
+
 jobs:
-  # 0. Which promotion is this event part of? Every other job reads its outputs.
+  # 0. What is this push? A check-in on the Dev / QA branch (raise), or the manual merge of a promotion PR into the
+  #    QA / Prod branch (deploy). Every other job reads its outputs.
   route:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     outputs:
+      mode: ${{ steps.r.outputs.mode }}
       hop: ${{ steps.r.outputs.hop }}
       src_branch: ${{ steps.r.outputs.src_branch }}
       dst_branch: ${{ steps.r.outputs.dst_branch }}
@@ -271,62 +274,79 @@ jobs:
       tag_done: ${{ steps.r.outputs.tag_done }}
       deployed_label: ${{ steps.r.outputs.deployed_label }}
       environment: ${{ steps.r.outputs.environment }}
+      pr: ${{ steps.r.outputs.pr }}
+      pr_author: ${{ steps.r.outputs.pr_author }}
+      base_sha: ${{ steps.r.outputs.base_sha }}
+      head_sha: ${{ steps.r.outputs.head_sha }}
     steps:
-      - name: Work out the promotion (Dev -> QA or QA -> Prod)
+      - name: Work out what to do (raise a PR or deploy a merge)
         id: r
         env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
           EVENT: ${{ github.event_name }}
           PUSHED: ${{ github.ref_name }}
+          SHA: ${{ github.sha }}
           CHOSEN: ${{ inputs.promotion }}
-          PR_BASE: ${{ github.event.pull_request.base.ref }}
-          PR_HEAD: ${{ github.event.pull_request.head.ref }}
-          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
-          REPO: ${{ github.repository }}
         run: |
           # every setting must be filled in under Settings > Secrets and variables > Actions > Variables
           missing=""
-          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH READY_TAG DEV_TAG_DONE QA_TAG_DONE; do
+          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH DEV_TAG_READY DEV_TAG_DONE QA_TAG_READY QA_TAG_DONE; do
             if [ -z "${!v}" ]; then missing="$missing $v"; fi
           done
           if [ -n "$missing" ]; then echo "::error::Repository variables not set:$missing"; exit 1; fi
 
-          hop=""
-          case "$EVENT" in
-            push)
-              # a check-in on the Dev or QA branch
-              if [ "$PUSHED" = "$DEV_BRANCH" ]; then hop=dev-qa; fi
-              if [ "$PUSHED" = "$QA_BRANCH" ]; then hop=qa-prod; fi ;;
-            workflow_dispatch)
-              hop=$CHOSEN ;;
-            *)
-              # a PR counts only from a promotion branch of this repository into the next branch
-              if [ "$PR_HEAD_REPO" = "$REPO" ]; then
-                if [ "$PR_HEAD" = "promote/dev-to-qa" ] && [ "$PR_BASE" = "$QA_BRANCH" ]; then hop=dev-qa; fi
-                if [ "$PR_HEAD" = "promote/qa-to-prod" ] && [ "$PR_BASE" = "$PROD_BRANCH" ]; then hop=qa-prod; fi
-              fi ;;
-          esac
+          mode=""; hop=""; pr=""
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            mode=raise; hop=$CHOSEN
+          else
+            # the merge of a promotion PR into the QA or Prod branch deploys it
+            if [ "$PUSHED" = "$QA_BRANCH" ] || [ "$PUSHED" = "$PROD_BRANCH" ]; then
+              gh api "repos/$GH_REPO/commits/$SHA/pulls" > prs.json || echo '[]' > prs.json
+              jq -c --arg sha "$SHA" --arg repo "$GH_REPO" --arg b "$PUSHED" '[.[] | select(.merged_at != null and .merge_commit_sha == $sha
+                    and .base.ref == $b and .head.repo.full_name == $repo and (.head.ref | startswith("promote/")))][0] // empty' prs.json > pr.json
+              if [ -s pr.json ]; then
+                case "$(jq -r .head.ref pr.json) $PUSHED" in
+                  "promote/dev-to-qa $QA_BRANCH")    mode=deploy; hop=dev-qa ;;
+                  "promote/qa-to-prod $PROD_BRANCH") mode=deploy; hop=qa-prod ;;
+                esac
+                if [ "$mode" = "deploy" ]; then
+                  pr=$(jq -r .number pr.json)
+                  { echo "pr=$pr"; echo "pr_author=$(jq -r .user.login pr.json)"
+                    echo "base_sha=$(jq -r .base.sha pr.json)"; echo "head_sha=$(jq -r .head.sha pr.json)"; } >> "$GITHUB_OUTPUT"
+                fi
+              fi
+            fi
+            # any other push to the Dev or QA branch is a check-in: raise a PR if tagged assets are in it
+            if [ -z "$mode" ] && [ "$PUSHED" = "$DEV_BRANCH" ]; then mode=raise; hop=dev-qa; fi
+            if [ -z "$mode" ] && [ "$PUSHED" = "$QA_BRANCH" ]; then mode=raise; hop=qa-prod; fi
+          fi
           case "$hop" in
             dev-qa)
-              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_DONE" "Deployed to QA" qa promote/dev-to-qa ;;
+              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_READY" "$DEV_TAG_DONE" "Deployed to QA" qa promote/dev-to-qa ;;
             qa-prod)
-              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_DONE" "Deployed to Prod" production promote/qa-to-prod ;;
+              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_READY" "$QA_TAG_DONE" "Deployed to Prod" production promote/qa-to-prod ;;
             *)
-              echo "Not part of a promotion; nothing to do."; echo "hop=" >> "$GITHUB_OUTPUT"; exit 0 ;;
+              echo "Not part of a promotion; nothing to do."; echo "mode=" >> "$GITHUB_OUTPUT"; exit 0 ;;
           esac
           {
-            echo "hop=$hop"
+            echo "mode=$mode"; echo "hop=$hop"
             echo "src_branch=$1"; echo "dst_branch=$2"; echo "src_name=$3"; echo "dst_name=$4"
-            echo "src_secret=$5"; echo "dst_secret=$6"; echo "tag_ready=$READY_TAG"; echo "tag_done=$7"
-            echo "deployed_label=$8"; echo "environment=$9"; echo "promo_branch=${10}"
+            echo "src_secret=$5"; echo "dst_secret=$6"; echo "tag_ready=$7"; echo "tag_done=$8"
+            echo "deployed_label=$9"; echo "environment=${10}"; echo "promo_branch=${11}"
           } >> "$GITHUB_OUTPUT"
-          echo "Promotion: $3 -> $4 ($1 -> $2)" | tee -a "$GITHUB_STEP_SUMMARY"
+          if [ "$mode" = "deploy" ]; then echo "Deploy: PR #$pr was merged, $3 -> $4 ($1 -> $2)" | tee -a "$GITHUB_STEP_SUMMARY"
+          else echo "Check-in on $1: looking for assets tagged $7 for $3 -> $4" | tee -a "$GITHUB_STEP_SUMMARY"; fi
 
-  # 1. On a check-in (or a manual run): put the tagged assets on the promotion branch and raise its PR.
-  #    Never merges anything.
+  # 1. On a check-in (or a manual run): put the tagged assets on the promotion branch, raise its PR and set the
+  #    "validate" status. Never merges anything: the developer merges the approved PR by hand.
   open-pr:
     needs: route
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && needs.route.outputs.hop != ''
+    if: needs.route.outputs.mode == 'raise'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     concurrency:
       group: idmc-open-pr-${{ needs.route.outputs.hop }}
       cancel-in-progress: false
@@ -369,6 +389,8 @@ jobs:
               echo "None of the assets checked in on $SRC is tagged **$TAG_READY** in the $SRC_NAME org, so no PR was raised."
               echo "To promote, tag the assets in IDMC, then check them in again or run this workflow by hand (Run workflow, $SRC_NAME -> $DST_NAME)."
               echo "#### Checked in, not tagged"; sed 's/^Explore\//- /' changed.txt
+              echo "#### Tagged $TAG_READY in the $SRC_NAME org (IDMC returned $(wc -l < tagged.txt))"
+              if [ -s tagged.txt ]; then sed 's/^Explore\//- /' tagged.txt; else echo "None"; fi
             } | tee -a "$GITHUB_STEP_SUMMARY"
             echo "count=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -386,6 +408,7 @@ jobs:
           echo "count=$(wc -l < promote.txt)" >> "$GITHUB_OUTPUT"
 
       - name: Build the promotion branch and open or update its PR
+        id: pr
         if: steps.pick.outputs.count != '0'
         run: |
           # the files of each asset (normal and hidden metadata) and of the projects / folders holding them
@@ -419,7 +442,7 @@ jobs:
           { echo "Raised by the IDMC promote workflow: the assets tagged **$TAG_READY** in the $SRC_NAME org, and the assets they use."
             echo; echo "**Assets**"; sed 's/^Explore\//- /' selected.txt
             if [ -s used.txt ]; then echo; echo "**Used by them**"; sed 's/^Explore\//- /' used.txt; fi
-            echo; echo "Once the checks pass and a reviewer approves, this PR is labelled \"$READY_LABEL\". Merging it deploys these assets to $DST_NAME."
+            echo; echo "Approve this PR, then merge it by hand: the merge deploys these assets to $DST_NAME. Nothing is merged automatically."
           } > body.md
           pr=$(gh pr list --base "$DST" --head "$PROMO" --state open --json number --jq '.[0].number // empty')
           if [ -n "$pr" ]; then
@@ -429,44 +452,10 @@ jobs:
             gh pr create --base "$DST" --head "$PROMO" --title "Promote IDMC assets: $SRC_NAME to $DST_NAME" --body-file body.md \
               | tee -a "$GITHUB_STEP_SUMMARY"
           fi
-
-  # 2. Validation check on every PR update, and again on approval.
-  validate:
-    needs: route
-    if: >-
-      needs.route.outputs.hop != '' && github.event.action != 'closed' &&
-      (github.event_name == 'pull_request' || github.event.review.state == 'approved')
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    outputs:
-      approved: ${{ steps.review.outputs.approved }}
-    env:
-      GH_TOKEN: ${{ github.token }}
-      GH_REPO: ${{ github.repository }}
-      PR: ${{ github.event.pull_request.number }}
-      BASE: ${{ github.event.pull_request.base.sha }}
-      HEAD: ${{ github.event.pull_request.head.sha }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: New commits need a fresh approval, so drop "Ready to Deploy"
-        if: github.event.action == 'synchronize'
-        run: gh pr edit "$PR" --remove-label "$READY_LABEL" || true
-
-      - name: List the IDMC assets in this promotion
-        run: |
-          eval "$IDMC_FUNCTIONS"
-          list_assets "$BASE" "$HEAD" > assets.txt || true
-          { echo "### IDMC assets in this promotion"
-            if [ -s assets.txt ]; then sed 's/^Explore\//- /' assets.txt; else echo "None"; fi
-          } >> "$GITHUB_STEP_SUMMARY"
-          cat assets.txt
+          echo "head=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Check the connection and runtime environment names for the target org
+        if: steps.pr.outputs.head != ''
         env:
           HOP: ${{ needs.route.outputs.hop }}
           ALL_VARS: ${{ toJSON(vars) }}
@@ -474,43 +463,21 @@ jobs:
           eval "$IDMC_FUNCTIONS"
           name_map "$([ "$HOP" = "dev-qa" ] && echo QA || echo PROD)"
 
-      - name: Has a reviewer approved the PR?
-        id: review
-        run: |
-          decision=$(gh pr view "$PR" --json reviewDecision --jq .reviewDecision)
-          echo "Review decision: ${decision:-none}"
-          echo "approved=$([ "$decision" = "APPROVED" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
-
-  # 3. After approval: label the PR and tell the developer to merge (the assets are already tagged in IDMC).
-  mark-ready:
-    needs: [route, validate]
-    if: github.event_name == 'pull_request_review' && needs.validate.outputs.approved == 'true'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    env:
-      GH_TOKEN: ${{ github.token }}
-      GH_REPO: ${{ github.repository }}
-      PR: ${{ github.event.pull_request.number }}
-      DST_NAME: ${{ needs.route.outputs.dst_name }}
-    steps:
-      - name: Label the PR "Ready to Deploy" and tell the author to merge
+      # replaces the separate validate run: a required "validate" check in branch protection is met by this status
+      - name: Set the "validate" status on the PR
+        if: steps.pr.outputs.head != ''
         env:
-          AUTHOR: ${{ github.event.pull_request.user.login }}
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ steps.pr.outputs.head }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          if gh pr view "$PR" --json labels --jq '.labels[].name' | grep -qx "$READY_LABEL"; then exit 0; fi
-          gh label create "$READY_LABEL" --color 0E8A16 --force
-          gh pr edit "$PR" --add-label "$READY_LABEL"
-          gh pr comment "$PR" --body "@$AUTHOR this promotion is approved and **$READY_LABEL**. Merge this PR to deploy it to $DST_NAME."
+          gh api "repos/$GH_REPO/statuses/$HEAD_SHA" -f state=success -f context=validate \
+            -f description="IDMC assets listed and names checked" -f target_url="$RUN_URL" > /dev/null
 
-  # 4. On the developer's merge: deploy to the target org and re-tag in the source org.
+  # 2. On the developer's manual merge of the approved promotion PR: deploy to the target org, re-tag in the source org.
   deploy:
     needs: route
-    if: >-
-      needs.route.outputs.hop != '' &&
-      github.event_name == 'pull_request' && github.event.action == 'closed' &&
-      github.event.pull_request.merged == true
+    if: needs.route.outputs.mode == 'deploy'
     runs-on: ubuntu-latest
     environment: ${{ needs.route.outputs.environment }}   # deployment history per target; add protection rules here if needed
     concurrency:
@@ -522,10 +489,10 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      PR: ${{ github.event.pull_request.number }}
-      BASE: ${{ github.event.pull_request.base.sha }}
-      HEAD: ${{ github.event.pull_request.head.sha }}
-      MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+      PR: ${{ needs.route.outputs.pr }}
+      BASE: ${{ needs.route.outputs.base_sha }}
+      HEAD: ${{ needs.route.outputs.head_sha }}
+      MERGE_SHA: ${{ github.sha }}
       SRC_NAME: ${{ needs.route.outputs.src_name }}
       DST_NAME: ${{ needs.route.outputs.dst_name }}
       TAG_READY: ${{ needs.route.outputs.tag_ready }}
@@ -633,13 +600,13 @@ jobs:
       - name: Label the PR and report back
         if: always()
         env:
-          AUTHOR: ${{ github.event.pull_request.user.login }}
+          AUTHOR: ${{ needs.route.outputs.pr_author }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           RESULT: ${{ job.status }}
         run: |
           if [ "$RESULT" = "success" ]; then
             gh label create "$DEPLOYED_LABEL" --color 1D76DB --force
-            gh pr edit "$PR" --remove-label "$READY_LABEL" --add-label "$DEPLOYED_LABEL" || true
+            gh pr edit "$PR" --add-label "$DEPLOYED_LABEL" || true
             echo "@$AUTHOR deployed to $DST_NAME and tagged **$TAG_DONE** in $SRC_NAME. Details: $RUN_URL" > comment.md
           else
             echo "@$AUTHOR the deployment to $DST_NAME **failed**; the assets keep the **$TAG_READY** tag. See $RUN_URL" > comment.md
