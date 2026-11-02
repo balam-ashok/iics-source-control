@@ -2,42 +2,50 @@ name: IDMC promote
 
 # The one workflow that promotes IDMC assets Dev -> QA -> Prod. Each promotion is a pull request:
 #
-#   Dev branch --PR--> QA branch --PR--> Prod branch
-#   (Dev org)          (QA org)          (Prod org)
+#   Dev branch --(tagged assets)--> QA branch --(tagged assets)--> Prod branch
+#   (Dev org)                       (QA org)                       (Prod org)
 #
-# The "route" job works out which promotion an event belongs to:
-#   Dev -> QA    check-in on the Dev branch, or a PR from the Dev branch into the QA branch
-#   QA  -> Prod  merge into the QA branch,  or a PR from the QA branch into the Prod branch
-# Everything else is the same for both promotions:
+# Only assets tagged READY_TAG (e.g. ready-to-deploy) in the source org are promoted. Tag them in IDMC first,
+# then check them in (or, if they are already checked in, run this workflow by hand: Actions > IDMC promote >
+# Run workflow, and pick the promotion).
 #
-#   1. open-pr     A push to the source branch opens a PR into the next branch (or updates the open one).
+#   1. open-pr     On a check-in to the source branch (or a manual run):
+#                    - lists the assets whose version on the source branch differs from the target branch
+#                    - keeps only those tagged READY_TAG in the source org, plus changed assets they use
+#                    - nothing tagged: the workflow ends, no PR
+#                    - otherwise copies just those files onto the promotion branch (promote/dev-to-qa or
+#                      promote/qa-to-prod, rebuilt from the target branch each time) and opens or updates its PR.
+#                      Untagged check-ins stay on the source branch until they are tagged.
 #   2. validate    Runs on the PR and lists the IDMC assets in it. Make "validate" a required status check.
 #   3. Approval    A normal PR review. Branch protection on the target branch requires an approval.
-#      mark-ready  After approval: tags the assets in the source org and labels the PR "Ready to Deploy".
+#      mark-ready  After approval: labels the PR "Ready to Deploy" and tells the author to merge.
 #   4. Merge       The developer merges the approved PR by hand.
 #      deploy      Runs only on that merge:
 #                    - finds the assets they use (in Git) through the source org
 #                    - pulls the assets and those dependencies from Git into the target org, renaming connections
 #                      and runtime environments on the way in (name variables), then publishes CAI assets
-#                    - re-tags everything in the source org
+#                    - in the source org, removes READY_TAG and adds the "done" tag
 #   Connections, runtime environments and schedules are not created: they must already exist in each org.
-#   A merge into the QA branch is also a push to it, so it opens (or updates) the QA -> Prod PR.
+#   A merge into the QA branch is also a push to it, so it checks for assets tagged READY_TAG in the QA org.
 #
-# Keep this file on the Dev and QA branches as well as main: GitHub runs the copy on the branch that was pushed.
+# Keep this file on all four branches (main, Dev, QA, Prod): a check-in runs the copy on the branch that was
+# pushed, a PR runs the copy on its target branch, and a manual run uses the copy on the branch you pick.
 #
 # Nothing environment-specific is in this file. Settings > Secrets and variables > Actions:
 #   Variables (Variables tab)
 #     IICS_LOGIN_URL                          IDMC pod login URL, e.g. https://dmp-us.informaticacloud.com
 #     DEV_BRANCH / QA_BRANCH / PROD_BRANCH    the three branch names
-#     DEV_TAG_READY / DEV_TAG_DONE            IDMC tags set in the Dev org (on approval / after deploy to QA)
-#     QA_TAG_READY / QA_TAG_DONE              IDMC tags set in the QA org (on approval / after deploy to Prod)
+#     READY_TAG                               IDMC tag that marks an asset for promotion (both orgs), e.g. ready-to-deploy
+#     DEV_TAG_DONE                            tag set in the Dev org after the deploy to QA
+#     QA_TAG_DONE                             tag set in the QA org after the deploy to Prod
 #     Connection and runtime environment names, one variable per item per environment (<KEY> is any label you
 #     choose, the same in all three; add as many as you need):
 #       DEV_CONNECTION_<KEY> / QA_CONNECTION_<KEY> / PROD_CONNECTION_<KEY>   e.g. DEV_CONNECTION_SNOWFLAKE
 #       DEV_RUNTIME_<KEY>    / QA_RUNTIME_<KEY>    / PROD_RUNTIME_<KEY>      e.g. DEV_RUNTIME_AGENT
 #     The pull renames each Dev name to the target org's name (Git holds the Dev names).
 #   Secrets (Secrets tab)
-#     IICS_REPO                                GitHub token that may open PRs (GITHUB_TOKEN can't trigger checks)
+#     IICS_REPO                                GitHub token that may push the promotion branches and open PRs
+#                                              (GITHUB_TOKEN can't trigger checks)
 #     DEV_IICS_USERNAME / DEV_IICS_PASSWORD    login for the Dev org
 #     UAT_IICS_USERNAME / UAT_IICS_PASSWORD    login for the QA org
 #     IICS_USERNAME / IICS_PASSWORD            login for the Prod org
@@ -46,10 +54,18 @@ name: IDMC promote
 
 on:
   push:
+    branches-ignore: ['promote/**']   # the promotion branches are pushed by this workflow
   pull_request:
     types: [opened, reopened, synchronize, closed]
   pull_request_review:
     types: [submitted]
+  workflow_dispatch:
+    inputs:
+      promotion:
+        description: Which promotion to check for tagged assets
+        type: choice
+        options: [dev-qa, qa-prod]
+        default: dev-qa
 
 permissions:
   contents: read
@@ -59,18 +75,20 @@ env:
   DEV_BRANCH: ${{ vars.DEV_BRANCH }}
   QA_BRANCH: ${{ vars.QA_BRANCH }}
   PROD_BRANCH: ${{ vars.PROD_BRANCH }}
-  DEV_TAG_READY: ${{ vars.DEV_TAG_READY }}
+  READY_TAG: ${{ vars.READY_TAG }}
   DEV_TAG_DONE: ${{ vars.DEV_TAG_DONE }}
-  QA_TAG_READY: ${{ vars.QA_TAG_READY }}
   QA_TAG_DONE: ${{ vars.QA_TAG_DONE }}
   READY_LABEL: Ready to Deploy
   # Shell helpers shared by the jobs below (each step loads them with: eval "$IDMC_FUNCTIONS")
   IDMC_FUNCTIONS: |
-    # IDMC assets changed between two commits, one per line: Explore/<project>/<folder>/<name>.<TYPE>
-    list_assets() {
-      git -c core.quotePath=false diff --name-only --diff-filter=d "$1...$2" -- Explore \
-        | grep -viE '\.(project|folder)\.json$' \
+    # file names (stdin) -> IDMC assets, one per line: Explore/<project>/<folder>/<name>.<TYPE>
+    norm_assets() {
+      grep -viE '\.(project|folder)\.json$' \
         | sed -E 's#/\.([^/]+)$#/\1#; s/\.(vc\.json|zip|xml|json|dat)$//' | sort -u
+    }
+    # IDMC assets changed between two commits (changes on the second since they split)
+    list_assets() {
+      git -c core.quotePath=false diff --name-only --diff-filter=d "$1...$2" -- Explore | norm_assets
     }
     # idmc_login <user> <password>: sets $api (v3 base URL), $v2 (v2 base URL), $host and $session
     idmc_login() {
@@ -150,7 +168,7 @@ env:
             | ([$e.from, $e.src] | unique | map(select(. != $e.to)))[]
             | {source: {path: [.], type: $ty}, target: {path: [$e.to], type: $ty}} ] | unique' names.json > spec.json
     }
-    # the type name Git uses for a type the references API names differently
+    # the type name Git uses for a type the IDMC APIs name differently
     gtype() {
       case "${1^^}" in
         MCT|MAPPING_TASK|MAPPINGTASK) echo MTT ;;   MAPPING) echo DTEMPLATE ;;
@@ -163,7 +181,59 @@ env:
       call -G "$api/objects" --data-urlencode "q=location=='${1%/*}'" --data-urlencode "limit=200" \
         | jq -r --arg p "$1" --arg t "$2" '
             def n: ascii_upcase | {MAPPING:"DTEMPLATE", MCT:"MTT", MAPPING_TASK:"MTT", SAAS_BSERVICES:"BSERVICE"}[.] // .;
-            [.objects[] | select((.path | ltrimstr("/")) == $p)] | (map(select((.type | n) == ($t | n))) + .)[0].id // empty'
+            [.objects[] | select((.path | ltrimstr("/") | ltrimstr("Explore/")) == $p)] | (map(select((.type | n) == ($t | n))) + .)[0].id // empty'
+    }
+    # tagged_assets <tag>: the assets carrying that tag in the logged-in org, as Explore/<project>/<folder>/<name>.<TYPE>
+    tagged_assets() {
+      local skip=0 page n p t
+      while :; do
+        page=$(call -G "$api/objects" --data-urlencode "q=tag=='$1'" --data-urlencode "limit=200" --data-urlencode "skip=$skip") \
+          || { echo "::error::Could not list the assets tagged $1 in IDMC" >&2; return 1; }
+        while IFS=$'\t' read -r p t; do
+          if [ -n "$p" ]; then echo "Explore/$p.$(gtype "$t")"; fi
+        done < <(jq -r '.objects[]? | [((.path // "") | ltrimstr("/") | ltrimstr("Explore/")), (.type // "")] | @tsv' <<< "$page")
+        n=$(jq '.objects | length' <<< "$page")
+        if [ "$n" -lt 200 ]; then break; fi
+        skip=$((skip + n))
+      done
+    }
+    # walk_uses <assets file> <file names list>: follows "uses" from the assets in the logged-in org, up to 5 levels.
+    # Writes deps.txt (used assets whose Explore/<path>.<TYPE>. is in the file names list), connections.txt and
+    # runtimes.txt (names of the connections and runtime environments used).
+    walk_uses() {
+      local queue=() next seen=" " a p id rid rtype rpath t
+      : > deps.txt; : > connections.txt; : > runtimes.txt
+      while IFS= read -r a; do
+        p=${a#Explore/}; id=$(find_id "${p%.*}" "${p##*.}")
+        if [ -n "$id" ]; then queue+=("$id"); else echo "::warning::$p not found in the source org"; fi
+      done < "$1"
+      for _ in 1 2 3 4 5; do
+        [ ${#queue[@]} -gt 0 ] || break
+        next=()
+        for id in "${queue[@]}"; do
+          case "$seen" in *" $id "*) continue ;; esac
+          seen="$seen$id "
+          while IFS=$'\t' read -r rid rtype rpath; do
+            [ -n "$rid" ] || continue
+            t=$(gtype "$rtype")
+            if [[ "$t" == *CONNECTION* && "$t" != AI_* ]]; then
+              echo "${rpath##*/}" >> connections.txt
+            elif [[ "$t" == *AGENT* || "$t" == *RUNTIME* ]]; then
+              echo "${rpath##*/}" >> runtimes.txt
+            elif grep -Fqi "Explore/$rpath.$t." "$2"; then
+              echo "Explore/$rpath.$t" >> deps.txt; next+=("$rid")
+            fi
+          done < <(call -G "$api/objects/$id/references" --data-urlencode "refType=Uses" --data-urlencode "limit=50" \
+            | jq -r '.references[]? | [.id, (.documentType // .type // ""),
+                ((.path // "") | (if type == "array" then join("/") else . end) | ltrimstr("/") | ltrimstr("Explore/")) as $p
+                | (.name // "") as $n
+                | (if $n != "" and ($p | split("/") | last) != $n then ($p + "/" + $n | ltrimstr("/")) else $p end)] | @tsv')
+        done
+        queue=("${next[@]}")
+      done
+      sort -u -o deps.txt deps.txt
+      sort -u -o connections.txt connections.txt
+      sort -u -o runtimes.txt runtimes.txt
     }
     # retag <assets file> <tag to remove or ""> <tag to add>: changes the IDMC tags in the logged-in org
     retag() {
@@ -192,6 +262,7 @@ jobs:
       hop: ${{ steps.r.outputs.hop }}
       src_branch: ${{ steps.r.outputs.src_branch }}
       dst_branch: ${{ steps.r.outputs.dst_branch }}
+      promo_branch: ${{ steps.r.outputs.promo_branch }}
       src_name: ${{ steps.r.outputs.src_name }}
       dst_name: ${{ steps.r.outputs.dst_name }}
       src_secret: ${{ steps.r.outputs.src_secret }}
@@ -206,65 +277,158 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
           PUSHED: ${{ github.ref_name }}
+          CHOSEN: ${{ inputs.promotion }}
           PR_BASE: ${{ github.event.pull_request.base.ref }}
           PR_HEAD: ${{ github.event.pull_request.head.ref }}
+          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          REPO: ${{ github.repository }}
         run: |
           # every setting must be filled in under Settings > Secrets and variables > Actions > Variables
           missing=""
-          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH DEV_TAG_READY DEV_TAG_DONE QA_TAG_READY QA_TAG_DONE; do
+          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH READY_TAG DEV_TAG_DONE QA_TAG_DONE; do
             if [ -z "${!v}" ]; then missing="$missing $v"; fi
           done
           if [ -n "$missing" ]; then echo "::error::Repository variables not set:$missing"; exit 1; fi
 
-          if [ "$EVENT" = "push" ]; then from=$PUSHED; else from=$PR_HEAD; fi
           hop=""
-          if [ "$from" = "$DEV_BRANCH" ]; then hop=dev-qa; fi
-          if [ "$from" = "$QA_BRANCH" ]; then hop=qa-prod; fi
-          # a PR counts only when it goes to the next branch in the chain
-          if [ "$EVENT" != "push" ]; then
-            if [ "$hop" = "dev-qa" ] && [ "$PR_BASE" != "$QA_BRANCH" ]; then hop=""; fi
-            if [ "$hop" = "qa-prod" ] && [ "$PR_BASE" != "$PROD_BRANCH" ]; then hop=""; fi
-          fi
+          case "$EVENT" in
+            push)
+              # a check-in on the Dev or QA branch
+              if [ "$PUSHED" = "$DEV_BRANCH" ]; then hop=dev-qa; fi
+              if [ "$PUSHED" = "$QA_BRANCH" ]; then hop=qa-prod; fi ;;
+            workflow_dispatch)
+              hop=$CHOSEN ;;
+            *)
+              # a PR counts only from a promotion branch of this repository into the next branch
+              if [ "$PR_HEAD_REPO" = "$REPO" ]; then
+                if [ "$PR_HEAD" = "promote/dev-to-qa" ] && [ "$PR_BASE" = "$QA_BRANCH" ]; then hop=dev-qa; fi
+                if [ "$PR_HEAD" = "promote/qa-to-prod" ] && [ "$PR_BASE" = "$PROD_BRANCH" ]; then hop=qa-prod; fi
+              fi ;;
+          esac
           case "$hop" in
             dev-qa)
-              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_READY" "$DEV_TAG_DONE" "Deployed to QA" qa ;;
+              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_DONE" "Deployed to QA" qa promote/dev-to-qa ;;
             qa-prod)
-              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_READY" "$QA_TAG_DONE" "Deployed to Prod" production ;;
+              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_DONE" "Deployed to Prod" production promote/qa-to-prod ;;
             *)
               echo "Not part of a promotion; nothing to do."; echo "hop=" >> "$GITHUB_OUTPUT"; exit 0 ;;
           esac
           {
             echo "hop=$hop"
             echo "src_branch=$1"; echo "dst_branch=$2"; echo "src_name=$3"; echo "dst_name=$4"
-            echo "src_secret=$5"; echo "dst_secret=$6"; echo "tag_ready=$7"; echo "tag_done=$8"
-            echo "deployed_label=$9"; echo "environment=${10}"
+            echo "src_secret=$5"; echo "dst_secret=$6"; echo "tag_ready=$READY_TAG"; echo "tag_done=$7"
+            echo "deployed_label=$8"; echo "environment=$9"; echo "promo_branch=${10}"
           } >> "$GITHUB_OUTPUT"
           echo "Promotion: $3 -> $4 ($1 -> $2)" | tee -a "$GITHUB_STEP_SUMMARY"
 
-  # 1. Raise the promotion PR, source branch -> next branch. Never merges anything.
+  # 1. On a check-in (or a manual run): put the tagged assets on the promotion branch and raise its PR.
+  #    Never merges anything.
   open-pr:
     needs: route
-    if: github.event_name == 'push' && needs.route.outputs.hop != ''
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && needs.route.outputs.hop != ''
     runs-on: ubuntu-latest
+    concurrency:
+      group: idmc-open-pr-${{ needs.route.outputs.hop }}
+      cancel-in-progress: false
     env:
       GH_TOKEN: ${{ secrets.IICS_REPO }}
       GH_REPO: ${{ github.repository }}
       SRC: ${{ needs.route.outputs.src_branch }}
       DST: ${{ needs.route.outputs.dst_branch }}
+      PROMO: ${{ needs.route.outputs.promo_branch }}
       SRC_NAME: ${{ needs.route.outputs.src_name }}
       DST_NAME: ${{ needs.route.outputs.dst_name }}
+      TAG_READY: ${{ needs.route.outputs.tag_ready }}
     steps:
-      - name: Open the promotion PR (an open one just picks up this push)
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.IICS_REPO }}
+          fetch-depth: 0
+
+      - name: Find the checked-in assets tagged for promotion
+        id: pick
+        env:
+          SRC_USER: ${{ secrets[format('{0}_USERNAME', needs.route.outputs.src_secret)] }}
+          SRC_PASS: ${{ secrets[format('{0}_PASSWORD', needs.route.outputs.src_secret)] }}
         run: |
-          if [ "$(gh api "repos/$GH_REPO/compare/$DST...$SRC" --jq .ahead_by)" = "0" ]; then
-            echo "Nothing to promote."; exit 0
+          eval "$IDMC_FUNCTIONS"
+          # assets whose version on the source branch differs from the target branch
+          git -c core.quotePath=false diff --name-only --diff-filter=d "origin/$DST" "origin/$SRC" -- Explore \
+            | norm_assets > changed.txt || true
+          if [ ! -s changed.txt ]; then
+            echo "Nothing on $SRC differs from $DST; no PR." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "count=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          if [ -n "$(gh pr list --base "$DST" --head "$SRC" --json number --jq '.[].number')" ]; then
-            echo "The $SRC_NAME -> $DST_NAME PR is already open."; exit 0
+
+          idmc_login "$SRC_USER" "$SRC_PASS"
+          tagged_assets "$TAG_READY" > tagged.txt
+          # tagged and changed (names compared without case), spelled as in Git
+          awk 'NR == FNR { t[tolower($0)] = 1; next } tolower($0) in t' tagged.txt changed.txt > selected.txt
+          if [ ! -s selected.txt ]; then
+            { echo "### Nothing to promote"
+              echo "None of the assets checked in on $SRC is tagged **$TAG_READY** in the $SRC_NAME org, so no PR was raised."
+              echo "To promote, tag the assets in IDMC, then check them in again or run this workflow by hand (Run workflow, $SRC_NAME -> $DST_NAME)."
+              echo "#### Checked in, not tagged"; sed 's/^Explore\//- /' changed.txt
+            } | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "count=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
-          gh pr create --base "$DST" --head "$SRC" \
-            --title "Promote IDMC assets: $SRC_NAME to $DST_NAME" \
-            --body "Raised by the IDMC promote workflow. Once the checks pass and a reviewer approves, this PR is labelled \"$READY_LABEL\". Merging it deploys the assets to $DST_NAME."
+
+          # add the changed assets that the tagged ones use (connections and runtime environments are not in Git)
+          sed 's/$/./' changed.txt > changed_prefix.txt
+          walk_uses selected.txt changed_prefix.txt
+          awk 'NR == FNR { t[tolower($0)] = 1; next } tolower($0) in t' <(cat selected.txt deps.txt) changed.txt > promote.txt
+          awk 'NR == FNR { s[$0] = 1; next } !($0 in s)' selected.txt promote.txt > used.txt
+          awk 'NR == FNR { s[$0] = 1; next } !($0 in s)' promote.txt changed.txt > left.txt
+          { echo "### Tagged $TAG_READY in $SRC_NAME"; sed 's/^Explore\//- /' selected.txt
+            if [ -s used.txt ]; then echo "### Used by them (also promoted)"; sed 's/^Explore\//- /' used.txt; fi
+            if [ -s left.txt ]; then echo "### Checked in but not tagged (stay on $SRC)"; sed 's/^Explore\//- /' left.txt; fi
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "count=$(wc -l < promote.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Build the promotion branch and open or update its PR
+        if: steps.pick.outputs.count != '0'
+        run: |
+          # the files of each asset (normal and hidden metadata) and of the projects / folders holding them
+          git -c core.quotePath=false ls-tree -r --name-only "origin/$SRC" -- Explore > srcfiles.txt
+          : > files.txt
+          while IFS= read -r k; do
+            d=${k%/*}; b=${k##*/}
+            awk -v a="$d/$b." -v h="$d/.$b." 'index($0, a) == 1 || index($0, h) == 1' srcfiles.txt >> files.txt
+            acc=Explore
+            IFS=/ read -ra parts <<< "${d#Explore/}"
+            for part in "${parts[@]}"; do
+              acc="$acc/$part"
+              awk -v a="$acc/$part." -v h="$acc/.$part." \
+                '(index($0, a) == 1 || index($0, h) == 1) && tolower($0) ~ /\.(project|folder)\.json$/' srcfiles.txt >> files.txt
+            done
+          done < promote.txt
+          sort -u -o files.txt files.txt
+
+          # promotion branch = target branch + the source branch's version of those files
+          git checkout -q -B "$PROMO" "origin/$DST"
+          git --literal-pathspecs restore --source="origin/$SRC" --staged --worktree --pathspec-from-file=files.txt
+          if git diff --cached --quiet; then echo "$DST already has these versions; no PR."; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Promote IDMC assets: $SRC_NAME to $DST_NAME" -m "$(sed 's/^Explore\//- /' promote.txt)"
+          if git rev-parse -q --verify "origin/$PROMO" > /dev/null && git diff --quiet "origin/$PROMO" HEAD; then
+            echo "$PROMO already holds exactly these assets."
+          else
+            git push --force origin "HEAD:refs/heads/$PROMO"
+          fi
+
+          { echo "Raised by the IDMC promote workflow: the assets tagged **$TAG_READY** in the $SRC_NAME org, and the assets they use."
+            echo; echo "**Assets**"; sed 's/^Explore\//- /' selected.txt
+            if [ -s used.txt ]; then echo; echo "**Used by them**"; sed 's/^Explore\//- /' used.txt; fi
+            echo; echo "Once the checks pass and a reviewer approves, this PR is labelled \"$READY_LABEL\". Merging it deploys these assets to $DST_NAME."
+          } > body.md
+          pr=$(gh pr list --base "$DST" --head "$PROMO" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            gh pr edit "$pr" --body-file body.md
+            echo "Updated the $SRC_NAME -> $DST_NAME PR #$pr" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            gh pr create --base "$DST" --head "$PROMO" --title "Promote IDMC assets: $SRC_NAME to $DST_NAME" --body-file body.md \
+              | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
 
   # 2. Validation check on every PR update, and again on approval.
   validate:
@@ -317,7 +481,7 @@ jobs:
           echo "Review decision: ${decision:-none}"
           echo "approved=$([ "$decision" = "APPROVED" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
 
-  # 3. After approval: tag the assets in the source org, label the PR and tell the developer to merge.
+  # 3. After approval: label the PR and tell the developer to merge (the assets are already tagged in IDMC).
   mark-ready:
     needs: [route, validate]
     if: github.event_name == 'pull_request_review' && needs.validate.outputs.approved == 'true'
@@ -329,26 +493,8 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
       PR: ${{ github.event.pull_request.number }}
-      BASE: ${{ github.event.pull_request.base.sha }}
-      HEAD: ${{ github.event.pull_request.head.sha }}
-      TAG_READY: ${{ needs.route.outputs.tag_ready }}
       DST_NAME: ${{ needs.route.outputs.dst_name }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Tag the assets in the source org
-        env:
-          SRC_USER: ${{ secrets[format('{0}_USERNAME', needs.route.outputs.src_secret)] }}
-          SRC_PASS: ${{ secrets[format('{0}_PASSWORD', needs.route.outputs.src_secret)] }}
-        run: |
-          eval "$IDMC_FUNCTIONS"
-          list_assets "$BASE" "$HEAD" > assets.txt || true
-          if [ ! -s assets.txt ]; then echo "No IDMC assets in this PR."; exit 0; fi
-          idmc_login "$SRC_USER" "$SRC_PASS"
-          retag assets.txt "" "$TAG_READY"
-
       - name: Label the PR "Ready to Deploy" and tell the author to merge
         env:
           AUTHOR: ${{ github.event.pull_request.user.login }}
@@ -412,40 +558,8 @@ jobs:
           if [ ! -s assets.txt ]; then echo "No IDMC assets to deploy."; exit 0; fi
           git -c core.quotePath=false ls-tree -r --name-only "$MERGE_SHA" -- Explore > gitfiles.txt
           idmc_login "$SRC_USER" "$SRC_PASS"
-
-          # follow "uses" from the assets, up to 5 levels
-          queue=(); seen=" "
-          while IFS= read -r a; do
-            p=${a#Explore/}; id=$(find_id "${p%.*}" "${p##*.}")
-            if [ -n "$id" ]; then queue+=("$id"); else echo "::warning::$p not found in the $SRC_NAME org"; fi
-          done < assets.txt
-          for _ in 1 2 3 4 5; do
-            next=()
-            for id in "${queue[@]}"; do
-              case "$seen" in *" $id "*) continue ;; esac
-              seen="$seen$id "
-              while IFS=$'\t' read -r rid rtype rpath; do
-                [ -n "$rid" ] || continue
-                t=$(gtype "$rtype")
-                if [[ "$t" == *CONNECTION* && "$t" != AI_* ]]; then
-                  echo "${rpath##*/}" >> connections.txt
-                elif [[ "$t" == *AGENT* || "$t" == *RUNTIME* ]]; then
-                  echo "${rpath##*/}" >> runtimes.txt
-                elif grep -Fqi "Explore/$rpath.$t." gitfiles.txt; then
-                  echo "Explore/$rpath.$t" >> deps.txt; next+=("$rid")
-                fi
-              done < <(call -G "$api/objects/$id/references" --data-urlencode "refType=Uses" --data-urlencode "limit=50" \
-                | jq -r '.references[]? | [.id, (.documentType // .type // ""),
-                    ((.path // "") | (if type == "array" then join("/") else . end) | ltrimstr("/") | ltrimstr("Explore/")) as $p
-                    | (.name // "") as $n
-                    | (if $n != "" and ($p | split("/") | last) != $n then ($p + "/" + $n | ltrimstr("/")) else $p end)] | @tsv')
-            done
-            [ ${#next[@]} -gt 0 ] || break
-            queue=("${next[@]}")
-          done
+          walk_uses assets.txt gitfiles.txt
           sort -u assets.txt deps.txt > all.txt
-          sort -u -o connections.txt connections.txt
-          sort -u -o runtimes.txt runtimes.txt
 
           { echo "### To deploy"; sed 's/^Explore\//- /' all.txt
             echo "### Connections the assets use in $SRC_NAME (must exist in $DST_NAME, after mapping)"
