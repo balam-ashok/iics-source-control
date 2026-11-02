@@ -5,13 +5,14 @@ name: IDMC promote
 #   Dev branch --(tagged assets)--> QA branch --(tagged assets)--> Prod branch
 #   (Dev org)                       (QA org)                       (Prod org)
 #
-# Only assets tagged READY_TAG (e.g. ready-to-deploy) in the source org are promoted. Tag them in IDMC first,
+# Only assets carrying the source org's "ready" tag are promoted: DEV_TAG_READY in the Dev org (Dev -> QA),
+# QA_TAG_READY in the QA org (QA -> Prod), e.g. ready-to-deploy. Tag them in IDMC (Explore > Tags) first,
 # then check them in (or, if they are already checked in, run this workflow by hand: Actions > IDMC promote >
 # Run workflow, and pick the promotion).
 #
 #   1. open-pr     On a check-in to the source branch (or a manual run):
 #                    - lists the assets whose version on the source branch differs from the target branch
-#                    - keeps only those tagged READY_TAG in the source org, plus changed assets they use
+#                    - keeps only those with the ready tag in the source org, plus changed assets they use
 #                    - nothing tagged: the workflow ends, no PR
 #                    - otherwise copies just those files onto the promotion branch (promote/dev-to-qa or
 #                      promote/qa-to-prod, rebuilt from the target branch each time) and opens or updates its PR.
@@ -24,9 +25,11 @@ name: IDMC promote
 #                    - finds the assets they use (in Git) through the source org
 #                    - pulls the assets and those dependencies from Git into the target org, renaming connections
 #                      and runtime environments on the way in (name variables), then publishes CAI assets
-#                    - in the source org, removes READY_TAG and adds the "done" tag
+#                    - in the source org, removes the ready tag and adds the "done" tag
 #   Connections, runtime environments and schedules are not created: they must already exist in each org.
-#   A merge into the QA branch is also a push to it, so it checks for assets tagged READY_TAG in the QA org.
+#   A merge into the QA branch is also a push to it, so it checks for assets tagged QA_TAG_READY in the QA org.
+#   GitHub can't see IDMC tags before a run starts, so every check-in shows a short run; without tagged assets it
+#   ends green with "Nothing to promote" and raises no PR.
 #
 # Keep this file on all four branches (main, Dev, QA, Prod): a check-in runs the copy on the branch that was
 # pushed, a PR runs the copy on its target branch, and a manual run uses the copy on the branch you pick.
@@ -35,9 +38,8 @@ name: IDMC promote
 #   Variables (Variables tab)
 #     IICS_LOGIN_URL                          IDMC pod login URL, e.g. https://dmp-us.informaticacloud.com
 #     DEV_BRANCH / QA_BRANCH / PROD_BRANCH    the three branch names
-#     READY_TAG                               IDMC tag that marks an asset for promotion (both orgs), e.g. ready-to-deploy
-#     DEV_TAG_DONE                            tag set in the Dev org after the deploy to QA
-#     QA_TAG_DONE                             tag set in the QA org after the deploy to Prod
+#     DEV_TAG_READY / DEV_TAG_DONE            IDMC tags in the Dev org: marks an asset for QA / set after the deploy to QA
+#     QA_TAG_READY / QA_TAG_DONE              IDMC tags in the QA org: marks an asset for Prod / set after the deploy to Prod
 #     Connection and runtime environment names, one variable per item per environment (<KEY> is any label you
 #     choose, the same in all three; add as many as you need):
 #       DEV_CONNECTION_<KEY> / QA_CONNECTION_<KEY> / PROD_CONNECTION_<KEY>   e.g. DEV_CONNECTION_SNOWFLAKE
@@ -75,8 +77,9 @@ env:
   DEV_BRANCH: ${{ vars.DEV_BRANCH }}
   QA_BRANCH: ${{ vars.QA_BRANCH }}
   PROD_BRANCH: ${{ vars.PROD_BRANCH }}
-  READY_TAG: ${{ vars.READY_TAG }}
+  DEV_TAG_READY: ${{ vars.DEV_TAG_READY }}
   DEV_TAG_DONE: ${{ vars.DEV_TAG_DONE }}
+  QA_TAG_READY: ${{ vars.QA_TAG_READY }}
   QA_TAG_DONE: ${{ vars.QA_TAG_DONE }}
   READY_LABEL: Ready to Deploy
   # Shell helpers shared by the jobs below (each step loads them with: eval "$IDMC_FUNCTIONS")
@@ -285,7 +288,7 @@ jobs:
         run: |
           # every setting must be filled in under Settings > Secrets and variables > Actions > Variables
           missing=""
-          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH READY_TAG DEV_TAG_DONE QA_TAG_DONE; do
+          for v in IICS_LOGIN_URL DEV_BRANCH QA_BRANCH PROD_BRANCH DEV_TAG_READY DEV_TAG_DONE QA_TAG_READY QA_TAG_DONE; do
             if [ -z "${!v}" ]; then missing="$missing $v"; fi
           done
           if [ -n "$missing" ]; then echo "::error::Repository variables not set:$missing"; exit 1; fi
@@ -307,17 +310,17 @@ jobs:
           esac
           case "$hop" in
             dev-qa)
-              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_DONE" "Deployed to QA" qa promote/dev-to-qa ;;
+              set -- "$DEV_BRANCH" "$QA_BRANCH" "Dev" "QA" DEV_IICS UAT_IICS "$DEV_TAG_READY" "$DEV_TAG_DONE" "Deployed to QA" qa promote/dev-to-qa ;;
             qa-prod)
-              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_DONE" "Deployed to Prod" production promote/qa-to-prod ;;
+              set -- "$QA_BRANCH" "$PROD_BRANCH" "QA" "Prod" UAT_IICS IICS "$QA_TAG_READY" "$QA_TAG_DONE" "Deployed to Prod" production promote/qa-to-prod ;;
             *)
               echo "Not part of a promotion; nothing to do."; echo "hop=" >> "$GITHUB_OUTPUT"; exit 0 ;;
           esac
           {
             echo "hop=$hop"
             echo "src_branch=$1"; echo "dst_branch=$2"; echo "src_name=$3"; echo "dst_name=$4"
-            echo "src_secret=$5"; echo "dst_secret=$6"; echo "tag_ready=$READY_TAG"; echo "tag_done=$7"
-            echo "deployed_label=$8"; echo "environment=$9"; echo "promo_branch=${10}"
+            echo "src_secret=$5"; echo "dst_secret=$6"; echo "tag_ready=$7"; echo "tag_done=$8"
+            echo "deployed_label=$9"; echo "environment=${10}"; echo "promo_branch=${11}"
           } >> "$GITHUB_OUTPUT"
           echo "Promotion: $3 -> $4 ($1 -> $2)" | tee -a "$GITHUB_STEP_SUMMARY"
 
@@ -369,6 +372,8 @@ jobs:
               echo "None of the assets checked in on $SRC is tagged **$TAG_READY** in the $SRC_NAME org, so no PR was raised."
               echo "To promote, tag the assets in IDMC, then check them in again or run this workflow by hand (Run workflow, $SRC_NAME -> $DST_NAME)."
               echo "#### Checked in, not tagged"; sed 's/^Explore\//- /' changed.txt
+              echo "#### Tagged $TAG_READY in the $SRC_NAME org (IDMC returned $(wc -l < tagged.txt))"
+              if [ -s tagged.txt ]; then sed 's/^Explore\//- /' tagged.txt; else echo "None"; fi
             } | tee -a "$GITHUB_STEP_SUMMARY"
             echo "count=0" >> "$GITHUB_OUTPUT"; exit 0
           fi
