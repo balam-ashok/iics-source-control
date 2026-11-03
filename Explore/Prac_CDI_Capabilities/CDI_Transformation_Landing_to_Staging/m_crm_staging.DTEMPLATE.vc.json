@@ -710,7 +710,7 @@
             "precision" : 100,
             "scale" : 0,
             "expFieldType" : "OUTPUT",
-            "expression" : "-- 1. TRIM function removes leading and trailing spaces.\n-- 2. UPPER function converts the string to uppercase.\n-- 3. FULL_NAME is already a string, no conversion needed.\n\nUPPER(LTRIM(RTRIM(FULL_NAME)))",
+            "expression" : "-- 1. TRIM function removes leading and trailing spaces.\n-- 2. UPPER function converts the string to uppercase.\n-- 3. FULL_NAME is already a string, no conversion needed.\n\n\n\n\nUPPER(LTRIM(RTRIM(FULL_NAME)))",
             "userPrompt" : "UPPER(TRIM(full_name))\n\nMake this valid expression"
           },
           {
@@ -760,5 +760,5 @@
       }
     ]
   },
-  "vcsExportTime" : "2026-11-02 03:17:48 PST"
+  "vcsExportTime" : "2026-11-03 05:02:54 PST"
 }
