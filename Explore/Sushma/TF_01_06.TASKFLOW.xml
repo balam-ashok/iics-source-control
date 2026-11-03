@@ -1,0 +1,192 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>GVtsDaaabdvhxiQ-gt-237749-2026-06-01T06:41:43.517Z::tf.xml</types1:EntryId>
+      <types1:Name>TF_01_06</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>sushma_datainfa</types1:CreatedBy>
+      <types1:CreationDate>2026-06-01T06:41:44Z</types1:CreationDate>
+      <types1:ModifiedBy>sushma_datainfa</types1:ModifiedBy>
+      <types1:ModificationDate>2026-06-01T11:08:07Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>sushma_datainfa</types1:PublishedBy>
+      <types1:PublicationDate>2026-06-01T11:08:12Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.TF_01_06/TF_01_06.tf.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   GUID="2yPI41IK6PFicHiUOhwBA2"
+                   displayName="TF_01_06"
+                   name="TF_01_06"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_from" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                     <option name="source">constant</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_size" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">100</option>
+                     <option name="source">constant</option>
+                  </options>
+               </field>
+               <field description="" name="DT_1" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:MP-parameter-g7X4cLTrQm8kzLempLmWoV</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <extData>
+               <nvpair name="treatEmptyStringAsNotNull">false</nvpair>
+               <nvpair name="treatEmptyObjectListAsArray">false</nvpair>
+            </extData>
+            <flow id="a">
+               <start id="b">
+                  <link id="mputog8z" targetId="mputog94"/>
+               </start>
+               <eventContainer id="mputog94">
+                  <service id="mputog8y">
+                     <title>DT_1</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">MP_parameter</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">g7X4cLTrQm8kzLempLmWoV</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="MP-parameter-g7X4cLTrQm8kzLempLmWoV">temp.DT_1</operation>
+                           <operation source="field" to="MP-parameter-g7X4cLTrQm8kzLempLmWoV/input[1]/from">temp.tmp_from</operation>
+                           <operation source="field" to="MP-parameter-g7X4cLTrQm8kzLempLmWoV/input[1]/size">temp.tmp_size</operation>
+                           <operation source="field" to="temp.DT_1[1]/input[1]/from">temp.tmp_from</operation>
+                           <operation source="field" to="temp.DT_1[1]/input[1]/size">temp.tmp_size</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.DT_1/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.DT_1/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.DT_1/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.DT_1/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.DT_1/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.DT_1/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.DT_1/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.DT_1/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.DT_1/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.DT_1/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.DT_1/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.DT_1/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.DT_1/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.DT_1/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="mputogbc" targetId="mputogbb"/>
+                  <events>
+                     <catch faultField="temp.DT_1/fault"
+                            id="mputog92"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.DT_1/fault"
+                            id="mputog93"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <assignment id="mputogbb">
+                  <title>Assignment 1</title>
+                  <operation source="formula" to="temp.tmp_from">
+                     <expression language="XQuery">$temp.tmp_from + 100</expression>
+                  </operation>
+                  <link id="mputogbk" targetId="mputogbj"/>
+               </assignment>
+               <container id="mputogbj" type="exclusive">
+                  <title>Decision 1</title>
+                  <flow id="mputogbn">
+                     <jumpTo id="mputogc6">
+                        <link id="mputogc7" targetId="mputog94"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="mputogbq">
+                     <link id="mputogbr" targetId="mputogbj" type="containerLink"/>
+                  </flow>
+                  <link id="mputogbm" targetId="mputogbn" type="containerLink">
+                     <condition source="formula">
+                        <function name="less-than">
+                           <arg name="left">{$temp.tmp_from}</arg>
+                           <arg name="right">{4000}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="mputogbp" targetId="mputogbq" type="containerLink"/>
+                  <link id="mputogbl" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="MP-parameter-g7X4cLTrQm8kzLempLmWoV"
+                              isByCopy="true"
+                              name="MP-parameter-g7X4cLTrQm8kzLempLmWoV">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Max Wait (Seconds)"
+                            name="Max_Wait"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>2yPI41IK6PFicHiUOhwBA2</types1:GUID>
+      <types1:DisplayName>TF_01_06</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2026-11-03T06:48:36.558Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
