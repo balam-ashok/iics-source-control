@@ -1,0 +1,109 @@
+{
+  "objectInfo" : {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "3YNLGH5tt7AfXD9G12Ilcu",
+    "name" : "Predefined Objective Group for Customer_SK",
+    "type" : "MDM_ENRICHMENT_SCENARIO_GROUP",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null,
+      "populationManifest" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "customer_sk_default_migration_scenario_group"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Predefined Objective Group for Customer_SK",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2026-11-03T12:53:50.022Z",
+  "objectRefs" : [ {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "5pWcLRDNMN3iyAtG4XIgaX",
+    "name" : "Customer_SK",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null,
+      "populationManifest" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "customer_sk"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Sushma/MDM Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
