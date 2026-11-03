@@ -1,0 +1,1 @@
+{"order":["erp_sk"],"exportedMetadataObjects":{"erp_sk":{"metadataType":"sourceSystem","payload":{"eClass":"http://informatica.com/mdm/v2/Core#//SourceSystem","guid":"erp_sk","ownerRole":"","frsID":"2bV0ciJCz4tjM6aSl7SkQb","name":"ERP_SK","description":"","label":{"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText","en":"ERP_SK"}}}},"rootGuid":"erp_sk"}

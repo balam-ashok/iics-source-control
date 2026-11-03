@@ -1,0 +1,1 @@
+{"order":["crm_sk"],"exportedMetadataObjects":{"crm_sk":{"metadataType":"sourceSystem","payload":{"eClass":"http://informatica.com/mdm/v2/Core#//SourceSystem","guid":"crm_sk","ownerRole":"","frsID":"7MXdvr380kwlfpeMGodbaV","name":"CRM_sk","description":"","label":{"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText","en":"CRM_sk"}}}},"rootGuid":"crm_sk"}
