@@ -1,0 +1,1 @@
+{"order":["ecom_sk"],"exportedMetadataObjects":{"ecom_sk":{"metadataType":"sourceSystem","payload":{"eClass":"http://informatica.com/mdm/v2/Core#//SourceSystem","guid":"ecom_sk","ownerRole":"","frsID":"3DpppsGNH6aiPRhBjydRit","name":"ECOM_sk","description":"","label":{"eClass":"http://informatica.com/mdm/v2/Core#//LocalizedText","en":"ECOM_sk"}}}},"rootGuid":"ecom_sk"}

@@ -1,0 +1,206 @@
+{
+  "objectInfo" : {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "7SOyWHH8mzleWv7ayFclQp",
+    "name" : "ingress_ERP",
+    "type" : "MDM_JOB_DEFINITION",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null,
+      "populationManifest" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "ingress_erp"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2026-11-03T12:53:50.027Z",
+  "objectRefs" : [ {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "5pWcLRDNMN3iyAtG4XIgaX",
+    "name" : "Customer_SK",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null,
+      "populationManifest" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "customer_sk"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Sushma/MDM Assets"
+  }, {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "2bV0ciJCz4tjM6aSl7SkQb",
+    "name" : "ERP_SK",
+    "type" : "MDM_SRC_SYSTEM",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202607.01"
+        },
+        "c360" : {
+          "version" : "202607.01"
+        },
+        "p360" : {
+          "version" : "202607.01"
+        },
+        "mde" : {
+          "version" : "202604.01"
+        },
+        "s360" : {
+          "version" : "202607.01"
+        }
+      },
+      "vaderMigrationStatus" : "NEW_TENANT",
+      "referenceDataAssets" : null,
+      "populationManifest" : null
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "erp_sk"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Sushma/MDM Assets"
+  }, {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "5iDVP3IfzqKcrKN7WdSDAM",
+    "name" : "MDMIngress",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "qxKf3eFhBJQWSwx-gt-1769023-2025-11-10T22:17:23.27Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Business360"
+  }, {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "dmFOB0DqyQmbBqdxCP1cu6",
+    "name" : "TF_ERP1",
+    "type" : "TASKFLOW",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "J9ARJi4tciSrZMS-gt-46069-2026-06-22T11:36:45.574Z::tf.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Sushma/MDM Assets"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
