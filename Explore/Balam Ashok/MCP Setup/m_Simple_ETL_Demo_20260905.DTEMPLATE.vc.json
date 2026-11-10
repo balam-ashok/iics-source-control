@@ -1,0 +1,644 @@
+{
+  "content" : {
+    "description" : "Simple ETL demo using available connections: source, transformation, and a separate demo target.",
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_Simple_ETL_Demo_20260905",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "flt_Products_With_Positive_Price -> Target"
+      },
+      {
+        "link" : "Source -> flt_Products_With_Positive_Price"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-05T11:04:59.011Z",
+        "name" : "Source",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "productCode"
+            },
+            "name" : "productCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productName"
+            },
+            "name" : "productName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productLine"
+            },
+            "name" : "productLine",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productScale"
+            },
+            "name" : "productScale",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productVendor"
+            },
+            "name" : "productVendor",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productDescription"
+            },
+            "name" : "productDescription",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "quantityInStock"
+            },
+            "name" : "quantityInStock",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "buyPrice"
+            },
+            "name" : "buyPrice",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "MSRP"
+            },
+            "name" : "MSRP",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@jM7T4v9WK28hvMG9I6Icen",
+          "connectionName" : "Sample Oracle Connection",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "PRODUCTS",
+            "label" : "PRODUCTS",
+            "objectName" : "PRODUCTS",
+            "objectType" : "Standard Records",
+            "path" : "PRODUCTS",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "productCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "productCode",
+                "nativeName" : "productCode",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productName",
+                "fieldType" : "CONNECTOR",
+                "label" : "productName",
+                "nativeName" : "productName",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productLine",
+                "fieldType" : "CONNECTOR",
+                "label" : "productLine",
+                "nativeName" : "productLine",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productScale",
+                "fieldType" : "CONNECTOR",
+                "label" : "productScale",
+                "nativeName" : "productScale",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productVendor",
+                "fieldType" : "CONNECTOR",
+                "label" : "productVendor",
+                "nativeName" : "productVendor",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productDescription",
+                "fieldType" : "CONNECTOR",
+                "label" : "productDescription",
+                "nativeName" : "productDescription",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "quantityInStock",
+                "fieldType" : "CONNECTOR",
+                "label" : "quantityInStock",
+                "nativeName" : "quantityInStock",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "buyPrice",
+                "fieldType" : "CONNECTOR",
+                "label" : "buyPrice",
+                "nativeName" : "buyPrice",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "MSRP",
+                "fieldType" : "CONNECTOR",
+                "label" : "MSRP",
+                "nativeName" : "MSRP",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-05T11:04:59.011Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "createTarget" : "false",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "productCode"
+            },
+            "name" : "productCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productName"
+            },
+            "name" : "productName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productLine"
+            },
+            "name" : "productLine",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productScale"
+            },
+            "name" : "productScale",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productVendor"
+            },
+            "name" : "productVendor",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "productDescription"
+            },
+            "name" : "productDescription",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "quantityInStock"
+            },
+            "name" : "quantityInStock",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "buyPrice"
+            },
+            "name" : "buyPrice",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "MSRP"
+            },
+            "name" : "MSRP",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 256,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@dSgYUki6YIxk1chvHij8en",
+          "connectionName" : "Sample SQLServer Connection",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "TOOLKIT",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "PRODUCTS",
+            "label" : "PRODUCTS",
+            "objectName" : "PRODUCTS",
+            "objectType" : "Standard Records",
+            "path" : "PRODUCTS",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "productCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "productCode",
+                "nativeName" : "productCode",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productName",
+                "fieldType" : "CONNECTOR",
+                "label" : "productName",
+                "nativeName" : "productName",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productLine",
+                "fieldType" : "CONNECTOR",
+                "label" : "productLine",
+                "nativeName" : "productLine",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productScale",
+                "fieldType" : "CONNECTOR",
+                "label" : "productScale",
+                "nativeName" : "productScale",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productVendor",
+                "fieldType" : "CONNECTOR",
+                "label" : "productVendor",
+                "nativeName" : "productVendor",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "productDescription",
+                "fieldType" : "CONNECTOR",
+                "label" : "productDescription",
+                "nativeName" : "productDescription",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "quantityInStock",
+                "fieldType" : "CONNECTOR",
+                "label" : "quantityInStock",
+                "nativeName" : "quantityInStock",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "buyPrice",
+                "fieldType" : "CONNECTOR",
+                "label" : "buyPrice",
+                "nativeName" : "buyPrice",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              },
+              {
+                "name" : "MSRP",
+                "fieldType" : "CONNECTOR",
+                "label" : "MSRP",
+                "nativeName" : "MSRP",
+                "nativeType" : "string",
+                "original" : "false",
+                "precision" : 256,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "PRODUCTS"
+                  }
+                ]
+              }
+            ]
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "false",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-09-05T11:07:24.074Z",
+        "name" : "flt_Products_With_Positive_Price",
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "true",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "advancedFilterCondition" : "IS_NUMBER(buyPrice) AND TO_DECIMAL(buyPrice) > 0"
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-11-09 23:46:03 PST"
+}
