@@ -1,0 +1,53 @@
+{
+  "objectInfo" : {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "2Mg2y0gx8PAcfVDvNRDrY8",
+    "name" : "AutotranslationInputDescription",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "UoFxWZvWMOxBchz-gt-80468-2026-01-12T07:13:30.743280937Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that defines the input description fields for auto-translation",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2026-11-11T07:24:16.514Z",
+  "objectRefs" : [ {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
+    "id" : "25GqolvmMBWeKCz3klomkL",
+    "name" : "AutotranslationSystem",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yXf66vfXjISUXL8-gt-72949-2026-01-12T07:13:30.397589992Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Process object that defines the system record for auto-translation",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/EVO_Asset/AutoTranslationforMDM360Applications"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
