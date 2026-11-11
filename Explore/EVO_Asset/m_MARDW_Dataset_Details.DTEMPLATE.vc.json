@@ -1,0 +1,4394 @@
+{
+  "content" : {
+    "allowMaxFieldLength" : "false",
+    "bigIntConvertType" : "ONLY_BIGINT",
+    "documentType" : "MAPPING",
+    "name" : "m_MARDW_Dataset_Details",
+    "specialCharacterSupport" : "false",
+    "links" : [
+      {
+        "link" : "src_DimAccount -> Target"
+      },
+      {
+        "link" : "src_DimCurrency -> Target1"
+      },
+      {
+        "link" : "src_DimDate -> Target2"
+      },
+      {
+        "link" : "src_FactCustomerBalance -> Target3"
+      },
+      {
+        "link" : "src_FactDailyBalance -> Target4"
+      },
+      {
+        "link" : "src_FactMonthlyBalance -> Target5"
+      }
+    ],
+    "transformations" : [
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.345Z",
+        "name" : "src_DimAccount",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "AccountBranchNumber"
+            },
+            "name" : "AccountBranchNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 4,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountBranchMnemonic"
+            },
+            "name" : "AccountBranchMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 4,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountBranchName"
+            },
+            "name" : "AccountBranchName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BasicPartOfAccountNumber"
+            },
+            "name" : "BasicPartOfAccountNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 6,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountSuffix"
+            },
+            "name" : "AccountSuffix",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerBasicNumber"
+            },
+            "name" : "CustomerBasicNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 6,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountShortName"
+            },
+            "name" : "AccountShortName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 15,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeCode"
+            },
+            "name" : "AccountTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeName"
+            },
+            "name" : "AccountTypeName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AnalysisCode"
+            },
+            "name" : "AnalysisCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AnalysisName"
+            },
+            "name" : "AnalysisName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerTypeCode"
+            },
+            "name" : "CustomerTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerTypeName"
+            },
+            "name" : "CustomerTypeName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountOfficerCode"
+            },
+            "name" : "AccountOfficerCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountOfficerName"
+            },
+            "name" : "AccountOfficerName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SundryAnalysisCode"
+            },
+            "name" : "SundryAnalysisCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SundryAnalysisName"
+            },
+            "name" : "SundryAnalysisName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrentStatus"
+            },
+            "name" : "CurrentStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ResidenceCountryCode"
+            },
+            "name" : "ResidenceCountryCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ResidenceCountryName"
+            },
+            "name" : "ResidenceCountryName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyMnemonic"
+            },
+            "name" : "CurrencyMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyName"
+            },
+            "name" : "CurrencyName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ParentCountryCode"
+            },
+            "name" : "ParentCountryCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ParentCountryName"
+            },
+            "name" : "ParentCountryName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BusinessSegmentCode"
+            },
+            "name" : "BusinessSegmentCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BusinessSegmentName"
+            },
+            "name" : "BusinessSegmentName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 30,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountOpenedKey"
+            },
+            "name" : "DateAccountOpenedKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountClosedKey"
+            },
+            "name" : "DateAccountClosedKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "ReferralCode"
+            },
+            "name" : "ReferralCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ReferralName"
+            },
+            "name" : "ReferralName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Internal"
+            },
+            "name" : "Internal",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Checksum"
+            },
+            "name" : "Checksum",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Inactive"
+            },
+            "name" : "Inactive",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DeceasedorLiquidated"
+            },
+            "name" : "DeceasedorLiquidated",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Blocked"
+            },
+            "name" : "Blocked",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dormant"
+            },
+            "name" : "Dormant",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountClosing"
+            },
+            "name" : "AccountClosing",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "JointAccount"
+            },
+            "name" : "JointAccount",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "VersionDateKey"
+            },
+            "name" : "VersionDateKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountDealTypeCategory"
+            },
+            "name" : "AccountDealTypeCategory",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DebitBalanceNotAllowed"
+            },
+            "name" : "DebitBalanceNotAllowed",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountClosed"
+            },
+            "name" : "DateAccountClosed",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountOpened"
+            },
+            "name" : "DateAccountOpened",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@g9f7sKDz04veIc6zBeSKIN",
+          "connectionName" : "conn_BM_sqlserver_MARDW",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dbo/DimAccount",
+            "dbSchema" : "dbo",
+            "label" : "DimAccount",
+            "objectName" : "DimAccount",
+            "path" : "dbo/DimAccount",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "AccountBranchNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchNumber",
+                "nativeName" : "AccountBranchNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 4,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountBranchMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchMnemonic",
+                "nativeName" : "AccountBranchMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 4,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountBranchName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchName",
+                "nativeName" : "AccountBranchName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "BasicPartOfAccountNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "BasicPartOfAccountNumber",
+                "nativeName" : "BasicPartOfAccountNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 6,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountSuffix",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountSuffix",
+                "nativeName" : "AccountSuffix",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerBasicNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerBasicNumber",
+                "nativeName" : "CustomerBasicNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 6,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountShortName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountShortName",
+                "nativeName" : "AccountShortName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeCode",
+                "nativeName" : "AccountTypeCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeName",
+                "nativeName" : "AccountTypeName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AnalysisCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AnalysisCode",
+                "nativeName" : "AnalysisCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AnalysisName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AnalysisName",
+                "nativeName" : "AnalysisName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerTypeCode",
+                "nativeName" : "CustomerTypeCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerTypeName",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerTypeName",
+                "nativeName" : "CustomerTypeName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountOfficerCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountOfficerCode",
+                "nativeName" : "AccountOfficerCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountOfficerName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountOfficerName",
+                "nativeName" : "AccountOfficerName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "SundryAnalysisCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "SundryAnalysisCode",
+                "nativeName" : "SundryAnalysisCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "SundryAnalysisName",
+                "fieldType" : "CONNECTOR",
+                "label" : "SundryAnalysisName",
+                "nativeName" : "SundryAnalysisName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrentStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrentStatus",
+                "nativeName" : "CurrentStatus",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ResidenceCountryCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ResidenceCountryCode",
+                "nativeName" : "ResidenceCountryCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ResidenceCountryName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ResidenceCountryName",
+                "nativeName" : "ResidenceCountryName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyMnemonic",
+                "nativeName" : "CurrencyMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyName",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyName",
+                "nativeName" : "CurrencyName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ParentCountryCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ParentCountryCode",
+                "nativeName" : "ParentCountryCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ParentCountryName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ParentCountryName",
+                "nativeName" : "ParentCountryName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "BusinessSegmentCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "BusinessSegmentCode",
+                "nativeName" : "BusinessSegmentCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "BusinessSegmentName",
+                "fieldType" : "CONNECTOR",
+                "label" : "BusinessSegmentName",
+                "nativeName" : "BusinessSegmentName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 30,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountOpenedKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountOpenedKey",
+                "nativeName" : "DateAccountOpenedKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountClosedKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountClosedKey",
+                "nativeName" : "DateAccountClosedKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ReferralCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ReferralCode",
+                "nativeName" : "ReferralCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ReferralName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ReferralName",
+                "nativeName" : "ReferralName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Internal",
+                "fieldType" : "CONNECTOR",
+                "label" : "Internal",
+                "nativeName" : "Internal",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Checksum",
+                "fieldType" : "CONNECTOR",
+                "label" : "Checksum",
+                "nativeName" : "Checksum",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Inactive",
+                "fieldType" : "CONNECTOR",
+                "label" : "Inactive",
+                "nativeName" : "Inactive",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DeceasedorLiquidated",
+                "fieldType" : "CONNECTOR",
+                "label" : "DeceasedorLiquidated",
+                "nativeName" : "DeceasedorLiquidated",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Blocked",
+                "fieldType" : "CONNECTOR",
+                "label" : "Blocked",
+                "nativeName" : "Blocked",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Dormant",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dormant",
+                "nativeName" : "Dormant",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountClosing",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountClosing",
+                "nativeName" : "AccountClosing",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "JointAccount",
+                "fieldType" : "CONNECTOR",
+                "label" : "JointAccount",
+                "nativeName" : "JointAccount",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "VersionDateKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "VersionDateKey",
+                "nativeName" : "VersionDateKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountDealTypeCategory",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountDealTypeCategory",
+                "nativeName" : "AccountDealTypeCategory",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DebitBalanceNotAllowed",
+                "fieldType" : "CONNECTOR",
+                "label" : "DebitBalanceNotAllowed",
+                "nativeName" : "DebitBalanceNotAllowed",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountClosed",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountClosed",
+                "nativeName" : "DateAccountClosed",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountOpened",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountOpened",
+                "nativeName" : "DateAccountOpened",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.346Z",
+        "name" : "Target",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "DimAccount.csv",
+            "label" : "DimAccount.csv",
+            "path" : "DimAccount.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "true",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.345Z",
+        "name" : "src_DimCurrency",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "CurrencyMnemonic"
+            },
+            "name" : "CurrencyMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyNumber"
+            },
+            "name" : "CurrencyNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SWIFTCurrencyCode"
+            },
+            "name" : "SWIFTCurrencyCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyName"
+            },
+            "name" : "CurrencyName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyUnit"
+            },
+            "name" : "CurrencyUnit",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 5,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Checksum"
+            },
+            "name" : "Checksum",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "VersionDateKey"
+            },
+            "name" : "VersionDateKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@g9f7sKDz04veIc6zBeSKIN",
+          "connectionName" : "conn_BM_sqlserver_MARDW",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dbo/DimCurrency",
+            "dbSchema" : "dbo",
+            "label" : "DimCurrency",
+            "objectName" : "DimCurrency",
+            "path" : "dbo/DimCurrency",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "CurrencyMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyMnemonic",
+                "nativeName" : "CurrencyMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimCurrency"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyNumber",
+                "nativeName" : "CurrencyNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimCurrency"
+                  }
+                ]
+              },
+              {
+                "name" : "SWIFTCurrencyCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "SWIFTCurrencyCode",
+                "nativeName" : "SWIFTCurrencyCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimCurrency"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyName",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyName",
+                "nativeName" : "CurrencyName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimCurrency"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyUnit",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyUnit",
+                "nativeName" : "CurrencyUnit",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 5,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimCurrency"
+                  }
+                ]
+              },
+              {
+                "name" : "Checksum",
+                "fieldType" : "CONNECTOR",
+                "label" : "Checksum",
+                "nativeName" : "Checksum",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimCurrency"
+                  }
+                ]
+              },
+              {
+                "name" : "VersionDateKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "VersionDateKey",
+                "nativeName" : "VersionDateKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimCurrency"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.346Z",
+        "name" : "Target1",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "DimCurrency.csv",
+            "label" : "DimCurrency.csv",
+            "path" : "DimCurrency.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "true",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.345Z",
+        "name" : "src_DimDate",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "AccountBranchNumber"
+            },
+            "name" : "AccountBranchNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 4,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountBranchMnemonic"
+            },
+            "name" : "AccountBranchMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 4,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountBranchName"
+            },
+            "name" : "AccountBranchName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BasicPartOfAccountNumber"
+            },
+            "name" : "BasicPartOfAccountNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 6,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountSuffix"
+            },
+            "name" : "AccountSuffix",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerBasicNumber"
+            },
+            "name" : "CustomerBasicNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 6,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountShortName"
+            },
+            "name" : "AccountShortName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 15,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeCode"
+            },
+            "name" : "AccountTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeName"
+            },
+            "name" : "AccountTypeName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AnalysisCode"
+            },
+            "name" : "AnalysisCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AnalysisName"
+            },
+            "name" : "AnalysisName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerTypeCode"
+            },
+            "name" : "CustomerTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CustomerTypeName"
+            },
+            "name" : "CustomerTypeName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountOfficerCode"
+            },
+            "name" : "AccountOfficerCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountOfficerName"
+            },
+            "name" : "AccountOfficerName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SundryAnalysisCode"
+            },
+            "name" : "SundryAnalysisCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "SundryAnalysisName"
+            },
+            "name" : "SundryAnalysisName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrentStatus"
+            },
+            "name" : "CurrentStatus",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ResidenceCountryCode"
+            },
+            "name" : "ResidenceCountryCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ResidenceCountryName"
+            },
+            "name" : "ResidenceCountryName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyMnemonic"
+            },
+            "name" : "CurrencyMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyName"
+            },
+            "name" : "CurrencyName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ParentCountryCode"
+            },
+            "name" : "ParentCountryCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ParentCountryName"
+            },
+            "name" : "ParentCountryName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BusinessSegmentCode"
+            },
+            "name" : "BusinessSegmentCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BusinessSegmentName"
+            },
+            "name" : "BusinessSegmentName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 30,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountOpenedKey"
+            },
+            "name" : "DateAccountOpenedKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountClosedKey"
+            },
+            "name" : "DateAccountClosedKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "ReferralCode"
+            },
+            "name" : "ReferralCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ReferralName"
+            },
+            "name" : "ReferralName",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Internal"
+            },
+            "name" : "Internal",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Checksum"
+            },
+            "name" : "Checksum",
+            "platformType" : {
+              "name" : "integer"
+            },
+            "precision" : 10,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Inactive"
+            },
+            "name" : "Inactive",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DeceasedorLiquidated"
+            },
+            "name" : "DeceasedorLiquidated",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Blocked"
+            },
+            "name" : "Blocked",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "Dormant"
+            },
+            "name" : "Dormant",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountClosing"
+            },
+            "name" : "AccountClosing",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "JointAccount"
+            },
+            "name" : "JointAccount",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "VersionDateKey"
+            },
+            "name" : "VersionDateKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountDealTypeCategory"
+            },
+            "name" : "AccountDealTypeCategory",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 35,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DebitBalanceNotAllowed"
+            },
+            "name" : "DebitBalanceNotAllowed",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 1,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountClosed"
+            },
+            "name" : "DateAccountClosed",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "DateAccountOpened"
+            },
+            "name" : "DateAccountOpened",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@g9f7sKDz04veIc6zBeSKIN",
+          "connectionName" : "conn_BM_sqlserver_MARDW",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dbo/DimAccount",
+            "dbSchema" : "dbo",
+            "label" : "DimAccount",
+            "objectName" : "DimAccount",
+            "path" : "dbo/DimAccount",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "AccountBranchNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchNumber",
+                "nativeName" : "AccountBranchNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 4,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountBranchMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchMnemonic",
+                "nativeName" : "AccountBranchMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 4,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountBranchName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchName",
+                "nativeName" : "AccountBranchName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "BasicPartOfAccountNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "BasicPartOfAccountNumber",
+                "nativeName" : "BasicPartOfAccountNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 6,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountSuffix",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountSuffix",
+                "nativeName" : "AccountSuffix",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerBasicNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerBasicNumber",
+                "nativeName" : "CustomerBasicNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 6,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountShortName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountShortName",
+                "nativeName" : "AccountShortName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeCode",
+                "nativeName" : "AccountTypeCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeName",
+                "nativeName" : "AccountTypeName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AnalysisCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AnalysisCode",
+                "nativeName" : "AnalysisCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AnalysisName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AnalysisName",
+                "nativeName" : "AnalysisName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerTypeCode",
+                "nativeName" : "CustomerTypeCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CustomerTypeName",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerTypeName",
+                "nativeName" : "CustomerTypeName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountOfficerCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountOfficerCode",
+                "nativeName" : "AccountOfficerCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountOfficerName",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountOfficerName",
+                "nativeName" : "AccountOfficerName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "SundryAnalysisCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "SundryAnalysisCode",
+                "nativeName" : "SundryAnalysisCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "SundryAnalysisName",
+                "fieldType" : "CONNECTOR",
+                "label" : "SundryAnalysisName",
+                "nativeName" : "SundryAnalysisName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrentStatus",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrentStatus",
+                "nativeName" : "CurrentStatus",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ResidenceCountryCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ResidenceCountryCode",
+                "nativeName" : "ResidenceCountryCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ResidenceCountryName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ResidenceCountryName",
+                "nativeName" : "ResidenceCountryName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyMnemonic",
+                "nativeName" : "CurrencyMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyName",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyName",
+                "nativeName" : "CurrencyName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ParentCountryCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ParentCountryCode",
+                "nativeName" : "ParentCountryCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ParentCountryName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ParentCountryName",
+                "nativeName" : "ParentCountryName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "BusinessSegmentCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "BusinessSegmentCode",
+                "nativeName" : "BusinessSegmentCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "BusinessSegmentName",
+                "fieldType" : "CONNECTOR",
+                "label" : "BusinessSegmentName",
+                "nativeName" : "BusinessSegmentName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 30,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountOpenedKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountOpenedKey",
+                "nativeName" : "DateAccountOpenedKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountClosedKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountClosedKey",
+                "nativeName" : "DateAccountClosedKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ReferralCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "ReferralCode",
+                "nativeName" : "ReferralCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "ReferralName",
+                "fieldType" : "CONNECTOR",
+                "label" : "ReferralName",
+                "nativeName" : "ReferralName",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Internal",
+                "fieldType" : "CONNECTOR",
+                "label" : "Internal",
+                "nativeName" : "Internal",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Checksum",
+                "fieldType" : "CONNECTOR",
+                "label" : "Checksum",
+                "nativeName" : "Checksum",
+                "nativeType" : "integer",
+                "original" : "false",
+                "precision" : 10,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Inactive",
+                "fieldType" : "CONNECTOR",
+                "label" : "Inactive",
+                "nativeName" : "Inactive",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DeceasedorLiquidated",
+                "fieldType" : "CONNECTOR",
+                "label" : "DeceasedorLiquidated",
+                "nativeName" : "DeceasedorLiquidated",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Blocked",
+                "fieldType" : "CONNECTOR",
+                "label" : "Blocked",
+                "nativeName" : "Blocked",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "Dormant",
+                "fieldType" : "CONNECTOR",
+                "label" : "Dormant",
+                "nativeName" : "Dormant",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountClosing",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountClosing",
+                "nativeName" : "AccountClosing",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "JointAccount",
+                "fieldType" : "CONNECTOR",
+                "label" : "JointAccount",
+                "nativeName" : "JointAccount",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "VersionDateKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "VersionDateKey",
+                "nativeName" : "VersionDateKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountDealTypeCategory",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountDealTypeCategory",
+                "nativeName" : "AccountDealTypeCategory",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 35,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DebitBalanceNotAllowed",
+                "fieldType" : "CONNECTOR",
+                "label" : "DebitBalanceNotAllowed",
+                "nativeName" : "DebitBalanceNotAllowed",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 1,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountClosed",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountClosed",
+                "nativeName" : "DateAccountClosed",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              },
+              {
+                "name" : "DateAccountOpened",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateAccountOpened",
+                "nativeName" : "DateAccountOpened",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/DimAccount"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.346Z",
+        "name" : "Target2",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "DimDate.csv",
+            "label" : "DimDate.csv",
+            "path" : "DimDate.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "true",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.345Z",
+        "name" : "src_FactCustomerBalance",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "CustomerBasicNumber"
+            },
+            "name" : "CustomerBasicNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 6,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateKey"
+            },
+            "name" : "DateKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "AverageBalanceQAR"
+            },
+            "name" : "AverageBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingBalanceQAR"
+            },
+            "name" : "ClosingBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingShadowBalanceQAR"
+            },
+            "name" : "ClosingShadowBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "DepositAverageBalanceQAR"
+            },
+            "name" : "DepositAverageBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "DepositClosingBalanceQAR"
+            },
+            "name" : "DepositClosingBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "DepositClosingShadowBalanceQAR"
+            },
+            "name" : "DepositClosingShadowBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "FinancingAverageBalanceQAR"
+            },
+            "name" : "FinancingAverageBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "FinancingClosingBalanceQAR"
+            },
+            "name" : "FinancingClosingBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "FinancingClosingShadowBalanceQAR"
+            },
+            "name" : "FinancingClosingShadowBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@g9f7sKDz04veIc6zBeSKIN",
+          "connectionName" : "conn_BM_sqlserver_MARDW",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dbo/FactCustomerBalance",
+            "dbSchema" : "dbo",
+            "label" : "FactCustomerBalance",
+            "objectName" : "FactCustomerBalance",
+            "path" : "dbo/FactCustomerBalance",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "CustomerBasicNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "CustomerBasicNumber",
+                "nativeName" : "CustomerBasicNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 6,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "DateKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateKey",
+                "nativeName" : "DateKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "AverageBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "AverageBalanceQAR",
+                "nativeName" : "AverageBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingBalanceQAR",
+                "nativeName" : "ClosingBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingShadowBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingShadowBalanceQAR",
+                "nativeName" : "ClosingShadowBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "DepositAverageBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "DepositAverageBalanceQAR",
+                "nativeName" : "DepositAverageBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "DepositClosingBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "DepositClosingBalanceQAR",
+                "nativeName" : "DepositClosingBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "DepositClosingShadowBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "DepositClosingShadowBalanceQAR",
+                "nativeName" : "DepositClosingShadowBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "FinancingAverageBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "FinancingAverageBalanceQAR",
+                "nativeName" : "FinancingAverageBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "FinancingClosingBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "FinancingClosingBalanceQAR",
+                "nativeName" : "FinancingClosingBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "FinancingClosingShadowBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "FinancingClosingShadowBalanceQAR",
+                "nativeName" : "FinancingClosingShadowBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactCustomerBalance"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.346Z",
+        "name" : "Target3",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "FactCustomerBalance.csv",
+            "label" : "FactCustomerBalance.csv",
+            "path" : "FactCustomerBalance.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "true",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.345Z",
+        "name" : "src_FactDailyBalance",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "AccountBranchMnemonic"
+            },
+            "name" : "AccountBranchMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 4,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BasicPartOfAccountNumber"
+            },
+            "name" : "BasicPartOfAccountNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 6,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountSuffix"
+            },
+            "name" : "AccountSuffix",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateKey"
+            },
+            "name" : "DateKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyMnemonic"
+            },
+            "name" : "CurrencyMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingBalanceCUR"
+            },
+            "name" : "ClosingBalanceCUR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 3
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingBalanceQAR"
+            },
+            "name" : "ClosingBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingShadowBalanceCUR"
+            },
+            "name" : "ClosingShadowBalanceCUR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 3
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingShadowBalanceQAR"
+            },
+            "name" : "ClosingShadowBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeCode"
+            },
+            "name" : "AccountTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@g9f7sKDz04veIc6zBeSKIN",
+          "connectionName" : "conn_BM_sqlserver_MARDW",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dbo/FactDailyBalance",
+            "dbSchema" : "dbo",
+            "label" : "FactDailyBalance",
+            "objectName" : "FactDailyBalance",
+            "path" : "dbo/FactDailyBalance",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "AccountBranchMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchMnemonic",
+                "nativeName" : "AccountBranchMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 4,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "BasicPartOfAccountNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "BasicPartOfAccountNumber",
+                "nativeName" : "BasicPartOfAccountNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 6,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountSuffix",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountSuffix",
+                "nativeName" : "AccountSuffix",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "DateKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateKey",
+                "nativeName" : "DateKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyMnemonic",
+                "nativeName" : "CurrencyMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingBalanceCUR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingBalanceCUR",
+                "nativeName" : "ClosingBalanceCUR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingBalanceQAR",
+                "nativeName" : "ClosingBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingShadowBalanceCUR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingShadowBalanceCUR",
+                "nativeName" : "ClosingShadowBalanceCUR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingShadowBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingShadowBalanceQAR",
+                "nativeName" : "ClosingShadowBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeCode",
+                "nativeName" : "AccountTypeCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactDailyBalance"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.346Z",
+        "name" : "Target4",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "FactDailyBalance.csv",
+            "label" : "FactDailyBalance.csv",
+            "path" : "FactDailyBalance.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "true",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.345Z",
+        "name" : "src_FactMonthlyBalance",
+        "advancedProperties" : [
+          {
+            "name" : "Tracing Level",
+            "value" : "Normal"
+          },
+          {
+            "name" : "Output is deterministic",
+            "value" : "false"
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "false",
+            "name" : "DefaultGroup",
+            "output" : "true"
+          }
+        ],
+        "generateFilenamePort" : "false",
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "fields" : [
+          {
+            "adapterField" : {
+              "name" : "AccountBranchMnemonic"
+            },
+            "name" : "AccountBranchMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 4,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "BasicPartOfAccountNumber"
+            },
+            "name" : "BasicPartOfAccountNumber",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 6,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountSuffix"
+            },
+            "name" : "AccountSuffix",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "DateKey"
+            },
+            "name" : "DateKey",
+            "platformType" : {
+              "name" : "date/time"
+            },
+            "precision" : 29,
+            "scale" : 9
+          },
+          {
+            "adapterField" : {
+              "name" : "CurrencyMnemonic"
+            },
+            "name" : "CurrencyMnemonic",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 3,
+            "scale" : 0
+          },
+          {
+            "adapterField" : {
+              "name" : "AverageBalanceCUR"
+            },
+            "name" : "AverageBalanceCUR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 3
+          },
+          {
+            "adapterField" : {
+              "name" : "AverageBalanceQAR"
+            },
+            "name" : "AverageBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingBalanceCUR"
+            },
+            "name" : "ClosingBalanceCUR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 3
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingBalanceQAR"
+            },
+            "name" : "ClosingBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingShadowBalanceCUR"
+            },
+            "name" : "ClosingShadowBalanceCUR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 3
+          },
+          {
+            "adapterField" : {
+              "name" : "ClosingShadowBalanceQAR"
+            },
+            "name" : "ClosingShadowBalanceQAR",
+            "platformType" : {
+              "name" : "decimal"
+            },
+            "precision" : 15,
+            "scale" : 2
+          },
+          {
+            "adapterField" : {
+              "name" : "AccountTypeCode"
+            },
+            "name" : "AccountTypeCode",
+            "platformType" : {
+              "name" : "string"
+            },
+            "precision" : 2,
+            "scale" : 0
+          }
+        ],
+        "dataAdapter" : {
+          "connectionId" : "saas:@g9f7sKDz04veIc6zBeSKIN",
+          "connectionName" : "conn_BM_sqlserver_MARDW",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "SqlServer",
+          "useDynamicFileName" : "false",
+          "object" : {
+            "name" : "dbo/FactMonthlyBalance",
+            "dbSchema" : "dbo",
+            "label" : "FactMonthlyBalance",
+            "objectName" : "FactMonthlyBalance",
+            "path" : "dbo/FactMonthlyBalance",
+            "retainMetadata" : "false",
+            "fields" : [
+              {
+                "name" : "AccountBranchMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountBranchMnemonic",
+                "nativeName" : "AccountBranchMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 4,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "BasicPartOfAccountNumber",
+                "fieldType" : "CONNECTOR",
+                "label" : "BasicPartOfAccountNumber",
+                "nativeName" : "BasicPartOfAccountNumber",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 6,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountSuffix",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountSuffix",
+                "nativeName" : "AccountSuffix",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "DateKey",
+                "fieldType" : "CONNECTOR",
+                "label" : "DateKey",
+                "nativeName" : "DateKey",
+                "nativeType" : "timestamp",
+                "original" : "false",
+                "precision" : 23,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "CurrencyMnemonic",
+                "fieldType" : "CONNECTOR",
+                "label" : "CurrencyMnemonic",
+                "nativeName" : "CurrencyMnemonic",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 3,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "AverageBalanceCUR",
+                "fieldType" : "CONNECTOR",
+                "label" : "AverageBalanceCUR",
+                "nativeName" : "AverageBalanceCUR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "AverageBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "AverageBalanceQAR",
+                "nativeName" : "AverageBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingBalanceCUR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingBalanceCUR",
+                "nativeName" : "ClosingBalanceCUR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingBalanceQAR",
+                "nativeName" : "ClosingBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingShadowBalanceCUR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingShadowBalanceCUR",
+                "nativeName" : "ClosingShadowBalanceCUR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 3,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "ClosingShadowBalanceQAR",
+                "fieldType" : "CONNECTOR",
+                "label" : "ClosingShadowBalanceQAR",
+                "nativeName" : "ClosingShadowBalanceQAR",
+                "nativeType" : "numeric",
+                "original" : "false",
+                "precision" : 15,
+                "scale" : 2,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              },
+              {
+                "name" : "AccountTypeCode",
+                "fieldType" : "CONNECTOR",
+                "label" : "AccountTypeCode",
+                "nativeName" : "AccountTypeCode",
+                "nativeType" : "nvarchar",
+                "original" : "false",
+                "precision" : 2,
+                "scale" : 0,
+                "properties" : [
+                  {
+                    "name" : "parentObject",
+                    "value" : "dbo/FactMonthlyBalance"
+                  }
+                ]
+              }
+            ]
+          },
+          "readOptions" : {
+            "commandType" : 0,
+            "descending" : "false",
+            "queryAll" : "false",
+            "rowLimit" : 0,
+            "selectDistinct" : "false"
+          }
+        }
+      },
+      {
+        "augmented" : "false",
+        "createTime" : "2026-01-19T08:10:16.346Z",
+        "name" : "Target5",
+        "advancedProperties" : [
+          {
+            "name" : "Forward Rejected Rows",
+            "value" : "true"
+          },
+          {
+            "name" : "Thousand Separator",
+            "value" : "None"
+          },
+          {
+            "name" : "Decimal Separator",
+            "value" : "."
+          }
+        ],
+        "groups" : [
+          {
+            "input" : "true",
+            "name" : "DefaultGroup",
+            "output" : "false",
+            "rules" : [
+              {
+                "bulkRename" : "false",
+                "include" : "true"
+              }
+            ]
+          }
+        ],
+        "sessionProperties" : [
+          {
+            "name" : "Append if Exists",
+            "value" : "NO"
+          },
+          {
+            "name" : "Create Target Directory",
+            "value" : "NO"
+          },
+          {
+            "name" : "Header Options",
+            "value" : "Output Field Names"
+          },
+          {
+            "name" : "Output Type",
+            "value" : "File"
+          }
+        ],
+        "createTarget" : "true",
+        "fieldMappingMode" : "BY_NAME",
+        "inputSorted" : "false",
+        "schemaProviderType" : "SELECTED_OBJECT",
+        "targetFieldsOrdered" : "false",
+        "updateColumns" : null,
+        "useLabels" : "false",
+        "useSequenceFields" : "false",
+        "dataAdapter" : {
+          "connectionId" : "saas:@cLwPYdAiDQugxcpRaS68uh",
+          "connectionName" : "conn_BM_ff_TGT",
+          "excludeDynamicFileNameField" : "false",
+          "objectType" : "SINGLE",
+          "typeSystem" : "CSVFile",
+          "useDynamicFileName" : "false",
+          "bulkOptions" : {
+            "hardDelete" : "false",
+            "maxRowsPerRequest" : 0,
+            "monitorBulk" : "false",
+            "monitorBulkV2" : "false",
+            "pkChunkingEnabled" : "false",
+            "pkChunkingSize" : 0,
+            "serialMode" : "false",
+            "useBulkApi" : "false",
+            "useBulkApiV2" : "false"
+          },
+          "object" : {
+            "name" : "FactMonthlyBalance.csv",
+            "label" : "FactMonthlyBalance.csv",
+            "path" : "FactMonthlyBalance.csv",
+            "retainMetadata" : "false",
+            "fileAttrs" : {
+              "consecutiveDelimiter" : "false",
+              "delimiter" : ",",
+              "firstDataRow" : 2,
+              "firstDataRowAsHeader" : "false",
+              "headerAndDataDelimiter" : 0,
+              "headerLineNo" : 1,
+              "multiDelimitersAsAnd" : "true",
+              "rowDelimiter" : 0,
+              "textQualifier" : "\""
+            }
+          },
+          "writeOptions" : {
+            "batchSize" : 0,
+            "bulkApi" : "false",
+            "handleDecimalRoundOff" : "false",
+            "handleSpecialChars" : "true",
+            "operations" : [
+              "Insert"
+            ],
+            "setFieldsToNull" : "false",
+            "truncate" : "false",
+            "useErrorFile" : "false",
+            "useExactSrcNames" : "false",
+            "useSuccessFile" : "false"
+          }
+        }
+      }
+    ]
+  },
+  "vcsExportTime" : "2026-11-10 23:21:49 PST"
+}
