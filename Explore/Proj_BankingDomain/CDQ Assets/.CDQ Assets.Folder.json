@@ -1,5 +1,8 @@
 {
   "objectInfo" : {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
     "id" : "aStt7vRBfwseymrnYQKYio",
     "name" : "CDQ Assets",
     "type" : "Folder",
@@ -18,7 +21,7 @@
     }
   },
   "dataFileExtension" : "json",
-  "updateTime" : "2026-09-23T08:34:48.166Z",
+  "updateTime" : "2026-11-18T07:55:22.201Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false
