@@ -1,5 +1,8 @@
 {
   "objectInfo" : {
+    "schemaVersion" : null,
+    "idmcRelease" : null,
+    "productRelease" : null,
     "id" : "850oU52CYofl5QFCgncuQo",
     "name" : "Proj_BankingDomain",
     "type" : "Project",
@@ -18,7 +21,7 @@
     }
   },
   "dataFileExtension" : "json",
-  "updateTime" : "2026-09-23T08:34:48.188Z",
+  "updateTime" : "2026-11-18T07:55:22.201Z",
   "objectRefs" : [ ],
   "readableFileExtension" : null,
   "readableFilePresent" : false
