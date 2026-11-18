@@ -1,0 +1,233 @@
+name: IDMC build check
+
+# =====================================================================================================================
+# IDMC build check: validate every Dev check-in; a release tag -> a release branch and PR
+#
+#   development ──release/vX.Y.Z-to-tst──> testing ──release/vX.Y.Z-to-prd──> main      one Git branch per IDMC org
+#   (Dev org)                              (Test org)                         (Prod org)
+#
+#   validate  every IDMC check-in (push to development) and every release, for what a release would promote now (the
+#             changed assets tagged ready in the source org + the changed assets they use): the connections / runtime
+#             environments they use exist in the next org (Test; Prod for a vX.Y.Z-tst run) under their names there,
+#             and the assets they use that are not in Git are already there. Untagged work is not checked.
+#   To Test   an IDMC check-in from the Dev org with the commit tag vX.Y.Z-dev (IDMC pushes it as a Git tag).
+#             A check-in without a vX.Y.Z-dev tag is only validated.
+#   To Prod   by hand once vX.Y.Z is deployed to Test: Actions > IDMC build check > Run workflow (from testing),
+#             tag vX.Y.Z-tst (created by the Test deploy).
+#   Assets at the tagged commit that differ from the target branch AND carry the source org's ready tag (Explore >
+#   Tags; Dev for Test, Test for Prod), plus changed assets they use, are copied onto release/vX.Y.Z-to-tst or
+#   release/vX.Y.Z-to-prd (built from the target branch), a PR is opened or updated, and the "validate" job of
+#   idmc-promote.yml is started on that branch. No tagged asset: the run ends green with "Nothing to promote" and no
+#   PR. Never merges. The release PR is raised only after validate passes. The merge, the deploy and the next Git tag
+#   are in idmc-promote.yml.
+#   Tagged in Dev after the check-in? Run workflow (from development), tag vX.Y.Z-dev.
+#
+# Keep this file, idmc-promote.yml and .github/scripts/idmc-functions.sh identical on main, testing and development
+# (a tag push runs the tagged commit's copy).
+#
+# Settings > Environments (one per IDMC org, same names in each; see idmc-promote.yml for the full list)
+#   DEV, TST   variables IICS_USERNAME (the org's service user) and TAG_READY (marks an asset for promotion),
+#              secret IICS_PASSWORD
+#   TST, PRD   also SRC_IICS_USERNAME / SRC_IICS_PASSWORD and TAG_READY (the source org's): validate selects with them
+#   Deployment branches and tags: DEV development + tag v*-dev; TST development + tag v*-dev + testing (validate
+#   runs in the target org's environment); PRD testing.
+#   Repository variable IICS_LOGIN_URL   IDMC pod login URL, e.g. https://dmp-us.informaticacloud.com
+#   Settings > Actions > General: "Allow GitHub Actions to create and approve pull requests" must be on (uses GITHUB_TOKEN).
+# =====================================================================================================================
+
+on:
+  push:
+    branches: [development]                # every IDMC check-in from the Dev org: validate only
+    tags: ['v*-dev']                       # IDMC commit tag on a Dev check-in: validate, then the release PR
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to promote, vX.Y.Z-dev (to Test, run from development) or vX.Y.Z-tst (to Prod, run from testing)
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  IICS_LOGIN_URL: ${{ vars.IICS_LOGIN_URL }}
+
+jobs:
+  # ===================================================================================================================
+  # validate: what a release would promote now (source org) is deployable to the target org (Prod for a -tst tag,
+  # else Test). Runs in the target org's environment, which also holds the source org's login and ready tag.
+  # ===================================================================================================================
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    environment: ${{ endsWith(inputs.tag, '-tst') && 'PRD' || 'TST' }}
+    env:
+      TARGET_ENV: ${{ endsWith(inputs.tag, '-tst') && 'PRD' || 'TST' }}
+      DST_BRANCH: ${{ endsWith(inputs.tag, '-tst') && 'main' || 'testing' }}
+      IICS_USERNAME: ${{ vars.IICS_USERNAME }}
+      IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
+      SRC_IICS_USERNAME: ${{ vars.SRC_IICS_USERNAME }}
+      SRC_IICS_PASSWORD: ${{ secrets.SRC_IICS_PASSWORD }}
+      TAG_READY: ${{ vars.TAG_READY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.tag || github.sha }}
+          fetch-depth: 0
+
+      - name: Check the target org has what the release would use
+        run: |
+          source .github/scripts/idmc-functions.sh
+          require IICS_LOGIN_URL IICS_USERNAME IICS_PASSWORD SRC_IICS_USERNAME SRC_IICS_PASSWORD TAG_READY
+          idmc_login "$SRC_IICS_USERNAME" "$SRC_IICS_PASSWORD"
+          select_release HEAD "origin/$DST_BRANCH"
+          if [ ! -s selected.txt ]; then
+            echo "No changed asset is tagged **$TAG_READY**: nothing to release, nothing to validate." | tee -a "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          { echo "### Validating for $TARGET_ENV"; bullets promote.txt; } | tee -a "$GITHUB_STEP_SUMMARY"
+          name_map "$TARGET_ENV" promote.txt
+          idmc_login "$IICS_USERNAME" "$IICS_PASSWORD"
+          rc=0
+          check_target_names "$TARGET_ENV" || rc=1
+          check_target_assets "$TARGET_ENV" || rc=1
+          exit $rc
+
+  # ===================================================================================================================
+  # raise-release-pr: tagged assets -> release branch -> PR, then starts "validate". Never merges.
+  # Runs in the source org's environment: its login and ready tag. Release tags only, after validate.
+  # ===================================================================================================================
+  raise-release-pr:
+    name: Raise the release PR
+    needs: validate
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    environment: ${{ endsWith(github.event_name == 'push' && github.ref_name || inputs.tag, '-tst') && 'TST' || 'DEV' }}
+    permissions:
+      actions: write
+      contents: write
+      pull-requests: write
+    concurrency:
+      group: idmc-release-${{ github.event_name == 'push' && github.ref_name || inputs.tag }}
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ github.event_name == 'push' && github.ref_name || inputs.tag }}
+      TAG_READY: ${{ vars.TAG_READY }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      # A copy outside the workspace: the build step below switches the checked-out branch.
+      - name: Load the helper functions
+        run: |
+          cp .github/scripts/idmc-functions.sh "$RUNNER_TEMP/"
+          echo "IDMC_LIB=$RUNNER_TEMP/idmc-functions.sh" >> "$GITHUB_ENV"
+
+      # SRC: the tagged commit, which must be on the source branch; DST: the target branch; PROMO: the release branch
+      - name: Read the release tag
+        run: |
+          if [ -z "$IICS_LOGIN_URL" ]; then echo "::error::Repository variable not set: IICS_LOGIN_URL"; exit 1; fi
+          if ! [[ "$TAG" =~ ^(v[0-9]+\.[0-9]+\.[0-9]+)-(dev|tst)$ ]]; then
+            echo "::error::Not a release tag: '$TAG'. Use vX.Y.Z-dev (to Test) or vX.Y.Z-tst (to Prod)."; exit 1
+          fi
+          version=${BASH_REMATCH[1]}
+          #                                src branch  dst branch  src    dst
+          case "${BASH_REMATCH[2]}" in
+            dev) set -- development testing "Dev"  "Test" "release/$version-to-tst" ;;
+            tst) set -- testing     main    "Test" "Prod" "release/$version-to-prd" ;;
+          esac
+          sha=$(git rev-parse -q --verify "refs/tags/$TAG^{commit}") || { echo "::error::Git tag $TAG not found"; exit 1; }
+          if ! git merge-base --is-ancestor "$sha" "origin/$1"; then
+            echo "::error::Git tag $TAG ($sha) is not on the $1 branch"; exit 1
+          fi
+          { echo "SRC=$sha"; echo "SRC_BRANCH=$1"; echo "DST=$2"; echo "SRC_NAME=$3"; echo "DST_NAME=$4"; echo "PROMO=$5"
+            echo "VERSION=$version"; } >> "$GITHUB_ENV"
+          echo "Release $TAG ($sha on $1): looking for tagged assets for $3 -> $4" | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Select the tagged assets
+        id: pick
+        env:
+          IICS_USERNAME: ${{ vars.IICS_USERNAME }}
+          IICS_PASSWORD: ${{ secrets.IICS_PASSWORD }}
+        run: |
+          source "$IDMC_LIB"
+          require TAG_READY IICS_USERNAME IICS_PASSWORD
+          idmc_login "$IICS_USERNAME" "$IICS_PASSWORD"
+          select_release "$SRC" "origin/$DST"
+          if [ ! -s changed.txt ]; then
+            echo "Nothing at $TAG differs from $DST; no PR." | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "count=0" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if [ ! -s selected.txt ]; then
+            { echo "### Nothing to promote"
+              echo "None of the assets changed at $TAG is tagged **$TAG_READY** in the $SRC_NAME org, so no PR was raised."
+              echo "To promote, tag the assets in IDMC, then run this workflow by hand from $SRC_BRANCH with the tag $TAG."
+              echo "#### Checked in, not tagged"; bullets changed.txt
+              echo "#### Tagged $TAG_READY in the $SRC_NAME org (IDMC returned $(wc -l < tagged.txt))"
+              if [ -s tagged.txt ]; then bullets tagged.txt; else echo "None"; fi
+            } | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "count=0" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+
+          { echo "### Tagged $TAG_READY in $SRC_NAME"; bullets selected.txt
+            if [ -s used.txt ]; then echo "### Used by them (also promoted)"; bullets used.txt; fi
+            if [ -s left.txt ]; then echo "### Changed but not tagged (stay on $SRC_BRANCH)"; bullets left.txt; fi
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+          echo "count=$(wc -l < promote.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Build the release branch and open or update the PR
+        id: pr
+        if: steps.pick.outputs.count != '0'
+        run: |
+          source "$IDMC_LIB"
+          # files.txt: each asset's files (incl. hidden metadata) and the project / folder files holding them
+          git -c core.quotePath=false ls-tree -r --name-only "$SRC" -- Explore > srcfiles.txt
+          : > files.txt
+          while IFS= read -r k; do
+            d=${k%/*}; b=${k##*/}
+            awk -v a="$d/$b." -v h="$d/.$b." 'index($0, a) == 1 || index($0, h) == 1' srcfiles.txt >> files.txt
+            acc=Explore
+            IFS=/ read -ra parts <<< "${d#Explore/}"
+            for part in "${parts[@]}"; do
+              acc="$acc/$part"
+              awk -v a="$acc/$part." -v h="$acc/.$part." \
+                '(index($0, a) == 1 || index($0, h) == 1) && tolower($0) ~ /\.(project|folder)\.json$/' srcfiles.txt >> files.txt
+            done
+          done < promote.txt
+          sort -u -o files.txt files.txt
+
+          # release branch = target branch + the tagged commit's version of those files
+          git checkout -q -B "$PROMO" "origin/$DST"
+          git --literal-pathspecs restore --source="$SRC" --staged --worktree --pathspec-from-file=files.txt
+          if git diff --cached --quiet; then echo "$DST already has these versions; no PR."; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "Release $VERSION: $SRC_NAME to $DST_NAME" -m "From $TAG" -m "$(bullets promote.txt)"
+          if git rev-parse -q --verify "origin/$PROMO" > /dev/null && git diff --quiet "origin/$PROMO" HEAD; then
+            echo "$PROMO already holds exactly these assets."
+          else
+            git push --force origin "HEAD:refs/heads/$PROMO"
+          fi
+
+          # open the PR, or update the open one
+          { echo "Release **$VERSION** from \`$TAG\`: the assets tagged **$TAG_READY** in the $SRC_NAME org, and the assets they use."
+            echo; echo "**Assets**"; bullets selected.txt
+            if [ -s used.txt ]; then echo; echo "**Used by them**"; bullets used.txt; fi
+            echo; echo "Approve this PR, then merge it by hand: the merge deploys these assets to $DST_NAME. Nothing is merged automatically."
+          } > body.md
+          pr=$(gh pr list --base "$DST" --head "$PROMO" --state open --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            gh pr edit "$pr" --body-file body.md
+            echo "Updated the $SRC_NAME -> $DST_NAME PR #$pr" | tee -a "$GITHUB_STEP_SUMMARY"
+          else
+            url=$(gh pr create --base "$DST" --head "$PROMO" --title "Release $VERSION: $SRC_NAME to $DST_NAME" --body-file body.md)
+            echo "Opened the $SRC_NAME -> $DST_NAME PR $url" | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "head=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # GITHUB_TOKEN pushes and PRs do not fire pull_request, so the check is started on the branch directly.
+      - name: Start the validate job on the release branch
+        if: steps.pr.outputs.head != ''
+        run: gh workflow run idmc-promote.yml --ref "$PROMO"
